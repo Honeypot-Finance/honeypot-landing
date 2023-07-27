@@ -1,0 +1,18 @@
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+// // // footer // // // 
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+.v-footer {
+  padding-inline: 30px;
+  padding-block: 20px;
+  display: flex;
+  justify-content: center;
+  max-height: 100px;
+  height: 100px;
+  background-color: transparent!important;
+
+  img{
+    @include media(max, 620px){
+      width: 200px!important;
+    }
+  }
+}

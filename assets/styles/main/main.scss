@@ -1,0 +1,26 @@
+// @forward "base";
+// @forward "default-settings";
+// @forward "mixins";
+// @forward "personal-classes";
+// @forward "responsive";
+// @forward "variables";
+// @use "mixins" as *;
+// @use "variables" as *;
+@import "default-settings";
+@import "vuetify-settings";
+@import "mixins";
+@import "custom-mixins";
+@import "personal-classes";
+@import "responsive";
+@import "variables";
+@import "fonts";
+@import "typography";
+
+
+
+//===================================== global ======================================//
+
+
+// .v-application {
+//     background-image: url(../../sources/images/lines.svg) !important;
+//   }
