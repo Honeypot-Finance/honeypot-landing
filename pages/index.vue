@@ -4,9 +4,9 @@
     <img id="right" src="~/assets/sources/images/right_elipse.png" alt="Elipse">
 
     <section>
-      <v-btn class="btn-berachain">
-        <img src="~/assets/sources/images/berachain.png" alt="Berachain"> Built on Berachain
-      </v-btn>  
+      <v-btn class="btn-berachain" @click="jumpToBera">
+        <img src="~/assets/sources/images/berachain.png" alt="Berachain" > Built on Berachain
+      </v-btn>
       <h2>
         A Continuous <br> Innovative De-fi Hub
       </h2>
@@ -61,6 +61,9 @@ export default {
     }
   },
   methods: {
+    jumpToBera() {
+      window.open('https://www.berachain.com', '_blank')
+    }
   }
 };
 </script>
