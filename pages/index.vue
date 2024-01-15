@@ -49,7 +49,7 @@ export default {
           text: "Prototype",
           img:  require("~/assets/sources/icons/arrow.svg"),
           img_black: require("~/assets/sources/icons/arrow-black.svg"),
-          link:"https://yexlab.vercel.app/main",
+          link:"https://yexlabs.xyz",
         },
       ]
     }
