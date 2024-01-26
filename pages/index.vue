@@ -37,7 +37,7 @@ export default {
           text: "Frontend Work",
           img:  require("~/assets/sources/icons/frontend.svg"),
           img_black: require("~/assets/sources/icons/frontend-black.svg"),
-          link:"https://honeypot-front-end-ten.vercel.app/swap",
+          link:"https://hpot-frontend.vercel.app/",
         },
         {
           text: "Discord",
