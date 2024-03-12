@@ -34,10 +34,16 @@ export default {
           link:"https://twitter.com/honeypotfinance",
         },
         {
-          text: "Frontend Work",
+          text: "HenloDex",
           img:  require("~/assets/sources/icons/frontend.svg"),
           img_black: require("~/assets/sources/icons/frontend-black.svg"),
           link:"https://app.honeypotfinance.xyz",
+        },
+        {
+          text: "HoneyGenesis",
+          img:  require("~/assets/sources/icons/frontend.svg"),
+          img_black: require("~/assets/sources/icons/frontend-black.svg"),
+          link:"https://mint.honeypotfinance.xyz",
         },
         {
           text: "Discord",
