@@ -94,3 +94,4 @@ sw.*
 
 # personal notes files
 .notes
+.vscode/

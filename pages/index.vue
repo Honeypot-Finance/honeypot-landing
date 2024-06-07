@@ -46,6 +46,12 @@ export default {
           link:"https://mint.honeypotfinance.xyz",
         },
         {
+          text: "MakeNFT",
+          img:  require("~/assets/sources/icons/frontend.svg"),
+          img_black: require("~/assets/sources/icons/frontend-black.svg"),
+          link:"https://nft.honeypotfinance.xyz/reveal",
+        },
+        {
           text: "Discord",
           img:  require("~/assets/sources/icons/discord.svg"),
           img_black: require("~/assets/sources/icons/discord-black.svg"),
