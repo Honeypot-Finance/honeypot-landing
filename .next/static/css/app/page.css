@@ -1,0 +1,200 @@
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/app/page.module.scss ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.page_main__akH3E {
+  background-color: black;
+  min-height: 200vh;
+  width: 100%;
+}
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/components/atoms/IntroCard/IntroCard.module.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.IntroCard_intro-card__j89K0 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #3b2712;
+  border-radius: 2rem;
+  overflow: hidden;
+  margin: 1rem;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+}
+.IntroCard_intro-card__j89K0 .IntroCard_image-container__ightS {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+.IntroCard_intro-card__j89K0 .IntroCard_title__VLqR4 {
+  text-align: center;
+  width: 100%;
+  font-size: 2rem;
+  font-weight: 700;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+.IntroCard_intro-card__j89K0 .IntroCard_description__p_0_m {
+  text-align: center;
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/components/atoms/Button/Button.module.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.Button_button__fLh2C {
+  background-color: #ffcd4d;
+  border: none;
+  border-radius: 5px;
+  color: #333;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+.Button_button__fLh2C:hover {
+  background-color: #cb7a34;
+}
+.Button_button__fLh2C.Button_primary__QF4WC {
+  background-color: #007bff;
+  color: #fff;
+}
+.Button_button__fLh2C.Button_primary__QF4WC:hover {
+  background-color: #0056b3;
+}
+.Button_button__fLh2C.Button_secondary__1rNVb {
+  background-color: #6c757d;
+  color: #fff;
+}
+.Button_button__fLh2C.Button_secondary__1rNVb:hover {
+  background-color: #545b62;
+}
+.Button_button__fLh2C.Button_success__PKpP1 {
+  background-color: #28a745;
+  color: #fff;
+}
+.Button_button__fLh2C.Button_success__PKpP1:hover {
+  background-color: #218838;
+}
+.Button_button__fLh2C.Button_danger__9DqvB {
+  background-color: #dc3545;
+  color: #fff;
+}
+.Button_button__fLh2C.Button_danger__9DqvB:hover {
+  background-color: #c82333;
+}
+.Button_button__fLh2C.Button_warning__faby1 {
+  background-color: #ffc107;
+  color: #333;
+}
+.Button_button__fLh2C.Button_warning__faby1:hover {
+  background-color: #e0a800;
+}
+.Button_button__fLh2C.Button_info__w9hwW {
+  background-color: #17a2b8;
+  color: #fff;
+}
+.Button_button__fLh2C.Button_info__w9hwW:hover {
+  background-color: #138496;
+}
+.Button_button__fLh2C.Button_light__jYp7B {
+  background-color: #f8f9fa;
+  color: #333;
+}
+.Button_button__fLh2C.Button_light__jYp7B:hover {
+  background-color: #e2e6ea;
+}
+.Button_button__fLh2C.Button_dark__jtLH7 {
+  background-color: #343a40;
+  color: #fff;
+}
+.Button_button__fLh2C.Button_dark__jtLH7:hover {
+  background-color: #23272b;
+}
+.Button_button__fLh2C.Button_link__QcbVg {
+  background-color: transparent;
+  color: #007bff;
+}
+.Button_button__fLh2C.Button_link__QcbVg:hover {
+  background-color: #e0e0e0;
+}
+.Button_button__fLh2C.Button_block__Tb22A {
+  display: block;
+  width: 100%;
+}
+.Button_button__fLh2C.Button_disabled__3jy84 {
+  background-color: #f5f5f5;
+  color: #333;
+  cursor: not-allowed;
+}
+.Button_button__fLh2C.Button_disabled__3jy84:hover {
+  background-color: #f5f5f5;
+}
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/components/atoms/SectionContainer/SectionContainer.module.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.SectionContainer_section-container__YFenh {
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #271a0c;
+  border-radius: 2rem;
+  overflow: hidden;
+  margin: 5rem 0;
+}
+@media screen and (min-width: 768px) {
+  .SectionContainer_section-container__YFenh {
+    margin: 5rem;
+  }
+}
+.SectionContainer_section-container__YFenh.SectionContainer_has-title__mGLml {
+  padding-top: 0rem;
+}
+.SectionContainer_section-container__YFenh .SectionContainer_title__0jlO_ {
+  text-align: center;
+  width: 100%;
+  background-color: #3b2712;
+  font-size: 2rem;
+  font-weight: 700;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+.SectionContainer_section-container__YFenh .SectionContainer_section-content__NlwZj {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/components/layout/HomePageBanner/HomePageBanner.module.scss ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.HomePageBanner_banner-container__sMzgd {
+  width: 100%;
+  height: 85vh;
+  position: relative;
+}
+.HomePageBanner_banner-container__sMzgd .HomePageBanner_banner-image__g8Y6x {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.HomePageBanner_banner-container__sMzgd .HomePageBanner_bera-lab-tester__v2mUQ {
+  display: block;
+  position: absolute;
+  height: 100vh;
+  width: 25vw;
+  object-fit: contain;
+  object-position: right;
+  right: 0;
+  top: 20vh;
+}

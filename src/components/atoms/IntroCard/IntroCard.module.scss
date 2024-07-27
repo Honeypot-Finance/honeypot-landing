@@ -1,0 +1,40 @@
+@use "/src/styles/variables.module.scss" as variables;
+
+.intro-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: variables.$card-color;
+  border-radius: 2rem;
+  overflow: hidden;
+  margin: 1rem;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+
+  .image-container {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+
+  .title {
+    text-align: center;
+    width: 100%;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .description {
+    text-align: center;
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 2rem;
+  }
+}
