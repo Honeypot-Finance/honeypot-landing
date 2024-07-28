@@ -21,15 +21,6 @@ export default function Footer() {
             <li>Medium</li>
           </ul>
         </div>
-        <div className={styles["footer-section"]}>
-          <h3>Partners</h3>
-          <ul>
-            <li>Google Pay</li>
-            <li>Klarna</li>
-            <li>Maestro</li>
-            <li>Samsung Pay</li>
-          </ul>
-        </div>
       </div>
     </footer>
   );
