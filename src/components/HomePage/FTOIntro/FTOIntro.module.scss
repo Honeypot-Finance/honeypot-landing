@@ -1,0 +1,30 @@
+// <div className={styles["fto-intro"]}>
+//   <div className={styles["image-container"]}>
+//     <Image src={svgPlaceholder} alt="" width={500} height={500}></Image>
+//   </div>
+//   <div className={styles["text-container"]}>text contents</div>
+// </div>
+
+.fto-intro {
+  width: 100%;
+  display: flex;
+
+  .image-container {
+    flex-grow: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .text-container {
+    flex-grow: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+}

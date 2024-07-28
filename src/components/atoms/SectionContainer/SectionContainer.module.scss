@@ -9,10 +9,10 @@
   background-color: variables.$background-color;
   border-radius: 2rem;
   overflow: hidden;
-  margin: 5rem 0;
+  margin: 2rem 0;
 
   @media screen and (min-width: 768px) {
-    margin: 5rem;
+    margin: 2rem 5rem;
   }
 
   &.has-title {

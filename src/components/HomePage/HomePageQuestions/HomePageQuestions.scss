@@ -1,0 +1,50 @@
+@use "/src/styles/variables.module.scss" as variables;
+
+.chevron-down {
+  margin-left: auto;
+  transition: transform 0.25s cubic-bezier(0, 0, 0, 1);
+}
+
+.szh-accordion {
+  width: 100%;
+  border-bottom: 1px solid variables.$background-color;
+
+  &__item {
+    border-top: 1px solid variables.$background-color;
+
+    &-btn {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      margin: 0;
+      padding: 1rem;
+      font-size: 1rem;
+      font-weight: 700;
+      text-align: left;
+      color: white;
+      background-color: transparent;
+      border: none;
+      &:hover {
+        background-color: variables.$primary-color;
+      }
+    }
+
+    &-content {
+      transition: height 0.25s cubic-bezier(0, 0, 0, 1);
+    }
+
+    &-panel {
+      padding: 1rem;
+    }
+
+    &--expanded {
+      .szh-accordion__item-btn {
+        background-color: variables.$card-color;
+      }
+      .chevron-down {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

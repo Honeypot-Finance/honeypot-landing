@@ -6,9 +6,11 @@ import { motion } from "framer-motion";
 export default function SectionContainer({
   children,
   title,
+  bgColor,
   ...props
 }: Readonly<{
   children: React.ReactNode;
+  bgColor?: string;
   title?: string;
 }>) {
   return (
@@ -18,6 +20,7 @@ export default function SectionContainer({
         title ? styles["has-title"] : null
       )}
       {...props}
+      style={{ backgroundColor: bgColor }}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
     >

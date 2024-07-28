@@ -12,7 +12,7 @@ export default function Header() {
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest > 0) {
-      setHeaderBg("#80BFE5EE");
+      setHeaderBg("#80BFE5");
     } else {
       setHeaderBg("#80BFE500");
     }
