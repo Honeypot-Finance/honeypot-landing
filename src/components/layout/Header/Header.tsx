@@ -35,7 +35,7 @@ export default function Header() {
           />
         </Link>
         <nav className={styles["nav"]}>
-          <ul className={styles["nav-list"]}>
+          {/* <ul className={styles["nav-list"]}>
             <li className={styles["nav-item"]}>
               <Link href="/">
                 <span className={styles["nav-link"]}>About</span>
@@ -51,7 +51,7 @@ export default function Header() {
                 <span className={styles["nav-link"]}>Contact</span>
               </Link>
             </li>
-          </ul>
+          </ul> */}
         </nav>
       </motion.div>
     </header>

@@ -8,8 +8,6 @@ import FTOIntro from "@/components/HomePage/FTOIntro/FTOIntro";
 import Image from "next/image";
 
 //images
-import bannerImage from "@/assets/banner.png";
-import beraLabTester from "@/assets/beraLabTester.png";
 import ctaPlaceholder from "@/assets/ctaPlaceholder.svg";
 import discord from "@/assets/medias/discord.svg";
 import twitter from "@/assets/medias/twitter.svg";
@@ -21,7 +19,6 @@ import googlePay from "@/assets/partners/GooglePay.svg";
 import Klarna from "@/assets/partners/Klarna.png";
 import Maestro from "@/assets/partners/Maestro.svg";
 import SamsungPay from "@/assets/partners/SamsungPay.svg";
-import { Accordion, AccordionItem } from "@szhsin/react-accordion";
 import HomePageQuestions from "@/components/HomePage/HomePageQuestions/HomePageQuestions";
 
 export default function Home() {
@@ -33,13 +30,19 @@ export default function Home() {
           title="Henlo Dex"
           description="Swap tokens with low fees. "
           image={yellowFarmer}
-          linkTo={{ href: "/", display: "Launch App ->" }}
+          linkTo={{
+            href: "https://app.honeypotfinance.xyz/swap",
+            display: "Launch App ->",
+          }}
         />
         <IntroCard
           title="Dreampad"
           description="Launch your token"
           image={blueAstro}
-          linkTo={{ href: "/", display: "Launch App ->" }}
+          linkTo={{
+            href: "https://app.honeypotfinance.xyz/launch-token",
+            display: "Launch App ->",
+          }}
           buttonColor="#80BFE5"
         />
         <IntroCard
@@ -110,19 +113,28 @@ export default function Home() {
           IconSize="small"
           title="Be apart of our community "
           image={discord}
-          linkTo={{ href: "/", display: "Join Discord" }}
+          linkTo={{
+            href: "https://x.com/honeypotfinance",
+            display: "Join Discord",
+          }}
         />
         <IntroCard
           IconSize="small"
           title="Stay up to date with us "
           image={twitter}
-          linkTo={{ href: "/", display: "Follow Twitter" }}
+          linkTo={{
+            href: "https://x.com/honeypotfinance",
+            display: "Follow Twitter",
+          }}
         />
         <IntroCard
           IconSize="small"
           title="Read about Honeypot"
           image={medium}
-          linkTo={{ href: "/", display: "Read Medium" }}
+          linkTo={{
+            href: "https://docs.honeypotfinance.xyz/",
+            display: "Read Medium",
+          }}
         />
       </SectionContainer>
 
