@@ -1,0 +1,11 @@
+$primary-color: #ffcd4d;
+$secondary-color: #cb7a34;
+$background-color: #271a0c;
+$card-color: #3b2712;
+
+:export {
+  primaryColor: $primary-color;
+  secondaryColor: $secondary-color;
+  backgroundColor: $background-color;
+  cardColor: $card-color;
+}

@@ -1,0 +1,55 @@
+@use "/src/styles/variables.module.scss" as variables;
+
+.banner-container {
+  width: 100%;
+  height: 80vh;
+  position: relative;
+  background-color: #80bfe5;
+
+  .banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: top;
+  }
+
+  .bera-lab-tester {
+    display: none;
+    position: absolute;
+    height: 100vh;
+    object-fit: contain;
+    object-position: right;
+    right: 0;
+    top: 20vh;
+    width: 25vw;
+
+    @media screen and (min-width: 768px) {
+      display: block;
+    }
+  }
+  .banner-title {
+    font-family: "Black Han Sans", sans-serif;
+    position: absolute;
+    text-transform: uppercase;
+    top: 50%;
+    left: 50%;
+    max-width: 70%;
+    transform: translate(-50%, -50%);
+    color: variables.$primary-color;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    -webkit-text-stroke: variables.$card-color 0.1rem;
+
+    @media screen and (min-width: 768px) {
+      font-size: 4rem;
+      -webkit-text-stroke: variables.$card-color 0.3rem;
+    }
+
+    @media screen and (min-width: 1024px) {
+      font-size: 6rem;
+      -webkit-text-stroke: variables.$card-color 0.3rem;
+    }
+  }
+}

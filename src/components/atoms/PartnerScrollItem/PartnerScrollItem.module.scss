@@ -1,0 +1,18 @@
+.partner-scroll-item {
+  margin: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-height: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  img {
+    max-height: 90%;
+    object-fit: contain;
+  }
+}

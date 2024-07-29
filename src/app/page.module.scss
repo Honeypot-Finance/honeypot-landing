@@ -1,0 +1,8 @@
+@use "/src/styles/variables.module.scss" as variables;
+
+.main {
+  background-color: black;
+  min-height: 100vh;
+  width: 100%;
+  margin-bottom: 5rem;
+}
