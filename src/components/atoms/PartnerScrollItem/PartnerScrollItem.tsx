@@ -11,7 +11,11 @@ export default function PartnerScrollItem({
   partnerLink: string;
 }) {
   return (
-    <Link href={partnerLink} className={styles["partner-scroll-item"]}>
+    <Link
+      href={partnerLink}
+      className={styles["partner-scroll-item"]}
+      target="_blank"
+    >
       <Image src={partnerImage} alt="partner image" width={200} height={200} />
     </Link>
   );

@@ -15,11 +15,8 @@ import medium from "@/assets/medias/medium.svg";
 import yellowFarmer from "@/assets/beraIcon/yellowFarmer.svg";
 import blueAstro from "@/assets/beraIcon/blueAstro.svg";
 import redGangster from "@/assets/beraIcon/redGangster.svg";
-import googlePay from "@/assets/partners/GooglePay.svg";
-import Klarna from "@/assets/partners/Klarna.png";
-import Maestro from "@/assets/partners/Maestro.svg";
-import SamsungPay from "@/assets/partners/SamsungPay.svg";
 import HomePageQuestions from "@/components/HomePage/HomePageQuestions/HomePageQuestions";
+import PartnersScroll from "@/components/layout/PartnersScroll/PartnersScroll";
 
 export default function Home() {
   return (
@@ -55,43 +52,7 @@ export default function Home() {
       </SectionContainer>
 
       <h2 className="text-center text-4xl font-bold m-5">Tursted By</h2>
-      <HorizontalScroll
-        stopOnHover
-        items={[
-          {
-            content: (
-              <PartnerScrollItem
-                partnerLink="/"
-                partnerImage={googlePay}
-              ></PartnerScrollItem>
-            ),
-          },
-          {
-            content: (
-              <PartnerScrollItem
-                partnerLink="/"
-                partnerImage={Klarna}
-              ></PartnerScrollItem>
-            ),
-          },
-          {
-            content: (
-              <PartnerScrollItem
-                partnerLink="/"
-                partnerImage={Maestro}
-              ></PartnerScrollItem>
-            ),
-          },
-          {
-            content: (
-              <PartnerScrollItem
-                partnerLink="/"
-                partnerImage={SamsungPay}
-              ></PartnerScrollItem>
-            ),
-          },
-        ]}
-      ></HorizontalScroll>
+      <PartnersScroll />
 
       <SectionContainer title="FTO">
         <FTOIntro />
