@@ -46,7 +46,10 @@ export default function Home() {
           title="Incubate"
           description="Launch your project "
           image={redGangster}
-          linkTo={{ href: "/", display: "Apply" }}
+          linkTo={{
+            href: "https://docs.google.com/forms/d/e/1FAIpQLScoS7IedJlmuiT-kEtzTt915IcpuhYVS4oUHjwiRyA-VHSztg/viewform",
+            display: "Apply",
+          }}
           buttonColor="#FF9FA8"
         />
       </SectionContainer>
