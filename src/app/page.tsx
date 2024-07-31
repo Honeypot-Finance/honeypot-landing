@@ -28,7 +28,7 @@ export default function Home() {
           description="Swap tokens with low fees. "
           image={yellowFarmer}
           linkTo={{
-            href: "https://app.honeypotfinance.xyz/swap",
+            href: "https://honeypot-frontend-v2-permission-less.vercel.app/swap",
             display: "Launch App ->",
           }}
         />
