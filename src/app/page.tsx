@@ -57,7 +57,7 @@ export default function Home() {
       <h2 className="text-center text-4xl font-bold m-5">Tursted By</h2>
       <PartnersScroll />
 
-      <SectionContainer title="FTO">
+      <SectionContainer title="Fairer Token Offering (FTO)">
         <FTOIntro />
       </SectionContainer>
 
