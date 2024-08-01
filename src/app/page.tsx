@@ -21,6 +21,7 @@ import FTOFairAccess from "@/components/HomePage/FTO/FTOFairAccess/FTOFairAccess
 import FTOImmediateLiquidity from "@/components/HomePage/FTO/FTOImmediateLiquidity/FTOImmediateLiquidity";
 import FTOPriceStability from "@/components/HomePage/FTO/FTOPriceStability/FTOPriceStability";
 import FTOInstantEarning from "@/components/HomePage/FTO/FTOInstantEarning/FTOInstantEarning";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -47,12 +48,12 @@ export default function Home() {
           buttonColor="#80BFE5"
         />
         <IntroCard
-          title="Incubate"
-          description="Launch your project "
+          title="NFT"
+          description="HoneyGenesis NFT"
           image={redGangster}
           linkTo={{
-            href: "https://docs.google.com/forms/d/e/1FAIpQLScoS7IedJlmuiT-kEtzTt915IcpuhYVS4oUHjwiRyA-VHSztg/viewform",
-            display: "Apply",
+            href: "https://mint.honeypotfinance.xyz/",
+            display: "Mint ->",
           }}
           buttonColor="#FF9FA8"
         />
@@ -77,13 +78,19 @@ export default function Home() {
       </SectionContainer>
 
       <SectionContainer bgColor="transparent">
-        <Image
-          src={ctaPlaceholder}
-          alt="cta"
-          width={500}
-          height={500}
-          className="w-full m-auto"
-        />
+        <Link
+          href={
+            "https://docs.google.com/forms/d/e/1FAIpQLScoS7IedJlmuiT-kEtzTt915IcpuhYVS4oUHjwiRyA-VHSztg/viewform"
+          }
+        >
+          <Image
+            src={ctaPlaceholder}
+            alt="cta"
+            width={500}
+            height={500}
+            className="w-full m-auto"
+          />
+        </Link>
       </SectionContainer>
 
       <h2 className="text-4xl font-bold ml-[10%]">Stay up to date</h2>
