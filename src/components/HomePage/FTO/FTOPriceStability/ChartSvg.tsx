@@ -49,13 +49,22 @@ export default function ChartSvg() {
             style={{
               stopColor: "rgb(253,226,82)",
             }}
+            animate={{
+              offset: [0, 0, 1, 1, 0],
+              stopOpacity: [0.5, 0.5, 0.5, 0, 0],
+            }}
+            transition={{
+              times: timeFrame,
+              duration: duration,
+              repeat: Infinity,
+            }}
           />
           <motion.stop
             style={{
               stopColor: "rgb(253,226,82)",
             }}
             animate={{
-              offset: [0.0, 1, 1, 0.0, 0],
+              offset: [0.0, 1, 1, 1, 0],
               stopOpacity: [0, 0.15, 0.15, 0, 0],
             }}
             transition={{
@@ -87,7 +96,11 @@ export default function ChartSvg() {
           strokeWidth={2}
           strokeLinecap="round"
           strokeLinejoin="round"
-          animate={{ pathLength: [0, 1, 1, 0, 0] }}
+          animate={{
+            pathLength: [0, 1, 1, 0, 0],
+            pathOffset: [0, 0, 0, 1, 0],
+            opacity: [1, 1, 1, 0, 0],
+          }}
           transition={{
             times: timeFrame,
             duration: duration,
