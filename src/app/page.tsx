@@ -64,7 +64,12 @@ export default function Home() {
       <h2 className="text-center text-4xl font-bold m-5">
         Fairer Token Offering (FTO)
       </h2>
-      <SectionContainer bgColor="transparent">
+      <SectionContainer
+        style={{
+          maxWidth: "800px",
+        }}
+        bgColor="transparent"
+      >
         <FTOFairAccess />
         <FTOImmediateLiquidity />
         <FTOPriceStability />

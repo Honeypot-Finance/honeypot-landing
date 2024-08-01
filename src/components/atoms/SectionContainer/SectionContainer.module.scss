@@ -1,15 +1,19 @@
 @use "/src/styles/variables.module.scss" as variables;
 
+$sectionMargin: 2rem;
+
 .section-container {
+  width: calc(100% - $sectionMargin * 2);
   padding: 2rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: variables.$background-color;
   border-radius: 2rem;
   overflow: hidden;
   margin: 2rem 0;
+  align-self: center;
+  justify-self: center;
 
   @media screen and (min-width: 768px) {
     margin: 2rem 5rem;
