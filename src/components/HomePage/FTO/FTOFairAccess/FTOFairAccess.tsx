@@ -36,6 +36,7 @@ export default function FTOFairAccess() {
           initial={{ opacity: 0, y: 0 }}
           whileInView={{ opacity: 1, y: "-65%" }}
           transition={{ duration: 1, delay: 0.5 }}
+          viewport={{ once: true, amount: "some" }}
         >
           <Image
             src={blackHoodie}
@@ -64,6 +65,7 @@ export default function FTOFairAccess() {
           initial={{ opacity: 0, y: 0 }}
           whileInView={{ opacity: 1, y: "-65%" }}
           transition={{ duration: 1, delay: 1 }}
+          viewport={{ once: true, amount: "some" }}
         >
           <Image
             src={blackSuit}
@@ -89,6 +91,7 @@ export default function FTOFairAccess() {
           initial={{ opacity: 0, y: 0 }}
           whileInView={{ opacity: 1, y: "-65%" }}
           transition={{ duration: 1, delay: 1.5 }}
+          viewport={{ once: true, amount: "some" }}
         >
           <Image
             src={holdHoney}
@@ -114,6 +117,7 @@ export default function FTOFairAccess() {
           initial={{ opacity: 0, y: 0 }}
           whileInView={{ opacity: 1, y: "-35%" }}
           transition={{ duration: 1, delay: 2 }}
+          viewport={{ once: true, amount: "some" }}
         >
           <Image
             src={purpleHeadcover}
@@ -139,6 +143,7 @@ export default function FTOFairAccess() {
           initial={{ opacity: 0, y: 0 }}
           whileInView={{ opacity: 1, y: "-35%" }}
           transition={{ duration: 1, delay: 2.5 }}
+          viewport={{ once: true, amount: "some" }}
         >
           <Image
             src={whiteShirt}
