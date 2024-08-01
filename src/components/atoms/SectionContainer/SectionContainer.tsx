@@ -23,7 +23,10 @@ export default function SectionContainer({
         title ? styles["has-title"] : null
       )}
       {...props}
-      style={{ backgroundColor: bgColor ? bgColor : styleVar.backgroundColor }}
+      style={{
+        backgroundColor: bgColor ? bgColor : styleVar.backgroundColor,
+        ...props.style,
+      }}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
     >
