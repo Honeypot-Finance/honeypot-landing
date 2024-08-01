@@ -4,7 +4,7 @@ import SectionContainer from "@/components/atoms/SectionContainer/SectionContain
 import IntroCard from "@/components/atoms/IntroCard/IntroCard";
 import HorizontalScroll from "@/components/molecules/HorizontalScroll/HorizontalScroll";
 import PartnerScrollItem from "@/components/atoms/PartnerScrollItem/PartnerScrollItem";
-import FTOIntro from "@/components/HomePage/FTOIntro/FTOIntro";
+import FTOIntro from "@/components/HomePage/FTO/FTOIntro";
 import Image from "next/image";
 
 //images
@@ -17,6 +17,10 @@ import blueAstro from "@/assets/beraIcon/blueAstro.svg";
 import redGangster from "@/assets/beraIcon/redGangster.svg";
 import HomePageQuestions from "@/components/HomePage/HomePageQuestions/HomePageQuestions";
 import PartnersScroll from "@/components/layout/PartnersScroll/PartnersScroll";
+import FTOFairAccess from "@/components/HomePage/FTO/FTOFairAccess/FTOFairAccess";
+import FTOImmediateLiquidity from "@/components/HomePage/FTO/FTOImmediateLiquidity/FTOImmediateLiquidity";
+import FTOPriceStability from "@/components/HomePage/FTO/FTOPriceStability/FTOPriceStability";
+import FTOInstantEarning from "@/components/HomePage/FTO/FTOInstantEarning/FTOInstantEarning";
 
 export default function Home() {
   return (
@@ -57,8 +61,14 @@ export default function Home() {
       <h2 className="text-center text-4xl font-bold m-5">Tursted By</h2>
       <PartnersScroll />
 
-      <SectionContainer title="Fairer Token Offering (FTO)">
-        <FTOIntro />
+      <h2 className="text-center text-4xl font-bold m-5">
+        Fairer Token Offering (FTO)
+      </h2>
+      <SectionContainer bgColor="transparent">
+        <FTOFairAccess />
+        <FTOImmediateLiquidity />
+        <FTOPriceStability />
+        <FTOInstantEarning />
       </SectionContainer>
 
       <SectionContainer bgColor="transparent">
