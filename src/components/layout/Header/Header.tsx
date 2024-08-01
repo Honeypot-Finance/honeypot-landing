@@ -30,8 +30,8 @@ export default function Header() {
             src={"/logo.svg"}
             alt="logo"
             className={styles["logo"]}
-            width={50}
-            height={50}
+            width={100}
+            height={100}
           />
         </Link>
         <nav className={styles["nav"]}>

@@ -1,5 +1,5 @@
 import styles from "./page.module.scss";
-import HomePageBanner from "@/components/layout/HomePageBanner/HomePageBanner";
+import HomePageBanner from "@/components/HomePage/HomePageBanner/HomePageBanner";
 import SectionContainer from "@/components/atoms/SectionContainer/SectionContainer";
 import IntroCard from "@/components/atoms/IntroCard/IntroCard";
 import HorizontalScroll from "@/components/molecules/HorizontalScroll/HorizontalScroll";
@@ -32,6 +32,21 @@ export default function Home() {
     <main>
       <HomePageBanner />
       <SectionContainer title="Explore our Apps">
+        {" "}
+        <IntroCard
+          title="Henlo Dex"
+          description="Swap tokens with low fees. "
+          image={yellowFarmer}
+          linkTo={{
+            href: "https://honeypot-frontend-v2-permission-less.vercel.app/swap",
+            display: "Permissionless ->",
+          }}
+        >
+          <br />
+          <Button linkTo="https://app.honeypotfinance.xyz/swap">
+            Launch App v1 -&gt;
+          </Button>
+        </IntroCard>
         <IntroCard
           title="Dreampad"
           description="Launch your token"
@@ -43,29 +58,23 @@ export default function Home() {
           buttonColor="#80BFE5"
         />{" "}
         <IntroCard
-          title="Henlo Dex"
-          description="Swap tokens with low fees. "
-          image={yellowFarmer}
-          linkTo={{
-            href: "https://honeypot-frontend-v2-permission-less.vercel.app/swap",
-            display: "Permission less ->",
-          }}
-        >
-          <br />
-          <Button linkTo="https://app.honeypotfinance.xyz/swap">
-            Launch App v1 -&gt;
-          </Button>
-        </IntroCard>
-        <IntroCard
           title="NFT"
           description="HoneyGenesis NFT"
           image={redGangster}
           linkTo={{
-            href: "https://mint.honeypotfinance.xyz/",
-            display: "Mint ->",
+            href: "https://mint.honeypotfinance.xyz/reveal",
+            display: "Display ->",
           }}
           buttonColor="#FF9FA8"
-        />
+        >
+          <br />
+          <Button
+            linkTo="https://www.okx.com/web3/marketplace/nft/collection/arbi/honeygenesis-1"
+            color="#FF9FA8"
+          >
+            OKX -&gt;
+          </Button>
+        </IntroCard>
       </SectionContainer>
 
       <Link href={"/partners"}>
@@ -112,7 +121,7 @@ export default function Home() {
       <SectionContainer bgColor="transparent">
         <IntroCard
           IconSize="small"
-          title="Be apart of our community "
+          title="Be part of our community "
           image={discord}
           linkTo={{
             href: "https://x.com/honeypotfinance",
@@ -121,7 +130,7 @@ export default function Home() {
         />
         <IntroCard
           IconSize="small"
-          title="Stay up to date with us "
+          title="Stay up to date with us"
           image={twitter}
           linkTo={{
             href: "https://x.com/honeypotfinance",

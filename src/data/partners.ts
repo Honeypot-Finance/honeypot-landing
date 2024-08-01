@@ -20,6 +20,7 @@ import honeycast from "@/assets/partners/honeycast.jpg";
 import d2finance from "@/assets/partners/d2finance.svg";
 import beraboyz from "@/assets/partners/beraboyz.jpg";
 import arebmeme from "@/assets/partners/arebmeme.jpg";
+import beracer from "@/assets/partners/beracer.jpg";
 
 const investors = [
   {
@@ -114,6 +115,11 @@ const partners = [
     name: "Areb Meme",
     partnerLink: "https://x.com/arebmeme",
     partnerImage: arebmeme,
+  },
+  {
+    name: "Beracer",
+    partnerLink: "https://x.com/beracer_org",
+    partnerImage: beracer,
   },
 ];
 
