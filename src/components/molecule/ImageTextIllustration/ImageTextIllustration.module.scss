@@ -13,8 +13,8 @@
   object-fit: contain;
   object-position: top;
   grid-template-areas:
-    "image"
-    "text ";
+    "text"
+    "image";
   overflow: hidden;
 
   @media screen and (min-width: 768px) {
