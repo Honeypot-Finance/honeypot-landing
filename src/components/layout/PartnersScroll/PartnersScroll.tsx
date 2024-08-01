@@ -12,6 +12,14 @@ import aquanow from "@/assets/partners/aquanow.png";
 import Web3PortFund from "@/assets/partners/Web3PortFund.jpg";
 import EnigmaValidator from "@/assets/partners/EnigmaValidator.png";
 import ACCapital1 from "@/assets/partners/ACCapital1.jpg";
+import kingdomly from "@/assets/partners/kingdomly.png";
+import beraroot from "@/assets/partners/beraroot.png";
+import oogabooga from "@/assets/partners/oogabooga.jpg";
+import infrared from "@/assets/partners/infrared.png";
+import honeycast from "@/assets/partners/honeycast.jpg";
+import d2finance from "@/assets/partners/d2finance.svg";
+import beraboyz from "@/assets/partners/beraboyz.jpg";
+import arebmeme from "@/assets/partners/arebmeme.jpg";
 
 const partners = [
   {
@@ -53,6 +61,38 @@ const partners = [
   {
     partnerLink: "https://accapital.io/",
     partnerImage: ACCapital1,
+  },
+  {
+    partnerLink: "https://www.kingdomly.info/",
+    partnerImage: kingdomly,
+  },
+  {
+    partnerLink: "https://beraroot.com/",
+    partnerImage: beraroot,
+  },
+  {
+    partnerLink: "https://x.com/0xoogabooga",
+    partnerImage: oogabooga,
+  },
+  {
+    partnerLink: "https://infrared.finance/",
+    partnerImage: infrared,
+  },
+  {
+    partnerLink: "https://linktr.ee/TheHoneyCast",
+    partnerImage: honeycast,
+  },
+  {
+    partnerLink: "https://d2.finance/strategies",
+    partnerImage: d2finance,
+  },
+  {
+    partnerLink: "https://x.com/BeraBoyzGG",
+    partnerImage: beraboyz,
+  },
+  {
+    partnerLink: "https://x.com/arebmeme",
+    partnerImage: arebmeme,
   },
 ];
 
