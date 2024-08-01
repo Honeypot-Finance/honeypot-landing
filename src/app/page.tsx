@@ -16,27 +16,22 @@ import yellowFarmer from "@/assets/beraIcon/yellowFarmer.svg";
 import blueAstro from "@/assets/beraIcon/blueAstro.svg";
 import redGangster from "@/assets/beraIcon/redGangster.svg";
 import HomePageQuestions from "@/components/HomePage/HomePageQuestions/HomePageQuestions";
-import PartnersScroll from "@/components/layout/PartnersScroll/PartnersScroll";
+import {
+  PartnersScroll,
+  InvestorsScroll,
+} from "@/components/layout/PartnersScroll/PartnersScroll";
 import FTOFairAccess from "@/components/HomePage/FTO/FTOFairAccess/FTOFairAccess";
 import FTOImmediateLiquidity from "@/components/HomePage/FTO/FTOImmediateLiquidity/FTOImmediateLiquidity";
 import FTOPriceStability from "@/components/HomePage/FTO/FTOPriceStability/FTOPriceStability";
 import FTOInstantEarning from "@/components/HomePage/FTO/FTOInstantEarning/FTOInstantEarning";
 import Link from "next/link";
+import Button from "@/components/atoms/Button/Button";
 
 export default function Home() {
   return (
-    <main className={styles["main"]}>
+    <main>
       <HomePageBanner />
       <SectionContainer title="Explore our Apps">
-        <IntroCard
-          title="Henlo Dex"
-          description="Swap tokens with low fees. "
-          image={yellowFarmer}
-          linkTo={{
-            href: "https://honeypot-frontend-v2-permission-less.vercel.app/swap",
-            display: "Launch App ->",
-          }}
-        />
         <IntroCard
           title="Dreampad"
           description="Launch your token"
@@ -46,7 +41,21 @@ export default function Home() {
             display: "Launch App ->",
           }}
           buttonColor="#80BFE5"
-        />
+        />{" "}
+        <IntroCard
+          title="Henlo Dex"
+          description="Swap tokens with low fees. "
+          image={yellowFarmer}
+          linkTo={{
+            href: "https://honeypot-frontend-v2-permission-less.vercel.app/swap",
+            display: "Permission less ->",
+          }}
+        >
+          <br />
+          <Button linkTo="https://app.honeypotfinance.xyz/swap">
+            Launch App v1 -&gt;
+          </Button>
+        </IntroCard>
         <IntroCard
           title="NFT"
           description="HoneyGenesis NFT"
@@ -59,7 +68,13 @@ export default function Home() {
         />
       </SectionContainer>
 
-      <h2 className="text-center text-4xl font-bold m-5">Tursted By</h2>
+      <Link href={"/partners"}>
+        <h2 className="text-center text-4xl font-bold m-5">Tursted By -&gt;</h2>
+      </Link>
+      <InvestorsScroll />
+      <Link href={"/partners"}>
+        <h2 className="text-center text-4xl font-bold m-5">Partners -&gt;</h2>
+      </Link>
       <PartnersScroll />
 
       <h2 className="text-center text-4xl font-bold m-5">

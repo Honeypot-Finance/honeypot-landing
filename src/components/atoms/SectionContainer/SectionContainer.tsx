@@ -20,10 +20,10 @@ export default function SectionContainer({
     <motion.section
       className={classNames(
         styles["section-container"],
-        title ? styles["has-title"] : null,
-        `bg-[${bgColor ? bgColor : styleVar.backgroundColor}]`
+        title ? styles["has-title"] : null
       )}
       {...props}
+      style={{ backgroundColor: bgColor ? bgColor : styleVar.backgroundColor }}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
     >

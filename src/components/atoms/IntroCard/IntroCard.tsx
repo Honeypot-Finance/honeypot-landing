@@ -23,6 +23,7 @@ export default function IntroCard({
     href: string;
     display?: string;
   };
+  children?: React.ReactNode;
 }>) {
   return (
     <motion.div
@@ -47,6 +48,7 @@ export default function IntroCard({
             {linkTo.display}
           </Button>
         )}
+        {props.children}
       </div>
     </motion.div>
   );
