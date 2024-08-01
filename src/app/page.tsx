@@ -41,7 +41,7 @@ export default function Home() {
           description="Launch your token"
           image={blueAstro}
           linkTo={{
-            href: "https://app.honeypotfinance.xyz/launch-token",
+            href: "https://honeypot-frontend-v2-permission-less.vercel.app/launch-token",
             display: "Launch App ->",
           }}
           buttonColor="#80BFE5"
