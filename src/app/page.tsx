@@ -37,14 +37,14 @@ export default function Home() {
           description="Launch your token"
           image={blueAstro}
           linkTo={{
-            href: "https://honeypot-frontend-v2-permission-less.vercel.app/launch",
+            href: "https://beta2.honeypotfinance.xyz/launch",
             display: "Permissionless ->",
           }}
           buttonColor="#80BFE5"
         >
           <br />
           <Button
-            linkTo="https://app.honeypotfinance.xyz/launch"
+            linkTo="https://beta1.honeypotfinance.xyz/launch"
             color="#80BFE5"
           >
             NFT Holder Entrance -&gt;
@@ -55,7 +55,7 @@ export default function Home() {
           description="Swap tokens with low fees. "
           image={yellowFarmer}
           linkTo={{
-            href: "https://honeypot-frontend-v2-permission-less.vercel.app/swap",
+            href: "https://beta2.honeypotfinance.xyz/swap",
             display: "Explore App ->",
           }}
         ></IntroCard>
@@ -64,7 +64,7 @@ export default function Home() {
           description="HoneyGenesis NFT"
           image={redGangster}
           linkTo={{
-            href: "https://mint.honeypotfinance.xyz/reveal",
+            href: "https://nft.honeypotfinance.xyz/reveal",
             display: "Display ->",
           }}
           buttonColor="#FF9FA8"
