@@ -32,31 +32,33 @@ export default function Home() {
     <main>
       <HomePageBanner />
       <SectionContainer title="Explore our Apps">
-        {" "}
+        <IntroCard
+          title="Dreampad"
+          description="Launch your token"
+          image={blueAstro}
+          linkTo={{
+            href: "https://honeypot-frontend-v2-permission-less.vercel.app/launch",
+            display: "Permissionless ->",
+          }}
+          buttonColor="#80BFE5"
+        >
+          <br />
+          <Button
+            linkTo="https://app.honeypotfinance.xyz/launch"
+            color="#80BFE5"
+          >
+            NFT Holder Entrance -&gt;
+          </Button>
+        </IntroCard>{" "}
         <IntroCard
           title="Henlo Dex"
           description="Swap tokens with low fees. "
           image={yellowFarmer}
           linkTo={{
             href: "https://honeypot-frontend-v2-permission-less.vercel.app/swap",
-            display: "Permissionless ->",
+            display: "Explore App ->",
           }}
-        >
-          <br />
-          <Button linkTo="https://app.honeypotfinance.xyz/swap">
-            Launch App v1 -&gt;
-          </Button>
-        </IntroCard>
-        <IntroCard
-          title="Dreampad"
-          description="Launch your token"
-          image={blueAstro}
-          linkTo={{
-            href: "https://honeypot-frontend-v2-permission-less.vercel.app/launch-token",
-            display: "Launch App ->",
-          }}
-          buttonColor="#80BFE5"
-        />{" "}
+        ></IntroCard>
         <IntroCard
           title="NFT"
           description="HoneyGenesis NFT"
