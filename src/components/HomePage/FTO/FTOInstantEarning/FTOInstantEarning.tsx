@@ -14,7 +14,7 @@ export default function FTOInstantEarning() {
     <ImageTextIllustration
       swap
       title="Instant earning"
-      paragraph=" as we auto-add liquidity to the defi-hub, whether you are users or project, you instantly start to earn the transaction fee and yields from the partner protocols."
+      paragraph="As we auto-add liquidity to the defi-hub, whether you are users or project, you instantly start to earn the transaction fee and yields from the partner protocols."
     >
       <motion.div
         style={{

@@ -31,50 +31,55 @@ export default function Home() {
   return (
     <main>
       <HomePageBanner />
-      <SectionContainer title="Explore our Apps">
-        {" "}
-        <IntroCard
-          title="Henlo Dex"
-          description="Swap tokens with low fees. "
-          image={yellowFarmer}
-          linkTo={{
-            href: "https://honeypot-frontend-v2-permission-less.vercel.app/swap",
-            display: "Permissionless ->",
-          }}
-        >
-          <br />
-          <Button linkTo="https://app.honeypotfinance.xyz/swap">
-            Launch App v1 -&gt;
-          </Button>
-        </IntroCard>
-        <IntroCard
-          title="Dreampad"
-          description="Launch your token"
-          image={blueAstro}
-          linkTo={{
-            href: "https://honeypot-frontend-v2-permission-less.vercel.app/launch-token",
-            display: "Launch App ->",
-          }}
-          buttonColor="#80BFE5"
-        />{" "}
-        <IntroCard
-          title="NFT"
-          description="HoneyGenesis NFT"
-          image={redGangster}
-          linkTo={{
-            href: "https://mint.honeypotfinance.xyz/reveal",
-            display: "Display ->",
-          }}
-          buttonColor="#FF9FA8"
-        >
-          <br />
-          <Button
-            linkTo="https://www.okx.com/web3/marketplace/nft/collection/arbi/honeygenesis-1"
-            color="#FF9FA8"
+      <SectionContainer title="Explore our dApps">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-3 justify-center gap-5">
+          {" "}
+          <IntroCard
+            title="Henlo Dex"
+            description="Swap tokens with low fees. "
+            image={yellowFarmer}
+            linkTo={{
+              href: "https://honeypot-frontend-v2-permission-less.vercel.app/swap",
+              display: "Permissionless ->",
+            }}
+            style={{ margin: "0 auto" }}
           >
-            OKX -&gt;
-          </Button>
-        </IntroCard>
+            <br />
+            <Button linkTo="https://app.honeypotfinance.xyz/swap">
+              Launch App v1 -&gt;
+            </Button>
+          </IntroCard>
+          <IntroCard
+            title="Dreampad"
+            description="Launch your token"
+            image={blueAstro}
+            linkTo={{
+              href: "https://honeypot-frontend-v2-permission-less.vercel.app/launch-token",
+              display: "Launch App ->",
+            }}
+            buttonColor="#80BFE5"
+            style={{ margin: "0 auto" }}
+          />{" "}
+          <IntroCard
+            title="NFT"
+            description="HoneyGenesis NFT"
+            image={redGangster}
+            linkTo={{
+              href: "https://mint.honeypotfinance.xyz/reveal",
+              display: "Display ->",
+            }}
+            buttonColor="#FF9FA8"
+            style={{ margin: "0 auto" }}
+          >
+            <br />
+            <Button
+              linkTo="https://www.okx.com/web3/marketplace/nft/collection/arbi/honeygenesis-1"
+              color="#FF9FA8"
+            >
+              OKX -&gt;
+            </Button>
+          </IntroCard>
+        </div>
       </SectionContainer>
 
       <Link href={"/partners"}>

@@ -18,8 +18,7 @@ export default function FTOImmediateLiquidity() {
     <ImageTextIllustration
       swap
       title="Immediate Liquidity"
-      paragraph="A 100% deep liquidity pool is established immediately, enabling instant user trading and improving market efficiency and confidence.
-                    Price Stability: Balanced liquidity removal according to the constant K formula prevents price disruption due to liquidity changes."
+      paragraph="A 100% deep liquidity pool is established immediately, enabling instant user trading and improving market efficiency and confidence."
     >
       <PercentSvg />
     </ImageTextIllustration>
