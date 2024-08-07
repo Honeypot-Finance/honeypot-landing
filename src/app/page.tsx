@@ -33,43 +33,42 @@ export default function Home() {
       <HomePageBanner />
       <SectionContainer title="Explore our dApps">
         <div className="w-full grid grid-cols-1 lg:grid-cols-3 justify-center gap-5">
-          {" "}
-          <IntroCard
-            title="Henlo Dex"
-            description="Swap tokens with low fees. "
-            image={yellowFarmer}
-            linkTo={{
-              href: "https://honeypot-frontend-v2-permission-less.vercel.app/swap",
-              display: "Permissionless ->",
-            }}
-            style={{ margin: "0 auto" }}
-          >
-            <br />
-            <Button linkTo="https://app.honeypotfinance.xyz/swap">
-              Launch App v1 -&gt;
-            </Button>
-          </IntroCard>
           <IntroCard
             title="Dreampad"
             description="Launch your token"
             image={blueAstro}
             linkTo={{
-              href: "https://honeypot-frontend-v2-permission-less.vercel.app/launch-token",
-              display: "Launch App ->",
+              href: "https://beta2.honeypotfinance.xyz/launch",
+              display: "Permissionless ->",
             }}
             buttonColor="#80BFE5"
-            style={{ margin: "0 auto" }}
-          />{" "}
+          >
+            <br />
+            <Button
+              linkTo="https://beta1.honeypotfinance.xyz/launch"
+              color="#80BFE5"
+            >
+              NFT Holder Entrance -&gt;
+            </Button>
+          </IntroCard>{" "}
+          <IntroCard
+            title="Henlo Dex"
+            description="Swap tokens with low fees. "
+            image={yellowFarmer}
+            linkTo={{
+              href: "https://beta2.honeypotfinance.xyz/swap",
+              display: "Explore App ->",
+            }}
+          ></IntroCard>
           <IntroCard
             title="NFT"
             description="HoneyGenesis NFT"
             image={redGangster}
             linkTo={{
-              href: "https://mint.honeypotfinance.xyz/reveal",
+              href: "https://nft.honeypotfinance.xyz/reveal",
               display: "Display ->",
             }}
             buttonColor="#FF9FA8"
-            style={{ margin: "0 auto" }}
           >
             <br />
             <Button
