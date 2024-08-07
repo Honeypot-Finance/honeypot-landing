@@ -42,6 +42,9 @@ export default function Home() {
               display: "Permissionless ->",
             }}
             buttonColor="#80BFE5"
+            style={{
+              margin: "0 auto",
+            }}
           >
             <br />
             <Button
@@ -59,6 +62,9 @@ export default function Home() {
               href: "https://beta2.honeypotfinance.xyz/swap",
               display: "Explore App ->",
             }}
+            style={{
+              margin: "0 auto",
+            }}
           ></IntroCard>
           <IntroCard
             title="NFT"
@@ -69,6 +75,9 @@ export default function Home() {
               display: "Display ->",
             }}
             buttonColor="#FF9FA8"
+            style={{
+              margin: "0 auto",
+            }}
           >
             <br />
             <Button
