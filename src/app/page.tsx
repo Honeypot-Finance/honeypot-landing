@@ -51,7 +51,7 @@ export default function Home() {
               linkTo="https://beta1.honeypotfinance.xyz/launch"
               color="#80BFE5"
             >
-              NFT Holder Entrance -&gt;
+              NFT Holder -&gt;
             </Button>
           </IntroCard>{" "}
           <IntroCard
