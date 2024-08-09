@@ -91,7 +91,7 @@ export default function Home() {
       </SectionContainer>
 
       <Link href={"/partners"}>
-        <h2 className="text-center text-4xl font-bold m-5">Tursted By -&gt;</h2>
+        <h2 className="text-center text-4xl font-bold m-5">Trusted By -&gt;</h2>
       </Link>
       <InvestorsScroll />
       <Link href={"/partners"}>
