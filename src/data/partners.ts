@@ -21,6 +21,7 @@ import d2finance from "@/assets/partners/d2finance.svg";
 import beraboyz from "@/assets/partners/beraboyz.jpg";
 import arebmeme from "@/assets/partners/arebmeme.jpg";
 import beracer from "@/assets/partners/beracer.jpg";
+import ghost from "@/assets/partners/ghost.png";
 
 const investors = [
   {
@@ -120,6 +121,11 @@ const partners = [
     name: "Beracer",
     partnerLink: "https://x.com/beracer_org",
     partnerImage: beracer,
+  },
+  {
+    name: "Ghost",
+    partnerLink: "https://tryghost.xyz/log",
+    partnerImage: ghost,
   },
 ];
 
