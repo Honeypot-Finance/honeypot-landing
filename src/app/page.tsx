@@ -39,7 +39,7 @@ export default function Home() {
             image={blueAstro}
             linkTo={{
               href: "https://beta2.honeypotfinance.xyz/launch",
-              display: "Permissionless ->",
+              display: "Launch ->",
             }}
             buttonColor="#80BFE5"
             style={{
