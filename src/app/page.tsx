@@ -45,15 +45,7 @@ export default function Home() {
             style={{
               margin: "0 auto",
             }}
-          >
-            <br />
-            <Button
-              linkTo="https://beta1.honeypotfinance.xyz/launch"
-              color="#80BFE5"
-            >
-              NFT Holder -&gt;
-            </Button>
-          </IntroCard>{" "}
+          ></IntroCard>{" "}
           <IntroCard
             title="Henlo Dex"
             description="Swap tokens with low fees. "
