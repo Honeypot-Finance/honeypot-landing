@@ -38,18 +38,10 @@ export default function Home() {
           image={blueAstro}
           linkTo={{
             href: "https://beta2.honeypotfinance.xyz/launch",
-            display: "Permissionless ->",
+            display: "Launch ->",
           }}
           buttonColor="#80BFE5"
-        >
-          <br />
-          <Button
-            linkTo="https://beta1.honeypotfinance.xyz/launch"
-            color="#80BFE5"
-          >
-            NFT Holder Entrance -&gt;
-          </Button>
-        </IntroCard>{" "}
+        ></IntroCard>{" "}
         <IntroCard
           title="Henlo Dex"
           description="Swap tokens with low fees. "
