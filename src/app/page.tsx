@@ -31,48 +31,67 @@ export default function Home() {
   return (
     <main>
       <HomePageBanner />
-      <SectionContainer title="Explore our Apps">
-        <IntroCard
-          title="Dreampad"
-          description="Launch your token"
-          image={blueAstro}
-          linkTo={{
-            href: "https://beta2.honeypotfinance.xyz/launch",
-            display: "Launch ->",
-          }}
-          buttonColor="#80BFE5"
-        ></IntroCard>{" "}
-        <IntroCard
-          title="Henlo Dex"
-          description="Swap tokens with low fees. "
-          image={yellowFarmer}
-          linkTo={{
-            href: "https://beta2.honeypotfinance.xyz/swap",
-            display: "Explore App ->",
-          }}
-        ></IntroCard>
-        <IntroCard
-          title="NFT"
-          description="HoneyGenesis NFT"
-          image={redGangster}
-          linkTo={{
-            href: "https://nft.honeypotfinance.xyz/reveal",
-            display: "Display ->",
-          }}
-          buttonColor="#FF9FA8"
-        >
-          <br />
-          <Button
-            linkTo="https://www.okx.com/web3/marketplace/nft/collection/arbi/honeygenesis-1"
-            color="#FF9FA8"
+      <SectionContainer title="Explore our dApps">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-3 justify-center gap-5">
+          <IntroCard
+            title="Dreampad"
+            description="Launch your token"
+            image={blueAstro}
+            linkTo={{
+              href: "https://beta2.honeypotfinance.xyz/launch",
+              display: "Permissionless ->",
+            }}
+            buttonColor="#80BFE5"
+            style={{
+              margin: "0 auto",
+            }}
           >
-            OKX -&gt;
-          </Button>
-        </IntroCard>
+            <br />
+            <Button
+              linkTo="https://beta1.honeypotfinance.xyz/launch"
+              color="#80BFE5"
+            >
+              NFT Holder -&gt;
+            </Button>
+          </IntroCard>{" "}
+          <IntroCard
+            title="Henlo Dex"
+            description="Swap tokens with low fees. "
+            image={yellowFarmer}
+            linkTo={{
+              href: "https://beta2.honeypotfinance.xyz/swap",
+              display: "Explore App ->",
+            }}
+            style={{
+              margin: "0 auto",
+            }}
+          ></IntroCard>
+          <IntroCard
+            title="NFT"
+            description="HoneyGenesis NFT"
+            image={redGangster}
+            linkTo={{
+              href: "https://nft.honeypotfinance.xyz/reveal",
+              display: "Display ->",
+            }}
+            buttonColor="#FF9FA8"
+            style={{
+              margin: "0 auto",
+            }}
+          >
+            <br />
+            <Button
+              linkTo="https://www.okx.com/web3/marketplace/nft/collection/arbi/honeygenesis-1"
+              color="#FF9FA8"
+            >
+              OKX -&gt;
+            </Button>
+          </IntroCard>
+        </div>
       </SectionContainer>
 
       <Link href={"/partners"}>
-        <h2 className="text-center text-4xl font-bold m-5">Tursted By -&gt;</h2>
+        <h2 className="text-center text-4xl font-bold m-5">Backed By -&gt;</h2>
       </Link>
       <InvestorsScroll />
       <Link href={"/partners"}>

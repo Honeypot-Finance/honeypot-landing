@@ -4,6 +4,7 @@ import Image, { StaticImageData } from "next/image";
 import { color, motion } from "framer-motion";
 import Button from "@/components/atoms/Button/Button";
 import classNames from "classnames";
+import React from "react";
 
 export default function IntroCard({
   title,
@@ -12,6 +13,7 @@ export default function IntroCard({
   linkTo,
   IconSize = "medium",
   buttonColor,
+  style,
   ...props
 }: Readonly<{
   title: string;
@@ -23,6 +25,7 @@ export default function IntroCard({
     href: string;
     display?: string;
   };
+  style?: React.CSSProperties;
   children?: React.ReactNode;
 }>) {
   return (
@@ -31,6 +34,7 @@ export default function IntroCard({
       {...props}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
+      style={style}
     >
       <div
         className={classNames(

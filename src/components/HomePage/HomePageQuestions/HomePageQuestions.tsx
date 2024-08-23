@@ -261,16 +261,36 @@ export default function HomePageQuestions() {
       >
         <p className="">
           If you are interested in applying for DreamPad, please contact our
-          team on Discord or Telegram. We also offer incubation services: join
-          us and take your project to the next level. Honeypot Finance is your
-          gateway to the Berachain Ecosystem!{" "}
-          <a
-            href="https://forms.gle/76Fij8uRWxZ91sbt6"
-            className=" underline text-blue-500"
-          >
-            fill this form to contact us
-          </a>
+          team on Discord or Telegram.
         </p>
+        <ul className="pl-[1rem] *:m-5">
+          <li>
+            <a href="" className=" underline text-blue-500">
+              Discord
+            </a>
+          </li>
+          <li>
+            <a href="" className=" underline text-blue-500">
+              Telegram
+            </a>
+          </li>
+        </ul>
+
+        <p className="">
+          We also offer incubation services: join us and take your project to
+          the next level. Honeypot Finance is your gateway to the Berachain
+          Ecosystem!
+        </p>
+        <ul className="pl-[1rem] *:m-5">
+          <li>
+            <a
+              href="https://forms.gle/76Fij8uRWxZ91sbt6"
+              className=" underline text-blue-500"
+            >
+              fill this form to contact us for incubation services
+            </a>
+          </li>
+        </ul>
       </AccordionItem>
     </Accordion>
   );
