@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/components/atoms/PartnerScrollItem/PartnerScrollItem.module.scss","PartnerScrollItem.module.css"],"names":[],"mappings":"AAAA;EACE,cAAA;EACA,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,uBAAA;EACA,gBAAA;EACA,eAAA;EACA,yBAAA;ACCF;ADAE;EACE,qBAAA;ACEJ;ADCE;EACE,eAAA;EACA,sBAAA;KAAA,mBAAA;ACCJ","file":"PartnerScrollItem.module.css"}
