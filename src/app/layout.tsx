@@ -9,6 +9,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "HoneyPot Finance",
   description: "first defi-hub on berachain",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
