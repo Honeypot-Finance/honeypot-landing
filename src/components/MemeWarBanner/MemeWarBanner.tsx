@@ -50,12 +50,12 @@ export default function MemeWarBanner() {
       animate={showBanner ? "visible" : "hidden"}
       variants={variants}
       transition={{ duration: 1 }}
-      className="fixed w-screen h-[100px] bg-yellow-800/90 z-[50000] flex flex-col justify-center items-center border-2 border-yellow-950"
+      className="absolute w-screen h-[100px] bg-yellow-800/90 z-50 flex flex-col justify-center items-center border-2 border-yellow-950"
     >
       <Link
         href={"https://x.com/honeypotfinance/status/1828466294229721217"}
         target="_blank"
-        className=" flex justify-center items-center font-[MEMEH] hover:scale-110 transition-all cursor-pointer text-2xl font-bold"
+        className=" flex justify-center items-center font-[MEMEH] hover:scale-110 transition-all cursor-pointer"
       >
         Some thing big is coming!
         <motion.div
@@ -67,7 +67,7 @@ export default function MemeWarBanner() {
       </Link>
       <div className="w-full flex justify-center items-center">
         <Countdown
-          date={new Date("2024-08-29T16:20:00")}
+          date={Number(Date.UTC(2024, 7, 29, 16, 20).toString())}
           renderer={({ days, hours, minutes, seconds }) =>
             renderer({ days, hours, minutes, seconds })
           }
