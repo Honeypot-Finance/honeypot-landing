@@ -31,7 +31,6 @@ import MemeWarBanner from "@/components/MemeWarBanner/MemeWarBanner";
 export default function Home() {
   return (
     <main>
-      <MemeWarBanner />
       <HomePageBanner />
       <SectionContainer title="Explore our dApps">
         <div className="w-full grid grid-cols-1 lg:grid-cols-3 justify-center gap-5">
