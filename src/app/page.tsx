@@ -26,7 +26,6 @@ import FTOPriceStability from "@/components/HomePage/FTO/FTOPriceStability/FTOPr
 import FTOInstantEarning from "@/components/HomePage/FTO/FTOInstantEarning/FTOInstantEarning";
 import Link from "next/link";
 import Button from "@/components/atoms/Button/Button";
-import MemeWarBanner from "@/components/MemeWarBanner/MemeWarBanner";
 
 export default function Home() {
   return (
