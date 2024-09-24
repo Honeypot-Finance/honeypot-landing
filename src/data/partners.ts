@@ -22,7 +22,9 @@ import beraboyz from "@/assets/partners/beraboyz.jpg";
 import arebmeme from "@/assets/partners/arebmeme.jpg";
 import beracer from "@/assets/partners/beracer.jpg";
 import ghost from "@/assets/partners/ghost.png";
-import codex from "@/assets/partners/codex.svg";
+import codex from "@/assets/partners/codex.png";
+import bitgetwallet from "@/assets/partners/bitgetwallet.png";
+import okx from "@/assets/partners/okx.png";
 
 const investors = [
   {
@@ -132,6 +134,16 @@ const partners = [
     name: "CodeX",
     partnerLink: "https://www.codex.io/",
     partnerImage: codex,
+  },
+  {
+    name: "Bitget Wallet",
+    partnerLink: "https://www.bitget.com/",
+    partnerImage: bitgetwallet,
+  },
+  {
+    name: "OKX",
+    partnerLink: "https://www.okx.com/",
+    partnerImage: okx,
   },
 ];
 
