@@ -39,25 +39,41 @@ export default function Home() {
             image={blueAstro}
             linkTo={{
               href: "https://beta2.honeypotfinance.xyz/launch",
-              display: "Launch ->",
+              display: "FTO Launch ->",
             }}
             buttonColor="#80BFE5"
             style={{
               margin: "0 auto",
             }}
-          ></IntroCard>{" "}
+          >
+            <br />
+            <Button
+              linkTo="https://beta3.honeypotfinance.xyz/meme-launchs"
+              color="#80BFE5"
+            >
+              MEME Launch -&gt;
+            </Button>
+          </IntroCard>{" "}
           <IntroCard
             title="Henlo Dex"
             description="Swap tokens with low fees. "
             image={yellowFarmer}
             linkTo={{
               href: "https://beta2.honeypotfinance.xyz/swap",
-              display: "Explore App ->",
+              display: "Beta2 ->",
             }}
             style={{
               margin: "0 auto",
             }}
-          ></IntroCard>
+          >
+            <br />
+            <Button
+              linkTo="https://beta3.honeypotfinance.xyz/swap"
+              color="#ffcd4d"
+            >
+              Beta3 -&gt;
+            </Button>
+          </IntroCard>
           <IntroCard
             title="NFT"
             description="HoneyGenesis NFT"
