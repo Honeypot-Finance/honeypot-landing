@@ -25,6 +25,7 @@ import ghost from "@/assets/partners/ghost.png";
 import codex from "@/assets/partners/codex.png";
 import bitgetwallet from "@/assets/partners/bitgetwallet.png";
 import okx from "@/assets/partners/okx.png";
+import rootsfi from "@/assets/partners/rootsfi.svg";
 
 const investors = [
   {
@@ -144,6 +145,11 @@ const partners = [
     name: "OKX",
     partnerLink: "https://www.okx.com/",
     partnerImage: okx,
+  },
+  {
+    name: "RootsFi",
+    partnerLink: "https://rootsfi.com/",
+    partnerImage: rootsfi,
   },
 ];
 
