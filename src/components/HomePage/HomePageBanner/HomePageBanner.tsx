@@ -212,7 +212,7 @@ export default function HomePageBanner() {
           />
         </motion.div>
         <h1 className={styles["banner-title"]}>
-          Welcome to the first defi-hub on berachain
+          Welcome to the Premier Proof of Liquidity Accelerator on Berachain
         </h1>
       </div>
       <motion.div

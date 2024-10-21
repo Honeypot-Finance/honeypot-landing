@@ -7,7 +7,7 @@ import Footer from "@/components/layout/Footer/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "HoneyPot Finance",
+  title: "Honeypot Finance",
   description: "first defi-hub on berachain",
   icons: {
     icon: "/favicon.ico",

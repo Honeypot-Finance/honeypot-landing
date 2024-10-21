@@ -12,6 +12,7 @@ import ctaPlaceholder from "@/assets/ctaPlaceholder.svg";
 import discord from "@/assets/medias/discord.svg";
 import twitter from "@/assets/medias/twitter.svg";
 import medium from "@/assets/medias/medium.svg";
+import x_social from "@/assets/medias/x-social-media-round-icon.svg";
 import yellowFarmer from "@/assets/beraIcon/yellowFarmer.svg";
 import blueAstro from "@/assets/beraIcon/blueAstro.svg";
 import redGangster from "@/assets/beraIcon/redGangster.svg";
@@ -141,17 +142,17 @@ export default function Home() {
           title="Be part of our community "
           image={discord}
           linkTo={{
-            href: "https://x.com/honeypotfinance",
+            href: "https://discord.gg/honeypotfi",
             display: "Join Discord",
           }}
         />
         <IntroCard
           IconSize="small"
           title="Stay up to date with us"
-          image={twitter}
+          image={x_social}
           linkTo={{
             href: "https://x.com/honeypotfinance",
-            display: "Follow Twitter",
+            display: "Follow X",
           }}
         />
         <IntroCard
@@ -159,7 +160,7 @@ export default function Home() {
           title="Read about Honeypot"
           image={medium}
           linkTo={{
-            href: "https://docs.honeypotfinance.xyz/",
+            href: "https://medium.com/@honeypotfinance1",
             display: "Read Medium",
           }}
         />
