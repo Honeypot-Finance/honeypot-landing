@@ -27,7 +27,7 @@ export default function HomePageQuestions() {
           </div>
         }
       >
-        <p className="text-2xl font-bold max-w-[70%]">
+        <p className="text-1xl font-bold max-w-[70%]">
           DreamPad ensures fair pricing through our innovative Fair Token
           Offering (FTO) model, which includes several key features:
         </p>
@@ -84,7 +84,7 @@ export default function HomePageQuestions() {
           </div>
         }
       >
-        <p className="text-2xl font-bold max-w-[70%]">
+        <p className="text-1xl font-bold max-w-[70%]">
           At Honeypot Finance, we prioritize the security and trust of our
           community. To mitigate the risk of rug pulls, we've implemented
           several robust mechanisms:
@@ -180,7 +180,7 @@ export default function HomePageQuestions() {
           </div>
         }
       >
-        <p className="text-2xl font-bold max-w-[70%]">
+        <p className="text-1xl font-bold max-w-[70%]">
           The likelihood of experiencing successful and sustainable token
           launches on Honeypot Finance is very high. Our Fair Token Offering
           (FTO) model incorporates several built-in advantages to ensure the
@@ -194,7 +194,7 @@ export default function HomePageQuestions() {
             href="https://docs.honeypotfinance.xyz/overview/dreampad/advantages-of-fto-model"
             className=" underline text-blue-500"
           >
-            GitHub page
+            GitBook page
           </a>
         </p>
         <br />
@@ -245,7 +245,7 @@ export default function HomePageQuestions() {
 
       <AccordionItem
         header={
-          <div className=" w-full flex justify-between items-center">
+          <div className="w-full flex justify-between items-center">
             <span>How can I apply for DreamPad as a project?</span>
             <span>
               <Image
@@ -265,13 +265,21 @@ export default function HomePageQuestions() {
         </p>
         <ul className="pl-[1rem] *:m-5">
           <li>
-            <a href="" className=" underline text-blue-500">
+            <a
+              href="https://discord.gg/honeypotfi"
+              target="_blank"
+              className=" underline text-blue-500"
+            >
               Discord
             </a>
           </li>
           <li>
-            <a href="" className=" underline text-blue-500">
-              Telegram
+            <a
+              href="https://x.com/honeypotfinance"
+              target="_blank"
+              className=" underline text-blue-500"
+            >
+              X
             </a>
           </li>
         </ul>
@@ -284,7 +292,7 @@ export default function HomePageQuestions() {
         <ul className="pl-[1rem] *:m-5">
           <li>
             <a
-              href="https://forms.gle/76Fij8uRWxZ91sbt6"
+              href="https://forms.gle/E59zJqViUvSZbF2E6"
               className=" underline text-blue-500"
             >
               fill this form to contact us for incubation services

@@ -13,7 +13,7 @@ export default function Button({
   color?: string;
 }>) {
   return linkTo ? (
-    <Link href={linkTo}>
+    <Link href={linkTo} target="_blank">
       <button
         {...props}
         className={styles["button"]}

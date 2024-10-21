@@ -37,24 +37,24 @@
     max-width: 70%;
     transform: translate(-50%, -50%);
     color: variables.$primary-color;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: bold;
     text-align: center;
     width: 100%;
     -webkit-text-stroke: variables.$card-color 0.1rem;
 
     @media screen and (min-width: 375px) {
-      font-size: 2rem;
+      font-size: 1.5rem;
       -webkit-text-stroke: variables.$card-color 0.2rem;
     }
 
     @media screen and (min-width: 768px) {
-      font-size: 3rem;
+      font-size: 2rem;
       -webkit-text-stroke: variables.$card-color 0.3rem;
     }
 
     @media screen and (min-width: 1024px) {
-      font-size: 5rem;
+      font-size: 4rem;
       -webkit-text-stroke: variables.$card-color 0.3rem;
     }
   }

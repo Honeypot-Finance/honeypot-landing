@@ -145,7 +145,7 @@ export default function Home() {
           title="Be part of our community "
           image={discord}
           linkTo={{
-            href: "https://x.com/honeypotfinance",
+            href: "https://discord.gg/honeypotfi",
             display: "Join Discord",
           }}
         />
@@ -155,7 +155,7 @@ export default function Home() {
           image={twitter}
           linkTo={{
             href: "https://x.com/honeypotfinance",
-            display: "Follow Twitter",
+            display: "Follow X",
           }}
         />
         <IntroCard
@@ -163,7 +163,7 @@ export default function Home() {
           title="Read about Honeypot"
           image={medium}
           linkTo={{
-            href: "https://docs.honeypotfinance.xyz/",
+            href: "https://medium.com/@honeypotfinance1",
             display: "Read Medium",
           }}
         />
