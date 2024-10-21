@@ -12,6 +12,7 @@ import ctaPlaceholder from "@/assets/ctaPlaceholder.svg";
 import discord from "@/assets/medias/discord.svg";
 import twitter from "@/assets/medias/twitter.svg";
 import medium from "@/assets/medias/medium.svg";
+import x_social from "@/assets/medias/x-social-media-round-icon.svg";
 import yellowFarmer from "@/assets/beraIcon/yellowFarmer.svg";
 import blueAstro from "@/assets/beraIcon/blueAstro.svg";
 import redGangster from "@/assets/beraIcon/redGangster.svg";
@@ -152,7 +153,7 @@ export default function Home() {
         <IntroCard
           IconSize="small"
           title="Stay up to date with us"
-          image={twitter}
+          image={x_social}
           linkTo={{
             href: "https://x.com/honeypotfinance",
             display: "Follow X",
