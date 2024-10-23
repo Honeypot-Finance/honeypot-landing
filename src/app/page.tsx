@@ -124,11 +124,7 @@ export default function Home() {
       </SectionContainer>
 
       <SectionContainer bgColor="transparent">
-        <Link
-          href={
-            "https://docs.google.com/forms/d/e/1FAIpQLScoS7IedJlmuiT-kEtzTt915IcpuhYVS4oUHjwiRyA-VHSztg/viewform"
-          }
-        >
+        <Link href={"https://forms.gle/E59zJqViUvSZbF2E6"}>
           <Image
             src={ctaPlaceholder}
             alt="cta"
