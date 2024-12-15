@@ -35,12 +35,12 @@ export default function Home() {
       <SectionContainer title="Explore our dApps">
         <div className="w-full grid grid-cols-1 lg:grid-cols-3 justify-center gap-5">
           <IntroCard
-            title="Dreampad"
-            description="Launch your token"
+            title="Pot2Pump"
+            description="Meme Launch"
             image={blueAstro}
             linkTo={{
-              href: "https://beta2.honeypotfinance.xyz/launch",
-              display: "FTO Launch ->",
+              href: "https://beta4.honeypotfinance.xyz/pot2pump/potting",
+              display: "Potting ->",
             }}
             buttonColor="#80BFE5"
             style={{
@@ -49,10 +49,10 @@ export default function Home() {
           >
             <br />
             <Button
-              linkTo="https://beta3.honeypotfinance.xyz/meme-launchs"
+              linkTo="https://beta4.honeypotfinance.xyz/pot2pump/pumping"
               color="#80BFE5"
             >
-              MEME Launch -&gt;
+              Pumping -&gt;
             </Button>
           </IntroCard>{" "}
           <IntroCard
@@ -60,8 +60,8 @@ export default function Home() {
             description="Swap tokens with low fees. "
             image={yellowFarmer}
             linkTo={{
-              href: "https://beta2.honeypotfinance.xyz/swap",
-              display: "Beta2 ->",
+              href: "https://beta4.honeypotfinance.xyz/swap",
+              display: "SWAP ->",
             }}
             style={{
               margin: "0 auto",
@@ -69,10 +69,10 @@ export default function Home() {
           >
             <br />
             <Button
-              linkTo="https://beta3.honeypotfinance.xyz/swap"
+              linkTo="https://beta4.honeypotfinance.xyz/pools"
               color="#ffcd4d"
             >
-              Beta3 -&gt;
+              Pools -&gt;
             </Button>
           </IntroCard>
           <IntroCard
