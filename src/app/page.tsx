@@ -56,12 +56,12 @@ export default function Home() {
             </Button>
           </IntroCard>{" "}
           <IntroCard
-            title="Henlo Dex"
+            title="Henlo DEX"
             description="Swap tokens with low fees. "
             image={yellowFarmer}
             linkTo={{
               href: "https://beta4.honeypotfinance.xyz/swap",
-              display: "SWAP ->",
+              display: "Swap ->",
             }}
             style={{
               margin: "0 auto",
@@ -82,12 +82,12 @@ export default function Home() {
               Beta 3 -&gt;
             </Button>
             <br />
-            <Button
+            {/* <Button
               linkTo="https://beta2.honeypotfinance.xyz/swap"
               color="#ffcd4d"
             >
               Beta 2 -&gt;
-            </Button>
+            </Button> */}
           </IntroCard>
           <IntroCard
             title="NFT"
