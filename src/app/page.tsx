@@ -52,7 +52,7 @@ export default function Home() {
               linkTo="https://beta4.honeypotfinance.xyz/pot2pump/pumping"
               color="#80BFE5"
             >
-              Pumping -&gt;
+              {`Pumping ->`}
             </Button>
           </IntroCard>{" "}
           <IntroCard
@@ -73,6 +73,20 @@ export default function Home() {
               color="#ffcd4d"
             >
               Pools -&gt;
+            </Button>
+            <br />
+            <Button
+              linkTo="https://beta3.honeypotfinance.xyz/swap"
+              color="#ffcd4d"
+            >
+              Beta 3 -&gt;
+            </Button>
+            <br />
+            <Button
+              linkTo="https://beta2.honeypotfinance.xyz/swap"
+              color="#ffcd4d"
+            >
+              Beta 2 -&gt;
             </Button>
           </IntroCard>
           <IntroCard
