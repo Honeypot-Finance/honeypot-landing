@@ -26,6 +26,8 @@ import codex from "@/assets/partners/codex.png";
 import bitgetwallet from "@/assets/partners/bitgetwallet.png";
 import okx from "@/assets/partners/okx.png";
 import rootsfi from "@/assets/partners/rootsfi.svg";
+import TheHoneyJar from "@/assets/partners/thj.jpg";
+import Fjord from "@/assets/partners/fjord.svg";
 
 const investors = [
   {
@@ -150,6 +152,16 @@ const partners = [
     name: "RootsFi",
     partnerLink: "https://rootsfi.com/",
     partnerImage: rootsfi,
+  },
+  {
+    name: "The Honey Jar",
+    partnerLink: "https://www.0xhoneyjar.xyz/",
+    partnerImage: TheHoneyJar,
+  },
+  {
+    name: "Fjord",
+    partnerLink: "https://www.fjordfoundry.com/",
+    partnerImage: Fjord,
   },
 ];
 
