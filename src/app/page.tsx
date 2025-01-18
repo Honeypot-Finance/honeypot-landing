@@ -56,8 +56,8 @@ export default function Home() {
             </Button>
           </IntroCard>{" "}
           <IntroCard
-            title="Henlo DEX"
-            description="Swap tokens with low fees. "
+            title="Wasabee DEX"
+            description="Swap tokens with low fees."
             image={yellowFarmer}
             linkTo={{
               href: "https://beta4.honeypotfinance.xyz/swap",

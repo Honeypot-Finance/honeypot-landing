@@ -28,6 +28,9 @@ import okx from "@/assets/partners/okx.png";
 import rootsfi from "@/assets/partners/rootsfi.svg";
 import TheHoneyJar from "@/assets/partners/thj.jpg";
 import Fjord from "@/assets/partners/fjord.svg";
+import Overlay from "@/assets/partners/overlay.webp";
+import Berally from "@/assets/partners/berally.webp";
+import BurrBear from "@/assets/partners/burrbear.png";
 
 const investors = [
   {
@@ -162,6 +165,21 @@ const partners = [
     name: "Fjord",
     partnerLink: "https://www.fjordfoundry.com/",
     partnerImage: Fjord,
+  },
+  {
+    name: "Overlay",
+    partnerLink: "https://overlay.market/",
+    partnerImage: Overlay,
+  },
+  {
+    name: "Berally",
+    partnerLink: "https://berally.io/",
+    partnerImage: Berally,
+  },
+  {
+    name: "BurrBear",
+    partnerLink: "https://www.burrbear.io/",
+    partnerImage: BurrBear,
   },
 ];
 
