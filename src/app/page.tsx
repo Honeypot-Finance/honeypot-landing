@@ -16,6 +16,7 @@ import x_social from "@/assets/medias/x-social-media-round-icon.svg";
 import yellowFarmer from "@/assets/beraIcon/yellowFarmer.svg";
 import blueAstro from "@/assets/beraIcon/blueAstro.svg";
 import redGangster from "@/assets/beraIcon/redGangster.svg";
+import wasabee_pot from "@/assets/beraIcon/wasabee_pot.png";
 import HomePageQuestions from "@/components/HomePage/HomePageQuestions/HomePageQuestions";
 import {
   PartnersScroll,
@@ -58,7 +59,7 @@ export default function Home() {
           <IntroCard
             title="Wasabee DEX"
             description="Swap tokens with low fees."
-            image={yellowFarmer}
+            image={wasabee_pot}
             linkTo={{
               href: "https://beta4.honeypotfinance.xyz/swap",
               display: "Swap ->",
