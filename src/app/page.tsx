@@ -16,6 +16,7 @@ import x_social from "@/assets/medias/x-social-media-round-icon.svg";
 import yellowFarmer from "@/assets/beraIcon/yellowFarmer.svg";
 import blueAstro from "@/assets/beraIcon/blueAstro.svg";
 import redGangster from "@/assets/beraIcon/redGangster.svg";
+import wasabee_pot from "@/assets/beraIcon/wasabee_pot.png";
 import HomePageQuestions from "@/components/HomePage/HomePageQuestions/HomePageQuestions";
 import {
   PartnersScroll,
@@ -35,12 +36,12 @@ export default function Home() {
       <SectionContainer title="Explore our dApps">
         <div className="w-full grid grid-cols-1 lg:grid-cols-3 justify-center gap-5">
           <IntroCard
-            title="Dreampad"
-            description="Launch your token"
+            title="Pot2Pump"
+            description="Meme Launch"
             image={blueAstro}
             linkTo={{
-              href: "https://beta2.honeypotfinance.xyz/launch",
-              display: "FTO Launch ->",
+              href: "https://beta4.honeypotfinance.xyz/pot2pump/potting",
+              display: "Potting ->",
             }}
             buttonColor="#80BFE5"
             style={{
@@ -49,19 +50,19 @@ export default function Home() {
           >
             <br />
             <Button
-              linkTo="https://beta3.honeypotfinance.xyz/meme-launchs"
+              linkTo="https://beta4.honeypotfinance.xyz/pot2pump/pumping"
               color="#80BFE5"
             >
-              MEME Launch -&gt;
+              {`Pumping ->`}
             </Button>
           </IntroCard>{" "}
           <IntroCard
-            title="Henlo Dex"
-            description="Swap tokens with low fees. "
-            image={yellowFarmer}
+            title="Wasabee DEX"
+            description="Swap tokens with low fees."
+            image={wasabee_pot}
             linkTo={{
-              href: "https://beta2.honeypotfinance.xyz/swap",
-              display: "Beta2 ->",
+              href: "https://beta4.honeypotfinance.xyz/swap",
+              display: "Swap ->",
             }}
             style={{
               margin: "0 auto",
@@ -69,11 +70,25 @@ export default function Home() {
           >
             <br />
             <Button
+              linkTo="https://beta4.honeypotfinance.xyz/pools"
+              color="#ffcd4d"
+            >
+              Pools -&gt;
+            </Button>
+            <br />
+            <Button
               linkTo="https://beta3.honeypotfinance.xyz/swap"
               color="#ffcd4d"
             >
-              Beta3 -&gt;
+              Beta 3 -&gt;
             </Button>
+            <br />
+            {/* <Button
+              linkTo="https://beta2.honeypotfinance.xyz/swap"
+              color="#ffcd4d"
+            >
+              Beta 2 -&gt;
+            </Button> */}
           </IntroCard>
           <IntroCard
             title="NFT"
