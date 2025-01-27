@@ -6,7 +6,7 @@ import dipperPNG from "@/assets/home-page/page4/dipper.png";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-[#140E06]">
+    <div className="min-h-screen bg-[#140E06] pt-20">
       {/* Hero Section */}
       <Image
         src={bgPNG}

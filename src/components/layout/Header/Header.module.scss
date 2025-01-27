@@ -35,7 +35,8 @@ $header-height: 5rem;
           margin-left: 1rem;
 
           .nav-link {
-            color: variables.$secondary-color;
+            // color: variables.$secondary-color;
+            color: #fff;
             text-decoration: none;
           }
         }

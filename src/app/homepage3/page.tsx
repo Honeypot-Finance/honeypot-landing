@@ -8,7 +8,7 @@ import logo3SVG from "@/assets/home-page/page3/logo3.svg";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-[#140E06]">
+    <div className="min-h-screen bg-[#140E06] pt-20">
       {/* Hero Section */}
       <Image
         src={bgPNG}

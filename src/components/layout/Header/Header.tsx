@@ -7,14 +7,14 @@ import { useMotionValueEvent, useScroll, motion } from "framer-motion";
 import { useState } from "react";
 
 export default function Header() {
-  const [headerBg, setHeaderBg] = useState("transparent");
+  const [headerBg, setHeaderBg] = useState("#80BFE5");
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest > 0) {
       setHeaderBg("#80BFE5");
     } else {
-      setHeaderBg("#80BFE500");
+      setHeaderBg("#80BFE5");
     }
   });
   return (
@@ -35,23 +35,28 @@ export default function Header() {
           />
         </Link>
         <nav className={styles["nav"]}>
-          {/* <ul className={styles["nav-list"]}>
+          <ul className={styles["nav-list"]}>
             <li className={styles["nav-item"]}>
-              <Link href="/">
-                <span className={styles["nav-link"]}>About</span>
+              <Link href="/homepage1">
+                <span className={styles["nav-link"]}>Introduction</span>
               </Link>
             </li>
             <li className={styles["nav-item"]}>
-              <Link href="/">
-                <span className={styles["nav-link"]}>Services</span>
+              <Link href="/homepage2">
+                <span className={styles["nav-link"]}>Architecture</span>
               </Link>
             </li>
             <li className={styles["nav-item"]}>
-              <Link href="/">
-                <span className={styles["nav-link"]}>Contact</span>
+              <Link href="/homepage3">
+                <span className={styles["nav-link"]}>FTO Model</span>
               </Link>
             </li>
-          </ul> */}
+            <li className={styles["nav-item"]}>
+              <Link href="/homepage4">
+                <span className={styles["nav-link"]}>Custom Hooks</span>
+              </Link>
+            </li>
+          </ul>
         </nav>
       </motion.div>
     </header>
