@@ -28,6 +28,8 @@ import FTOPriceStability from "@/components/HomePage/FTO/FTOPriceStability/FTOPr
 import FTOInstantEarning from "@/components/HomePage/FTO/FTOInstantEarning/FTOInstantEarning";
 import Link from "next/link";
 import Button from "@/components/atoms/Button/Button";
+import HoneypotAcademiaIntro from "@/components/molecules/HoneypotAcademiaIntro/HoneypotAcademiaIntro";
+import BerachainIntro from "@/components/molecules/BerachainIntro/BerachainIntro";
 
 export default function Home() {
   return (
@@ -114,6 +116,18 @@ export default function Home() {
         </div>
       </SectionContainer>
 
+      <SectionContainer bgColor="transparent">
+        <Link href={"https://forms.gle/E59zJqViUvSZbF2E6"}>
+          <Image
+            src={ctaPlaceholder}
+            alt="cta"
+            width={500}
+            height={500}
+            className="w-full m-auto"
+          />
+        </Link>
+      </SectionContainer>
+
       <Link href={"/partners"}>
         <h2 className="text-center text-4xl font-bold m-5">Backed By -&gt;</h2>
       </Link>
@@ -138,19 +152,7 @@ export default function Home() {
         <FTOInstantEarning />
       </SectionContainer>
 
-      <SectionContainer bgColor="transparent">
-        <Link href={"https://forms.gle/E59zJqViUvSZbF2E6"}>
-          <Image
-            src={ctaPlaceholder}
-            alt="cta"
-            width={500}
-            height={500}
-            className="w-full m-auto"
-          />
-        </Link>
-      </SectionContainer>
-
-      <h2 className="text-4xl font-bold ml-[10%]">Stay up to date</h2>
+      {/* <h2 className="text-4xl font-bold ml-[10%]">Stay up to date</h2>
       <SectionContainer bgColor="transparent">
         <IntroCard
           IconSize="small"
@@ -179,14 +181,17 @@ export default function Home() {
             display: "Read Medium",
           }}
         />
-      </SectionContainer>
+      </SectionContainer> */}
 
-      <h2 className="text-4xl font-bold ml-[10%]">
+      {/* <h2 className="text-4xl font-bold ml-[10%]">
         Frequently asked questions
       </h2>
       <SectionContainer bgColor="transparent">
         <HomePageQuestions />
-      </SectionContainer>
+      </SectionContainer> */}
+
+      <HoneypotAcademiaIntro />
+      <BerachainIntro />
     </main>
   );
 }
