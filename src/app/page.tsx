@@ -59,7 +59,7 @@ export default function Home() {
             </Button>
           </IntroCard>{" "}
           <IntroCard
-            title="Wasabee DEX"
+            title="Pot-Wasabee DEX"
             description="Swap tokens with low fees."
             image={wasabee_pot}
             linkTo={{
