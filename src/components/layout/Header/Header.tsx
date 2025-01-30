@@ -34,7 +34,7 @@ export default function Header() {
             height={100}
           />
         </Link>
-        <nav className={styles["nav"]}>
+        {/* <nav className={styles["nav"]}>
           <ul className={styles["nav-list"]}>
             <li className={styles["nav-item"]}>
               <Link href="/homepage1">
@@ -57,7 +57,7 @@ export default function Header() {
               </Link>
             </li>
           </ul>
-        </nav>
+        </nav> */}
       </motion.div>
     </header>
   );
