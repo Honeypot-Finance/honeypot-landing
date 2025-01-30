@@ -26,17 +26,17 @@ export default function Footer() {
           <h3>Learn More</h3>
           <ul>
             <li>
-              <a href="https://docs.honeypotfinance.xyz/">Documents</a>
+              <a href="https://docs.honeypotfinance.xyz/">Docs</a>
             </li>
             <li>
-              <a href="https://github.com/Honeypot-Finance">Github</a>
+              <a href="https://github.com/Honeypot-Finance">GitHub</a>
             </li>
             <li>
               <a href="https://medium.com/@HoneypotFinance1">Medium</a>
             </li>
             <li>
               <a href="https://www.okx.com/web3/marketplace/nft/collection/arbi/honeygenesis-1">
-                Honeygenesis
+                HoneyGenesis
               </a>
             </li>
           </ul>
@@ -51,7 +51,7 @@ export default function Footer() {
             </li>
             <li>
               <a href="https://beta4.honeypotfinance.xyz/swap">
-                POT-WASABEE DEX
+                Pot-Wasabee Dex
               </a>
             </li>
           </ul>

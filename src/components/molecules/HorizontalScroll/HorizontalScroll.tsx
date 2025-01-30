@@ -14,7 +14,7 @@ interface HorizontalScrollProps {
 
 const HorizontalScroll = ({
   items,
-  speed = 10000,
+  speed = 3000,
   stopOnHover = false,
 }: HorizontalScrollProps) => {
   const horizontalScroll = useRef<HTMLDivElement>(null);
@@ -79,21 +79,27 @@ const HorizontalScroll = ({
         <section
           ref={scrollRef1}
           className={styles["content"]}
-          style={{ "--speed": `${speed}ms` } as React.CSSProperties}
+          style={
+            { "--speed": `${speed * items.length}ms` } as React.CSSProperties
+          }
         >
           {items.map(({ content }) => content)}
         </section>
         <section
           ref={scrollRef2}
           className={styles["content"]}
-          style={{ "--speed": `${speed}ms` } as React.CSSProperties}
+          style={
+            { "--speed": `${speed * items.length}ms` } as React.CSSProperties
+          }
         >
           {items.map(({ content }) => content)}
         </section>
         <section
           ref={scrollRef3}
           className={styles["content"]}
-          style={{ "--speed": `${speed}ms` } as React.CSSProperties}
+          style={
+            { "--speed": `${speed * items.length}ms` } as React.CSSProperties
+          }
         >
           {items.map(({ content }) => content)}
         </section>

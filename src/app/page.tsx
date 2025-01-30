@@ -36,35 +36,27 @@ export default function Home() {
     <main>
       <HomePageBanner />
       <SectionContainer title="Explore our dApps">
-        <div className="w-full grid grid-cols-1 lg:grid-cols-3 justify-center gap-5">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-3 justify-center gap-5 p-5">
           <IntroCard
             title="Pot2Pump"
             description="Meme Launch"
             image={blueAstro}
             linkTo={{
-              href: "https://beta4.honeypotfinance.xyz/pot2pump/potting",
-              display: "Potting ->",
+              href: "https://pot2pump.honeypotfinance.xyz/pot2pump/overview",
+              display: "Token Launch",
             }}
             buttonColor="#80BFE5"
             style={{
               margin: "0 auto",
             }}
-          >
-            <br />
-            <Button
-              linkTo="https://beta4.honeypotfinance.xyz/pot2pump/pumping"
-              color="#80BFE5"
-            >
-              {`Pumping ->`}
-            </Button>
-          </IntroCard>{" "}
+          ></IntroCard>{" "}
           <IntroCard
             title="Pot-Wasabee DEX"
-            description="Swap tokens with low fees."
+            description=""
             image={wasabee_pot}
             linkTo={{
               href: "https://beta4.honeypotfinance.xyz/swap",
-              display: "Swap ->",
+              display: "Swap",
             }}
             style={{
               margin: "0 auto",
@@ -75,49 +67,27 @@ export default function Home() {
               linkTo="https://beta4.honeypotfinance.xyz/pools"
               color="#ffcd4d"
             >
-              Pools -&gt;
+              Pools
             </Button>
-            <br />
-            <Button
-              linkTo="https://beta3.honeypotfinance.xyz/swap"
-              color="#ffcd4d"
-            >
-              Beta 3 -&gt;
-            </Button>
-            <br />
-            {/* <Button
-              linkTo="https://beta2.honeypotfinance.xyz/swap"
-              color="#ffcd4d"
-            >
-              Beta 2 -&gt;
-            </Button> */}
           </IntroCard>
           <IntroCard
             title="NFT"
             description="HoneyGenesis NFT"
             image={redGangster}
             linkTo={{
-              href: "https://nft.honeypotfinance.xyz/reveal",
-              display: "Display ->",
+              href: "https://www.okx.com/web3/marketplace/nft/collection/arbi/honeygenesis-1",
+              display: "Buy on OKX",
             }}
             buttonColor="#FF9FA8"
             style={{
               margin: "0 auto",
             }}
-          >
-            <br />
-            <Button
-              linkTo="https://www.okx.com/web3/marketplace/nft/collection/arbi/honeygenesis-1"
-              color="#FF9FA8"
-            >
-              OKX -&gt;
-            </Button>
-          </IntroCard>
+          ></IntroCard>
         </div>
       </SectionContainer>
 
       <SectionContainer bgColor="transparent">
-        <Link href={"https://forms.gle/E59zJqViUvSZbF2E6"}>
+        <Link href={"https://forms.gle/E59zJqViUvSZbF2E6"} target="_blank">
           <Image
             src={ctaPlaceholder}
             alt="cta"
@@ -138,7 +108,7 @@ export default function Home() {
       <PartnersScroll />
 
       <h2 className="text-center text-4xl font-bold m-5">
-        Fairer Token Offering (FTO)
+        Fair Token Offering (FTO)
       </h2>
       <SectionContainer
         style={{
@@ -189,9 +159,8 @@ export default function Home() {
       <SectionContainer bgColor="transparent">
         <HomePageQuestions />
       </SectionContainer> */}
-
-      <HoneypotAcademiaIntro />
-      <BerachainIntro />
+      {/* <HoneypotAcademiaIntro /> */}
+      {/* <BerachainIntro /> */}
     </main>
   );
 }

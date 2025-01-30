@@ -48,9 +48,11 @@ export default function IntroCard({
         <h3 className={styles["title"]}>{title}</h3>
         {description && <p className={styles["description"]}>{description}</p>}
         {linkTo && (
-          <Button color={buttonColor} linkTo={linkTo.href}>
-            {linkTo.display}
-          </Button>
+          <div className={styles["button-container"]}>
+            <Button color={buttonColor} linkTo={linkTo.href}>
+              {linkTo.display}
+            </Button>
+          </div>
         )}
         {props.children}
       </div>

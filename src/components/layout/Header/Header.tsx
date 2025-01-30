@@ -34,9 +34,30 @@ export default function Header() {
             height={100}
           />
         </Link>
-        {/* <nav className={styles["nav"]}>
+        <nav className={styles["nav"]}>
           <ul className={styles["nav-list"]}>
             <li className={styles["nav-item"]}>
+              <Link
+                href="https://pot2pump.honeypotfinance.xyz/pot2pump/overview"
+                target="_blank"
+              >
+                <span className={styles["nav-link"]}>Launch App</span>
+              </Link>
+            </li>{" "}
+            <li className={styles["nav-item"]}>
+              <Link href="https://docs.honeypotfinance.xyz/" target="_blank">
+                <span className={styles["nav-link"]}>Docs</span>
+              </Link>
+            </li>
+            <li className={styles["nav-item"]}>
+              <Link
+                href="https://docs.google.com/forms/d/e/1FAIpQLSeOS9Ws_jlUtWl79OFQHnyUlgKHOReK826sppzj8lTmEQCjCQ/viewform"
+                target="_blank"
+              >
+                <span className={styles["nav-link"]}>Get In Touch</span>
+              </Link>
+            </li>
+            {/* <li className={styles["nav-item"]}>
               <Link href="/homepage1">
                 <span className={styles["nav-link"]}>Introduction</span>
               </Link>
@@ -55,9 +76,9 @@ export default function Header() {
               <Link href="/homepage4">
                 <span className={styles["nav-link"]}>Custom Hooks</span>
               </Link>
-            </li>
+            </li> */}
           </ul>
-        </nav> */}
+        </nav>
       </motion.div>
     </header>
   );
