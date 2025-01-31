@@ -39,11 +39,11 @@ export default function Home() {
         <div className="w-full grid grid-cols-1 lg:grid-cols-3 justify-center gap-5 p-5">
           <IntroCard
             title="Pot2Pump"
-            description="Meme Launch"
+            description=""
             image={blueAstro}
             linkTo={{
-              href: "https://pot2pump.honeypotfinance.xyz/pot2pump/overview",
-              display: "Token Launch",
+              href: "https://beta4.honeypotfinance.xyz/pot2pump/overview",
+              display: "Meme Launch",
             }}
             buttonColor="#80BFE5"
             style={{
