@@ -45,7 +45,7 @@ export default function Footer() {
           <h3>Apps</h3>
           <ul>
             <li>
-              <a href="https://pot2pump.honeypotfinance.xyz/pot2pump/overview">
+              <a href="https://pot2pump.honeypotfinance.xyz/">
                 Pot2Pump
               </a>
             </li>

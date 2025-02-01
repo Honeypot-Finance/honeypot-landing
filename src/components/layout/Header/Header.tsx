@@ -38,7 +38,7 @@ export default function Header() {
           <ul className={styles["nav-list"]}>
             <li className={styles["nav-item"]}>
               <Link
-                href="https://pot2pump.honeypotfinance.xyz/pot2pump/overview"
+                href="https://beta4.honeypotfinance.xyz/pot2pump/overview"
                 target="_blank"
               >
                 <span className={styles["nav-link"]}>Launch App</span>
