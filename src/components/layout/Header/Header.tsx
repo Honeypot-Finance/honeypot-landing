@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useMotionValueEvent, useScroll, motion } from "framer-motion";
 import { useState } from "react";
+import { DOMAIN_MAP } from "@/data/pathData";
 
 export default function Header() {
   const [headerBg, setHeaderBg] = useState("#80BFE5");
@@ -37,10 +38,7 @@ export default function Header() {
         <nav className={styles["nav"]}>
           <ul className={styles["nav-list"]}>
             <li className={styles["nav-item"]}>
-              <Link
-                href="https://beta4.honeypotfinance.xyz/pot2pump/overview"
-                target="_blank"
-              >
+              <Link href={`${DOMAIN_MAP.POT2PUMP}`} target="_blank">
                 <span className={styles["nav-link"]}>Launch App</span>
               </Link>
             </li>{" "}

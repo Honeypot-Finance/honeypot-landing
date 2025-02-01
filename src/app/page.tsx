@@ -30,6 +30,7 @@ import Link from "next/link";
 import Button from "@/components/atoms/Button/Button";
 import HoneypotAcademiaIntro from "@/components/molecules/HoneypotAcademiaIntro/HoneypotAcademiaIntro";
 import BerachainIntro from "@/components/molecules/BerachainIntro/BerachainIntro";
+import { DOMAIN_MAP } from "@/data/pathData";
 
 export default function Home() {
   return (
@@ -55,7 +56,7 @@ export default function Home() {
             description=""
             image={wasabee_pot}
             linkTo={{
-              href: "https://beta4.honeypotfinance.xyz/swap",
+              href: `${DOMAIN_MAP.WASABEE}/swap`,
               display: "Swap",
             }}
             style={{
@@ -63,10 +64,7 @@ export default function Home() {
             }}
           >
             <br />
-            <Button
-              linkTo="https://beta4.honeypotfinance.xyz/pools"
-              color="#ffcd4d"
-            >
+            <Button linkTo={`${DOMAIN_MAP.WASABEE}/pools`} color="#ffcd4d">
               Pools
             </Button>
           </IntroCard>
