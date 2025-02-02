@@ -43,7 +43,7 @@ export default function Home() {
             description=""
             image={blueAstro}
             linkTo={{
-              href: "https://beta4.honeypotfinance.xyz/pot2pump/overview",
+              href: `${DOMAIN_MAP.POT2PUMP}/overview`,
               display: "Meme Launch",
             }}
             buttonColor="#80BFE5"
