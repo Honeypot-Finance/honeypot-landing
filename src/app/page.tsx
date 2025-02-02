@@ -43,7 +43,7 @@ export default function Home() {
             description=""
             image={blueAstro}
             linkTo={{
-              href: `${DOMAIN_MAP.POT2PUMP}/overview`,
+              href: `${DOMAIN_MAP.POT2PUMP}`,
               display: "Meme Launch",
             }}
             buttonColor="#80BFE5"
