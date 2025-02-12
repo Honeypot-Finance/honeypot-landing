@@ -31,6 +31,7 @@ import Fjord from "@/assets/partners/fjord.svg";
 import Overlay from "@/assets/partners/overlay.webp";
 import Berally from "@/assets/partners/berally.webp";
 import BurrBear from "@/assets/partners/burrbear.png";
+import algebra from "@/assets/partners/algebra.png";
 
 const investors = [
   {
@@ -180,6 +181,11 @@ const partners = [
     name: "BurrBear",
     partnerLink: "https://www.burrbear.io/",
     partnerImage: BurrBear,
+  },
+  {
+    name: "Algebra",
+    partnerLink: "https://algebra.finance/",
+    partnerImage: algebra,
   },
 ];
 
