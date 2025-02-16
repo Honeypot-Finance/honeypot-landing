@@ -37,7 +37,7 @@ export default function Home() {
     <main>
       <HomePageBanner />
       <SectionContainer title="Explore our dApps">
-        <div className="w-full grid grid-cols-1 lg:grid-cols-3 justify-center gap-5 p-5">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-4 justify-center gap-5 p-5">
           <IntroCard
             title="Pot2Pump"
             description=""
@@ -77,6 +77,19 @@ export default function Home() {
               display: "Buy on OKX",
             }}
             buttonColor="#FF9FA8"
+            style={{
+              margin: "0 auto",
+            }}
+          ></IntroCard>
+          <IntroCard
+            title="Testnet"
+            description="Honeypot Testnet"
+            image={yellowFarmer}
+            linkTo={{
+              href: "https://beta4.honeypotfinance.xyz/pot2pump/overview",
+              display: "Beta4",
+            }}
+            buttonColor="#ffcd4d"
             style={{
               margin: "0 auto",
             }}
