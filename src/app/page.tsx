@@ -83,7 +83,7 @@ export default function Home() {
           ></IntroCard>
           <IntroCard
             title="Testnet"
-            description="Honeypot Testnet"
+            description=""
             image={yellowFarmer}
             linkTo={{
               href: "https://beta4.honeypotfinance.xyz/pot2pump/overview",
