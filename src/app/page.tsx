@@ -72,12 +72,12 @@ export default function Home() {
             </Button>
           </IntroCard>
           <IntroCard
-            title="NFT"
-            description="HoneyGenesis NFT"
+            title="HoneyGenesis NFT"
+            description=""
             image={redGangster}
             linkTo={{
-              href: "https://www.okx.com/web3/marketplace/nft/collection/arbi/honeygenesis-1",
-              display: "Buy on OKX",
+              href: "https://marketplace.kingdomly.app/collection/berachain/0xc3c30fba6387cff83474e684380930dfc64554ef",
+              display: "Buy from kingdomly",
             }}
             buttonColor="#FF9FA8"
             style={{
@@ -87,21 +87,15 @@ export default function Home() {
             <br />
             <Button
               linkTo={`https://magiceden.io/collections/berachain/0xc3c30fba6387cff83474e684380930dfc64554ef`}
-              color="#ffcd4d"
+              color="#FF9FA8"
             >
               Buy from magic eden
             </Button>
-            <br />
-            <Button
-              linkTo={`https://marketplace.kingdomly.app/collection/berachain/0xc3c30fba6387cff83474e684380930dfc64554ef`}
-              color="#ffcd4d"
-            >
-              Buy from kingdomly
-            </Button>
+
             <br />
             <Button
               linkTo={`https://bridge.kingdomly.app/`}
-              color="#ffcd4d"
+              color="#FF9FA8"
             >
               Bridge to Berachain
             </Button>
