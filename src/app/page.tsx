@@ -77,7 +77,7 @@ export default function Home() {
             image={redGangster}
             linkTo={{
               href: "https://marketplace.kingdomly.app/collection/berachain/0xc3c30fba6387cff83474e684380930dfc64554ef",
-              display: "Buy from kingdomly",
+              display: "Buy from Kingdomly",
             }}
             buttonColor="#FF9FA8"
             style={{
@@ -89,7 +89,7 @@ export default function Home() {
               linkTo={`https://magiceden.io/collections/berachain/0xc3c30fba6387cff83474e684380930dfc64554ef`}
               color="#FF9FA8"
             >
-              Buy from magic eden
+              Buy from ME
             </Button>
 
             <br />
