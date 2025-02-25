@@ -64,7 +64,10 @@ export default function Home() {
             }}
           >
             <br />
-            <Button linkTo={`${DOMAIN_MAP.WASABEE}/pools`} color="#ffcd4d">
+            <Button
+              linkTo={`${DOMAIN_MAP.WASABEE}/pools`}
+              color="#ffcd4d"
+            >
               Pools
             </Button>
           </IntroCard>
@@ -80,7 +83,29 @@ export default function Home() {
             style={{
               margin: "0 auto",
             }}
-          ></IntroCard>
+          >
+            <br />
+            <Button
+              linkTo={`https://magiceden.io/collections/berachain/0xc3c30fba6387cff83474e684380930dfc64554ef`}
+              color="#ffcd4d"
+            >
+              Buy from magic eden
+            </Button>
+            <br />
+            <Button
+              linkTo={`https://marketplace.kingdomly.app/collection/berachain/0xc3c30fba6387cff83474e684380930dfc64554ef`}
+              color="#ffcd4d"
+            >
+              Buy from kingdomly
+            </Button>
+            <br />
+            <Button
+              linkTo={`https://bridge.kingdomly.app/`}
+              color="#ffcd4d"
+            >
+              Bridge to Berachain
+            </Button>
+          </IntroCard>
           <IntroCard
             title="Testnet"
             description=""
@@ -98,7 +123,10 @@ export default function Home() {
       </SectionContainer>
 
       <SectionContainer bgColor="transparent">
-        <Link href={"https://forms.gle/E59zJqViUvSZbF2E6"} target="_blank">
+        <Link
+          href={"https://forms.gle/E59zJqViUvSZbF2E6"}
+          target="_blank"
+        >
           <Image
             src={ctaPlaceholder}
             alt="cta"
