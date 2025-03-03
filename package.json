@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroui/react": "^2.7.4",
     "@szhsin/react-accordion": "^1.2.4",
     "classnames": "^2.5.1",
     "framer-motion": "^11.3.18",
