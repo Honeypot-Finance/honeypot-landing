@@ -32,6 +32,12 @@ import HoneypotAcademiaIntro from "@/components/molecules/HoneypotAcademiaIntro/
 import BerachainIntro from "@/components/molecules/BerachainIntro/BerachainIntro";
 import { DOMAIN_MAP } from "@/data/pathData";
 
+import setupLocatorUI from "@locator/runtime";
+
+if (process.env.NODE_ENV === "development") {
+  setupLocatorUI();
+}
+
 export default function Home() {
   return (
     <main>

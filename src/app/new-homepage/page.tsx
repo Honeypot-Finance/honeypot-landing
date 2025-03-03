@@ -10,13 +10,13 @@ import { useEffect, useRef, useState } from "react";
 const cssStyles = `
   .scroll-animate {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateX(-40px);
     transition: opacity 0.6s ease, transform 0.6s ease;
   }
 
   .scroll-animate.animate {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
 
   .scroll-animate-fade.animate {
@@ -58,6 +58,17 @@ const cssStyles = `
       transform: scale(1);
     }
   }
+
+  @keyframes slideInFromLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 `;
 
 export default function HomePage() {
@@ -88,8 +99,12 @@ export default function HomePage() {
 
       parallaxElements.forEach((element) => {
         const speed = parseFloat(element.getAttribute("data-speed") || "0.5");
-        const yPos = -(scrolled * speed);
-        element.style.transform = `translateY(${yPos}px)`;
+        const xPos = scrolled * speed;
+        element.style.setProperty(
+          "transform",
+          `translateX(${xPos}px)`,
+          "important"
+        );
       });
 
       floatingElements.forEach((element) => {
@@ -174,7 +189,7 @@ export default function HomePage() {
           className="scroll-animate absolute left-44 top-0 parallax opacity-0 hidden lg:block"
           data-speed="0.3"
           style={{
-            transform: "translateY(40px)",
+            transform: "translateX(-40px)",
             transition: "opacity 0.6s ease, transform 0.6s ease",
           }}
         >
@@ -195,11 +210,10 @@ export default function HomePage() {
           <div className="hidden sm:block absolute right-4 bottom-8 w-[18px] h-[18px] bg-black rounded-full" />
 
           <div className="flex flex-col items-center">
-            <h1 className="text-lg sm:text-2xl md:text-4xl lg:text-[56px] text-center text-black leading-tight mb-2 sm:mb-4">
-              The Ultimate Token Launch
-              <br /> Platform on Berachain
+            <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-[56px] text-center text-black lg:!leading-[3.5rem] mb-2 sm:mb-5">
+              The Ultimate Token Launch Platform on Berachain
             </h1>
-            <p className="text-xs sm:text-sm md:text-lg lg:text-xl text-center opacity-90 mb-3 sm:mb-4 md:mb-8 max-w-[674px] mx-auto text-[#373737]">
+            <p className="text-xs sm:text-sm md:text-lg lg:text-xl text-center opacity-90 mb-3 sm:mb-10 max-w-[674px] text-[#373737]">
               Instant liquidity, fair distribution, sustainable growth, and
               perpetual rewards all powered by proof of liquidity
             </p>
@@ -218,11 +232,11 @@ export default function HomePage() {
                     "_blank"
                   )
                 }
-                className="bg-black text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:bg-opacity-90 transition-all font-bold text-xs sm:text-sm"
+                className="bg-black text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-opacity-90 transition-all font-bold text-xs sm:text-sm"
               >
                 Launch Memes on Pot2Pump
               </button>
-              <button className="bg-black text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:bg-opacity-90 transition-all font-bold text-xs sm:text-sm">
+              <button className="bg-black text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-opacity-90 transition-all font-bold text-xs sm:text-sm">
                 Launch your project on Dreampad
               </button>
             </div>
@@ -241,7 +255,7 @@ export default function HomePage() {
 
           {/* FIXME: z-index issue */}
           <div
-            className="absolute right-40 -top-10 floating hidden lg:block"
+            className="absolute -right-10 -bottom-28 floating hidden lg:block"
             data-speed="0.5"
             style={{
               opacity: 0,
@@ -291,6 +305,16 @@ export default function HomePage() {
               sizes="(max-width: 640px) 25px, 40px"
             />
           </div>
+          <div className="absolute right-20 -top-10 hidden lg:block">
+            <Image
+              src="/images/coin.png"
+              alt="coin"
+              width={80}
+              height={80}
+              className="animate-bounce delay-300 ml-12"
+              sizes="(max-width: 640px) 25px, 40px"
+            />
+          </div>
           <div className="rotate-[50deg] absolute right-20 top-[600px] hidden lg:block">
             <Image
               src="/images/coin.png"
@@ -310,21 +334,31 @@ export default function HomePage() {
               data-speed="0.2"
               style={{
                 opacity: 0,
-                animation: "fadeIn 1s ease forwards",
                 animationDelay: "1.6s",
+                animation: "slideInFromLeft 1s ease forwards",
               }}
             >
-              <Image
-                src="/images/lying_bear.png"
-                alt="lying bear"
-                width={600}
-                height={300}
-                className="w-[200px] sm:w-[300px] md:w-[400px] lg:w-[600px] mr-0 sm:mr-20 md:mr-40"
-                sizes="(max-width: 640px) 200px, (max-width: 768px) 300px, (max-width: 1024px) 400px, 600px"
-              />
+              <div className="w-[400px] relative">
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "radial-gradient(43.44% 43.44% at 50.09% 49.91%, #FFCD4D 0%, rgba(54, 54, 55, 0.00) 100%, #363636 100%)",
+                    opacity: 0.1,
+                  }}
+                ></div>
+                <Image
+                  src="/images/lying_bear.png"
+                  alt="lying bear"
+                  width={600}
+                  height={300}
+                  className="w-[200px] sm:w-[300px] md:w-[400px] lg:w-[600px] mr-0 sm:mr-20 md:mr-40"
+                  sizes="(max-width: 640px) 200px, (max-width: 768px) 300px, (max-width: 1024px) 400px, 600px"
+                />
+              </div>
             </div>
             <div
-              className="w-full"
+              className="sm:w-full -mx-4 sm:mx-0"
               style={{
                 opacity: 0,
                 transform: "translateY(20px)",
@@ -347,8 +381,8 @@ export default function HomePage() {
       </div>
 
       {/* Transform memecoins Section */}
-      <div className="scroll-animate relative px-4 sm:px-12 md:px-20 py-8 sm:py-12 md:py-20 bg-[#FFCD4D] rounded-[24px] sm:rounded-[32px] w-full max-w-[1200px] mx-4 sm:mx-auto bg-[url('/images/honey-border.png'),url('/images/gift.png')] bg-[length:auto_40px,200px_auto] sm:bg-[length:auto_40px,400px_auto] [background-repeat:repeat-x,no-repeat] bg-[position:-30px_top,right_bottom]">
-        <h1 className="text-base sm:text-xl md:text-3xl lg:text-4xl text-[#373737] leading-tight max-w-[70%]">
+      <div className="scroll-animate relative px-4 sm:px-12 md:px-20 pt-12 pb-16 sm:py-12 md:py-20 bg-[#FFCD4D] rounded-[24px] sm:rounded-[32px] w-full max-w-[1200px] mx-4 sm:mx-auto bg-[url('/images/honey-border.png'),url('/images/gift-mobile.png')] sm:bg-[url('/images/honey-border.png'),url('/images/gift.png')] bg-[length:auto_40px,240px_auto] sm:bg-[length:auto_40px,400px_auto] [background-repeat:repeat-x,no-repeat] bg-[position:-30px_top,center_bottom] sm:bg-[position:-30px_top,right_bottom]">
+        <h1 className="text-base sm:text-xl md:text-3xl lg:text-4xl text-[#373737] leading-tight text-center sm:text-left w-full sm:max-w-[70%]">
           Transform memecoins into
           <br /> sustainable assets with
           <br /> continuous rewards for everyone
@@ -356,34 +390,33 @@ export default function HomePage() {
       </div>
 
       {/* Pot2Pump Section */}
-      <div className="scroll-animate relative px-6 sm:px-20 pt-12 sm:pt-16 bg-[#252424] rounded-[32px] w-full max-w-[1200px] mx-4 sm:mx-auto bg-[url('/images/honey-border.png')] bg-repeat-x bg-[length:auto_40px] bg-[position:-30px_top]">
+      <div className="scroll-animate relative px-4 sm:px-20 pt-12 sm:pt-16 bg-[#252424] rounded-[32px] w-full max-w-[1200px] mx-4 sm:mx-auto bg-[url('/images/honey-border.png')] bg-repeat-x bg-[length:auto_40px] bg-[position:-30px_top]">
         <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
           <div className="max-w-[500px]">
-            <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl text-white font-bold mb-6 sm:mb-8">
+            <h1 className="text-center sm:text-left text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white font-bold mb-6 sm:mb-8">
               Pot2Pump
             </h1>
             <div className="space-y-4">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 sm:gap-3">
                 <Image
                   src="/images/honey-box.png"
                   alt="honey box"
                   width={20}
                   height={20}
-                  sizes="20px"
                 />
-                <p className="text-base sm:text-xl text-white">
+                <p className="text-sm sm:text-xl text-white">
                   Berachain-native liquidity management.
                 </p>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 sm:gap-3">
                 <Image
                   src="/images/honey-box.png"
                   alt="honey box"
                   width={20}
                   height={20}
-                  sizes="20px"
+                  sizes="(max-width: 640px) 16px, 20px"
                 />
-                <p className="text-base sm:text-xl text-white">
+                <p className="text-sm sm:text-xl text-white">
                   Boosted rewards for meme stakers.
                 </p>
               </div>
@@ -395,20 +428,20 @@ export default function HomePage() {
                   "_blank"
                 )
               }
-              className="mt-8 border border-white px-8 py-4 bg-[#FFCD4D] text-black rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm"
+              className="w-full sm:w-fit mt-8 border border-white px-8 py-4 bg-[#FFCD4D] text-black rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm"
             >
               Meme Launch
             </button>
           </div>
 
-          <div className="relative w-[280px] sm:w-[320px] md:w-[360px] lg:w-[400px]">
+          <div className="relative w-[200px] sm:w-[320px] md:w-[360px] lg:w-[400px]">
             <Image
               src="/images/honey_jar.png"
               alt="Honey Jar"
               width={400}
               height={400}
               className="w-full h-auto"
-              sizes="(max-width: 640px) 280px, (max-width: 768px) 320px, (max-width: 1024px) 360px, 400px"
+              sizes="(max-width: 640px) 200px, (max-width: 768px) 320px, (max-width: 1024px) 360px, 400px"
               priority
             />
           </div>
@@ -418,17 +451,22 @@ export default function HomePage() {
       {/* Why Pot2Pump Cards */}
       <div className="scroll-animate flex flex-col lg:flex-row justify-between gap-8 w-full max-w-[1200px] mx-4 sm:mx-auto">
         {/* Card 1 */}
-        <div className="scroll-animate flex-1 rounded-[32px] p-[40px] bg-gradient-to-b from-[#202020] via-[#202020] to-[#FFCD4D]">
+        <div
+          className="scroll-animate flex-1 rounded-[32px] p-4 sm:p-10"
+          style={{
+            background:
+              "linear-gradient(179deg, rgba(32, 32, 32, 0.00) 0.7%, rgba(32, 32, 32, 0.00) 17.94%, #FFCD4D 99.3%)",
+          }}
+        >
           <div className="relative bg-[#202020] rounded-2xl p-8 sm:p-12 h-full">
-            <div className="flex flex-col items-center gap-8">
-              <div className="w-32 h-32 relative">
+            <div className="flex flex-col items-center">
+              <div className="w-[400px] h-[350px] flex justify-center items-center">
                 <Image
                   src="/images/light.png"
                   alt="Light Icon"
-                  width={128}
-                  height={128}
+                  width={400}
+                  height={400}
                   className="object-contain"
-                  sizes="(max-width: 640px) 96px, 128px"
                 />
               </div>
 
@@ -444,9 +482,8 @@ export default function HomePage() {
                       alt="honey box"
                       width={20}
                       height={20}
-                      sizes="20px"
                     />
-                    <p className="text-base sm:text-xl text-white">
+                    <p className="text-sm sm:text-xl text-white">
                       Instant revenue through LP fees
                     </p>
                   </div>
@@ -456,9 +493,8 @@ export default function HomePage() {
                       alt="honey box"
                       width={20}
                       height={20}
-                      sizes="20px"
                     />
-                    <p className="text-base sm:text-xl text-white">
+                    <p className="text-sm sm:text-xl text-white">
                       Up to 100% revenue sharing
                     </p>
                   </div>
@@ -469,15 +505,21 @@ export default function HomePage() {
         </div>
 
         {/* Card 2 */}
-        <div className="scroll-animate flex-1 rounded-[32px] p-[40px] bg-gradient-to-b from-[#202020] via-[#202020] to-[#FFCD4D]">
-          <div className="relative bg-[#202020] rounded-2xl p-12 h-full">
-            <div className="flex flex-col items-center gap-8">
-              <div className="w-32 h-32 relative">
+        <div
+          className="scroll-animate flex-1 rounded-[32px] p-4 sm:p-10"
+          style={{
+            background:
+              "linear-gradient(179deg, rgba(32, 32, 32, 0.00) 0.7%, rgba(32, 32, 32, 0.00) 17.94%, #FFCD4D 99.3%)",
+          }}
+        >
+          <div className="relative bg-[#202020] rounded-2xl p-4 sm:p-12 h-full">
+            <div className="flex flex-col items-center">
+              <div className="w-[400px]">
                 <Image
-                  src="/images/gold-horse.png"
+                  src="/images/horse.png"
                   alt="Gold Horse Icon"
-                  width={128}
-                  height={128}
+                  width={400}
+                  height={400}
                   className="object-contain"
                   sizes="(max-width: 640px) 96px, 128px"
                 />
@@ -522,8 +564,8 @@ export default function HomePage() {
 
       {/* Dreampad Section */}
       <div className="scroll-animate bg-[#FFCD4D] rounded-[32px] w-full max-w-[1200px] mx-4 sm:mx-auto flex flex-col lg:flex-row justify-between items-center">
-        <div className="max-w-[500px] px-4 sm:pl-20 py-8 sm:py-10">
-          <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl text-[#282121] font-bold mb-6 sm:mb-8">
+        <div className="max-w-[500px] sm:pl-20 py-4 sm:py-10">
+          <h1 className="text-center sm:text-left text-xl sm:text-3xl md:text-4xl lg:text-5xl text-[#282121] font-bold mb-6 sm:mb-8">
             Dreampad
           </h1>
           <div className="space-y-3 sm:space-y-4">
@@ -552,7 +594,7 @@ export default function HomePage() {
               </p>
             </div>
           </div>
-          <button className="mt-8 px-8 py-4 bg-[#010101] text-white rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm border border-white shadow-[2px_2px_8px_0px_rgba(22,18,8,0.50)]">
+          <button className="w-full sm:w-fit mt-8 px-8 py-4 bg-[#010101] text-white rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm border border-white shadow-[2px_2px_8px_0px_rgba(22,18,8,0.50)]">
             Token Launch
           </button>
         </div>
@@ -572,25 +614,30 @@ export default function HomePage() {
 
       {/* FTO Section */}
       <div className="scroll-animate flex flex-col items-center gap-16 w-full max-w-[1200px] mx-4 sm:mx-auto">
-        <h1 className="text-base sm:text-2xl md:text-3xl lg:text-5xl text-white font-gliker text-center">
+        <h1 className="text-base sm:text-2xl md:text-3xl lg:text-5xl text-white text-center">
           FTO (Fair Token Offering)
         </h1>
 
         <div className="flex flex-col lg:flex-row justify-between w-full gap-8">
           {/* 第一个卡片 - Instant Deep liquidity */}
-          <div className="scroll-animate flex-1 rounded-[32px] p-[40px] bg-gradient-to-b from-[#202020] via-[#202020] to-[#FFCD4D]">
-            <div className="relative bg-[#202020] rounded-2xl p-12 h-full flex flex-col items-center">
-              <div className="w-40 h-40 relative mb-12">
+          <div
+            className="scroll-animate flex-1 rounded-[32px] p-4 sm:p-10"
+            style={{
+              background:
+                "linear-gradient(179deg, rgba(32, 32, 32, 0.00) 0.7%, rgba(32, 32, 32, 0.00) 17.94%, #FFCD4D 99.3%)",
+            }}
+          >
+            <div className="relative bg-[#202020] rounded-2xl p-4 sm:p-8 h-full flex flex-col items-center">
+              <div className="w-[200px] h-40 flex justify-center items-center">
                 <Image
-                  src="/images/deep-liquidity.png"
+                  src="/images/liquidity.png"
                   alt="Deep Liquidity"
-                  width={160}
-                  height={160}
+                  width={200}
+                  height={200}
                   className="object-contain"
-                  sizes="(max-width: 640px) 120px, 160px"
                 />
               </div>
-              <h2 className="text-base sm:text-xl md:text-2xl text-white font-gliker mb-3 sm:mb-4">
+              <h2 className="text-xl text-white mb-3 sm:mb-4">
                 Instant Deep liquidity
               </h2>
               <p className="text-lg text-white text-center">
@@ -600,19 +647,24 @@ export default function HomePage() {
           </div>
 
           {/* 第二个卡片 - Earn from Day One */}
-          <div className="scroll-animate flex-1 rounded-[32px] p-[40px] bg-gradient-to-b from-[#202020] via-[#202020] to-[#FFCD4D]">
-            <div className="relative bg-[#202020] rounded-2xl p-12 h-full flex flex-col items-center">
-              <div className="w-44 h-36 relative mb-12">
+          <div
+            className="scroll-animate flex-1 rounded-[32px] p-4 sm:p-10"
+            style={{
+              background:
+                "linear-gradient(179deg, rgba(32, 32, 32, 0.00) 0.7%, rgba(32, 32, 32, 0.00) 17.94%, #FFCD4D 99.3%)",
+            }}
+          >
+            <div className="relative bg-[#202020] rounded-2xl p-4 sm:p-8 h-full flex flex-col items-center">
+              <div className="w-[200px] h-40 flex justify-center items-center">
                 <Image
                   src="/images/money.png"
                   alt="Money"
-                  width={176}
-                  height={144}
+                  width={200}
+                  height={200}
                   className="object-contain"
-                  sizes="(max-width: 640px) 132px, 176px"
                 />
               </div>
-              <h2 className="text-base sm:text-xl md:text-2xl text-white font-gliker mb-3 sm:mb-4">
+              <h2 className="text-xl text-white mb-3 sm:mb-4">
                 Earn from Day One
               </h2>
               <p className="text-lg text-white text-center">
@@ -622,19 +674,24 @@ export default function HomePage() {
           </div>
 
           {/* 第三个卡片 - Auto-Compunding Rewards */}
-          <div className="scroll-animate flex-1 rounded-[32px] p-[40px] bg-gradient-to-b from-[#202020] via-[#202020] to-[#FFCD4D]">
-            <div className="relative bg-[#202020] rounded-2xl p-8 sm:p-12 h-full flex flex-col items-center">
-              <div className="w-36 h-36 relative mb-12">
+          <div
+            className="scroll-animate flex-1 rounded-[32px] p-4 sm:p-10"
+            style={{
+              background:
+                "linear-gradient(179deg, rgba(32, 32, 32, 0.00) 0.7%, rgba(32, 32, 32, 0.00) 17.94%, #FFCD4D 99.3%)",
+            }}
+          >
+            <div className="relative bg-[#202020] rounded-2xl p-4 sm:p-8 h-full flex flex-col items-center">
+              <div className="w-[200px] h-40 flex justify-center items-center">
                 <Image
                   src="/images/reward.png"
                   alt="Reward"
-                  width={144}
-                  height={144}
+                  width={160}
+                  height={160}
                   className="object-contain"
-                  sizes="(max-width: 640px) 108px, 144px"
                 />
               </div>
-              <h2 className="text-base sm:text-xl md:text-2xl text-white font-gliker mb-3 sm:mb-4">
+              <h2 className="text-xl text-center text-white mb-3 sm:mb-4">
                 Auto-Compunding Rewards
               </h2>
               <p className="text-base sm:text-lg text-white text-center">
@@ -645,76 +702,186 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Success Stories */}
-      <div className="scroll-animate bg-[#FFCD4D] rounded-[24px] sm:rounded-[32px] p-8 sm:p-12 relative w-full sm:max-w-[1200px]">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-          {/* 左侧内容 */}
-          <div className="w-full lg:w-[60%]">
-            <div className="flex flex-col gap-6 sm:gap-8">
-              <div className="flex items-center">
-                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#202020] font-bold">
-                  <span className="border-b-2 border-[#202020]">
-                    Berally / BurrBear / Overlay
-                  </span>
-                </h2>
-              </div>
+      {/* Co-Launch Program Section */}
+      <div className="scroll-animate flex flex-col items-center gap-16 w-full max-w-[1200px] mx-4 sm:mx-auto">
+        <h1 className="text-base sm:text-2xl md:text-3xl lg:text-5xl text-white text-center">
+          Co-Launch Program
+        </h1>
 
-              <div className="space-y-6 sm:space-y-8">
-                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#202020] font-bold">
-                  Key figures
-                </h3>
-                <div className="space-y-4 sm:space-y-6">
-                  <div className="flex items-center gap-3">
-                    <Image
-                      src="/images/honey-box.png"
-                      alt="honey box"
-                      width={24}
-                      height={24}
-                      sizes="24px"
-                    />
-                    <p className="text-base sm:text-xl md:text-2xl text-[#202020]">
-                      $2.5M+ raised
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Image
-                      src="/images/honey-box.png"
-                      alt="honey box"
-                      width={24}
-                      height={24}
-                      sizes="24px"
-                    />
-                    <p className="text-base sm:text-xl md:text-2xl text-[#202020]">
-                      1300+ participants
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Image
-                      src="/images/honey-box.png"
-                      alt="honey box"
-                      width={24}
-                      height={24}
-                      sizes="24px"
-                    />
-                    <p className="text-base sm:text-xl md:text-2xl text-[#202020]">
-                      3+ projects
-                    </p>
+        <div className="flex flex-col lg:flex-row justify-between w-full gap-8">
+          {/* Card 1 - Co-Launch with Fjord Foundry */}
+          <div
+            className="scroll-animate flex-1 rounded-[32px] p-4 sm:p-10"
+            style={{
+              background:
+                "linear-gradient(179deg, rgba(32, 32, 32, 0.00) 0.7%, rgba(32, 32, 32, 0.00) 17.94%, #FFCD4D 99.3%)",
+            }}
+          >
+            <div className="relative bg-[#202020] rounded-2xl p-4 sm:p-8 h-full flex flex-col items-center">
+              <div className="w-[200px] h-40 flex justify-center items-center">
+                <Image
+                  src="/images/rocket.png"
+                  alt="Rocket"
+                  width={80}
+                  height={80}
+                  className="object-contain"
+                />
+              </div>
+              <h2 className="text-xl text-white mb-3 sm:mb-4 text-center">
+                Co-Launch with Fjord Foundry
+              </h2>
+              <p className="text-lg text-white text-center">
+                Multiple sale types (LBP or Fixed Price Model)
+              </p>
+            </div>
+          </div>
+
+          {/* Card 2 - Co-Listing Advantage */}
+          <div
+            className="scroll-animate flex-1 rounded-[32px] p-4 sm:p-10"
+            style={{
+              background:
+                "linear-gradient(179deg, rgba(32, 32, 32, 0.00) 0.7%, rgba(32, 32, 32, 0.00) 17.94%, #FFCD4D 99.3%)",
+            }}
+          >
+            <div className="relative bg-[#202020] rounded-2xl p-4 sm:p-8 h-full flex flex-col items-center">
+              <div className="w-[200px] h-40 flex justify-center items-center">
+                <Image
+                  src="/images/note.png"
+                  alt="Listing"
+                  width={80}
+                  height={80}
+                  className="object-contain"
+                />
+              </div>
+              <h2 className="text-xl text-white mb-3 sm:mb-4 text-center">
+                Co-Listing Advantage
+              </h2>
+              <p className="text-lg text-white text-center">
+                Curated and co-listed on both Honeypot and Fjord for maximum exposure
+              </p>
+            </div>
+          </div>
+
+          {/* Card 3 - One Smart Contract */}
+          <div
+            className="scroll-animate flex-1 rounded-[32px] p-4 sm:p-10"
+            style={{
+              background:
+                "linear-gradient(179deg, rgba(32, 32, 32, 0.00) 0.7%, rgba(32, 32, 32, 0.00) 17.94%, #FFCD4D 99.3%)",
+            }}
+          >
+            <div className="relative bg-[#202020] rounded-2xl p-4 sm:p-8 h-full flex flex-col items-center">
+              <div className="w-[200px] h-40 flex justify-center items-center">
+                <Image
+                  src="/images/quantum-hub.png"
+                  alt="Smart Contract"
+                  width={120}
+                  height={120}
+                  className="object-contain"
+                />
+              </div>
+              <h2 className="text-xl text-center text-white mb-3 sm:mb-4">
+                One Smart Contract, Two Frontends, Two Huge Communities
+              </h2>
+              <p className="text-base sm:text-lg text-white text-center">
+                Get all the support you need for a successful raise
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Success Stories Section */}
+      <div className="scroll-animate w-full max-w-[1200px] mx-4 sm:mx-auto flex flex-col items-center">
+        {/* Title */}
+        <h1 className="text-base sm:text-2xl md:text-3xl lg:text-5xl text-white text-center mb-16">
+          Success Stories
+        </h1>
+
+        {/* Card */}
+        <div className="scroll-animate bg-[#FFCD4D] rounded-[24px] sm:rounded-[32px] relative w-full overflow-hidden bg-[url('/images/honey-border.png')] bg-repeat-x bg-[length:auto_40px] bg-[position:-30px_top] border-2 border-white">
+          <div className="relative">
+            {/* 左侧内容 */}
+            <div className="p-8 sm:p-12 lg:max-w-[60%]">
+              <div className="flex flex-col gap-6 sm:gap-8">
+                <div className="flex items-center">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#202020] font-bold">
+                    <span className="border-b-2 border-[#202020]">
+                      Berally / BurrBear / Overlay
+                    </span>
+                  </h2>
+                </div>
+
+                <div className="space-y-6 sm:space-y-8">
+                  <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#202020] font-bold">
+                    Key figures
+                  </h3>
+                  <div className="space-y-4 sm:space-y-6">
+                    <div className="flex items-center gap-3">
+                      <Image
+                        src="/images/honey-box.png"
+                        alt="honey box"
+                        width={24}
+                        height={24}
+                        sizes="24px"
+                      />
+                      <p className="text-base sm:text-xl md:text-2xl text-[#202020]">
+                        $2.5M+ raised
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <Image
+                        src="/images/honey-box.png"
+                        alt="honey box"
+                        width={24}
+                        height={24}
+                        sizes="24px"
+                      />
+                      <p className="text-base sm:text-xl md:text-2xl text-[#202020]">
+                        1300+ participants
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <Image
+                        src="/images/honey-box.png"
+                        alt="honey box"
+                        width={24}
+                        height={24}
+                        sizes="24px"
+                      />
+                      <p className="text-base sm:text-xl md:text-2xl text-[#202020]">
+                        3+ projects
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* 右侧图片 */}
-          <div className="w-full lg:w-[40%] flex justify-center lg:justify-end">
-            <Image
-              src="/images/cool-bear.png"
-              alt="Cool Bear"
-              width={400}
-              height={400}
-              className="w-[240px] sm:w-[300px] md:w-[350px] lg:w-[400px] h-auto object-contain"
-              sizes="(max-width: 640px) 240px, (max-width: 768px) 300px, (max-width: 1024px) 350px, 400px"
-            />
+            {/* 右侧图片 - 贴右下角 */}
+            <div className="absolute bottom-0 right-0 hidden lg:block">
+              <Image
+                src="/images/cool-bear.png"
+                alt="Cool Bear"
+                width={400}
+                height={400}
+                className="w-[400px] h-auto object-contain"
+                sizes="400px"
+              />
+            </div>
+
+            {/* 移动端图片 - 居中显示 */}
+            <div className="flex justify-center lg:hidden">
+              <Image
+                src="/images/cool-bear.png"
+                alt="Cool Bear"
+                width={400}
+                height={400}
+                className="w-[240px] sm:w-[300px] md:w-[350px] h-auto object-contain"
+                sizes="(max-width: 640px) 240px, (max-width: 768px) 300px, 350px"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -727,7 +894,7 @@ export default function HomePage() {
               HoneyGenesis NFT
             </h2>
           </div>
-          <div className="absolute -top-6 sm:-top-20 left-1/2 transform -translate-x-1/2">
+          <div className="absolute -top-6 sm:-top-24 left-1/2 transform -translate-x-1/2">
             <Image
               src="/images/golden-hook.png"
               alt="Golden Hook"
@@ -741,7 +908,7 @@ export default function HomePage() {
 
         <div className="w-full bg-[#FFCD4D] rounded-[32px] relative bg-[url('/images/honey-border.png')] bg-repeat-x bg-[length:auto_40px] bg-[position:-30px_top]">
           <div className="flex flex-col lg:flex-row justify-between">
-            <div className="px-4 py-12 sm:px-8 md:px-12 space-y-4 sm:space-y-6 flex-1">
+            <div className="px-4 pt-12 sm:px-8 md:px-12 space-y-4 sm:space-y-6 flex items-center">
               <div className="flex flex-col gap-4 sm:gap-6">
                 <div className="flex items-center gap-3">
                   <Image
@@ -795,8 +962,8 @@ export default function HomePage() {
             </div>
 
             <div className="flex flex-col items-center lg:items-end p-6 sm:p-8 md:p-12 lg:flex-shrink-0">
-              <div className="flex items-end">
-                <div className="hidden sm:block transform -rotate-[50deg] translate-x-6">
+              <div className="flex items-end w-full">
+                <div className="hidden sm:block transform -rotate-[50deg] translate-x-6 -translate-y-2">
                   <Image
                     src="/images/experiment-bear.png"
                     alt="Experiment Bear"
@@ -807,8 +974,8 @@ export default function HomePage() {
                   />
                 </div>
 
-                <div className="flex flex-col items-center">
-                  <div className="relative w-[140px] sm:w-[160px] md:w-[200px] lg:w-[240px]">
+                <div className="flex flex-col items-center w-full">
+                  <div className="relative w-[140px] sm:w-[160px] md:w-[200px] lg:w-[240px] sm:-mt-32">
                     <Image
                       src="/images/cook-bear.png"
                       alt="Cook Bear"
@@ -819,7 +986,7 @@ export default function HomePage() {
                     />
                   </div>
 
-                  <button className="mt-4 px-8 sm:px-12 md:px-16 py-2 sm:py-3 md:py-4 bg-black text-white rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm sm:text-base md:text-lg border border-white">
+                  <button className="w-full sm:w-fit px-8 sm:px-12 md:px-16 py-2 sm:py-3 md:py-4 bg-black text-white rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm sm:text-base md:text-lg border border-white z-10">
                     Buy on OKX
                   </button>
                 </div>
@@ -901,29 +1068,8 @@ export default function HomePage() {
       </div>
 
       {/* Footer 社交媒体部分 */}
-      <div className="sm:w-full bg-[#FFCD4D] py-12 sm:py-16 relative -mx-4 sm:mx-0 px-4 sm:px-0">
-        <div className="hidden lg:block absolute left-32 bottom-0">
-          <Image
-            src="/images/camel-bear.png"
-            alt="Camel Bear"
-            width={200}
-            height={200}
-            className="object-contain"
-            sizes="(max-width: 640px) 140px, (max-width: 768px) 160px, 200px"
-          />
-        </div>
-        <div className="hidden lg:block absolute right-32 bottom-0">
-          <Image
-            src="/images/bee-bear.png"
-            alt="Bee Bear"
-            width={200}
-            height={200}
-            className="object-contain"
-            sizes="(max-width: 640px) 140px, (max-width: 768px) 160px, 200px"
-          />
-        </div>
-
-        <div className="container sm:mx-auto flex flex-col items-center gap-8">
+      <div className="bg-[#FFCD4D] w-[calc(100%+32px)] sm:w-full">
+        <div className="container mx-auto flex flex-col items-center gap-8 py-12 sm:py-16">
           <div className="flex items-center gap-8">
             <a
               onClick={() =>
@@ -946,14 +1092,14 @@ export default function HomePage() {
             >
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
                 <path
-                  d="M16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0ZM23.6667 12.0667C23.6667 12.2667 23.6667 12.4667 23.6667 12.6667C23.6667 17.8667 19.7333 23.8667 12.5333 23.8667C10.4 23.8667 8.4 23.2667 6.66667 22.2C6.93333 22.2667 7.26667 22.2667 7.53333 22.2667C9.33333 22.2667 11 21.6667 12.3333 20.6667C10.6667 20.6667 9.2 19.5333 8.73333 18C8.93333 18.0667 9.13333 18.0667 9.4 18.0667C9.73333 18.0667 10.0667 18 10.3333 17.9333C8.6 17.6 7.26667 16.0667 7.26667 14.2667C7.26667 14.2667 7.26667 14.2667 7.26667 14.2C7.8 14.4667 8.4 14.6667 9 14.6667C7.93333 13.9333 7.26667 12.7333 7.26667 11.4C7.26667 10.6667 7.46667 9.93333 7.8 9.33333C9.66667 11.6667 12.4 13.2 15.4667 13.3333C15.4 13.0667 15.3333 12.8 15.3333 12.5333C15.3333 10.4 17.0667 8.66667 19.2 8.66667C20.2667 8.66667 21.2667 9.13333 22 9.86667C22.8667 9.66667 23.6667 9.4 24.4 8.93333C24.1333 9.8 23.5333 10.6 22.7333 11.0667C23.5333 11 24.2667 10.8 25 10.4667C24.3333 11.2 23.0667 11.7333 23.6667 12.0667Z"
+                  d="M16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0ZM20.8667 9H23.4L17.8667 15.4L24.3333 24H19.2L15.1333 18.6667L10.4667 24H7.93333L13.8667 17.2667L7.66667 9H12.9333L16.6 13.9333L20.8667 9ZM19.9333 22.4667H21.3333L12.1333 10.4667H10.6L19.9333 22.4667Z"
                   fill="currentColor"
                 />
               </svg>
             </a>
           </div>
 
-          <p className="text-[#202020] text-base sm:text-lg">
+          <p className="text-[#202020] text-xs sm:text-lg">
             © Copyright 2025, All Rights Reserved by Honeypot
           </p>
         </div>
