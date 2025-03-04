@@ -35,8 +35,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body>
-        {children}
-        {/* <LayoutWrapper>{children}</LayoutWrapper> */}
+        <LayoutWrapper>{children}</LayoutWrapper>
       </body>
     </html>
   );

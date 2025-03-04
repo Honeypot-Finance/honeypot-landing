@@ -6,7 +6,7 @@ import Footer from "@/components/layout/Footer/Footer";
 
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const isNewHomepage = pathname === '/new-homepage';
+  const isNewHomepage = ['/new-homepage', '/'].includes(pathname);
 
   return (
     <>
