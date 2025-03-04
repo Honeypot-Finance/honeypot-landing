@@ -37,12 +37,8 @@ export const appPathsList: Menu[] = [
     path: "https://wasabee.honeypotfinance.xyz/swap",
   },
   {
-    title: "Potting",
-    path: "https://pot2pump.honeypotfinance.xyz/potting",
-  },
-  {
-    title: "Pumping",
-    path: "https://pot2pump.honeypotfinance.xyz/pumping",
+    title: "pot2pump",
+    path: "https://pot2pump.honeypotfinance.xyz/",
   },
   {
     title: "Docs",

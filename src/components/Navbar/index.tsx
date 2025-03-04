@@ -1,26 +1,13 @@
 "use client";
 
 import React from "react";
-import { Key } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Menu } from "./allAppPath";
 import { useRouter, usePathname } from "next/navigation";
-import {
-  Button,
-  Dropdown,
-  DropdownMenu,
-  DropdownItem,
-  DropdownTrigger,
-} from "@heroui/react";
+import { Button } from "@heroui/react";
 
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarMenu,
-  NavbarMenuToggle,
-} from "@heroui/react";
+import { Navbar, NavbarMenu, NavbarMenuToggle } from "@heroui/react";
 import { useState } from "react";
 import Link from "next/link";
 

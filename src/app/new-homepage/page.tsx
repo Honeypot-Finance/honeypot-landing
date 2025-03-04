@@ -293,12 +293,12 @@ export default function HomePage() {
                 className="bg-black text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-opacity-90 transition-all font-bold text-xs sm:text-sm"
                 onClick={() => {
                   window.open(
-                    "https://pot2pump.honeypotfinance.xyz/launch-token",
+                    "https://wasabee.honeypotfinance.xyz/swap",
                     "_blank"
                   );
                 }}
               >
-                Launch your project on Dreampad
+                Trading on pot-wasabee
               </button>
             </div>
           </div>
