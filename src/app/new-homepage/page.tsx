@@ -1,10 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import  Navbar  from "@/components/Navbar";
+import Navbar from "@/components/Navbar";
 import { appPathsList } from "@/components/Navbar/allAppPath";
 import { partners } from "@/data/partners";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import SectionContainer from "@/components/atoms/SectionContainer/SectionContainer";
+import HomePageBanner from "@/components/HomePage/HomePageBanner/HomePageBanner";
+import Link from "next/link";
+import ctaPlaceholder from "@/assets/ctaPlaceholder.svg";
+import { InvestorsScroll } from "@/components/layout/PartnersScroll/PartnersScroll";
+// import beraLabTester from "@/assets/beraLabTester.png";
 
 // CSS 样式字符串
 const cssStyles = `
@@ -69,6 +75,46 @@ const cssStyles = `
       transform: translateX(0);
     }
   }
+
+  @keyframes dropIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-100px);
+    }
+    60% {
+      transform: translateY(15px);
+    }
+    75% {
+      transform: translateY(-10px);
+    }
+    85% {
+      transform: translateY(5px);
+    }
+    92% {
+      transform: translateY(-2px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .drop-animate {
+    opacity: 0;
+    animation: dropIn 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  .drop-delay-1 {
+    animation-delay: 0.3s;
+  }
+
+  .drop-delay-2 {
+    animation-delay: 0.6s;
+  }
+
+  .drop-delay-3 {
+    animation-delay: 0.9s;
+  }
 `;
 
 export default function HomePage() {
@@ -89,6 +135,7 @@ export default function HomePage() {
     // 滚动处理
     const handleScroll = () => {
       const scrolled = window.scrollY;
+      const viewportHeight = window.innerHeight;
 
       const parallaxElements =
         document.querySelectorAll<HTMLElement>(".parallax");
@@ -96,63 +143,62 @@ export default function HomePage() {
         document.querySelectorAll<HTMLElement>(".floating");
       const scaleElements =
         document.querySelectorAll<HTMLElement>(".scale-on-scroll");
+      const scrollAnimateElements =
+        document.querySelectorAll<HTMLElement>(".scroll-animate");
 
+      // 处理视差滚动元素
       parallaxElements.forEach((element) => {
         const speed = parseFloat(element.getAttribute("data-speed") || "0.5");
-        const xPos = scrolled * speed;
-        element.style.setProperty(
-          "transform",
-          `translateX(${xPos}px)`,
-          "important"
-        );
+        const rect = element.getBoundingClientRect();
+        const elementTop = rect.top + scrolled;
+
+        // 只有当元素接近视口时才计算动画
+        if (Math.abs(elementTop - scrolled) < viewportHeight * 1.5) {
+          const xPos = (scrolled - elementTop) * speed;
+          element.style.setProperty(
+            "transform",
+            `translateX(${xPos}px)`,
+            "important"
+          );
+        }
       });
 
+      // 处理浮动元素
       floatingElements.forEach((element) => {
         const speed = parseFloat(element.getAttribute("data-speed") || "0.3");
-        const yPos = Math.sin(scrolled * 0.002) * 20;
-        element.style.transform = `translateY(${yPos}px)`;
+        const rect = element.getBoundingClientRect();
+        const elementTop = rect.top + scrolled;
+
+        if (Math.abs(elementTop - scrolled) < viewportHeight * 1.5) {
+          const yPos = Math.sin((scrolled - elementTop) * 0.002) * 20;
+          element.style.transform = `translateY(${yPos}px)`;
+        }
       });
 
+      // 处理缩放元素
       scaleElements.forEach((element) => {
         const rect = element.getBoundingClientRect();
-        const elementTop = rect.top;
-        const elementBottom = rect.bottom;
-        const windowHeight = window.innerHeight;
+        const elementMiddle = rect.top + rect.height / 2;
+        const viewportMiddle = viewportHeight / 2;
+        const distanceFromCenter = Math.abs(elementMiddle - viewportMiddle);
 
-        if (elementTop < windowHeight && elementBottom > 0) {
-          const scrollPercent = 1 - elementTop / windowHeight;
-          const scale = 1 + scrollPercent * 0.1;
+        if (distanceFromCenter < viewportHeight) {
+          const scale =
+            1 + Math.max(0, (1 - distanceFromCenter / viewportHeight) * 0.1);
           element.style.transform = `scale(${Math.min(scale, 1.1)})`;
         }
       });
-    };
 
-    // Intersection Observer 设置
-    const observerOptions = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.1,
-    };
-
-    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("animate");
-          observer.unobserve(entry.target);
+      // 处理滚动显示动画
+      scrollAnimateElements.forEach((element) => {
+        const rect = element.getBoundingClientRect();
+        if (rect.top < viewportHeight * 0.85 && rect.bottom > 0) {
+          element.classList.add("animate");
         }
       });
     };
 
-    const observer = new IntersectionObserver(
-      handleIntersection,
-      observerOptions
-    );
-
-    document.querySelectorAll(".scroll-animate").forEach((element) => {
-      observer.observe(element);
-    });
-
-    // 添加滚动监听
+    // 添加滚动监听，使用 requestAnimationFrame 优化性能
     let ticking = false;
     const scrollHandler = () => {
       if (!ticking) {
@@ -164,29 +210,36 @@ export default function HomePage() {
       }
     };
 
+    // 初始触发一次处理
+    handleScroll();
+
     window.addEventListener("scroll", scrollHandler);
+    window.addEventListener("resize", handleScroll);
 
     // 清理函数
     return () => {
       window.removeEventListener("scroll", scrollHandler);
-      observer.disconnect();
+      window.removeEventListener("resize", handleScroll);
       document.head.removeChild(styleElement);
     };
   }, []);
 
   return (
     <div className="min-h-screen bg-[#202020] font-gliker relative overflow-hidden flex flex-col items-center gap-y-8 sm:gap-y-12 md:gap-y-20 lg:gap-y-32 w-full px-4 sm:px-0">
-      <div className="flex flex-col items-center w-full">
-        {/* Navbar with fade in animation */}
-        <div
-          style={{ animation: "fadeIn 0.6s ease forwards" }}
-          className="mb-6 sm:mb-8 md:mb-12 lg:mb-20 w-full sm:w-fit"
-        >
+      {/* Navbar with drop animation */}
+      <div className="mb-6 sm:mb-8 md:mb-12 lg:mb-20 w-[calc(100%-2rem)] sm:w-fit fixed top-0 left-1/2 -translate-x-1/2 z-50">
+        <div className="drop-animate [filter:drop-shadow(0_0_10px_rgba(0,0,0,0.6))_drop-shadow(0_0_15px_rgba(255,205,77,0.15))_drop-shadow(0_0_20px_rgba(0,0,0,0.4))]">
           <Navbar menuList={appPathsList} />
         </div>
+      </div>
 
+      <div className="w-[calc(100%+2rem)] sm:w-full">
+        <HomePageBanner />
+      </div>
+
+      <div className="flex flex-col items-center w-full relative drop-animate drop-delay-2">
         <div
-          className="scroll-animate absolute left-44 top-0 parallax opacity-0 hidden lg:block"
+          className="scroll-animate absolute left-0 -top-32 parallax opacity-0 hidden lg:block"
           data-speed="0.3"
           style={{
             transform: "translateX(-40px)",
@@ -236,7 +289,15 @@ export default function HomePage() {
               >
                 Launch Memes on Pot2Pump
               </button>
-              <button className="bg-black text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-opacity-90 transition-all font-bold text-xs sm:text-sm">
+              <button
+                className="bg-black text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-opacity-90 transition-all font-bold text-xs sm:text-sm"
+                onClick={() => {
+                  window.open(
+                    "https://pot2pump.honeypotfinance.xyz/launch-token",
+                    "_blank"
+                  );
+                }}
+              >
                 Launch your project on Dreampad
               </button>
             </div>
@@ -377,6 +438,19 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+
+      <SectionContainer bgColor="transparent">
+        <Link href={"https://forms.gle/E59zJqViUvSZbF2E6"} target="_blank">
+          <Image
+            src={ctaPlaceholder}
+            alt="cta"
+            width={500}
+            height={500}
+            className="w-full m-auto"
+            sizes="100vw"
+          />
+        </Link>
+      </SectionContainer>
 
       {/* Transform memecoins Section */}
       <div className="scroll-animate relative px-4 sm:px-12 md:px-20 pt-12 pb-16 sm:py-12 md:py-20 bg-[#FFCD4D] rounded-[24px] sm:rounded-[32px] w-full max-w-[1200px] mx-4 sm:mx-auto bg-[url('/images/honey-border.png'),url('/images/gift-mobile.png')] sm:bg-[url('/images/honey-border.png'),url('/images/gift.png')] bg-[length:auto_40px,240px_auto] sm:bg-[length:auto_40px,400px_auto] [background-repeat:repeat-x,no-repeat] bg-[position:-30px_top,center_bottom] sm:bg-[position:-30px_top,right_bottom]">
@@ -592,7 +666,15 @@ export default function HomePage() {
               </p>
             </div>
           </div>
-          <button className="w-full sm:w-fit mt-8 px-8 py-4 bg-[#010101] text-white rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm border border-white shadow-[2px_2px_8px_0px_rgba(22,18,8,0.50)]">
+          <button
+            className="w-full sm:w-fit mt-8 px-8 py-4 bg-[#010101] text-white rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm border border-white shadow-[2px_2px_8px_0px_rgba(22,18,8,0.50)]"
+            onClick={() => {
+              window.open(
+                "https://pot2pump.honeypotfinance.xyz/launch-token",
+                "_blank"
+              );
+            }}
+          >
             Token Launch
           </button>
         </div>
@@ -794,7 +876,7 @@ export default function HomePage() {
       {/* Success Stories Section */}
       <div className="scroll-animate w-full max-w-[1200px] mx-4 sm:mx-auto flex flex-col items-center">
         {/* Title */}
-        <h1 className="text-base sm:text-2xl md:text-3xl lg:text-5xl text-white text-center mb-16">
+        <h1 className="text-2xl sm:text-3xl lg:text-5xl text-white text-center mb-16">
           Success Stories
         </h1>
 
@@ -886,7 +968,7 @@ export default function HomePage() {
       </div>
 
       {/* HoneyGenesis NFT */}
-      <div className="scroll-animate w-full max-w-[1200px] mx-4 sm:mx-auto flex flex-col items-center">
+      <div className="scroll-animate w-full max-w-[1200px] mx-4 sm:mx-auto flex flex-col items-center mt-16">
         <div className="relative z-10 -mb-4 sm:-mb-8 max-w-[800px]">
           <div className="bg-[#FFCD4D] rounded-xl px-6 sm:px-12 py-2 sm:py-4 border-2 sm:border-4 border-white shadow-[4px_4px_0px_0px_#000] sm:shadow-[8px_8px_0px_0px_#000] transform -rotate-6 origin-top">
             <h2 className="text-lg sm:text-3xl md:text-4xl lg:text-[48px] text-[#202020] font-bold">
@@ -973,7 +1055,7 @@ export default function HomePage() {
                   />
                 </div>
 
-                <div className="flex flex-col items-center w-full">
+                <div className="flex flex-col items-center sm:items-end w-full">
                   <div className="relative w-[140px] sm:w-[160px] md:w-[200px] lg:w-[240px] sm:-mt-32">
                     <Image
                       src="/images/cook-bear.png"
@@ -985,9 +1067,52 @@ export default function HomePage() {
                     />
                   </div>
 
-                  <button className="w-full sm:w-fit px-8 sm:px-12 md:px-16 py-2 sm:py-3 md:py-4 bg-black text-white rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm sm:text-base md:text-lg border border-white z-10">
-                    Buy on OKX
-                  </button>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                    <button
+                      className="w-full px-8 sm:px-12 md:px-16 py-2 sm:py-3 md:py-4 bg-black text-white rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm sm:text-base md:text-lg border border-white z-10"
+                      onClick={() => {
+                        window.open(
+                          "https://www.okx.com/web3/marketplace/nft/collection/arbi/honeygenesis-1",
+                          "_blank"
+                        );
+                      }}
+                    >
+                      Buy on OKX
+                    </button>
+
+                    <button
+                      className="w-full px-8 sm:px-12 md:px-16 py-2 sm:py-3 md:py-4 bg-black text-white rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm sm:text-base md:text-lg border border-white z-10"
+                      onClick={() => {
+                        window.open(
+                          "https://marketplace.kingdomly.app/collection/berachain/0xc3c30fba6387cff83474e684380930dfc64554ef",
+                          "_blank"
+                        );
+                      }}
+                    >
+                      Buy from Kingdomly
+                    </button>
+
+                    <button
+                      className="w-full px-8 sm:px-12 md:px-16 py-2 sm:py-3 md:py-4 bg-black text-white rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm sm:text-base md:text-lg border border-white z-10"
+                      onClick={() => {
+                        window.open(
+                          "https://magiceden.io/collections/berachain/0xc3c30fba6387cff83474e684380930dfc64554ef",
+                          "_blank"
+                        );
+                      }}
+                    >
+                      Buy from ME
+                    </button>
+
+                    <button
+                      className="w-full px-8 sm:px-12 md:px-16 py-2 sm:py-3 md:py-4 bg-black text-white rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm sm:text-base md:text-lg border border-white z-10"
+                      onClick={() => {
+                        window.open("https://bridge.kingdomly.app/", "_blank");
+                      }}
+                    >
+                      Bridge to Berachain
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -996,9 +1121,14 @@ export default function HomePage() {
       </div>
 
       {/* Explore more 按钮 */}
-      <button className="px-8 sm:px-12 py-3 sm:py-4 border border-white bg-[#FFCD4D] text-[#202020] rounded-2xl hover:bg-opacity-90 transition-all font-bold text-base sm:text-xl">
+      {/* <button className="px-8 sm:px-12 py-3 sm:py-4 border border-white bg-[#FFCD4D] text-[#202020] rounded-2xl hover:bg-opacity-90 transition-all font-bold text-base sm:text-xl">
         Explore more
-      </button>
+      </button> */}
+
+      <Link href={"/partners"}>
+        <h2 className="text-center text-2xl sm:text-4xl font-bold m-5">Backed By -&gt;</h2>
+      </Link>
+      <InvestorsScroll />
 
       {/* Partners 部分 */}
       <div className="flex flex-col items-center w-full px-4 sm:px-0">
@@ -1066,39 +1196,176 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Footer 社交媒体部分 */}
+      {/* Footer Section */}
       <div className="bg-[#FFCD4D] w-[calc(100%+32px)] sm:w-full">
-        <div className="container mx-auto flex flex-col items-center gap-8 py-12 sm:py-16">
-          <div className="flex items-center gap-8">
-            <a
-              onClick={() =>
-                window.open("https://t.me/+tE1KgsD-GxJhOTg0", "_blank")
-              }
-              className="text-black hover:scale-110 transition-transform cursor-pointer"
-            >
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                <path
-                  d="M16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0ZM23.8667 10.9333L21.2 23.2C21.0133 24.0533 20.5067 24.2667 19.8 23.8667L15.8 20.9333L13.8667 22.8C13.6667 23 13.5 23.1667 13.1 23.1667L13.3667 19.1333L20.8 12.4C21.1333 12.1 20.7333 11.9333 20.3 12.2333L11.0667 18.0667L7.13333 16.8667C6.3 16.6133 6.28 16.0533 7.33333 15.6533L22.6 9.86667C23.3 9.61333 23.9333 10.0267 23.8667 10.9333Z"
-                  fill="currentColor"
-                />
-              </svg>
-            </a>
-            <a
-              onClick={() =>
-                window.open("https://x.com/honeypotfinance", "_blank")
-              }
-              className="text-black hover:scale-110 transition-transform cursor-pointer"
-            >
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                <path
-                  d="M16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0ZM20.8667 9H23.4L17.8667 15.4L24.3333 24H19.2L15.1333 18.6667L10.4667 24H7.93333L13.8667 17.2667L7.66667 9H12.9333L16.6 13.9333L20.8667 9ZM19.9333 22.4667H21.3333L12.1333 10.4667H10.6L19.9333 22.4667Z"
-                  fill="currentColor"
-                />
-              </svg>
-            </a>
+        <div className="container mx-auto flex flex-col items-center gap-8 py-12 sm:py-16 px-4 sm:px-0">
+          <div className="grid grid-cols-1 sm:grid-cols-3 w-full max-w-[1200px] gap-8 mb-8">
+            {/* Learn More Section */}
+            <div className="flex flex-col gap-4">
+              <h3 className="text-base sm:text-xl font-bold text-black">
+                Learn More
+              </h3>
+              <ul className="flex flex-col gap-3">
+                <li>
+                  <a
+                    href="https://docs.honeypotfinance.xyz/"
+                    className="text-sm sm:text-base text-black hover:opacity-80 transition-opacity"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Docs
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/Honeypot-Finance"
+                    className="text-sm sm:text-base text-black hover:opacity-80 transition-opacity"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    GitHub
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://medium.com/@HoneypotFinance1"
+                    className="text-sm sm:text-base text-black hover:opacity-80 transition-opacity"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Medium
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.okx.com/web3/marketplace/nft/collection/arbi/honeygenesis-1"
+                    className="text-sm sm:text-base text-black hover:opacity-80 transition-opacity"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    HoneyGenesis
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Apps Section */}
+            <div className="flex flex-col gap-4">
+              <h3 className="text-base sm:text-xl font-bold text-black">
+                Apps
+              </h3>
+              <ul className="flex flex-col gap-3">
+                <li>
+                  <a
+                    href="https://pot2pump.honeypotfinance.xyz/"
+                    className="text-sm sm:text-base text-black hover:opacity-80 transition-opacity"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Pot2Pump
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://wasabee.honeypotfinance.xyz/"
+                    className="text-sm sm:text-base text-black hover:opacity-80 transition-opacity"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Pot-Wasabee Dex
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Social Media Section */}
+            <div className="flex flex-col gap-4">
+              <h3 className="text-base sm:text-xl font-bold text-black">
+                Stay up to date
+              </h3>
+              <div className="flex items-center gap-3 sm:gap-4">
+                <a
+                  href="https://discord.gg/honeypotfi"
+                  className="text-black hover:scale-110 transition-transform w-6 h-6 sm:w-8 sm:h-8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    className="w-full h-full"
+                  >
+                    <circle cx="16" cy="16" r="16" fill="currentColor" />
+                    <path
+                      d="M24.5 10C23.2 9.4 21.8 9 20.3 8.8C20.2 9 20 9.3 19.9 9.6C18.3 9.3 16.7 9.3 15.1 9.6C15 9.3 14.8 9 14.7 8.8C13.2 9 11.8 9.4 10.5 10C8.3 13.2 7.7 16.3 8.1 19.3C9.8 20.5 11.4 21.2 13 21.7C13.4 21.2 13.7 20.6 14 20C13.4 19.8 12.8 19.5 12.3 19.2C12.4 19.1 12.5 19 12.6 18.9C15.8 20.3 19.2 20.3 22.4 18.9C22.5 19 22.6 19.1 22.7 19.2C22.2 19.5 21.6 19.8 21 20C21.3 20.6 21.6 21.2 22 21.7C23.6 21.2 25.2 20.5 26.9 19.3C27.3 16.3 26.4 13.2 24.5 10ZM13.2 17.2C12.3 17.2 11.5 16.3 11.5 15.2C11.5 14.1 12.2 13.2 13.2 13.2C14.2 13.2 14.9 14.1 14.9 15.2C14.9 16.3 14.2 17.2 13.2 17.2ZM19.8 17.2C18.9 17.2 18.1 16.3 18.1 15.2C18.1 14.1 18.8 13.2 19.8 13.2C20.8 13.2 21.5 14.1 21.5 15.2C21.5 16.3 20.8 17.2 19.8 17.2Z"
+                      fill="#FFCD4D"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="https://t.me/+tE1KgsD-GxJhOTg0"
+                  className="text-black hover:scale-110 transition-transform w-6 h-6 sm:w-8 sm:h-8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    className="w-full h-full"
+                  >
+                    <path
+                      d="M16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0ZM23.8667 10.9333L21.2 23.2C21.0133 24.0533 20.5067 24.2667 19.8 23.8667L15.8 20.9333L13.8667 22.8C13.6667 23 13.5 23.1667 13.1 23.1667L13.3667 19.1333L20.8 12.4C21.1333 12.1 20.7333 11.9333 20.3 12.2333L11.0667 18.0667L7.13333 16.8667C6.3 16.6133 6.28 16.0533 7.33333 15.6533L22.6 9.86667C23.3 9.61333 23.9333 10.0267 23.8667 10.9333Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="https://twitter.com/honeypotfinance"
+                  className="text-black hover:scale-110 transition-transform w-6 h-6 sm:w-8 sm:h-8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    className="w-full h-full"
+                  >
+                    <path
+                      d="M16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0ZM20.8667 9H23.4L17.8667 15.4L24.3333 24H19.2L15.1333 18.6667L10.4667 24H7.93333L13.8667 17.2667L7.66667 9H12.9333L16.6 13.9333L20.8667 9ZM19.9333 22.4667H21.3333L12.1333 10.4667H10.6L19.9333 22.4667Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="https://medium.com/@HoneypotFinance1"
+                  className="text-black hover:scale-110 transition-transform w-6 h-6 sm:w-8 sm:h-8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    className="w-full h-full"
+                  >
+                    <path
+                      d="M16 0C7.164 0 0 7.164 0 16C0 24.836 7.164 32 16 32C24.836 32 32 24.836 32 16C32 7.164 24.836 0 16 0ZM24 9.4L22.6 10.7C22.5 10.8 22.4 11 22.4 11.2V21.4C22.4 21.6 22.5 21.8 22.6 21.9L24 23.2V23.5H17.2V23.2L18.6 21.9C18.8 21.7 18.8 21.7 18.8 21.4V12.9L14.8 23.5H14.2L9.6 12.9V20.2C9.5 20.6 9.7 21 9.9 21.3L11.8 23.2V23.5H6.8V23.2L8.7 21.3C8.9 21 9.1 20.6 9 20.2V11.9C9 11.6 8.9 11.3 8.7 11.1L7.2 9.4V9.1H12L15.9 18.2L19.4 9.1H24V9.4Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
           </div>
 
-          <p className="text-[#202020] text-xs sm:text-lg">
+          <p className="text-[#202020] text-xs sm:text-base text-center">
             © Copyright 2025, All Rights Reserved by Honeypot
           </p>
         </div>

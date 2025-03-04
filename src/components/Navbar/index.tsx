@@ -96,7 +96,7 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
           wrapper: "px-0",
           toggle: "border-none focus:outline-none",
         }}
-        className="bg-[#FFCD4D] rounded-xl flex flex-col py-2 px-4 lg:py-4 lg:px-3 border-[1.5px] border-[#010101] shadow-[2px_4px_0px_0px_#FFF]"
+        className="bg-[#FFCD4D] rounded-xl flex flex-col py-2 px-4 lg:py-4 lg:px-3 shadow-[2px_4px_0px_0px_#FFF]"
       >
         <div className="sm:flex hidden gap-1 lg:gap-2 lg:py-1 flex-wrap max-w-[280px] lg:max-w-none lg:flex-nowrap">
           <Image
@@ -109,7 +109,7 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
             <Button
               key={menu.title}
               className={cn(
-                "py-2 font-bold bg-transparent text-sm lg:text-base text-black hover:bg-[#202020]/80 hover:text-white",
+                "py-2 font-bold bg-transparent text-sm lg:text-base text-black hover:bg-[#202020] hover:text-white rounded-md",
                 menu.title === "Launch App" && "hidden",
                 menu.routePath === pathname ? "bg-[#202020] text-white" : ""
               )}
