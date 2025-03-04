@@ -32,6 +32,7 @@ import Overlay from "@/assets/partners/overlay.webp";
 import Berally from "@/assets/partners/berally.webp";
 import BurrBear from "@/assets/partners/burrbear.png";
 import algebra from "@/assets/partners/algebra.png";
+import wasabee from "@/assets/partners/wasabee.png";
 
 const investors = [
   {
@@ -186,6 +187,11 @@ const partners = [
     name: "Algebra",
     partnerLink: "https://algebra.finance/",
     partnerImage: algebra,
+  },
+  {
+    name: "Wasabee",
+    partnerLink: "https://x.com/WasabeeFi",
+    partnerImage: wasabee,
   },
 ];
 

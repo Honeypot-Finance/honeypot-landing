@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Navbar } from "@/components/Navbar";
+import  Navbar  from "@/components/Navbar";
 import { appPathsList } from "@/components/Navbar/allAppPath";
 import { partners } from "@/data/partners";
 import { useEffect, useRef, useState } from "react";
@@ -180,7 +180,7 @@ export default function HomePage() {
         {/* Navbar with fade in animation */}
         <div
           style={{ animation: "fadeIn 0.6s ease forwards" }}
-          className="mb-6 sm:mb-8 md:mb-12 lg:mb-20"
+          className="mb-6 sm:mb-8 md:mb-12 lg:mb-20 w-full sm:w-fit"
         >
           <Navbar menuList={appPathsList} />
         </div>
@@ -342,13 +342,11 @@ export default function HomePage() {
                 <div
                   className="absolute inset-0"
                   style={{
-                    background:
-                      "radial-gradient(43.44% 43.44% at 50.09% 49.91%, #FFCD4D 0%, rgba(54, 54, 55, 0.00) 100%, #363636 100%)",
                     opacity: 0.1,
                   }}
                 ></div>
                 <Image
-                  src="/images/lying_bear.png"
+                  src="/images/lying-bear.svg"
                   alt="lying bear"
                   width={600}
                   height={300}
@@ -758,7 +756,8 @@ export default function HomePage() {
                 Co-Listing Advantage
               </h2>
               <p className="text-lg text-white text-center">
-                Curated and co-listed on both Honeypot and Fjord for maximum exposure
+                Curated and co-listed on both Honeypot and Fjord for maximum
+                exposure
               </p>
             </div>
           </div>
