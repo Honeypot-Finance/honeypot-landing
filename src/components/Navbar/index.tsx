@@ -92,9 +92,9 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
         height="6.75rem"
         isMenuOpen={isMenuOpen}
         onMenuOpenChange={setIsMenuOpen}
-        classNames={{ 
+        classNames={{
           wrapper: "px-0",
-          toggle: "border-none focus:outline-none"
+          toggle: "border-none focus:outline-none",
         }}
         className="bg-[#FFCD4D] rounded-xl flex flex-col py-2 px-4 lg:py-4 lg:px-3 border-[1.5px] border-[#010101] shadow-[2px_4px_0px_0px_#FFF]"
       >
@@ -128,18 +128,18 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
           sr-only=""
           icon={
             isMenuOpen ? (
-              <svg 
-                width="24" 
-                height="24" 
-                viewBox="0 0 24 24" 
-                fill="none" 
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
                 stroke="currentColor"
                 className="text-black"
               >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth={2} 
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
                   d="M6 18L18 6M6 6l12 12"
                 />
               </svg>
@@ -159,14 +159,24 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
 
         <NavbarMenu
           className={cn(
-            "lg:hidden bg-black/95 backdrop-blur-md",
+            "lg:hidden pt-24 bg-black/95 backdrop-blur-md",
             "will-change-transform transform-gpu transition-all duration-200 ease-out",
             isMenuOpen
               ? "opacity-100 translate-y-0"
               : "opacity-0 -translate-y-2"
           )}
         >
-          {listToNavbarItem(menuList)}
+          <div
+            className={cn(
+              "flex flex-col gap-2",
+              "will-change-transform transform-gpu transition-all duration-150 ease-out",
+              isMenuOpen
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-2"
+            )}
+          >
+            {listToNavbarItem(menuList)}
+          </div>
         </NavbarMenu>
 
         <Button
