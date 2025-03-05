@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import { appPathsList } from "@/components/Navbar/allAppPath";
-import { partners } from "@/data/partners";
+import { partners, investors } from "@/data/partners";
 import { useEffect, useState } from "react";
 import SectionContainer from "@/components/atoms/SectionContainer/SectionContainer";
 import HomePageBanner from "@/components/HomePage/HomePageBanner/HomePageBanner";
@@ -680,7 +680,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      <SectionContainer bgColor="transparent">
+      {/* <SectionContainer bgColor="transparent">
         <Link href={"https://forms.gle/E59zJqViUvSZbF2E6"} target="_blank">
           <Image
             src={ctaPlaceholder}
@@ -691,16 +691,16 @@ export default function HomePage() {
             sizes="100vw"
           />
         </Link>
-      </SectionContainer>
+      </SectionContainer> */}
 
       {/* FTO Section */}
-      <div className="scroll-animate flex flex-col items-center gap-16 w-full max-w-[1200px] mx-4 sm:mx-auto">
-        <h1 className="text-base sm:text-2xl md:text-3xl lg:text-5xl text-white text-center">
+      <div className="scroll-animate flex flex-col items-center gap-8 sm:gap-16 w-full max-w-[1200px] mx-4 sm:mx-auto">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white text-center">
           FTO (Fair Token Offering)
         </h1>
 
-        <div className="flex flex-col lg:flex-row justify-between w-full gap-8">
-          {/* 第一个卡片 - Instant Deep liquidity */}
+        <div className="flex flex-col lg:flex-row justify-between w-full gap-4 sm:gap-8">
+          {/* First Card - Instant Deep liquidity */}
           <div
             className="scroll-animate flex-1 rounded-[32px] p-4 sm:p-10"
             style={{
@@ -709,7 +709,7 @@ export default function HomePage() {
             }}
           >
             <div className="relative bg-[#202020] rounded-2xl p-4 sm:p-8 h-full flex flex-col items-center">
-              <div className="w-[200px] h-40 flex justify-center items-center">
+              <div className="w-[160px] sm:w-[200px] h-32 sm:h-40 flex justify-center items-center">
                 <Image
                   src="/images/liquidity.png"
                   alt="Deep Liquidity"
@@ -718,16 +718,16 @@ export default function HomePage() {
                   className="object-contain"
                 />
               </div>
-              <h2 className="text-xl text-white mb-3 sm:mb-4">
+              <h2 className="text-base sm:text-xl text-white mb-2 sm:mb-4">
                 Instant Deep liquidity
               </h2>
-              <p className="text-lg text-white text-center">
+              <p className="text-sm sm:text-lg text-white text-center">
                 Start trading immediately with 100% liquidity
               </p>
             </div>
           </div>
 
-          {/* 第二个卡片 - Earn from Day One */}
+          {/* Second Card - Earn from Day One */}
           <div
             className="scroll-animate flex-1 rounded-[32px] p-4 sm:p-10"
             style={{
@@ -736,7 +736,7 @@ export default function HomePage() {
             }}
           >
             <div className="relative bg-[#202020] rounded-2xl p-4 sm:p-8 h-full flex flex-col items-center">
-              <div className="w-[200px] h-40 flex justify-center items-center">
+              <div className="w-[160px] sm:w-[200px] h-32 sm:h-40 flex justify-center items-center">
                 <Image
                   src="/images/money.png"
                   alt="Money"
@@ -745,16 +745,16 @@ export default function HomePage() {
                   className="object-contain"
                 />
               </div>
-              <h2 className="text-xl text-white mb-3 sm:mb-4">
+              <h2 className="text-base sm:text-xl text-white mb-2 sm:mb-4">
                 Earn from Day One
               </h2>
-              <p className="text-lg text-white text-center">
+              <p className="text-sm sm:text-lg text-white text-center">
                 Passive income through transaction fees and partner yields
               </p>
             </div>
           </div>
 
-          {/* 第三个卡片 - Auto-Compunding Rewards */}
+          {/* Third Card - Auto-Compunding Rewards */}
           <div
             className="scroll-animate flex-1 rounded-[32px] p-4 sm:p-10"
             style={{
@@ -763,19 +763,19 @@ export default function HomePage() {
             }}
           >
             <div className="relative bg-[#202020] rounded-2xl p-4 sm:p-8 h-full flex flex-col items-center">
-              <div className="w-[200px] h-40 flex justify-center items-center">
+              <div className="w-[160px] sm:w-[200px] h-32 sm:h-40 flex justify-center items-center">
                 <Image
                   src="/images/reward.png"
                   alt="Reward"
-                  width={160}
-                  height={160}
+                  width={200}
+                  height={200}
                   className="object-contain"
                 />
               </div>
-              <h2 className="text-xl text-center text-white mb-3 sm:mb-4">
+              <h2 className="text-base sm:text-xl text-white mb-2 sm:mb-4">
                 Auto-Compunding Rewards
               </h2>
-              <p className="text-base sm:text-lg text-white text-center">
+              <p className="text-sm sm:text-lg text-white text-center">
                 Continuous rewards for token holders
               </p>
             </div>
@@ -784,12 +784,12 @@ export default function HomePage() {
       </div>
 
       {/* Co-Launch Program Section */}
-      <div className="scroll-animate flex flex-col items-center gap-16 w-full max-w-[1200px] mx-4 sm:mx-auto">
-        <h1 className="text-base sm:text-2xl md:text-3xl lg:text-5xl text-white text-center">
+      <div className="scroll-animate flex flex-col items-center gap-8 sm:gap-16 w-full max-w-[1200px] mx-4 sm:mx-auto">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white text-center">
           Co-Launch Program
         </h1>
 
-        <div className="flex flex-col lg:flex-row justify-between w-full gap-8">
+        <div className="flex flex-col lg:flex-row justify-between w-full gap-4 sm:gap-8">
           {/* Card 1 - Co-Launch with Fjord Foundry */}
           <div
             className="scroll-animate flex-1 rounded-[32px] p-4 sm:p-10"
@@ -799,7 +799,7 @@ export default function HomePage() {
             }}
           >
             <div className="relative bg-[#202020] rounded-2xl p-4 sm:p-8 h-full flex flex-col items-center">
-              <div className="w-[200px] h-40 flex justify-center items-center">
+              <div className="w-[160px] sm:w-[200px] h-32 sm:h-40 flex justify-center items-center">
                 <Image
                   src="/images/rocket.png"
                   alt="Rocket"
@@ -808,10 +808,10 @@ export default function HomePage() {
                   className="object-contain"
                 />
               </div>
-              <h2 className="text-xl text-white mb-3 sm:mb-4 text-center">
+              <h2 className="text-lg sm:text-xl text-white mb-2 sm:mb-4 text-center">
                 Co-Launch with Fjord Foundry
               </h2>
-              <p className="text-lg text-white text-center">
+              <p className="text-base sm:text-lg text-white text-center">
                 Multiple sale types (LBP or Fixed Price Model)
               </p>
             </div>
@@ -826,7 +826,7 @@ export default function HomePage() {
             }}
           >
             <div className="relative bg-[#202020] rounded-2xl p-4 sm:p-8 h-full flex flex-col items-center">
-              <div className="w-[200px] h-40 flex justify-center items-center">
+              <div className="w-[160px] sm:w-[200px] h-32 sm:h-40 flex justify-center items-center">
                 <Image
                   src="/images/note.png"
                   alt="Listing"
@@ -835,12 +835,11 @@ export default function HomePage() {
                   className="object-contain"
                 />
               </div>
-              <h2 className="text-xl text-white mb-3 sm:mb-4 text-center">
+              <h2 className="text-lg sm:text-xl text-white mb-2 sm:mb-4 text-center">
                 Co-Listing Advantage
               </h2>
-              <p className="text-lg text-white text-center">
-                Curated and co-listed on both Honeypot and Fjord for maximum
-                exposure
+              <p className="text-base sm:text-lg text-white text-center">
+                Curated and co-listed on both Honeypot and Fjord for maximum exposure
               </p>
             </div>
           </div>
@@ -854,7 +853,7 @@ export default function HomePage() {
             }}
           >
             <div className="relative bg-[#202020] rounded-2xl p-4 sm:p-8 h-full flex flex-col items-center">
-              <div className="w-[200px] h-40 flex justify-center items-center">
+              <div className="w-[160px] sm:w-[200px] h-32 sm:h-40 flex justify-center items-center">
                 <Image
                   src="/images/quantum-hub.png"
                   alt="Smart Contract"
@@ -863,7 +862,7 @@ export default function HomePage() {
                   className="object-contain"
                 />
               </div>
-              <h2 className="text-xl text-center text-white mb-3 sm:mb-4">
+              <h2 className="text-lg sm:text-xl text-white mb-2 sm:mb-4 text-center">
                 One Smart Contract, Two Frontends, Two Huge Communities
               </h2>
               <p className="text-base sm:text-lg text-white text-center">
@@ -876,15 +875,12 @@ export default function HomePage() {
 
       {/* Success Stories Section */}
       <div className="scroll-animate w-full max-w-[1200px] mx-4 sm:mx-auto flex flex-col items-center">
-        {/* Title */}
-        <h1 className="text-2xl sm:text-3xl lg:text-5xl text-white text-center mb-16">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white text-center mb-8 sm:mb-16">
           Success Stories
         </h1>
 
-        {/* Card */}
         <div className="scroll-animate bg-[#FFCD4D] rounded-[24px] sm:rounded-[32px] relative w-full overflow-hidden bg-[url('/images/honey-border.png')] bg-repeat-x bg-[length:auto_40px] bg-[position:-30px_top] border-2 border-white">
           <div className="relative">
-            {/* 左侧内容 */}
             <div className="p-8 sm:p-12 lg:max-w-[60%]">
               <div className="flex flex-col gap-6 sm:gap-8">
                 <div className="flex items-center">
@@ -941,7 +937,6 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* 右侧图片 - 贴右下角 */}
             <div className="absolute bottom-0 right-0 hidden lg:block">
               <Image
                 src="/images/cool-bear.png"
@@ -953,7 +948,6 @@ export default function HomePage() {
               />
             </div>
 
-            {/* 移动端图片 - 居中显示 */}
             <div className="flex justify-center lg:hidden">
               <Image
                 src="/images/cool-bear.png"
@@ -1109,20 +1103,8 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Explore more 按钮 */}
-      {/* <button className="px-8 sm:px-12 py-3 sm:py-4 border border-white bg-[#FFCD4D] text-[#202020] rounded-2xl hover:bg-opacity-90 transition-all font-bold text-base sm:text-xl">
-        Explore more
-      </button> */}
-
-      <Link href={"/partners"}>
-        <h2 className="text-center text-2xl sm:text-4xl font-bold m-5">
-          Backed By -&gt;
-        </h2>
-      </Link>
-      <InvestorsScroll />
-
-      {/* Partners 部分 */}
-      <div className="flex flex-col items-center w-full px-4 sm:px-0">
+      {/* Backed By Section */}
+      <div className="scroll-animate flex flex-col items-center w-full px-4 sm:px-0">
         <div className="relative z-10 mb-16 flex flex-col items-center">
           <Image
             src="/images/experiment-bear.png"
@@ -1134,7 +1116,76 @@ export default function HomePage() {
           />
 
           <div className="bg-[#FFCD4D] rounded-xl px-8 sm:px-12 py-3 sm:py-4 border-4 border-white shadow-[8px_8px_0px_0px_#000]">
-            <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-[48px] text-[#202020] font-bold">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[48px] text-[#202020] font-bold">
+              Backed By
+            </h2>
+          </div>
+        </div>
+
+        <div className="relative w-full">
+          <div className="hidden lg:block absolute left-0 top-1/2 transform -translate-y-1/2">
+            <Image
+              src="/images/honey_capsule_left.png"
+              alt="Honey Capsule Left"
+              width={160}
+              height={160}
+              className="object-contain floating"
+              data-speed="0.5"
+              sizes="(max-width: 768px) 120px, 160px"
+            />
+          </div>
+
+          <div className="hidden lg:block absolute right-0 top-1/2 transform -translate-y-1/2">
+            <Image
+              src="/images/honey_capsule_right.png"
+              alt="Honey Capsule Right"
+              width={160}
+              height={160}
+              className="object-contain floating"
+              data-speed="0.5"
+              sizes="(max-width: 768px) 120px, 160px"
+            />
+          </div>
+
+          <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-7 gap-2 sm:gap-4 md:gap-8 w-full max-w-[1200px] mx-auto">
+            {investors.map((investor, index) => (
+              <a
+                key={index}
+                href={investor.partnerLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="scroll-animate bg-[#202020] rounded-xl border-2 border-white hover:scale-105 transition-transform flex items-center justify-center w-[70px] h-[70px] sm:w-[120px] sm:h-[120px] md:w-[140px] md:h-[140px] lg:w-[160px] lg:h-[160px] overflow-hidden"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="w-[50px] h-[50px] sm:w-[90px] sm:h-[90px] md:w-[110px] md:h-[110px] lg:w-[130px] lg:h-[130px] relative rounded-lg">
+                  <Image
+                    src={investor.partnerImage}
+                    alt={investor.name || 'Investor'}
+                    fill
+                    className="object-contain rounded-lg"
+                    sizes="(max-width: 640px) 50px, (max-width: 768px) 90px, (max-width: 1024px) 110px, 130px"
+                  />
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Partners Section */}
+      <div className="scroll-animate flex flex-col items-center w-full px-4 sm:px-0">
+        <div className="relative z-10 mb-16 flex flex-col items-center">
+          <Image
+            src="/images/experiment-bear.png"
+            alt="Experiment Bear"
+            width={180}
+            height={180}
+            className="object-contain"
+            sizes="(max-width: 640px) 120px, (max-width: 768px) 150px, 180px"
+          />
+
+          <div className="bg-[#FFCD4D] rounded-xl px-8 sm:px-12 py-3 sm:py-4 border-4 border-white shadow-[8px_8px_0px_0px_#000]">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[48px] text-[#202020] font-bold">
               Our Partners
             </h2>
           </div>
@@ -1147,7 +1198,8 @@ export default function HomePage() {
               alt="Honey Capsule Left"
               width={160}
               height={160}
-              className="object-contain"
+              className="object-contain floating"
+              data-speed="0.5"
               sizes="(max-width: 768px) 120px, 160px"
             />
           </div>
@@ -1158,7 +1210,8 @@ export default function HomePage() {
               alt="Honey Capsule Right"
               width={160}
               height={160}
-              className="object-contain"
+              className="object-contain floating"
+              data-speed="0.5"
               sizes="(max-width: 768px) 120px, 160px"
             />
           </div>
@@ -1170,7 +1223,8 @@ export default function HomePage() {
                 href={partner.partnerLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#202020] rounded-xl border-2 border-white hover:scale-105 transition-transform flex items-center justify-center w-[70px] h-[70px] sm:w-[120px] sm:h-[120px] md:w-[140px] md:h-[140px] lg:w-[160px] lg:h-[160px] overflow-hidden"
+                className="scroll-animate bg-[#202020] rounded-xl border-2 border-white hover:scale-105 transition-transform flex items-center justify-center w-[70px] h-[70px] sm:w-[120px] sm:h-[120px] md:w-[140px] md:h-[140px] lg:w-[160px] lg:h-[160px] overflow-hidden"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="w-[50px] h-[50px] sm:w-[90px] sm:h-[90px] md:w-[110px] md:h-[110px] lg:w-[130px] lg:h-[130px] relative rounded-lg">
                   <Image
@@ -1328,7 +1382,7 @@ export default function HomePage() {
                     className="w-full h-full"
                   >
                     <path
-                      d="M16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0ZM20.8667 9H23.4L17.8667 15.4L24.3333 24H19.2L15.1333 18.6667L10.4667 24H7.93333L13.8667 17.2667L7.66667 9H12.9333L16.6 13.9333L20.8667 9ZM19.9333 22.4667H21.3333L12.1333 10.4667H10.6L19.9333 22.4667Z"
+                      d="M16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0ZM20.8667 9H23.4L17.8667 15.4L24.3333 24H19.2L15.1333 18.6667L10.4667 24H7.93333L13.8667 17.2667L16.6 13.9333L20.8667 9ZM19.9333 22.4667H21.3333L12.1333 10.4667H10.6L19.9333 22.4667Z"
                       fill="currentColor"
                     />
                   </svg>
