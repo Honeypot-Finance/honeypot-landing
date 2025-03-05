@@ -237,7 +237,7 @@ export default function HomePage() {
         <HomePageBanner />
       </div> */}
 
-      <div className="flex flex-col items-center w-full relative drop-animate drop-delay-2 mt-[12rem]">
+      <div className="flex flex-col items-center w-full relative drop-animate drop-delay-2 mt-[10rem] sm:mt-[12rem]">
         <div
           className="scroll-animate absolute left-0 -top-[12rem] parallax opacity-0 hidden lg:block"
           data-speed="0.3"
