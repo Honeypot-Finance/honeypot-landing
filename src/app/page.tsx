@@ -233,13 +233,13 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="w-[calc(100%+2rem)] sm:w-full">
+      {/* <div className="w-[calc(100%+2rem)] sm:w-full">
         <HomePageBanner />
-      </div>
+      </div> */}
 
-      <div className="flex flex-col items-center w-full relative drop-animate drop-delay-2">
+      <div className="flex flex-col items-center w-full relative drop-animate drop-delay-2 mt-[12rem]">
         <div
-          className="scroll-animate absolute left-0 -top-32 parallax opacity-0 hidden lg:block"
+          className="scroll-animate absolute left-0 -top-[12rem] parallax opacity-0 hidden lg:block"
           data-speed="0.3"
           style={{
             transform: "translateX(-40px)",
@@ -399,7 +399,7 @@ export default function HomePage() {
                 animation: "slideInFromLeft 1s ease forwards",
               }}
             >
-              <div className="w-[400px] relative">
+              <div className="relative">
                 <div
                   className="absolute inset-0"
                   style={{
@@ -411,8 +411,9 @@ export default function HomePage() {
                   alt="lying bear"
                   width={600}
                   height={300}
-                  className="w-[200px] sm:w-[300px] md:w-[400px] lg:w-[600px] mr-0 sm:mr-20 md:mr-40"
-                  sizes="(max-width: 640px) 200px, (max-width: 768px) 300px, (max-width: 1024px) 400px, 600px"
+                  className="w-[120px] sm:w-[240px] md:w-[400px] lg:w-[600px] mx-auto sm:mr-20 md:mr-40"
+                  sizes="(max-width: 640px) 120px, (max-width: 768px) 240px, (max-width: 1024px) 400px, 600px"
+                  priority
                 />
               </div>
             </div>
@@ -430,27 +431,14 @@ export default function HomePage() {
                 alt="border"
                 width={1512}
                 height={182}
-                className="w-full object-cover -mt-6 sm:-mt-10"
-                sizes="100vw"
+                className="w-full object-cover -mt-4 sm:-mt-6 md:-mt-8 lg:-mt-10"
+                sizes="(max-width: 640px) 360px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1512px"
                 priority
               />
             </div>
           </div>
         </div>
       </div>
-
-      <SectionContainer bgColor="transparent">
-        <Link href={"https://forms.gle/E59zJqViUvSZbF2E6"} target="_blank">
-          <Image
-            src={ctaPlaceholder}
-            alt="cta"
-            width={500}
-            height={500}
-            className="w-full m-auto"
-            sizes="100vw"
-          />
-        </Link>
-      </SectionContainer>
 
       {/* Transform memecoins Section */}
       <div className="scroll-animate relative px-4 sm:px-12 md:px-20 pt-12 pb-16 sm:py-12 md:py-20 bg-[#FFCD4D] rounded-[24px] sm:rounded-[32px] w-full max-w-[1200px] mx-4 sm:mx-auto bg-[url('/images/honey-border.png'),url('/images/gift-mobile.png')] sm:bg-[url('/images/honey-border.png'),url('/images/gift.png')] bg-[length:auto_40px,240px_auto] sm:bg-[length:auto_40px,400px_auto] [background-repeat:repeat-x,no-repeat] bg-[position:-30px_top,center_bottom] sm:bg-[position:-30px_top,right_bottom]">
@@ -691,6 +679,19 @@ export default function HomePage() {
           />
         </div>
       </div>
+
+      <SectionContainer bgColor="transparent">
+        <Link href={"https://forms.gle/E59zJqViUvSZbF2E6"} target="_blank">
+          <Image
+            src={ctaPlaceholder}
+            alt="cta"
+            width={500}
+            height={500}
+            className="w-full m-auto"
+            sizes="100vw"
+          />
+        </Link>
+      </SectionContainer>
 
       {/* FTO Section */}
       <div className="scroll-animate flex flex-col items-center gap-16 w-full max-w-[1200px] mx-4 sm:mx-auto">
@@ -987,7 +988,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="w-full bg-[#FFCD4D] rounded-[32px] relative bg-[url('/images/honey-border.png')] bg-repeat-x bg-[length:auto_40px] bg-[position:-30px_top]">
+        <div className="w-full bg-[#FFCD4D] rounded-[32px] relative bg-[url('/images/honey-border.png')] bg-repeat-x bg-[length:auto_40px] bg-[position:-30px_top] sm:pb-8">
           <div className="flex flex-col lg:flex-row justify-between">
             <div className="px-4 pt-12 sm:px-8 md:px-12 space-y-4 sm:space-y-6 flex items-center">
               <div className="flex flex-col gap-4 sm:gap-6">
@@ -1067,21 +1068,9 @@ export default function HomePage() {
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
                     <button
-                      className="w-full px-8 sm:px-12 md:px-16 py-2 sm:py-3 md:py-4 bg-black text-white rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm sm:text-base md:text-lg border border-white z-10"
-                      onClick={() => {
-                        window.open(
-                          "https://www.okx.com/web3/marketplace/nft/collection/arbi/honeygenesis-1",
-                          "_blank"
-                        );
-                      }}
-                    >
-                      Buy on OKX
-                    </button>
-
-                    <button
-                      className="w-full px-8 sm:px-12 md:px-16 py-2 sm:py-3 md:py-4 bg-black text-white rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm sm:text-base md:text-lg border border-white z-10"
+                      className="w-full px-8 sm:px-4 py-2 sm:py-3 md:py-4 bg-black text-white rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm sm:text-base md:text-lg border border-white z-10"
                       onClick={() => {
                         window.open(
                           "https://marketplace.kingdomly.app/collection/berachain/0xc3c30fba6387cff83474e684380930dfc64554ef",
@@ -1093,7 +1082,7 @@ export default function HomePage() {
                     </button>
 
                     <button
-                      className="w-full px-8 sm:px-12 md:px-16 py-2 sm:py-3 md:py-4 bg-black text-white rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm sm:text-base md:text-lg border border-white z-10"
+                      className="w-full px-8 sm:px-4 py-2 sm:py-3 md:py-4 bg-black text-white rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm sm:text-base md:text-lg border border-white z-10"
                       onClick={() => {
                         window.open(
                           "https://magiceden.io/collections/berachain/0xc3c30fba6387cff83474e684380930dfc64554ef",
@@ -1105,7 +1094,7 @@ export default function HomePage() {
                     </button>
 
                     <button
-                      className="w-full px-8 sm:px-12 md:px-16 py-2 sm:py-3 md:py-4 bg-black text-white rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm sm:text-base md:text-lg border border-white z-10"
+                      className="w-full px-8 sm:px-4 py-2 sm:py-3 md:py-4 bg-black text-white rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm sm:text-base md:text-lg border border-white z-10"
                       onClick={() => {
                         window.open("https://bridge.kingdomly.app/", "_blank");
                       }}
@@ -1126,7 +1115,9 @@ export default function HomePage() {
       </button> */}
 
       <Link href={"/partners"}>
-        <h2 className="text-center text-2xl sm:text-4xl font-bold m-5">Backed By -&gt;</h2>
+        <h2 className="text-center text-2xl sm:text-4xl font-bold m-5">
+          Backed By -&gt;
+        </h2>
       </Link>
       <InvestorsScroll />
 

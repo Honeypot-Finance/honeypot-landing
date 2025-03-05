@@ -212,7 +212,14 @@ export default function HomePageBanner() {
           />
         </motion.div>
         <h1 className={styles["banner-title"]}>
-          Welcome to the Premier Proof of Liquidity Accelerator on Berachain
+          Fueling the next-gen PoL launches on{" "}
+          {/* FIEME: update to a tag */}
+          <span
+            className="cursor-pointer underline underline-[#FFCD4D]"
+            onClick={() => window.open("https://x.com/Berachain", "_blank")}
+          >
+            @Berachain
+          </span>
         </h1>
       </div>
       <motion.div
