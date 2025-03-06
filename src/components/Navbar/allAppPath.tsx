@@ -33,20 +33,20 @@ export type flatMenu = {
 
 export const appPathsList: Menu[] = [
   {
-    title: "Pot-wasabee Dex",
-    path: "https://wasabee.honeypotfinance.xyz/swap",
-  },
-  {
     title: "Pot2pump",
     path: "https://pot2pump.honeypotfinance.xyz/",
   },
   {
-    title: "Docs",
-    path: "https://docs.honeypotfinance.xyz/",
+    title: "Pot-wasabee (Dex)",
+    path: "https://wasabee.honeypotfinance.xyz/swap",
   },
   {
     title: "Incubation",
     path: "https://docs.google.com/forms/d/e/1FAIpQLSeOS9Ws_jlUtWl79OFQHnyUlgKHOReK826sppzj8lTmEQCjCQ/viewform",
+  },
+  {
+    title: "Docs",
+    path: "https://docs.honeypotfinance.xyz/",
   },
   {
     title: "Launch App",

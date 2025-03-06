@@ -80,12 +80,12 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
         isMenuOpen={isMenuOpen}
         onMenuOpenChange={setIsMenuOpen}
         classNames={{
-          wrapper: "px-0",
+          wrapper: "px-0 max-w-none",
           toggle: "border-none focus:outline-none",
         }}
         className="bg-[#FFCD4D] rounded-xl flex flex-col py-2 px-4 lg:py-4 lg:px-3 shadow-[2px_4px_0px_0px_#FFF]"
       >
-        <div className="sm:flex hidden gap-1 lg:gap-2 lg:py-1 flex-wrap max-w-[280px] lg:max-w-none lg:flex-nowrap">
+        <div className="sm:flex hidden gap-1 lg:gap-2 lg:py-1 lg:max-w-none flex-nowrap">
           <Image
             src="/images/honeypot-logo.svg"
             alt="honeypot-logo"
@@ -96,7 +96,7 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
             <Button
               key={menu.title}
               className={cn(
-                "py-2 font-bold bg-transparent text-sm lg:text-base text-black hover:bg-[#202020] hover:text-white rounded-md",
+                "py-2 font-bold bg-transparent text-sm lg:text-base text-black hover:bg-[#202020] hover:text-white rounded-md text-nowrap",
                 menu.title === "Launch App" && "hidden",
                 menu.routePath === pathname ? "bg-[#202020] text-white" : ""
               )}
@@ -172,7 +172,7 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
             "rounded-[7.785px] border border-white bg-[#010101]",
             "shadow-[2px_2px_8px_0px_rgba(22,18,8,0.50)]",
             "hover:bg-[#202020]",
-            "px-10 py-2"
+            "px-10 py-2 text-nowrap"
           )}
           onPress={() => {
             router.push("https://pot2pump.honeypotfinance.xyz/");
