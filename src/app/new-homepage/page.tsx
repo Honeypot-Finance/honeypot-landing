@@ -440,7 +440,10 @@ export default function HomePage() {
       </div>
 
       <SectionContainer bgColor="transparent">
-        <Link href={"https://forms.gle/E59zJqViUvSZbF2E6"} target="_blank">
+        <Link
+          href={"https://forms.gle/E59zJqViUvSZbF2E6"}
+          target="_blank"
+        >
           <Image
             src={ctaPlaceholder}
             alt="cta"
@@ -1126,7 +1129,9 @@ export default function HomePage() {
       </button> */}
 
       <Link href={"/partners"}>
-        <h2 className="text-center text-2xl sm:text-4xl font-bold m-5">Backed By -&gt;</h2>
+        <h2 className="text-center text-2xl sm:text-4xl font-bold m-5">
+          Backed By -&gt;
+        </h2>
       </Link>
       <InvestorsScroll />
 
@@ -1297,7 +1302,12 @@ export default function HomePage() {
                     fill="none"
                     className="w-full h-full"
                   >
-                    <circle cx="16" cy="16" r="16" fill="currentColor" />
+                    <circle
+                      cx="16"
+                      cy="16"
+                      r="16"
+                      fill="currentColor"
+                    />
                     <path
                       d="M24.5 10C23.2 9.4 21.8 9 20.3 8.8C20.2 9 20 9.3 19.9 9.6C18.3 9.3 16.7 9.3 15.1 9.6C15 9.3 14.8 9 14.7 8.8C13.2 9 11.8 9.4 10.5 10C8.3 13.2 7.7 16.3 8.1 19.3C9.8 20.5 11.4 21.2 13 21.7C13.4 21.2 13.7 20.6 14 20C13.4 19.8 12.8 19.5 12.3 19.2C12.4 19.1 12.5 19 12.6 18.9C15.8 20.3 19.2 20.3 22.4 18.9C22.5 19 22.6 19.1 22.7 19.2C22.2 19.5 21.6 19.8 21 20C21.3 20.6 21.6 21.2 22 21.7C23.6 21.2 25.2 20.5 26.9 19.3C27.3 16.3 26.4 13.2 24.5 10ZM13.2 17.2C12.3 17.2 11.5 16.3 11.5 15.2C11.5 14.1 12.2 13.2 13.2 13.2C14.2 13.2 14.9 14.1 14.9 15.2C14.9 16.3 14.2 17.2 13.2 17.2ZM19.8 17.2C18.9 17.2 18.1 16.3 18.1 15.2C18.1 14.1 18.8 13.2 19.8 13.2C20.8 13.2 21.5 14.1 21.5 15.2C21.5 16.3 20.8 17.2 19.8 17.2Z"
                       fill="#FFCD4D"

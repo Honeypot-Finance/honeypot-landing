@@ -10,6 +10,7 @@ import HomePageBanner from "@/components/HomePage/HomePageBanner/HomePageBanner"
 import Link from "next/link";
 import ctaPlaceholder from "@/assets/ctaPlaceholder.svg";
 import { InvestorsScroll } from "@/components/layout/PartnersScroll/PartnersScroll";
+import bitgetwalletIcon from "@/assets/partners/bitget_global_logo.jpeg";
 // import beraLabTester from "@/assets/beraLabTester.png";
 
 // CSS 样式字符串
@@ -256,6 +257,41 @@ export default function HomePage() {
           />
         </div>
 
+        <div className="mb-10 relative px-4 sm:px-12 md:px-20 py-10 sm:py-8 sm:leading-loose bg-[#FFCD4D] rounded-[24px] sm:rounded-[32px] max-w-[900px] mx-4 sm:mx-auto border-[2px] sm:border-[3px] border-white bg-[url('/images/honey-border.png')] bg-repeat-x bg-[length:auto_40px] bg-[position:-30px_top] ">
+          <div className="flex flex-col items-center">
+            <h1 className="text-xl text-center text-black lg:!leading-[3.5rem] mb-2 sm:mb-5 flex items-center">
+              Trade and claim your share of the 1,600 BERA reward pool!
+            </h1>
+            <div
+              className="flex flex-col sm:flex-row justify-center gap-4"
+              style={{
+                opacity: 0,
+                animation: "fadeInUp 0.6s ease forwards",
+                animationDelay: "1s",
+              }}
+            >
+              <button
+                onClick={() =>
+                  window.open(
+                    "https://wasabee.honeypotfinance.xyz/bitget-campaign",
+                    "_blank"
+                  )
+                }
+                className="bg-black flex items-center text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-opacity-90 transition-all font-bold text-xs sm:text-sm"
+              >
+                Join Honeypot X Bitget Campaign{" "}
+                <Image
+                  src={bitgetwalletIcon}
+                  alt="bitgetwallet"
+                  width={20}
+                  height={20}
+                  className="rounded-full ml-2"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+
         <div className="scroll-animate scale-on-scroll relative px-4 sm:px-12 md:px-20 py-10 sm:py-8 md:py-20 sm:leading-loose bg-[#FFCD4D] rounded-[24px] sm:rounded-[32px] max-w-[900px] mx-4 sm:mx-auto border-[2px] sm:border-[3px] border-white bg-[url('/images/honey-border.png')] bg-repeat-x bg-[length:auto_40px] bg-[position:-30px_top] opacity-0">
           <div className="hidden sm:block absolute left-4 top-8 w-[18px] h-[18px] bg-black rounded-full" />
           <div className="hidden sm:block absolute right-4 top-8 w-[18px] h-[18px] bg-black rounded-full" />
@@ -336,7 +372,7 @@ export default function HomePage() {
         </div>
 
         <div>
-          <div className="scale-x-[-1] absolute left-48 top-80 hidden lg:block">
+          <div className="scale-x-[-1] absolute left-48 top-60 hidden lg:block">
             <Image
               src="/images/coin.png"
               alt="coin"
@@ -839,7 +875,8 @@ export default function HomePage() {
                 Co-Listing Advantage
               </h2>
               <p className="text-base sm:text-lg text-white text-center">
-                Curated and co-listed on both Honeypot and Fjord for maximum exposure
+                Curated and co-listed on both Honeypot and Fjord for maximum
+                exposure
               </p>
             </div>
           </div>
@@ -1160,7 +1197,7 @@ export default function HomePage() {
                 <div className="w-[50px] h-[50px] sm:w-[90px] sm:h-[90px] md:w-[110px] md:h-[110px] lg:w-[130px] lg:h-[130px] relative rounded-lg">
                   <Image
                     src={investor.partnerImage}
-                    alt={investor.name || 'Investor'}
+                    alt={investor.name || "Investor"}
                     fill
                     className="object-contain rounded-lg"
                     sizes="(max-width: 640px) 50px, (max-width: 768px) 90px, (max-width: 1024px) 110px, 130px"
@@ -1342,7 +1379,12 @@ export default function HomePage() {
                     fill="none"
                     className="w-full h-full"
                   >
-                    <circle cx="16" cy="16" r="16" fill="currentColor" />
+                    <circle
+                      cx="16"
+                      cy="16"
+                      r="16"
+                      fill="currentColor"
+                    />
                     <path
                       d="M24.5 10C23.2 9.4 21.8 9 20.3 8.8C20.2 9 20 9.3 19.9 9.6C18.3 9.3 16.7 9.3 15.1 9.6C15 9.3 14.8 9 14.7 8.8C13.2 9 11.8 9.4 10.5 10C8.3 13.2 7.7 16.3 8.1 19.3C9.8 20.5 11.4 21.2 13 21.7C13.4 21.2 13.7 20.6 14 20C13.4 19.8 12.8 19.5 12.3 19.2C12.4 19.1 12.5 19 12.6 18.9C15.8 20.3 19.2 20.3 22.4 18.9C22.5 19 22.6 19.1 22.7 19.2C22.2 19.5 21.6 19.8 21 20C21.3 20.6 21.6 21.2 22 21.7C23.6 21.2 25.2 20.5 26.9 19.3C27.3 16.3 26.4 13.2 24.5 10ZM13.2 17.2C12.3 17.2 11.5 16.3 11.5 15.2C11.5 14.1 12.2 13.2 13.2 13.2C14.2 13.2 14.9 14.1 14.9 15.2C14.9 16.3 14.2 17.2 13.2 17.2ZM19.8 17.2C18.9 17.2 18.1 16.3 18.1 15.2C18.1 14.1 18.8 13.2 19.8 13.2C20.8 13.2 21.5 14.1 21.5 15.2C21.5 16.3 20.8 17.2 19.8 17.2Z"
                       fill="#FFCD4D"
