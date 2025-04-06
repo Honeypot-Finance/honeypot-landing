@@ -257,7 +257,7 @@ export default function HomePage() {
           />
         </div>
 
-        <div className="mb-10 relative px-4 sm:px-12 md:px-20 py-10 sm:py-8 sm:leading-loose bg-[#FFCD4D] rounded-[24px] sm:rounded-[32px] max-w-[900px] mx-4 sm:mx-auto border-[2px] sm:border-[3px] border-white bg-[url('/images/honey-border.png')] bg-repeat-x bg-[length:auto_40px] bg-[position:-30px_top] ">
+        {/* <div className="mb-10 relative px-4 sm:px-12 md:px-20 py-10 sm:py-8 sm:leading-loose bg-[#FFCD4D] rounded-[24px] sm:rounded-[32px] max-w-[900px] mx-4 sm:mx-auto border-[2px] sm:border-[3px] border-white bg-[url('/images/honey-border.png')] bg-repeat-x bg-[length:auto_40px] bg-[position:-30px_top] ">
           <div className="flex flex-col items-center">
             <h1 className="text-xl text-center text-black lg:!leading-[3.5rem] mb-2 sm:mb-5 flex items-center">
               Trade and claim your share of the 1,600 BERA reward pool!
@@ -290,7 +290,7 @@ export default function HomePage() {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className="scroll-animate scale-on-scroll relative px-4 sm:px-12 md:px-20 py-10 sm:py-8 md:py-20 sm:leading-loose bg-[#FFCD4D] rounded-[24px] sm:rounded-[32px] max-w-[900px] mx-4 sm:mx-auto border-[2px] sm:border-[3px] border-white bg-[url('/images/honey-border.png')] bg-repeat-x bg-[length:auto_40px] bg-[position:-30px_top] opacity-0">
           <div className="hidden sm:block absolute left-4 top-8 w-[18px] h-[18px] bg-black rounded-full" />
