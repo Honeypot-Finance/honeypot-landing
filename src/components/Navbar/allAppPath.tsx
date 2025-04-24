@@ -41,6 +41,10 @@ export const appPathsList: Menu[] = [
     path: "https://wasabee.honeypotfinance.xyz/swap",
   },
   {
+    title: "Dreampad",
+    path: "https://dreampad.honeypotfinance.xyz/",
+  },
+  {
     title: "Incubation",
     path: "https://docs.google.com/forms/d/e/1FAIpQLSeOS9Ws_jlUtWl79OFQHnyUlgKHOReK826sppzj8lTmEQCjCQ/viewform",
   },
