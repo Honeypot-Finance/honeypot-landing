@@ -45,16 +45,8 @@ export const appPathsList: Menu[] = [
     path: "https://dreampad.honeypotfinance.xyz/",
   },
   {
-    title: "Incubation",
-    path: "https://docs.google.com/forms/d/e/1FAIpQLSeOS9Ws_jlUtWl79OFQHnyUlgKHOReK826sppzj8lTmEQCjCQ/viewform",
-  },
-  {
     title: "Docs",
     path: "https://docs.honeypotfinance.xyz/",
-  },
-  {
-    title: "Launch App",
-    path: "https://pot2pump.honeypotfinance.xyz/",
   },
 ];
 

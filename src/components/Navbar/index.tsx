@@ -32,7 +32,10 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
   const listToNavbarItem = (list: Menu[], isSub?: boolean): React.ReactNode => {
     return list.map((m) =>
       m.path instanceof Array ? (
-        <div key={m.title} className="w-full">
+        <div
+          key={m.title}
+          className="w-full"
+        >
           <div
             className={cn(
               "p-3 text-white text-lg font-medium w-full",
@@ -165,21 +168,6 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
             {listToNavbarItem(menuList)}
           </div>
         </NavbarMenu>
-
-        <Button
-          className={cn(
-            "font-bold text-sm lg:text-base text-white",
-            "rounded-[7.785px] border border-white bg-[#010101]",
-            "shadow-[2px_2px_8px_0px_rgba(22,18,8,0.50)]",
-            "hover:bg-[#202020]",
-            "px-10 py-2 text-nowrap"
-          )}
-          onPress={() => {
-            router.push("https://pot2pump.honeypotfinance.xyz/");
-          }}
-        >
-          Launch App
-        </Button>
       </Navbar>
     </div>
   );
