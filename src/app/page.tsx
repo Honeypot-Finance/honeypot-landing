@@ -5,6 +5,8 @@ import Navbar from "@/components/Navbar";
 import { appPathsList } from "@/components/Navbar/allAppPath";
 import { partners, investors } from "@/data/partners";
 import { useEffect, useState } from "react";
+import { BsTelegram } from "react-icons/bs";
+import { FaXTwitter, FaDiscord, FaMedium } from "react-icons/fa6";
 
 //images
 import forMemeProjectImage from "@/assets/home-page/for-meme-project.png";
@@ -1196,192 +1198,116 @@ export default function HomePage() {
       </div>
 
       {/* Footer Section */}
-      <div className=" w-[calc(100%+32px)] sm:w-full">
-        <div className="container mx-auto flex flex-col items-center gap-8 py-12 sm:py-16 px-4 sm:px-0">
-          <div className="grid grid-cols-1 sm:grid-cols-3 w-full max-w-[1200px] gap-8 mb-8">
-            {/* Learn More Section */}
-            <div className="flex flex-col gap-4">
-              <h3 className="text-base sm:text-xl font-bold text-black">
-                Learn More
-              </h3>
-              <ul className="flex flex-col gap-3">
-                <li>
-                  <a
-                    href="https://docs.honeypotfinance.xyz/"
-                    className="text-sm sm:text-base text-black hover:opacity-80 transition-opacity"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Docs
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/Honeypot-Finance"
-                    className="text-sm sm:text-base text-black hover:opacity-80 transition-opacity"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    GitHub
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://medium.com/@HoneypotFinance1"
-                    className="text-sm sm:text-base text-black hover:opacity-80 transition-opacity"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Medium
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.okx.com/web3/marketplace/nft/collection/arbi/honeygenesis-1"
-                    className="text-sm sm:text-base text-black hover:opacity-80 transition-opacity"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    HoneyGenesis
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Apps Section */}
-            <div className="flex flex-col gap-4">
-              <h3 className="text-base sm:text-xl font-bold text-black">
-                Apps
-              </h3>
-              <ul className="flex flex-col gap-3">
-                <li>
-                  <a
-                    href="https://pot2pump.honeypotfinance.xyz/"
-                    className="text-sm sm:text-base text-black hover:opacity-80 transition-opacity"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Pot2Pump
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://wasabee.honeypotfinance.xyz/"
-                    className="text-sm sm:text-base text-black hover:opacity-80 transition-opacity"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Pot-Wasabee Dex
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Social Media Section */}
-            <div className="flex flex-col gap-4">
-              <h3 className="text-base sm:text-xl font-bold text-black">
-                Stay up to date
-              </h3>
-              <div className="flex items-center gap-3 sm:gap-4">
-                <a
-                  href="https://discord.gg/honeypotfi"
-                  className="text-black hover:scale-110 transition-transform w-6 h-6 sm:w-8 sm:h-8"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <svg
-                    width="32"
-                    height="32"
-                    viewBox="0 0 32 32"
-                    fill="none"
-                    className="w-full h-full"
-                  >
-                    <circle
-                      cx="16"
-                      cy="16"
-                      r="16"
-                      fill="currentColor"
-                    />
-                    <path
-                      d="M24.5 10C23.2 9.4 21.8 9 20.3 8.8C20.2 9 20 9.3 19.9 9.6C18.3 9.3 16.7 9.3 15.1 9.6C15 9.3 14.8 9 14.7 8.8C13.2 9 11.8 9.4 10.5 10C8.3 13.2 7.7 16.3 8.1 19.3C9.8 20.5 11.4 21.2 13 21.7C13.4 21.2 13.7 20.6 14 20C13.4 19.8 12.8 19.5 12.3 19.2C12.4 19.1 12.5 19 12.6 18.9C15.8 20.3 19.2 20.3 22.4 18.9C22.5 19 22.6 19.1 22.7 19.2C22.2 19.5 21.6 19.8 21 20C21.3 20.6 21.6 21.2 22 21.7C23.6 21.2 25.2 20.5 26.9 19.3C27.3 16.3 26.4 13.2 24.5 10ZM13.2 17.2C12.3 17.2 11.5 16.3 11.5 15.2C11.5 14.1 12.2 13.2 13.2 13.2C14.2 13.2 14.9 14.1 14.9 15.2C14.9 16.3 14.2 17.2 13.2 17.2ZM19.8 17.2C18.9 17.2 18.1 16.3 18.1 15.2C18.1 14.1 18.8 13.2 19.8 13.2C20.8 13.2 21.5 14.1 21.5 15.2C21.5 16.3 20.8 17.2 19.8 17.2Z"
-                      fill="#FFCD4D"
-                    />
-                  </svg>
-                </a>
-                <a
-                  href="https://t.me/+tE1KgsD-GxJhOTg0"
-                  className="text-black hover:scale-110 transition-transform w-6 h-6 sm:w-8 sm:h-8"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <svg
-                    width="32"
-                    height="32"
-                    viewBox="0 0 32 32"
-                    fill="none"
-                    className="w-full h-full"
-                  >
-                    <path
-                      d="M16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0ZM23.8667 10.9333L21.2 23.2C21.0133 24.0533 20.5067 24.2667 19.8 23.8667L15.8 20.9333L13.8667 22.8C13.6667 23 13.5 23.1667 13.1 23.1667L13.3667 19.1333L20.8 12.4C21.1333 12.1 20.7333 11.9333 20.3 12.2333L11.0667 18.0667L7.13333 16.8667C6.3 16.6133 6.28 16.0533 7.33333 15.6533L22.6 9.86667C23.3 9.61333 23.9333 10.0267 23.8667 10.9333Z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                </a>
-                <a
-                  href="https://twitter.com/honeypotfinance"
-                  className="text-black hover:scale-110 transition-transform w-6 h-6 sm:w-8 sm:h-8"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <svg
-                    width="32"
-                    height="32"
-                    viewBox="0 0 32 32"
-                    fill="none"
-                    className="w-full h-full"
-                  >
-                    <path
-                      d="M16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0ZM20.8667 9H23.4L17.8667 15.4L24.3333 24H19.2L15.1333 18.6667L10.4667 24H7.93333L13.8667 17.2667L16.6 13.9333L20.8667 9ZM19.9333 22.4667H21.3333L12.1333 10.4667H10.6L19.9333 22.4667Z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                </a>
-                <a
-                  href="https://medium.com/@HoneypotFinance1"
-                  className="text-black hover:scale-110 transition-transform w-6 h-6 sm:w-8 sm:h-8"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <svg
-                    width="32"
-                    height="32"
-                    viewBox="0 0 32 32"
-                    fill="none"
-                    className="w-full h-full"
-                  >
-                    <path
-                      d="M16 0C7.164 0 0 7.164 0 16C0 24.836 7.164 32 16 32C24.836 32 32 24.836 32 16C32 7.164 24.836 0 16 0ZM24 9.4L22.6 10.7C22.5 10.8 22.4 11 22.4 11.2V21.4C22.4 21.6 22.5 21.8 22.6 21.9L24 23.2V23.5H17.2V23.2L18.6 21.9C18.8 21.7 18.8 21.7 18.8 21.4V12.9L14.8 23.5H14.2L9.6 12.9V20.2C9.5 20.6 9.7 21 9.9 21.3L11.8 23.2V23.5H6.8V23.2L8.7 21.3C8.9 21 9.1 20.6 9 20.2V11.9C9 11.6 8.9 11.3 8.7 11.1L7.2 9.4V9.1H12L15.9 18.2L19.4 9.1H24V9.4Z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </div>
+      <footer className="w-full bg-[#80BFE5] flex flex-col items-center pt-12 pb-0 relative">
+        <div className="flex flex-col items-center gap-6 pb-[100px]">
+          {/* Logo and Brand */}
+          <div className="flex flex-col items-center gap-2">
+            <Image
+              src="/images/honeypot-logo.svg"
+              width={40}
+              height={40}
+              alt="logo"
+            />
+            <span className="font-bold text-xl text-black">
+              HONEYPOT FINANCE
+            </span>
           </div>
-
-          <p className="text-[#202020] text-xs sm:text-base text-center">
+          {/* Links */}
+          <div className="flex flex-wrap justify-center gap-6 text-black font-medium text-lg">
+            <a
+              href="https://docs.honeypotfinance.xyz/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Docs
+            </a>
+            <a
+              href="https://github.com/Honeypot-Finance"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
+            <a
+              href="https://medium.com/@HoneypotFinance1"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Medium
+            </a>
+            <a
+              href="https://www.okx.com/web3/marketplace/nft/collection/arbi/honeygenesis-1"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              HoneyGenesis
+            </a>
+            <a
+              href="https://pot2pump.honeypotfinance.xyz/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Pot2Pump
+            </a>
+            <a
+              href="https://wasabee.honeypotfinance.xyz/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Pot-Wasabee Eex
+            </a>
+          </div>
+          {/* Social Icons */}
+          <div className="flex gap-6 mt-2">
+            <a
+              href="https://t.me/+tE1KgsD-GxJhOTg0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white rounded-xl p-3 flex items-center justify-center shadow hover:scale-110 transition"
+            >
+              <BsTelegram className="w-6 h-6 text-black" />
+            </a>
+            <a
+              href="https://x.com/honeypotfinance"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white rounded-xl p-3 flex items-center justify-center shadow hover:scale-110 transition"
+            >
+              <FaXTwitter className="w-6 h-6 text-black" />
+            </a>
+            <a
+              href="https://discord.gg/honeypotfinance"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white rounded-xl p-3 flex items-center justify-center shadow hover:scale-110 transition"
+            >
+              <FaDiscord className="w-6 h-6 text-black" />
+            </a>
+            <a
+              href="https://medium.com/@HoneypotFinance1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white rounded-xl p-3 flex items-center justify-center shadow hover:scale-110 transition"
+            >
+              <FaMedium className="w-6 h-6 text-black" />
+            </a>
+          </div>
+          {/* Copyright */}
+          <div className="text-black text-sm mt-2 mb-4 text-center">
             © Copyright 2025, All Rights Reserved by Honeypot
-          </p>
+          </div>
         </div>
-
-        <Image
-          src={footerCloud}
-          alt="Footer Cloud"
-          width={1024}
-          height={512}
-          className="object-cover w-full"
-        />
-      </div>
+        {/* Cloud border at the bottom */}
+        <div className="w-full absolute left-0 bottom-0 pointer-events-none">
+          <Image
+            src={footerCloud}
+            alt="Footer Cloud"
+            width={1920}
+            height={200}
+            className="w-full"
+          />
+        </div>
+      </footer>
     </div>
   );
 }
