@@ -32,9 +32,13 @@ export default function RootLayout({
           type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
         />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link
+          rel="icon"
+          href="/favicon.ico"
+          sizes="any"
+        />
       </head>
-      <body>
+      <body className="bg-[#80BFE5]">
         <LayoutWrapper>{children}</LayoutWrapper>
       </body>
     </html>
