@@ -33,16 +33,70 @@ export type flatMenu = {
 
 export const appPathsList: Menu[] = [
   {
-    title: "Pot2pump",
-    path: "https://pot2pump.honeypotfinance.xyz/",
+    title: "Meme Launchpad",
+    path: [
+      {
+        title: "Pot2pump",
+        path: "https://pot2pump.honeypotfinance.xyz/",
+        routePath: "https://pot2pump.honeypotfinance.xyz/",
+      },
+      {
+        title: "Launch Your Meme",
+        path: "https://pot2pump.honeypotfinance.xyz/launch-token?launchType=meme",
+        routePath:
+          "https://pot2pump.honeypotfinance.xyz/launch-token?launchType=meme",
+      },
+      {
+        title: "Potting (Raise)",
+        path: "https://pot2pump.honeypotfinance.xyz/potting",
+        routePath: "https://pot2pump.honeypotfinance.xyz/potting",
+      },
+      {
+        title: "Pumping (Trade)",
+        path: "https://pot2pump.honeypotfinance.xyz/pumping",
+        routePath: "https://pot2pump.honeypotfinance.xyz/pumping",
+      },
+    ],
   },
   {
-    title: "Pot-wasabee (Dex)",
-    path: "https://wasabee.honeypotfinance.xyz/swap",
+    title: "Trade",
+    path: [
+      {
+        title: "Swap",
+        path: "https://wasabee.honeypotfinance.xyz/swap",
+        routePath: "https://wasabee.honeypotfinance.xyz/swap",
+      },
+      {
+        title: "xSwap",
+        path: "https://wasabee.honeypotfinance.xyz/xswap",
+        routePath: "https://wasabee.honeypotfinance.xyz/xswap",
+      },
+    ],
   },
   {
-    title: "Dreampad",
-    path: "https://dreampad.honeypotfinance.xyz/",
+    title: "Earn",
+    path: [
+      {
+        title: "Pools",
+        path: "https://wasabee.honeypotfinance.xyz/pools",
+        routePath: "https://wasabee.honeypotfinance.xyz/pools",
+      },
+      {
+        title: "Vaults",
+        path: "https://wasabee.honeypotfinance.xyz/pools",
+        routePath: "https://wasabee.honeypotfinance.xyz/pools",
+      },
+    ],
+  },
+  {
+    title: "Found Raising",
+    path: [
+      {
+        title: "Dreampad",
+        path: "https://dreampad.honeypotfinance.xyz/",
+        routePath: "https://dreampad.honeypotfinance.xyz/",
+      },
+    ],
   },
   {
     title: "Docs",

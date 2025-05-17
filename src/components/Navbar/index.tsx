@@ -10,6 +10,12 @@ import { Button } from "@heroui/react";
 import { Navbar, NavbarMenu, NavbarMenuToggle } from "@heroui/react";
 import { useState } from "react";
 import Link from "next/link";
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+} from "@heroui/react";
 
 interface NavbarProps {
   menuList: Menu[];
@@ -28,6 +34,7 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
   const router = useRouter();
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   const listToNavbarItem = (list: Menu[], isSub?: boolean): React.ReactNode => {
     return list.map((m) =>
@@ -69,6 +76,64 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
     );
   };
 
+  const renderMenuItem = (menu: Menu) => {
+    if (Array.isArray(menu.path)) {
+      return (
+        <div
+          key={menu.title}
+          className="relative group"
+          onMouseEnter={() => setActiveDropdown(menu.title)}
+          onMouseLeave={() => setActiveDropdown(null)}
+        >
+          <Button
+            className={cn(
+              "py-2 font-bold bg-transparent text-sm lg:text-base text-black hover:bg-[#202020] hover:text-white rounded-md text-nowrap",
+              menu.title === "Launch App" && "hidden",
+              activeDropdown === menu.title ? "bg-[#202020] text-white" : ""
+            )}
+          >
+            {menu.title}
+          </Button>
+          {activeDropdown === menu.title && (
+            <div className="absolute top-[calc(100%-1px)] left-0 bg-white rounded-lg shadow-lg p-2 min-w-[200px] z-50">
+              {menu.path.map((submenu) => (
+                <button
+                  key={submenu.title}
+                  className="w-full text-left text-black hover:bg-[#202020] hover:text-white rounded-md p-2"
+                  onClick={() => {
+                    if (submenu.routePath) {
+                      router.push(submenu.routePath);
+                    }
+                  }}
+                >
+                  {submenu.title}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    return (
+      <Button
+        key={menu.title}
+        className={cn(
+          "py-2 font-bold bg-transparent text-sm lg:text-base text-black hover:bg-[#202020] hover:text-white rounded-md text-nowrap",
+          menu.title === "Launch App" && "hidden",
+          menu.routePath === pathname ? "bg-[#202020] text-white" : ""
+        )}
+        onPress={() => {
+          if (typeof menu.path === "string") {
+            router.push(menu.path);
+          }
+        }}
+      >
+        {menu.title}
+      </Button>
+    );
+  };
+
   return (
     <div className="flex flex-col items-center w-full sm:w-fit">
       <Image
@@ -95,23 +160,7 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
             width={35}
             height={36}
           />
-          {menuList.map((menu) => (
-            <Button
-              key={menu.title}
-              className={cn(
-                "py-2 font-bold bg-transparent text-sm lg:text-base text-black hover:bg-[#202020] hover:text-white rounded-md text-nowrap",
-                menu.title === "Launch App" && "hidden",
-                menu.routePath === pathname ? "bg-[#202020] text-white" : ""
-              )}
-              onPress={() => {
-                if (typeof menu.path === "string") {
-                  router.push(menu.path);
-                }
-              }}
-            >
-              {menu.title}
-            </Button>
-          ))}
+          {menuList.map(renderMenuItem)}
         </div>
 
         <NavbarMenuToggle
