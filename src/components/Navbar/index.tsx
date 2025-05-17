@@ -41,15 +41,12 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
       m.path instanceof Array ? (
         <div
           key={m.title}
-          className="w-full"
+          className={isSub ? "ml-4 border-l-2 border-[#FFD966] pl-3" : ""}
         >
           <div
             className={cn(
-              "p-3 text-white text-lg font-medium w-full",
-              m.path.some((p) => pathname.includes(p.path))
-                ? "bg-[rgba(225,138,32,0.40)] border-2 border-solid border-[rgba(225,138,32,0.60)] rounded-lg"
-                : "",
-              isSub ? "pl-8" : ""
+              "p-3 text-black text-lg font-bold rounded-lg transition hover:bg-[#FFE28A] cursor-pointer",
+              isSub ? "bg-[#FFF7D6] text-base font-medium" : "bg-white"
             )}
             onClick={() => setIsMenuOpen(false)}
           >
@@ -62,11 +59,10 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
           key={m.title}
           href={m.path as string}
           className={cn(
-            "block p-3 text-white text-lg font-medium w-full",
-            pathname === m.path
-              ? "bg-[rgba(225,74,32,0.40)] border-2 border-solid border-[rgba(225,74,32,0.6)] rounded-lg"
-              : "",
-            isSub ? "pl-8" : ""
+            "block p-3 text-black text-lg font-bold rounded-lg transition hover:bg-[#FFE28A]",
+            isSub
+              ? "ml-4 bg-[#FFF7D6] text-base font-medium border-l-2 border-[#FFD966] pl-3"
+              : "bg-white"
           )}
           onClick={() => setIsMenuOpen(false)}
         >
@@ -198,7 +194,7 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
 
         <NavbarMenu
           className={cn(
-            "lg:hidden pt-24 bg-black/95 backdrop-blur-md",
+            "lg:hidden w-full pt-6 pb-6 bg-[#FFCD4D]/95 border-2 border-white rounded-2xl shadow-xl",
             "will-change-transform transform-gpu transition-all duration-200 ease-out",
             isMenuOpen
               ? "opacity-100 translate-y-0"
@@ -207,7 +203,7 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
         >
           <div
             className={cn(
-              "flex flex-col gap-2",
+              "flex flex-col gap-3 overflow-y-auto px-4 ",
               "will-change-transform transform-gpu transition-all duration-150 ease-out",
               isMenuOpen
                 ? "opacity-100 translate-x-0"
