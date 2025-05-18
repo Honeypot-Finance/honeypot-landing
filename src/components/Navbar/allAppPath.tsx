@@ -33,7 +33,7 @@ export type flatMenu = {
 
 export const appPathsList: Menu[] = [
   {
-    title: "Pot2pump (Launch meme)",
+    title: "Pot2pump (Meme)",
     path: [
       {
         title: "Overview",
