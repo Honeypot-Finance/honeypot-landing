@@ -892,7 +892,7 @@ export default function HomePage() {
         </div>
 
         {/* Success Stories Section */}
-        <div className="scroll-animate w-full max-w-[1200px] mx-4 sm:mx-auto flex flex-col items-center">
+        <div className="scroll-animate w-full max-w-[1200px] mx-4 sm:mx-auto flex flex-col items-center z-10">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white text-center mb-8 sm:mb-16">
             Success Stories
           </h1>
