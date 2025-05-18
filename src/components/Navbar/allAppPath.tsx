@@ -83,7 +83,7 @@ export const appPathsList: Menu[] = [
     ],
   },
   {
-    title: "Fund Raising",
+    title: "Token Launch",
     path: [
       {
         title: "Dreampad",
