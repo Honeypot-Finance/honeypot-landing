@@ -33,18 +33,12 @@ export type flatMenu = {
 
 export const appPathsList: Menu[] = [
   {
-    title: "Meme Launchpad",
+    title: "Pot2pump (Launch meme)",
     path: [
       {
-        title: "Pot2pump",
+        title: "Overview",
         path: "https://pot2pump.honeypotfinance.xyz/",
         routePath: "https://pot2pump.honeypotfinance.xyz/",
-      },
-      {
-        title: "Launch Your Meme",
-        path: "https://pot2pump.honeypotfinance.xyz/launch-token?launchType=meme",
-        routePath:
-          "https://pot2pump.honeypotfinance.xyz/launch-token?launchType=meme",
       },
       {
         title: "Potting (Raise)",
@@ -89,7 +83,7 @@ export const appPathsList: Menu[] = [
     ],
   },
   {
-    title: "Found Raising",
+    title: "Fund Raising",
     path: [
       {
         title: "Dreampad",
