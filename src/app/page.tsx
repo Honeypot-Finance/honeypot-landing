@@ -422,7 +422,7 @@ export default function HomePage() {
               </div>
             </div>
             <div
-              className=" bg-[#271A0C] rounded-t-[50%]"
+              className="w-full bg-[#271A0C] rounded-t-[50%]"
               style={{
                 opacity: 0,
                 animation: "fadeInUp 0.8s ease forwards",
@@ -1254,7 +1254,7 @@ export default function HomePage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Pot-Wasabee Eex
+              Pot-Wasabee Dex
             </a>
           </div>
           {/* Social Icons */}

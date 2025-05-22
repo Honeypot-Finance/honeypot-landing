@@ -64,6 +64,7 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
               ? "ml-4 bg-[#FFF7D6] text-base font-medium border-l-2 border-[#FFD966] pl-3"
               : "bg-white"
           )}
+          target="_blank"
           onClick={() => setIsMenuOpen(false)}
         >
           {m.title}
@@ -98,7 +99,7 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
                   className="w-full text-left text-black hover:bg-[#202020] hover:text-white rounded-md p-2"
                   onClick={() => {
                     if (submenu.routePath) {
-                      router.push(submenu.routePath);
+                      window.open(submenu.routePath, "_blank");
                     }
                   }}
                 >
@@ -159,38 +160,43 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
           {menuList.map(renderMenuItem)}
         </div>
 
-        <NavbarMenuToggle
-          sr-only=""
-          icon={
-            isMenuOpen ? (
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                className="text-black"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
+        <div className="w-full flex items-center gap-2">
+          <NavbarMenuToggle
+            sr-only=""
+            icon={
+              isMenuOpen ? (
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  className="text-black"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              ) : (
+                <Image
+                  src="/images/honeypot-logo.svg"
+                  alt="honeypot-logo"
+                  width={50}
+                  height={50}
                 />
-              </svg>
-            ) : (
-              <Image
-                src="/images/honeypot-logo.svg"
-                alt="honeypot-logo"
-                width={50}
-                height={50}
-              />
-            )
-          }
-          className={cn(
-            "will-change-transform transform-gpu transition-all duration-200 ease-out sm:hidden size-9"
-          )}
-        />
+              )
+            }
+            className={cn(
+              "will-change-transform transform-gpu transition-all duration-200 ease-out sm:hidden size-9"
+            )}
+          />
+          <div className="w-full text-black text-sm font-bold text-center grow">
+            Honeypot Finance
+          </div>
+        </div>
 
         <NavbarMenu
           className={cn(
