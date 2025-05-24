@@ -145,12 +145,12 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
         isMenuOpen={isMenuOpen}
         onMenuOpenChange={setIsMenuOpen}
         classNames={{
-          wrapper: "px-0 max-w-none",
+          wrapper: "px-0",
           toggle: "border-none focus:outline-none",
         }}
-        className="bg-[#FFCD4D] rounded-xl flex flex-col py-2 px-4 lg:py-4 lg:px-3 shadow-[2px_4px_0px_0px_#FFF]"
+        className="grow w-full bg-[#FFCD4D] rounded-xl flex flex-col py-2 px-4 lg:py-4 lg:px-3 shadow-[2px_4px_0px_0px_#FFF]"
       >
-        <div className="sm:flex hidden gap-1 lg:gap-2 lg:py-1 lg:max-w-none flex-nowrap">
+        <div className="w-full sm:flex grow hidden gap-1 lg:gap-2 lg:py-1 ">
           <Image
             src="/images/honeypot-logo.svg"
             alt="honeypot-logo"
@@ -193,7 +193,7 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
               "will-change-transform transform-gpu transition-all duration-200 ease-out sm:hidden size-9"
             )}
           />
-          <div className="w-full text-black text-sm font-bold text-center grow">
+          <div className="block sm:hidden w-full text-black text-sm font-bold text-center grow">
             Honeypot Finance
           </div>
         </div>
