@@ -145,10 +145,10 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
         isMenuOpen={isMenuOpen}
         onMenuOpenChange={setIsMenuOpen}
         classNames={{
-          wrapper: "px-0",
+          wrapper: "px-0 max-w-none grow",
           toggle: "border-none focus:outline-none",
         }}
-        className="grow w-full bg-[#FFCD4D] rounded-xl flex flex-col py-2 px-4 lg:py-4 lg:px-3 shadow-[2px_4px_0px_0px_#FFF]"
+        className="grow w-full bg-[#FFCD4D] rounded-xl flex flex-col py-2 px-4 lg:py-4 lg:px-3 shadow-[2px_4px_0px_0px_#FFF] max-w-none"
       >
         <div className="w-full sm:flex grow hidden gap-1 lg:gap-2 lg:py-1 ">
           <Image
@@ -160,7 +160,7 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
           {menuList.map(renderMenuItem)}
         </div>
 
-        <div className="w-full flex items-center gap-2">
+        <div className="w-full flex items-center justify-between sm:hidden">
           <NavbarMenuToggle
             sr-only=""
             icon={
