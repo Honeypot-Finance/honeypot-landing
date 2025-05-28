@@ -7,7 +7,6 @@ import CandaqCom from "@/assets/partners/CandaqCom.jpg";
 import TKXCAPITAL from "@/assets/partners/TKXCAPITAL.jpg";
 import csp_dao from "@/assets/partners/csp_dao.png";
 import aquanow from "@/assets/partners/aquanow.png";
-import Web3PortFund from "@/assets/partners/Web3PortFund.jpg";
 import EnigmaValidator from "@/assets/partners/EnigmaValidator.png";
 import ACCapital1 from "@/assets/partners/ACCapital1.jpg";
 
@@ -70,11 +69,7 @@ const investors = [
     partnerLink: "https://www.aquanow.com/",
     partnerImage: aquanow,
   },
-  {
-    name: "Web3 Port Fund",
-    partnerLink: "https://www.web3port.foundation/",
-    partnerImage: Web3PortFund,
-  },
+
   {
     name: "Enigma Validator",
     partnerLink: "https://enigma-validator.com/",
