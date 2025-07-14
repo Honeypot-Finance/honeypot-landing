@@ -227,7 +227,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-[#202020] font-gliker relative overflow-hidden flex flex-col items-center gap-y-8 sm:gap-y-12 md:gap-y-20 lg:gap-y-32 w-full px-4 sm:px-0">
       {/* Navbar with drop animation */}
-      <div className="mb-6 sm:mb-8 md:mb-12 lg:mb-20 w-[calc(100%-2rem)] sm:w-fit fixed top-0 left-1/2 -translate-x-1/2 z-50">
+      <div className="mb-6 sm:mb-8 md:mb-12 lg:mb-20 w-[calc(100%-2rem)] fixed top-0 left-1/2 -translate-x-1/2 z-50">
         <div className="drop-animate [filter:drop-shadow(0_0_10px_rgba(0,0,0,0.6))_drop-shadow(0_0_15px_rgba(255,205,77,0.15))_drop-shadow(0_0_20px_rgba(0,0,0,0.4))]">
           <Navbar menuList={appPathsList} />
         </div>

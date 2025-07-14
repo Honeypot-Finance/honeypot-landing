@@ -76,9 +76,14 @@ export const appPathsList: Menu[] = [
         routePath: "https://wasabee.honeypotfinance.xyz/pools",
       },
       {
-        title: "Vaults",
+        title: "POGE Vaults",
         path: "https://wasabee.honeypotfinance.xyz/pools",
         routePath: "https://wasabee.honeypotfinance.xyz/pools",
+      },
+      {
+        title: "All In One Vault",
+        path: "https://leaderboard.honeypotfinance.xyz/",
+        routePath: "https://leaderboard.honeypotfinance.xyz/",
       },
     ],
   },
@@ -91,6 +96,10 @@ export const appPathsList: Menu[] = [
         routePath: "https://dreampad.honeypotfinance.xyz/",
       },
     ],
+  },
+  {
+    title: "Leaderboard",
+    path: "https://leaderboard.honeypotfinance.xyz/leaderboard",
   },
   {
     title: "Docs",
