@@ -1290,7 +1290,7 @@ export default function HomePage() {
               </h3>
               <div className="flex items-center gap-3 sm:gap-4">
                 <a
-                  href="https://discord.gg/honeypotfi"
+                  href="https://discord.com/invite/honeypotfi"
                   className="text-black hover:scale-110 transition-transform w-6 h-6 sm:w-8 sm:h-8"
                   target="_blank"
                   rel="noopener noreferrer"
