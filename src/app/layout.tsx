@@ -6,8 +6,16 @@ import LayoutWrapper from "@/components/layout/LayoutWrapper";
 // const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Honeypot Finance",
-  description: "first defi-hub on berachain",
+  title: "Honeypot Finance: Next-Gen Dex++",
+  description:
+    "Honeypot combines pro trading tools and behaviour-driven incentives, solving idle TVL, inefficient incentives & market fragmentation across DeFi",
+  openGraph: {
+    images: ["/banner.jpeg"], // Path to your Open Graph image
+  },
+  twitter: {
+    images: ["/banner.jpeg"], // Path to your Twitter Card image
+    card: "app", // Or 'summary', 'app', 'player'
+  },
   icons: {
     icon: "/favicon.ico",
   },
