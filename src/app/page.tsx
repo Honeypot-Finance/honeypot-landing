@@ -267,12 +267,13 @@ export default function HomePage() {
           <div className="hidden sm:block absolute right-4 bottom-8 w-[18px] h-[18px] bg-black rounded-full" />
 
           <div className="flex flex-col items-center">
-            <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-[56px] text-center text-black lg:!leading-[3.5rem] mb-2 sm:mb-5">
-              The Ultimate Token Launch Platform on Berachain
+            <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-[48px] text-center text-black lg:!leading-[3.5rem] mb-2 sm:mb-5">
+              Dex++ for the Next-Generation of On-Chain Finance
             </h1>
             <p className="text-xs sm:text-sm md:text-lg lg:text-xl text-center opacity-90 mb-3 sm:mb-10 max-w-[674px] text-[#373737]">
-              Instant liquidity, fair distribution, sustainable growth, and
-              perpetual rewards all powered by proof of liquidity
+              Redefining on-chain finance with behavior-driven incentives,
+              programmable assets and pro tools for seamless cross-chain
+              liquidity creation and flow.
             </p>
             <div
               className="flex flex-col sm:flex-row justify-center gap-4"

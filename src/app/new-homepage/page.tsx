@@ -264,7 +264,7 @@ export default function HomePage() {
 
           <div className="flex flex-col items-center">
             <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-[56px] text-center text-black lg:!leading-[3.5rem] mb-2 sm:mb-5">
-              The Ultimate Token Launch Platform on Berachain
+              Omnichain Dex++ for Next-Generation On-Chain Finance
             </h1>
             <p className="text-xs sm:text-sm md:text-lg lg:text-xl text-center opacity-90 mb-3 sm:mb-10 max-w-[674px] text-[#373737]">
               Instant liquidity, fair distribution, sustainable growth, and
