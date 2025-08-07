@@ -33,7 +33,7 @@ export type flatMenu = {
 
 export const appPathsList: Menu[] = [
   {
-    title: "Pot2pump (Meme)",
+    title: "Meme Launchpad",
     path: [
       {
         title: "Overview",
@@ -65,6 +65,11 @@ export const appPathsList: Menu[] = [
         path: "https://wasabee.honeypotfinance.xyz/xswap",
         routePath: "https://wasabee.honeypotfinance.xyz/xswap",
       },
+      {
+        title: "Cross-Chain Swap",
+        path: "https://wasabee.honeypotfinance.xyz/xswap",
+        routePath: "https://wasabee.honeypotfinance.xyz/xswap",
+      },
     ],
   },
   {
@@ -76,7 +81,7 @@ export const appPathsList: Menu[] = [
         routePath: "https://wasabee.honeypotfinance.xyz/pools",
       },
       {
-        title: "POGE Vaults",
+        title: "Automated Vaults",
         path: "https://wasabee.honeypotfinance.xyz/pools",
         routePath: "https://wasabee.honeypotfinance.xyz/pools",
       },
