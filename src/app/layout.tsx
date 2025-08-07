@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     images: ["/banner.jpeg"], // Path to your Twitter Card image
-    card: "app", // Or 'summary', 'app', 'player'
+    card: "summary_large_image",
   },
   icons: {
     icon: "/favicon.ico",
