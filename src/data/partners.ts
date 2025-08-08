@@ -11,6 +11,7 @@ import EnigmaValidator from "@/assets/partners/EnigmaValidator.png";
 import ACCapital1 from "@/assets/partners/ACCapital1.jpg";
 
 //partners logo
+import ICHI from "@/assets/partners/ICHI.png";
 import kingdomly from "@/assets/partners/kingdomly.png";
 import beraroot from "@/assets/partners/beraroot.png";
 import oogabooga from "@/assets/partners/oogabooga.jpg";
@@ -112,9 +113,9 @@ const partners = [
     partnerImage: d2finance,
   },
   {
-    name: "Beracer",
-    partnerLink: "https://x.com/beracer_org",
-    partnerImage: beracer,
+    name: "ICHI Vault",
+    partnerLink: "https://www.ichi.org/",
+    partnerImage: ICHI,
   },
   {
     name: "Ghost",
