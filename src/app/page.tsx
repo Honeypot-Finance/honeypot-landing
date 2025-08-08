@@ -1143,7 +1143,7 @@ export default function HomePage() {
 
           <div className="bg-[#FFCD4D] rounded-xl px-8 sm:px-12 py-3 sm:py-4 border-4 border-white shadow-[8px_8px_0px_0px_#000]">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[48px] text-[#202020] font-bold">
-              Our Partners
+              Backed By
             </h2>
           </div>
         </div>
@@ -1174,7 +1174,38 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-7 gap-2 sm:gap-4 md:gap-8 w-full max-w-[1200px] mx-auto">
-            {[...partners, ...investors].map((partner, index) => (
+            {[...investors].map((partner, index) => (
+              <a
+                key={index}
+                href={partner.partnerLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="scroll-animate bg-[#202020] rounded-xl border-2 border-white hover:scale-105 transition-transform flex items-center justify-center w-[70px] h-[70px] sm:w-[120px] sm:h-[120px] md:w-[140px] md:h-[140px] lg:w-[160px] lg:h-[160px] overflow-hidden"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="w-[50px] h-[50px] sm:w-[90px] sm:h-[90px] md:w-[110px] md:h-[110px] lg:w-[130px] lg:h-[130px] relative rounded-lg">
+                  <Image
+                    src={partner.partnerImage}
+                    alt={partner.name}
+                    fill
+                    className="object-contain rounded-lg"
+                    sizes="(max-width: 640px) 50px, (max-width: 768px) 90px, (max-width: 1024px) 110px, 130px"
+                  />
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <div className="relative z-10 mb-16 flex flex-col items-center">
+            <div className="bg-[#FFCD4D] rounded-xl px-8 sm:px-12 py-3 sm:py-4 border-4 border-white shadow-[8px_8px_0px_0px_#000]">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[48px] text-[#202020] font-bold">
+                Our Partners
+              </h2>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-7 gap-2 sm:gap-4 md:gap-8 w-full max-w-[1200px] mx-auto">
+            {[...partners].map((partner, index) => (
               <a
                 key={index}
                 href={partner.partnerLink}

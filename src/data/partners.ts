@@ -17,8 +17,6 @@ import oogabooga from "@/assets/partners/oogabooga.jpg";
 import infrared from "@/assets/partners/infrared.png";
 import honeycast from "@/assets/partners/honeycast.jpg";
 import d2finance from "@/assets/partners/d2finance.svg";
-import beraboyz from "@/assets/partners/beraboyz.jpg";
-import arebmeme from "@/assets/partners/arebmeme.jpg";
 import beracer from "@/assets/partners/beracer.jpg";
 import ghost from "@/assets/partners/ghost.png";
 import codex from "@/assets/partners/codex.png";
@@ -112,16 +110,6 @@ const partners = [
     name: "D2 Finance",
     partnerLink: "https://d2.finance/strategies",
     partnerImage: d2finance,
-  },
-  {
-    name: "Bera Boyz",
-    partnerLink: "https://x.com/BeraBoyzGG",
-    partnerImage: beraboyz,
-  },
-  {
-    name: "Areb Meme",
-    partnerLink: "https://x.com/arebmeme",
-    partnerImage: arebmeme,
   },
   {
     name: "Beracer",
