@@ -61,14 +61,14 @@ export const appPathsList: Menu[] = [
         routePath: "https://wasabee.honeypotfinance.xyz/swap",
       },
       {
-        title: "xSwap",
+        title: "Multi-Token Swap",
         path: "https://wasabee.honeypotfinance.xyz/xswap",
         routePath: "https://wasabee.honeypotfinance.xyz/xswap",
       },
       {
         title: "Cross-Chain Swap",
-        path: "https://wasabee.honeypotfinance.xyz/xswap",
-        routePath: "https://wasabee.honeypotfinance.xyz/xswap",
+        path: "https://wasabee.honeypotfinance.xyz/cross-chain-swap",
+        routePath: "https://wasabee.honeypotfinance.xyz/cross-chain-swap",
       },
     ],
   },
