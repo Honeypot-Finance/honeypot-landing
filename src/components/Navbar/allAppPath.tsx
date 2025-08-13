@@ -41,12 +41,12 @@ export const appPathsList: Menu[] = [
         routePath: "https://pot2pump.honeypotfinance.xyz/",
       },
       {
-        title: "Potting (Raise)",
+        title: "Launch Meme",
         path: "https://pot2pump.honeypotfinance.xyz/potting",
         routePath: "https://pot2pump.honeypotfinance.xyz/potting",
       },
       {
-        title: "Pumping (Trade)",
+        title: "Trade Meme",
         path: "https://pot2pump.honeypotfinance.xyz/pumping",
         routePath: "https://pot2pump.honeypotfinance.xyz/pumping",
       },
