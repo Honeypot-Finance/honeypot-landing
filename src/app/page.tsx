@@ -905,7 +905,7 @@ export default function HomePage() {
                   <div className="flex items-center">
                     <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#202020] font-bold">
                       <span className="border-b-2 border-[#202020]">
-                        Berally / BurrBear / Overlay
+                        Berally / BurrBear / Overlay / BearCage / Wasabee
                       </span>
                     </h2>
                   </div>
@@ -924,7 +924,7 @@ export default function HomePage() {
                           sizes="24px"
                         />
                         <p className="text-base sm:text-xl md:text-2xl text-[#202020]">
-                          $2.5M+ raised
+                          $2.96M+ raised
                         </p>
                       </div>
                       <div className="flex items-center gap-3">
@@ -936,7 +936,7 @@ export default function HomePage() {
                           sizes="24px"
                         />
                         <p className="text-base sm:text-xl md:text-2xl text-[#202020]">
-                          1300+ participants
+                          2000+ participants
                         </p>
                       </div>
                       <div className="flex items-center gap-3">
@@ -948,7 +948,7 @@ export default function HomePage() {
                           sizes="24px"
                         />
                         <p className="text-base sm:text-xl md:text-2xl text-[#202020]">
-                          3+ projects
+                          6+ projects
                         </p>
                       </div>
                     </div>
