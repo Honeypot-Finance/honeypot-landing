@@ -18,7 +18,7 @@ import oogabooga from "@/assets/partners/oogabooga.jpg";
 import infrared from "@/assets/partners/infrared.png";
 import honeycast from "@/assets/partners/honeycast.jpg";
 import d2finance from "@/assets/partners/d2finance.svg";
-import beracer from "@/assets/partners/beracer.jpg";
+import enso from "@/assets/partners/enso.png";
 import ghost from "@/assets/partners/ghost.png";
 import codex from "@/assets/partners/codex.png";
 import bitgetwallet from "@/assets/partners/bitgetwallet.png";
@@ -176,6 +176,11 @@ const partners = [
     name: "Wasabee",
     partnerLink: "https://x.com/WasabeeFi",
     partnerImage: wasabee,
+  },
+  {
+    name: "Enso",
+    partnerLink: "https://www.enso.build/",
+    partnerImage: enso,
   },
 ];
 
