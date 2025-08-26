@@ -1272,21 +1272,21 @@ export default function HomePage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              HoneyGenesis
+              HoneyGenesis NFT
             </a>
             <a
               href="https://pot2pump.honeypotfinance.xyz/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Pot2Pump
+              Meme
             </a>
             <a
               href="https://wasabee.honeypotfinance.xyz/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Pot-Wasabee Dex
+              Honeypot DEX
             </a>
           </div>
           {/* Social Icons */}
