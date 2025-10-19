@@ -4,21 +4,16 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import { appPathsList } from "@/components/Navbar/allAppPath";
 import { partners, investors } from "@/data/partners";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { BsTelegram } from "react-icons/bs";
 import { FaXTwitter, FaDiscord, FaMedium } from "react-icons/fa6";
+import DexStats from "@/components/DexStats";
 
 //images
-import forMemeProjectImage from "@/assets/home-page/for-meme-project.png";
-import forMemeLpImage from "@/assets/home-page/for-meme-lp.png";
 import lightBgEffectImage from "@/assets/effectItems/light-bg-effect.png";
-import autoCompoundImage from "@/assets/home-page/auto-compounding.png";
-import earnFromDayOneImage from "@/assets/home-page/earn-from-day-one.png";
-import instantLp from "@/assets/home-page/instant-lp.png";
-import coLaunchFjordImage from "@/assets/home-page/co-launch-fjord.png";
-import coListingAdvImage from "@/assets/home-page/co-listing-adv.png";
-import oneSmartContractImage from "@/assets/home-page/one-smart-contract.png";
 import footerCloud from "@/assets/footer-cloud.png";
+import instantLp from "@/assets/home-page/instant-lp.png";
+import earnFromDayOneImage from "@/assets/home-page/earn-from-day-one.png";
 
 // CSS 样式字符串
 const cssStyles = `
@@ -126,8 +121,6 @@ const cssStyles = `
 `;
 
 export default function HomePage() {
-  const [isLoaded, setIsLoaded] = useState(false);
-
   // 合并所有 useEffect
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -136,9 +129,6 @@ export default function HomePage() {
     const styleElement = document.createElement("style");
     styleElement.textContent = cssStyles;
     document.head.appendChild(styleElement);
-
-    // 设置加载状态
-    setIsLoaded(true);
 
     // 滚动处理
     const handleScroll = () => {
@@ -173,7 +163,6 @@ export default function HomePage() {
 
       // 处理浮动元素
       floatingElements.forEach((element) => {
-        const speed = parseFloat(element.getAttribute("data-speed") || "0.3");
         const rect = element.getBoundingClientRect();
         const elementTop = rect.top + scrolled;
 
@@ -266,7 +255,7 @@ export default function HomePage() {
           <div className="hidden sm:block absolute left-4 bottom-8 w-[18px] h-[18px] bg-black rounded-full" />
           <div className="hidden sm:block absolute right-4 bottom-8 w-[18px] h-[18px] bg-black rounded-full" />
 
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center w-full">
             <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-[48px] text-center text-black lg:!leading-[3.5rem] mb-2 sm:mb-5">
               Dex++ for the Next-Generation of On-Chain Finance
             </h1>
@@ -276,7 +265,7 @@ export default function HomePage() {
               liquidity creation and flow.
             </p>
             <div
-              className="flex flex-col sm:flex-row justify-center gap-4"
+              className="flex flex-col sm:flex-row justify-center gap-4 mb-8 sm:mb-10"
               style={{
                 opacity: 0,
                 animation: "fadeInUp 0.6s ease forwards",
@@ -284,28 +273,31 @@ export default function HomePage() {
               }}
             >
               <button
-                onClick={() =>
+                className="bg-rose-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-opacity-90 transition-all font-bold text-xs sm:text-sm"
+                onClick={() => {
                   window.open(
-                    "https://pot2pump.honeypotfinance.xyz/launch-token?launchType=meme",
+                    "https://wasabee.honeypotfinance.xyz/perp",
                     "_blank"
-                  )
-                }
-                className="bg-black text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-opacity-90 transition-all font-bold text-xs sm:text-sm"
+                  );
+                }}
               >
-                Launch Memes
+                Trading Perp
               </button>
               <button
                 className="bg-black text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-opacity-90 transition-all font-bold text-xs sm:text-sm"
                 onClick={() => {
                   window.open(
-                    "https://wasabee.honeypotfinance.xyz/swap",
+                    "https://wasabee.honeypotfinance.xyz/pools",
                     "_blank"
                   );
                 }}
               >
-                Trade Tokens
+                Provide Liquidity
               </button>
             </div>
+
+            {/* DEX Stats in Banner */}
+            <DexStats />
           </div>
 
           <div className="absolute right-0 bottom-0 hidden lg:block">
@@ -444,9 +436,8 @@ export default function HomePage() {
       </div>
 
       <div className="bg-[#271A0C] flex flex-col items-center gap-y-8 sm:gap-y-12 md:gap-y-20 lg:gap-y-32 w-full px-4">
-        {/* Transform memecoins Section */}
+        {/* DEX++ Main Section */}
         <div className="scroll-animate relative w-full max-w-[1200px] mx-4 sm:mx-auto my-8 flex flex-col items-center justify-center">
-          {/* Main content */}
           <div className="relative bg-[#271A0C] rounded-[32px] w-full py-16 flex flex-col items-center justify-center shadow-lg">
             <h1
               className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#FFCD4D] text-center drop-shadow-[0_2px_0_#B97A1A] px-2"
@@ -455,80 +446,19 @@ export default function HomePage() {
                   "0 2px 0 #B97A1A, 0 4px 12px rgba(0,0,0,0.25), 0 0px 2px #fff",
               }}
             >
-              Transform memecoins into
+              Advanced AMM + Perpetual Trading
               <br />
-              sustainable assets with continuous
-              <br />
-              rewards for everyone!
+              All in One Platform
             </h1>
           </div>
         </div>
 
-        {/* Pot2Pump Section */}
-        <div className="scroll-animate relative px-4 sm:px-20 pt-12 sm:pt-16 bg-[#633803] rounded-[32px] w-full max-w-[1200px] mx-4 sm:mx-auto bg-[url('/images/honey-border.png')] bg-repeat-x bg-[length:auto_40px] bg-[position:-30px_top]">
-          <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
-            <div className="max-w-[500px]">
-              <h1 className="text-center sm:text-left text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white font-bold mb-6 sm:mb-8">
-                Pot2Pump
-              </h1>
-              <div className="space-y-4">
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <Image
-                    src="/images/honey-box.png"
-                    alt="honey box"
-                    width={20}
-                    height={20}
-                  />
-                  <p className="text-sm sm:text-xl text-white">
-                    Berachain-native liquidity management.
-                  </p>
-                </div>
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <Image
-                    src={"/images/honey-box.png"}
-                    alt="honey box"
-                    width={20}
-                    height={20}
-                    sizes="(max-width: 640px) 16px, 20px"
-                  />
-                  <p className="text-sm sm:text-xl text-white">
-                    Boosted rewards for meme stakers.
-                  </p>
-                </div>
-              </div>
-              <button
-                onClick={() =>
-                  window.open(
-                    "https://pot2pump.honeypotfinance.xyz/launch-token?launchType=meme",
-                    "_blank"
-                  )
-                }
-                className="w-full sm:w-fit mt-8 border border-white px-8 py-4 bg-[#FFCD4D] text-black rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm"
-              >
-                Meme Launch
-              </button>
-            </div>
-
-            <div className="relative w-[200px] sm:w-[320px] md:w-[360px] lg:w-[400px]">
-              <Image
-                src="/images/honey_jar.png"
-                alt="Honey Jar"
-                width={400}
-                height={400}
-                className="w-full h-auto"
-                sizes="(max-width: 640px) 200px, (max-width: 768px) 320px, (max-width: 1024px) 360px, 400px"
-                priority
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Why Pot2Pump Cards */}
+        {/* DEX++ Features */}
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white text-center">
-          Why Pot2pump?
+          WHY HONEYPOT FINANCE?
         </h2>
         <div className="scroll-animate flex flex-col lg:flex-row justify-between gap-8 w-full max-w-[1200px] mx-4 sm:mx-auto">
-          {/* Card 1 */}
+          {/* AMM Trading */}
           <div
             className="scroll-animate flex-1 rounded-[32px] p-4 sm:p-10"
             style={{
@@ -547,18 +477,25 @@ export default function HomePage() {
                     className="object-contain absolute top-0 left-0 w-full h-full"
                   />
                   <Image
-                    src={forMemeProjectImage}
-                    alt="for meme project"
-                    width={512}
-                    height={512}
+                    src={instantLp}
+                    alt="AMM Trading"
+                    width={400}
+                    height={400}
                     className="object-contain z-10"
                   />
                 </div>
 
                 <div className="flex flex-col gap-4">
                   <h2 className="text-base sm:text-xl md:text-2xl text-white">
-                    For Meme Projects
+                    Advanced AMM
                   </h2>
+
+                  <p className="text-sm sm:text-base text-gray-300 mb-2">
+                    Traditional DEXs force you to choose between spot trading
+                    and derivatives. Our integrated AMM provides the foundation
+                    for both, sharing liquidity across products for maximum
+                    capital efficiency.
+                  </p>
 
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
@@ -569,7 +506,7 @@ export default function HomePage() {
                         height={20}
                       />
                       <p className="text-sm sm:text-xl text-white">
-                        Instant revenue through LP fees
+                        Unified liquidity pool
                       </p>
                     </div>
                     <div className="flex items-center gap-3">
@@ -580,7 +517,18 @@ export default function HomePage() {
                         height={20}
                       />
                       <p className="text-sm sm:text-xl text-white">
-                        Up to 100% revenue sharing
+                        Cross-product composability
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <Image
+                        src="/images/honey-box.png"
+                        alt="honey box"
+                        width={20}
+                        height={20}
+                      />
+                      <p className="text-sm sm:text-xl text-white">
+                        Lower costs for traders
                       </p>
                     </div>
                   </div>
@@ -589,7 +537,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Card 2 */}
+          {/* Perpetual Trading */}
           <div
             className="scroll-animate flex-1 rounded-[32px] p-4 sm:p-10"
             style={{
@@ -608,18 +556,25 @@ export default function HomePage() {
                     className="object-contain absolute top-0 left-0 w-full h-full"
                   />
                   <Image
-                    src={forMemeLpImage}
-                    alt="Gold Horse Icon"
-                    width={512}
-                    height={512}
+                    src={earnFromDayOneImage}
+                    alt="Perp Trading"
+                    width={400}
+                    height={400}
                     className="object-contain z-10 w-full h-full"
                   />
                 </div>
 
                 <div className="space-y-4">
                   <h2 className="text-base sm:text-xl md:text-2xl text-white">
-                    For Meme LP Providers & Traders
+                    Perpetual Trading
                   </h2>
+
+                  <p className="text-sm sm:text-base text-gray-300 mb-2">
+                    By combining perpetuals with our AMM, we create a flywheel
+                    effect: spot trades provide instant liquidity for perp
+                    positions, while perp fees boost LP returns. Everyone wins
+                    in this symbiotic ecosystem.
+                  </p>
 
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
@@ -631,7 +586,7 @@ export default function HomePage() {
                         sizes="20px"
                       />
                       <p className="text-base sm:text-xl text-white">
-                        Protection from rug pulls
+                        Up to 100x leverage
                       </p>
                     </div>
                     <div className="flex items-center gap-3">
@@ -643,7 +598,19 @@ export default function HomePage() {
                         sizes="20px"
                       />
                       <p className="text-base sm:text-xl text-white">
-                        Long-term sustainability
+                        Shared liquidity with AMM
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <Image
+                        src="/images/honey-box.png"
+                        alt="honey box"
+                        width={20}
+                        height={20}
+                        sizes="20px"
+                      />
+                      <p className="text-base sm:text-xl text-white">
+                        Better price execution
                       </p>
                     </div>
                   </div>
@@ -653,249 +620,112 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Dreampad Section */}
-        <div className="scroll-animate bg-[#FFCD4D] rounded-[32px] w-full max-w-[1200px] mx-4 sm:mx-auto flex flex-col lg:flex-row justify-between items-center">
-          <div className="max-w-[500px] sm:pl-20 py-4 sm:py-10">
-            <h1 className="text-center sm:text-left text-xl sm:text-3xl md:text-4xl lg:text-5xl text-[#282121] font-bold mb-6 sm:mb-8">
-              Dreampad
-            </h1>
-            <div className="space-y-3 sm:space-y-4">
-              <div className="flex items-center gap-3">
-                <Image
-                  src="/images/honey-box.png"
-                  alt="honey box"
-                  width={20}
-                  height={20}
-                  sizes="20px"
-                />
-                <p className="text-base sm:text-xl text-[#282121]">
-                  100% liquidity pools
-                </p>
-              </div>
-              <div className="flex items-center gap-3">
-                <Image
-                  src="/images/honey-box.png"
-                  alt="honey box"
-                  width={20}
-                  height={20}
-                  sizes="20px"
-                />
-                <p className="text-base sm:text-xl text-[#282121]">
-                  Launch with partner brands
-                </p>
-              </div>
-            </div>
-            <button
-              className="w-full sm:w-fit mt-8 px-8 py-4 bg-[#010101] text-white rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm border border-white shadow-[2px_2px_8px_0px_rgba(22,18,8,0.50)]"
-              onClick={() => {
-                window.open(
-                  "https://pot2pump.honeypotfinance.xyz/launch-token",
-                  "_blank"
-                );
-              }}
-            >
-              Token Launch
-            </button>
-          </div>
-
-          <div className="h-full w-full lg:w-auto">
-            <Image
-              src="/images/space-bear.png"
-              alt="Space Bear"
-              width={600}
-              height={600}
-              className="h-auto w-[280px] sm:w-[400px] md:w-[500px] lg:w-[600px] object-contain"
-              sizes="(max-width: 640px) 280px, (max-width: 768px) 400px, (max-width: 1024px) 500px, 600px"
-              priority
-            />
-          </div>
-        </div>
-
-        {/* FTO Section */}
+        {/* Additional DEX Features */}
         <div className="scroll-animate flex flex-col items-center gap-8 sm:gap-16 w-full max-w-[1200px] mx-4 sm:mx-auto">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white text-center">
-            FTO (Fair Token Offering)
-          </h1>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white text-center">
+            Additional DEX Features
+          </h2>
 
-          <div className="flex flex-col lg:flex-row justify-between w-full gap-4 sm:gap-8">
-            {/* First Card - Instant Deep liquidity */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+            {/* Multichain Swap */}
             <div
-              className="scroll-animate flex-1 rounded-[32px] p-4 sm:p-10"
+              className="scroll-animate rounded-[24px] p-6 sm:p-8"
               style={{
                 background:
                   "linear-gradient(179deg, rgba(32, 32, 32, 0.00) 0.7%, rgba(32, 32, 32, 0.00) 17.94%, #FFCD4D 99.3%)",
               }}
             >
-              <div className="relative bg-[#202020] rounded-2xl p-4 sm:p-8 h-full flex flex-col items-center">
-                <div className="w-[160px] sm:w-[200px] h-32 sm:h-40 flex justify-center items-center p-5">
-                  <Image
-                    src={instantLp}
-                    alt="Deep Liquidity"
-                    width={200}
-                    height={200}
-                    className="object-contain"
-                  />
-                </div>
-                <h2 className="text-base sm:text-xl text-white mb-2 sm:mb-4">
-                  Instant Deep liquidity
-                </h2>
-                <p className="text-sm sm:text-lg text-white text-center">
-                  Start trading immediately with 100% liquidity
+              <div className="relative bg-[#202020] rounded-xl p-6 h-full flex flex-col items-center justify-center text-center">
+                <h3 className="text-lg sm:text-xl text-white font-bold mb-2">
+                  Multichain Swap
+                </h3>
+                <p className="text-sm sm:text-base text-gray-300">
+                  Trade assets across multiple blockchains seamlessly
                 </p>
               </div>
             </div>
 
-            {/* Second Card - Earn from Day One */}
+            {/* MultiToken Swap */}
             <div
-              className="scroll-animate flex-1 rounded-[32px] p-4 sm:p-10"
+              className="scroll-animate rounded-[24px] p-6 sm:p-8"
               style={{
                 background:
                   "linear-gradient(179deg, rgba(32, 32, 32, 0.00) 0.7%, rgba(32, 32, 32, 0.00) 17.94%, #FFCD4D 99.3%)",
               }}
             >
-              <div className="relative bg-[#202020] rounded-2xl p-4 sm:p-8 h-full flex flex-col items-center">
-                <div className="w-[160px] sm:w-[200px] h-32 sm:h-40 flex justify-center items-center p-5">
-                  <Image
-                    src={earnFromDayOneImage}
-                    alt="Money"
-                    width={200}
-                    height={200}
-                    className="object-contain"
-                  />
-                </div>
-                <h2 className="text-base sm:text-xl text-white mb-2 sm:mb-4">
-                  Earn from Day One
-                </h2>
-                <p className="text-sm sm:text-lg text-white text-center">
-                  Passive income through transaction fees and partner yields
+              <div className="relative bg-[#202020] rounded-xl p-6 h-full flex flex-col items-center justify-center text-center">
+                <h3 className="text-lg sm:text-xl text-white font-bold mb-2">
+                  MultiToken Swap
+                </h3>
+                <p className="text-sm sm:text-base text-gray-300">
+                  Swap multiple tokens in a single transaction
                 </p>
               </div>
             </div>
 
-            {/* Third Card - Auto-Compunding Rewards */}
+            {/* Bridge */}
             <div
-              className="scroll-animate flex-1 rounded-[32px] p-4 sm:p-10"
+              className="scroll-animate rounded-[24px] p-6 sm:p-8"
               style={{
                 background:
                   "linear-gradient(179deg, rgba(32, 32, 32, 0.00) 0.7%, rgba(32, 32, 32, 0.00) 17.94%, #FFCD4D 99.3%)",
               }}
             >
-              <div className="relative bg-[#202020] rounded-2xl p-4 sm:p-8 h-full flex flex-col items-center">
-                <div className="w-[160px] sm:w-[200px] h-32 sm:h-40 flex justify-center items-center p-5">
-                  <Image
-                    src={autoCompoundImage}
-                    alt="Reward"
-                    width={200}
-                    height={200}
-                    className="object-contain"
-                  />
-                </div>
-                <h2 className="text-base sm:text-xl text-white mb-2 sm:mb-4">
-                  Auto-Compunding Rewards
-                </h2>
-                <p className="text-sm sm:text-lg text-white text-center">
-                  Continuous rewards for token holders
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Co-Launch Program Section */}
-        <div className="scroll-animate flex flex-col items-center gap-8 sm:gap-16 w-full max-w-[1200px] mx-4 sm:mx-auto">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white text-center">
-            Co-Launch Program
-          </h1>
-
-          <div className="flex flex-col lg:flex-row justify-between w-full gap-4 sm:gap-8">
-            {/* Card 1 - Co-Launch with Fjord Foundry */}
-            <div
-              className="scroll-animate flex-1 rounded-[32px] p-4 sm:p-10"
-              style={{
-                background:
-                  "linear-gradient(179deg, rgba(32, 32, 32, 0.00) 0.7%, rgba(32, 32, 32, 0.00) 17.94%, #FFCD4D 99.3%)",
-              }}
-            >
-              <div className="relative bg-[#202020] rounded-2xl p-4 sm:p-8 h-full flex flex-col items-center">
-                <div className="w-[160px] sm:w-[200px] h-32 sm:h-40 flex justify-center items-center">
-                  <Image
-                    src={coLaunchFjordImage}
-                    alt="Rocket"
-                    width={200}
-                    height={200}
-                    className="object-contain"
-                  />
-                </div>
-                <h2 className="text-lg sm:text-xl text-white mb-2 sm:mb-4 text-center">
-                  Co-Launch with Fjord Foundry
-                </h2>
-                <p className="text-base sm:text-lg text-white text-center">
-                  Multiple sale types (LBP or Fixed Price Model)
+              <div className="relative bg-[#202020] rounded-xl p-6 h-full flex flex-col items-center justify-center text-center">
+                <h3 className="text-lg sm:text-xl text-white font-bold mb-2">
+                  Bridge
+                </h3>
+                <p className="text-sm sm:text-base text-gray-300">
+                  Transfer assets between chains securely
                 </p>
               </div>
             </div>
 
-            {/* Card 2 - Co-Listing Advantage */}
+            {/* Limit Order */}
             <div
-              className="scroll-animate flex-1 rounded-[32px] p-4 sm:p-10"
+              className="scroll-animate rounded-[24px] p-6 sm:p-8"
               style={{
                 background:
                   "linear-gradient(179deg, rgba(32, 32, 32, 0.00) 0.7%, rgba(32, 32, 32, 0.00) 17.94%, #FFCD4D 99.3%)",
               }}
             >
-              <div className="relative bg-[#202020] rounded-2xl p-4 sm:p-8 h-full flex flex-col items-center">
-                <div className="w-[160px] sm:w-[200px] h-32 sm:h-40 flex justify-center items-center">
-                  <Image
-                    src={coListingAdvImage}
-                    alt="Listing"
-                    width={200}
-                    height={200}
-                    className="object-contain"
-                  />
-                </div>
-                <h2 className="text-lg sm:text-xl text-white mb-2 sm:mb-4 text-center">
-                  Co-Listing Advantage
-                </h2>
-                <p className="text-base sm:text-lg text-white text-center">
-                  Curated and co-listed on both Honeypot and Fjord for maximum
-                  exposure
+              <div className="relative bg-[#202020] rounded-xl p-6 h-full flex flex-col items-center justify-center text-center">
+                <h3 className="text-lg sm:text-xl text-white font-bold mb-2">
+                  Limit Order
+                </h3>
+                <p className="text-sm sm:text-base text-gray-300">
+                  Set your price and let the order execute automatically
                 </p>
               </div>
             </div>
 
-            {/* Card 3 - One Smart Contract */}
+            {/* TWAP */}
             <div
-              className="scroll-animate flex-1 rounded-[32px] p-4 sm:p-10"
+              className="scroll-animate rounded-[24px] p-6 sm:p-8"
               style={{
                 background:
                   "linear-gradient(179deg, rgba(32, 32, 32, 0.00) 0.7%, rgba(32, 32, 32, 0.00) 17.94%, #FFCD4D 99.3%)",
               }}
             >
-              <div className="relative bg-[#202020] rounded-2xl p-4 sm:p-8 h-full flex flex-col items-center">
-                <div className="w-[160px] sm:w-[200px] h-32 sm:h-40 flex justify-center items-center">
-                  <Image
-                    src={oneSmartContractImage}
-                    alt="Smart Contract"
-                    width={200}
-                    height={200}
-                    className="object-contain"
-                  />
-                </div>
-                <h2 className="text-lg sm:text-xl text-white mb-2 sm:mb-4 text-center">
-                  One Smart Contract, Two Frontends, Two Huge Communities
-                </h2>
-                <p className="text-base sm:text-lg text-white text-center">
-                  Get all the support you need for a successful raise
+              <div className="relative bg-[#202020] rounded-xl p-6 h-full flex flex-col items-center justify-center text-center">
+                <h3 className="text-lg sm:text-xl text-white font-bold mb-2">
+                  TWAP
+                  <span className="ml-2 text-xs bg-[#FFCD4D] text-black px-2 py-1 rounded">
+                    Coming Soon
+                  </span>
+                </h3>
+                <p className="text-sm sm:text-base text-gray-300">
+                  Time-Weighted Average Price orders for optimal execution
                 </p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Success Stories Section */}
+        {/* DEX Performance Section */}
         <div className="scroll-animate w-full max-w-[1200px] mx-4 sm:mx-auto flex flex-col items-center z-10">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white text-center mb-8 sm:mb-16">
-            Success Stories
+            Platform Performance
           </h1>
 
           <div className="scroll-animate bg-[#FFCD4D] rounded-[24px] sm:rounded-[32px] relative w-full overflow-hidden bg-[url('/images/honey-border.png')] bg-repeat-x bg-[length:auto_40px] bg-[position:-30px_top] border-2 border-white">
@@ -905,14 +735,14 @@ export default function HomePage() {
                   <div className="flex items-center">
                     <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#202020] font-bold">
                       <span className="border-b-2 border-[#202020]">
-                        Berally / BurrBear / Overlay / BearCage / Wasabee
+                        DEX++ Multichain
                       </span>
                     </h2>
                   </div>
 
                   <div className="space-y-6 sm:space-y-8">
                     <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#202020] font-bold">
-                      Key figures
+                      Key Metrics
                     </h3>
                     <div className="space-y-4 sm:space-y-6">
                       <div className="flex items-center gap-3">
@@ -924,7 +754,7 @@ export default function HomePage() {
                           sizes="24px"
                         />
                         <p className="text-base sm:text-xl md:text-2xl text-[#202020]">
-                          $2.96M+ raised
+                          $78M+ Total Volume
                         </p>
                       </div>
                       <div className="flex items-center gap-3">
@@ -936,7 +766,7 @@ export default function HomePage() {
                           sizes="24px"
                         />
                         <p className="text-base sm:text-xl md:text-2xl text-[#202020]">
-                          2000+ participants
+                          10K+ Active Users
                         </p>
                       </div>
                       <div className="flex items-center gap-3">
@@ -948,7 +778,7 @@ export default function HomePage() {
                           sizes="24px"
                         />
                         <p className="text-base sm:text-xl md:text-2xl text-[#202020]">
-                          6+ projects
+                          1.2M+ Trades Executed
                         </p>
                       </div>
                     </div>
@@ -1003,54 +833,54 @@ export default function HomePage() {
 
           <div className="w-full bg-[#FFCD4D] rounded-[32px] relative bg-[url('/images/honey-border.png')] bg-repeat-x bg-[length:auto_40px] bg-[position:-30px_top] sm:pb-8">
             <div className="flex flex-col lg:flex-row justify-between">
-              <div className="px-4 pt-12 sm:px-8 md:px-12 space-y-4 sm:space-y-6 flex items-center">
-                <div className="flex flex-col gap-4 sm:gap-6">
-                  <div className="flex items-center gap-3">
-                    <Image
-                      src="/images/honey-box.png"
-                      alt="honey box"
-                      width={24}
-                      height={24}
-                      sizes="24px"
-                    />
-                    <p className="text-base sm:text-xl md:text-2xl text-[#202020]">
-                      Unique token airdrop
+              <div className="px-4 pt-12 sm:px-8 md:px-12 space-y-3 sm:space-y-4 flex items-center">
+                <div className="flex flex-col gap-3 sm:gap-4">
+                  <div className="flex items-center gap-2">
+                    <span className="text-lg sm:text-xl">🏦</span>
+                    <p className="text-sm sm:text-base md:text-lg text-[#202020] font-semibold">
+                      HoneyPot Finance POL Vault Rewards
                     </p>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <Image
-                      src="/images/honey-box.png"
-                      alt="honey box"
-                      width={24}
-                      height={24}
-                      sizes="24px"
-                    />
-                    <p className="text-base sm:text-xl md:text-2xl text-[#202020]">
-                      Revenue sharing from BeraFarm Game
+
+                  <div className="flex items-center gap-2">
+                    <span className="text-lg sm:text-xl">🪂</span>
+                    <p className="text-sm sm:text-base md:text-lg text-[#202020] font-semibold">
+                      HPOT Token Airdrop
                     </p>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <Image
-                      src="/images/honey-box.png"
-                      alt="honey box"
-                      width={24}
-                      height={24}
-                      sizes="24px"
-                    />
-                    <p className="text-base sm:text-xl md:text-2xl text-[#202020]">
-                      4 million incentive program
+
+                  <div className="flex items-center gap-2">
+                    <span className="text-lg sm:text-xl">📊</span>
+                    <p className="text-sm sm:text-base md:text-lg text-[#202020] font-semibold">
+                      Perpetual DEX Revenue Sharing
                     </p>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <Image
-                      src="/images/honey-box.png"
-                      alt="honey box"
-                      width={24}
-                      height={24}
-                      sizes="24px"
-                    />
-                    <p className="text-base sm:text-xl md:text-2xl text-[#202020]">
-                      RFB incentives for Bera
+
+                  <div className="flex items-center gap-2">
+                    <span className="text-lg sm:text-xl">🔮</span>
+                    <p className="text-sm sm:text-base md:text-lg text-[#202020] font-semibold">
+                      Multi-Chain Fee Sharing
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <span className="text-lg sm:text-xl">🚀</span>
+                    <p className="text-sm sm:text-base md:text-lg text-[#202020] font-semibold">
+                      Future Protocol Fees
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <span className="text-lg sm:text-xl">💰</span>
+                    <p className="text-sm sm:text-base md:text-lg text-[#202020] font-semibold">
+                      Enhanced Staking Rewards
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <span className="text-lg sm:text-xl">🌟</span>
+                    <p className="text-sm sm:text-base md:text-lg text-[#202020] font-semibold">
+                      Ecosystem Access & Benefits
                     </p>
                   </div>
                 </div>
@@ -1086,18 +916,6 @@ export default function HomePage() {
                         className="w-full px-8 sm:px-4 py-2 sm:py-3 md:py-4 bg-black text-white rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm sm:text-base md:text-lg border border-white z-10"
                         onClick={() => {
                           window.open(
-                            "https://marketplace.kingdomly.app/collection/berachain/0xc3c30fba6387cff83474e684380930dfc64554ef",
-                            "_blank"
-                          );
-                        }}
-                      >
-                        Buy from Kingdomly
-                      </button>
-
-                      <button
-                        className="w-full px-8 sm:px-4 py-2 sm:py-3 md:py-4 bg-black text-white rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm sm:text-base md:text-lg border border-white z-10"
-                        onClick={() => {
-                          window.open(
                             "https://magiceden.io/collections/berachain/0xc3c30fba6387cff83474e684380930dfc64554ef",
                             "_blank"
                           );
@@ -1117,10 +935,109 @@ export default function HomePage() {
                       >
                         Bridge to Berachain
                       </button>
+
+                      <button
+                        className="w-full px-8 sm:px-4 py-2 sm:py-3 md:py-4 bg-black text-white rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm sm:text-base md:text-lg border border-white z-10"
+                        onClick={() => {
+                          window.open(
+                            "https://nft.honeypotfinance.xyz/stake",
+                            "_blank"
+                          );
+                        }}
+                      >
+                        Stake
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Products Section */}
+        <div className="scroll-animate w-full max-w-[1200px] mx-4 sm:mx-auto flex flex-col items-center z-10">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl text-white text-center mb-8">
+            Products
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+            {/* DEX++ */}
+            <div className="bg-[#202020] rounded-2xl p-6 border-2 border-[#FFCD4D]">
+              <h3 className="text-xl font-bold text-[#FFCD4D] mb-4">DEX++</h3>
+              <p className="text-white text-sm mb-4">
+                Advanced AMM and perpetual trading platform with deep liquidity
+              </p>
+              <button
+                onClick={() =>
+                  window.open(
+                    "https://wasabee.honeypotfinance.xyz/swap",
+                    "_blank"
+                  )
+                }
+                className="w-full px-4 py-2 bg-[#FFCD4D] text-black rounded-lg hover:bg-opacity-90 transition-all font-bold text-sm"
+              >
+                Start Trading
+              </button>
+            </div>
+
+            {/* All in One Vault */}
+            <div className="bg-[#202020] rounded-2xl p-6 border-2 border-[#FFCD4D]">
+              <h3 className="text-xl font-bold text-[#FFCD4D] mb-4">
+                All in One Vault
+              </h3>
+              <p className="text-white text-sm mb-4">
+                Claim your share of the vault&apos;s $LBGT rewards by burning
+                tokens
+              </p>
+              <button
+                onClick={() =>
+                  window.open(
+                    "https://leaderboard.honeypotfinance.xyz/",
+                    "_blank"
+                  )
+                }
+                className="w-full px-4 py-2 bg-[#FFCD4D] text-black rounded-lg hover:bg-opacity-90 transition-all font-bold text-sm"
+              >
+                Enter Vault
+              </button>
+            </div>
+
+            {/* Pot2Pump */}
+            <div className="bg-[#202020] rounded-2xl p-6 border-2 border-[#FFCD4D]">
+              <h3 className="text-xl font-bold text-[#FFCD4D] mb-4">
+                Pot2Pump
+              </h3>
+              <p className="text-white text-sm mb-4">
+                Launch meme tokens with built-in liquidity management and
+                rewards
+              </p>
+              <button
+                onClick={() =>
+                  window.open("https://pot2pump.honeypotfinance.xyz/", "_blank")
+                }
+                className="w-full px-4 py-2 bg-[#FFCD4D] text-black rounded-lg hover:bg-opacity-90 transition-all font-bold text-sm"
+              >
+                Launch Meme
+              </button>
+            </div>
+
+            {/* Dreampad */}
+            <div className="bg-[#202020] rounded-2xl p-6 border-2 border-[#FFCD4D]">
+              <h3 className="text-xl font-bold text-[#FFCD4D] mb-4">
+                Dreampad
+              </h3>
+              <p className="text-white text-sm mb-4">
+                Fair token launches with 100% liquidity and partner integrations
+              </p>
+              <button
+                onClick={() =>
+                  window.open("https://dreampad.honeypotfinance.xyz/", "_blank")
+                }
+                className="w-full px-4 py-2 bg-[#FFCD4D] text-black rounded-lg hover:bg-opacity-90 transition-all font-bold text-sm"
+              >
+                Launch Token
+              </button>
             </div>
           </div>
         </div>

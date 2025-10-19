@@ -33,26 +33,6 @@ export type flatMenu = {
 
 export const appPathsList: Menu[] = [
   {
-    title: "Meme Launchpad",
-    path: [
-      {
-        title: "Overview",
-        path: "https://pot2pump.honeypotfinance.xyz/",
-        routePath: "https://pot2pump.honeypotfinance.xyz/",
-      },
-      {
-        title: "Launch Meme",
-        path: "https://pot2pump.honeypotfinance.xyz/potting",
-        routePath: "https://pot2pump.honeypotfinance.xyz/potting",
-      },
-      {
-        title: "Trade Meme",
-        path: "https://pot2pump.honeypotfinance.xyz/pumping",
-        routePath: "https://pot2pump.honeypotfinance.xyz/pumping",
-      },
-    ],
-  },
-  {
     title: "Trade",
     path: [
       {
@@ -99,6 +79,21 @@ export const appPathsList: Menu[] = [
         title: "Dreampad",
         path: "https://dreampad.honeypotfinance.xyz/",
         routePath: "https://dreampad.honeypotfinance.xyz/",
+      },
+      {
+        title: "Pot2Pump Overview",
+        path: "https://pot2pump.honeypotfinance.xyz/",
+        routePath: "https://pot2pump.honeypotfinance.xyz/",
+      },
+      {
+        title: "Launch Meme",
+        path: "https://pot2pump.honeypotfinance.xyz/potting",
+        routePath: "https://pot2pump.honeypotfinance.xyz/potting",
+      },
+      {
+        title: "Trade Meme",
+        path: "https://pot2pump.honeypotfinance.xyz/pumping",
+        routePath: "https://pot2pump.honeypotfinance.xyz/pumping",
       },
     ],
   },
