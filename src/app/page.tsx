@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { BsTelegram } from "react-icons/bs";
 import { FaXTwitter, FaDiscord, FaMedium } from "react-icons/fa6";
 import DexStats from "@/components/DexStats";
+import FloatingPreTGE from "@/components/FloatingPreTGE";
 
 //images
 import lightBgEffectImage from "@/assets/effectItems/light-bg-effect.png";
@@ -229,6 +230,9 @@ export default function HomePage() {
           <Navbar menuList={appPathsList} />
         </div>
       </div>
+
+      {/* Floating Pre-TGE Board */}
+      <FloatingPreTGE />
 
       <div className="flex flex-col items-center w-full relative drop-animate drop-delay-2 mt-[10rem] sm:mt-[12rem]">
         <div
