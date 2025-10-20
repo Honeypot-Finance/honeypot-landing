@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 interface DexStatsData {
   users: number;
+  chainCount: number;
   totalTrades: string;
   totalVolume: string;
 }
@@ -18,60 +19,22 @@ const DexStats = () => {
       try {
         setLoading(true);
 
-        // GraphQL endpoint for Berachain mainnet algebra_info
-        const GRAPHQL_ENDPOINT = "https://api.goldsky.com/api/public/project_cm78242tjtmme01uvcbkaay27/subgraphs/hpot-algebra-core/2.4.0/gn";
+        // Fetch from our proxy API route to avoid CORS issues
+        const response = await fetch("/api/dex-stats");
 
-        // Fetch total users
-        const usersQuery = `
-          query DexAccountCount {
-            factories {
-              accountCount
-            }
-          }
-        `;
-
-        // Fetch leaderboard stats (total trades and volume)
-        const leaderboardQuery = `
-          query LeaderboardStatus {
-            factories {
-              txCount
-              untrackedVolumeUSD
-            }
-          }
-        `;
-
-        const [usersResponse, leaderboardResponse] = await Promise.all([
-          fetch(GRAPHQL_ENDPOINT, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ query: usersQuery }),
-          }),
-          fetch(GRAPHQL_ENDPOINT, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ query: leaderboardQuery }),
-          }),
-        ]);
-
-        const usersData = await usersResponse.json();
-        const leaderboardData = await leaderboardResponse.json();
-
-        if (usersData.errors || leaderboardData.errors) {
-          throw new Error("GraphQL query failed");
+        if (!response.ok) {
+          throw new Error("Failed to fetch DEX stats");
         }
 
-        const users = usersData.data?.factories[0]?.accountCount || 0;
-        const totalTrades = leaderboardData.data?.factories[0]?.txCount || "0";
-        const totalVolume = leaderboardData.data?.factories[0]?.untrackedVolumeUSD || "0";
+        const data = await response.json();
+
+        console.log("DEX Stats Response:", data);
 
         setStats({
-          users,
-          totalTrades,
-          totalVolume,
+          users: data.users,
+          chainCount: data.chainCount,
+          totalTrades: data.totalTrades,
+          totalVolume: data.totalVolume,
         });
       } catch (err) {
         console.error("Error fetching DEX stats:", err);
