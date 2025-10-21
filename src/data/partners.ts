@@ -21,7 +21,7 @@ import oogabooga from "@/assets/partners/oogabooga.jpg";
 import infrared from "@/assets/partners/infrared.png";
 import honeycast from "@/assets/partners/honeycast.jpg";
 import d2finance from "@/assets/partners/d2finance.svg";
-import enso from "@/assets/partners/enso.png";
+import enso from "@/assets/partners/enso.jpg";
 import ghost from "@/assets/partners/ghost.png";
 import codex from "@/assets/partners/codex.png";
 import bitgetwallet from "@/assets/partners/bitgetwallet.png";
@@ -34,6 +34,10 @@ import Berally from "@/assets/partners/berally.webp";
 import BurrBear from "@/assets/partners/burrbear.png";
 import algebra from "@/assets/partners/algebra.png";
 import wasabee from "@/assets/partners/wasabee.png";
+import axelar from "@/assets/partners/axelar.jpeg";
+import chainlink from "@/assets/partners/chainlink.png";
+import edgex from "@/assets/partners/edgex.webp";
+import particle_network from "@/assets/partners/particle_network.png";
 
 const investors = [
   {
@@ -194,6 +198,26 @@ const partners = [
     name: "Wasabee",
     partnerLink: "https://x.com/WasabeeFi",
     partnerImage: wasabee,
+  },
+  {
+    name: "Axelar",
+    partnerLink: "https://axelar.network/",
+    partnerImage: axelar,
+  },
+  {
+    name: "Chainlink",
+    partnerLink: "https://chain.link/",
+    partnerImage: chainlink,
+  },
+  {
+    name: "EdgeX",
+    partnerLink: "https://edgex.exchange/",
+    partnerImage: edgex,
+  },
+  {
+    name: "Particle Network",
+    partnerLink: "https://particle.network/",
+    partnerImage: particle_network,
   },
   {
     name: "Enso",
