@@ -16,11 +16,9 @@ import masknetwork from "@/assets/partners/masknetwork.jpg";
 //partners logo
 import ICHI from "@/assets/partners/ICHI.png";
 import kingdomly from "@/assets/partners/kingdomly.png";
-import beraroot from "@/assets/partners/beraroot.png";
 import oogabooga from "@/assets/partners/oogabooga.jpg";
 import infrared from "@/assets/partners/infrared.png";
 import honeycast from "@/assets/partners/honeycast.jpg";
-import d2finance from "@/assets/partners/d2finance.svg";
 import enso from "@/assets/partners/enso.jpg";
 import ghost from "@/assets/partners/ghost.png";
 import codex from "@/assets/partners/codex.png";
@@ -29,9 +27,6 @@ import okx from "@/assets/partners/okx.png";
 import rootsfi from "@/assets/partners/rootsfi.svg";
 import TheHoneyJar from "@/assets/partners/thj.jpg";
 import Fjord from "@/assets/partners/fjord.svg";
-import Overlay from "@/assets/partners/overlay.webp";
-import Berally from "@/assets/partners/berally.webp";
-import BurrBear from "@/assets/partners/burrbear.png";
 import algebra from "@/assets/partners/algebra.png";
 import wasabee from "@/assets/partners/wasabee.png";
 import axelar from "@/assets/partners/axelar.jpeg";
@@ -110,11 +105,6 @@ const partners = [
     partnerImage: kingdomly,
   },
   {
-    name: "Bera Root",
-    partnerLink: "https://beraroot.com/",
-    partnerImage: beraroot,
-  },
-  {
     name: "Oogabooga",
     partnerLink: "https://x.com/0xoogabooga",
     partnerImage: oogabooga,
@@ -128,11 +118,6 @@ const partners = [
     name: "Honeycast",
     partnerLink: "https://linktr.ee/TheHoneyCast",
     partnerImage: honeycast,
-  },
-  {
-    name: "D2 Finance",
-    partnerLink: "https://d2.finance/strategies",
-    partnerImage: d2finance,
   },
   {
     name: "ICHI Vault",
@@ -173,21 +158,6 @@ const partners = [
     name: "Fjord",
     partnerLink: "https://www.fjordfoundry.com/",
     partnerImage: Fjord,
-  },
-  {
-    name: "Overlay",
-    partnerLink: "https://overlay.market/",
-    partnerImage: Overlay,
-  },
-  {
-    name: "Berally",
-    partnerLink: "https://berally.io/",
-    partnerImage: Berally,
-  },
-  {
-    name: "BurrBear",
-    partnerLink: "https://www.burrbear.io/",
-    partnerImage: BurrBear,
   },
   {
     name: "Algebra",
