@@ -9,6 +9,9 @@ import csp_dao from "@/assets/partners/csp_dao.png";
 import aquanow from "@/assets/partners/aquanow.png";
 import EnigmaValidator from "@/assets/partners/EnigmaValidator.png";
 import ACCapital1 from "@/assets/partners/ACCapital1.jpg";
+import chiancatcher from "@/assets/partners/chiancatcher.jpeg";
+import creditscend from "@/assets/partners/creditscend.jpg";
+import masknetwork from "@/assets/partners/masknetwork.jpg";
 
 //partners logo
 import ICHI from "@/assets/partners/ICHI.png";
@@ -78,6 +81,21 @@ const investors = [
     name: "AC Capital",
     partnerLink: "https://accapital.io/",
     partnerImage: ACCapital1,
+  },
+  {
+    name: "ChainCatcher",
+    partnerLink: "https://www.chaincatcher.com/",
+    partnerImage: chiancatcher,
+  },
+  {
+    name: "Creditscend",
+    partnerLink: "https://creditscend.com/",
+    partnerImage: creditscend,
+  },
+  {
+    name: "Mask Network",
+    partnerLink: "https://mask.io/",
+    partnerImage: masknetwork,
   },
 ];
 
