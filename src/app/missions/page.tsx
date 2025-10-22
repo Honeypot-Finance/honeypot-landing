@@ -499,7 +499,7 @@ export default function MissionsPage() {
                   <button
                     onClick={() =>
                       window.open(
-                        "https://nft.honeypotfinance.xyz/stake",
+                        "https://nft.honeypotfinance.xyz/staking",
                         "_blank"
                       )
                     }

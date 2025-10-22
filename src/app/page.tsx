@@ -859,7 +859,7 @@ export default function HomePage() {
                         className="w-full px-8 sm:px-4 py-2 sm:py-3 md:py-4 bg-black text-white rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm sm:text-base md:text-lg border border-white z-10"
                         onClick={() => {
                           window.open(
-                            "https://nft.honeypotfinance.xyz/stake",
+                            "https://nft.honeypotfinance.xyz/staking",
                             "_blank"
                           );
                         }}
