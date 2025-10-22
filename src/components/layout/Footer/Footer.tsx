@@ -35,7 +35,7 @@ export default function Footer() {
               <a href="https://medium.com/@HoneypotFinance1">Medium</a>
             </li>
             <li>
-              <a href="https://www.okx.com/web3/marketplace/nft/collection/arbi/honeygenesis-1">
+              <a href="https://magiceden.io/collections/berachain/honeygenesis-44">
                 HoneyGenesis
               </a>
             </li>
@@ -45,9 +45,7 @@ export default function Footer() {
           <h3>Apps</h3>
           <ul>
             <li>
-              <a href="https://pot2pump.honeypotfinance.xyz/">
-                Pot2Pump
-              </a>
+              <a href="https://pot2pump.honeypotfinance.xyz/">Pot2Pump</a>
             </li>
             <li>
               <a href="https://beta4.honeypotfinance.xyz/swap">

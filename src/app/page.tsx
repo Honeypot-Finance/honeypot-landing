@@ -1104,7 +1104,7 @@ export default function HomePage() {
               Medium
             </a>
             <a
-              href="https://www.okx.com/web3/marketplace/nft/collection/arbi/honeygenesis-1"
+              href="https://magiceden.io/collections/berachain/honeygenesis-44"
               target="_blank"
               rel="noopener noreferrer"
             >
