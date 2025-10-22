@@ -144,12 +144,17 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
         className="grow w-full bg-[#FFCD4D] rounded-xl flex flex-col py-2 px-4 lg:py-4 lg:px-3 shadow-[2px_4px_0px_0px_#FFF] max-w-none"
       >
         <div className="w-full sm:flex grow hidden gap-1 lg:gap-2 lg:py-1 ">
-          <Image
-            src="/images/honeypot-logo.svg"
-            alt="honeypot-logo"
-            width={35}
-            height={36}
-          />
+          <button
+            onClick={() => router.push("/")}
+            className="hover:opacity-80 transition-opacity cursor-pointer"
+          >
+            <Image
+              src="/images/honeypot-logo.svg"
+              alt="honeypot-logo"
+              width={35}
+              height={36}
+            />
+          </button>
           {menuList.map(renderMenuItem)}
         </div>
 
@@ -209,6 +214,13 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
                 : "opacity-0 -translate-x-2"
             )}
           >
+            <Link
+              href="/"
+              className="block p-3 text-black text-lg font-bold rounded-lg transition hover:bg-[#FFE28A] bg-white"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Home
+            </Link>
             {listToNavbarItem(menuList)}
           </div>
         </NavbarMenu>
