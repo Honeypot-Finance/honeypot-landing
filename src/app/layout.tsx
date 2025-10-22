@@ -47,7 +47,8 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-[#80BFE5]">
-        <LayoutWrapper>{children}</LayoutWrapper>
+        {/* <LayoutWrapper>{children}</LayoutWrapper> */}
+        {children}
       </body>
     </html>
   );

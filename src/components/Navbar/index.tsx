@@ -133,13 +133,6 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
 
   return (
     <div className="flex flex-col items-center w-full sm:w-fit">
-      <Image
-        width={139}
-        height={66}
-        alt="hanging rope"
-        className="mb-[-20px]"
-        src="/images/hanging-rope.svg"
-      />
       <Navbar
         height="6.75rem"
         isMenuOpen={isMenuOpen}

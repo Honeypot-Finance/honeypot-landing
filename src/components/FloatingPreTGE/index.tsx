@@ -60,10 +60,7 @@ const FloatingPreTGE = () => {
 
             <button
               onClick={() => {
-                window.open(
-                  "https://points.honeypotfinance.xyz/loyalty",
-                  "_blank"
-                );
+                window.location.href = "/missions";
               }}
               className="w-full px-4 py-3 bg-black text-white rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm border-2 border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)]"
             >
@@ -129,10 +126,7 @@ const FloatingPreTGE = () => {
 
             <button
               onClick={() => {
-                window.open(
-                  "https://points.honeypotfinance.xyz/loyalty",
-                  "_blank"
-                );
+                window.location.href = "/missions";
               }}
               className="px-4 py-2 sm:px-6 sm:py-3 bg-black text-white rounded-xl hover:bg-opacity-90 transition-all font-bold text-xs sm:text-sm border-2 border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] whitespace-nowrap flex-shrink-0"
             >
