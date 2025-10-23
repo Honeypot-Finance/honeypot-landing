@@ -667,13 +667,13 @@ export default function HomePage() {
           </div>
 
           <div className="w-full bg-[#1a1a1a] rounded-[32px] relative border-2 border-gray-700 sm:pb-8">
-            <div className="flex flex-col lg:flex-row justify-between">
-              <div className="px-4 pt-12 sm:px-8 md:px-12 space-y-3 sm:space-y-4 flex items-center">
+            <div className="flex flex-col lg:flex-row justify-between lg:items-end">
+              <div className="px-4 pt-12 sm:px-8 md:px-12 space-y-3 sm:space-y-4 flex items-center lg:pb-8">
                 <div className="flex flex-col gap-3 sm:gap-4">
                   <div className="flex items-center gap-2">
                     <span className="text-lg sm:text-xl">🏦</span>
                     <p className="text-sm sm:text-base md:text-lg text-white font-semibold">
-                      HoneyPot Finance POL Vault Rewards
+                      Honeypot Finance POL Vault Rewards
                     </p>
                   </div>
 
@@ -721,7 +721,7 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <div className="flex flex-col items-center lg:items-end p-6 sm:p-8 md:p-12 lg:flex-shrink-0">
+              <div className="flex flex-col items-center lg:items-end px-6 sm:px-8 md:px-12 lg:flex-shrink-0">
                 <div className="flex items-end w-full">
                   <div className="hidden sm:block transform -rotate-[50deg] translate-x-6 -translate-y-2">
                     <Image

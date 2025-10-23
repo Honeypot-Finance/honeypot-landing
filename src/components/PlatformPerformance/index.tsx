@@ -47,11 +47,11 @@ const PlatformPerformance = () => {
   }, []);
 
   const formatNumber = (num: number | string, prefix?: string) => {
-    if (typeof num === 'string') {
+    if (typeof num === "string") {
       num = parseFloat(num);
     }
 
-    const pre = prefix || '';
+    const pre = prefix || "";
 
     if (num >= 1000000) {
       return `${pre}${(num / 1000000).toFixed(1)}M+`;
@@ -134,7 +134,8 @@ const PlatformPerformance = () => {
               <div className="flex items-center">
                 <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white font-bold font-poppins">
                   <span className="border-b-2 border-gray-600">
-                    DEX++ on {stats.chainCount} {stats.chainCount === 1 ? 'Chain' : 'Chains'}
+                    DEX++ on
+                    {/* {stats.chainCount} */} Chains
                   </span>
                 </h2>
               </div>
@@ -153,7 +154,7 @@ const PlatformPerformance = () => {
                       sizes="24px"
                     />
                     <p className="text-base sm:text-xl md:text-2xl text-gray-300">
-                      {formatNumber(stats.totalVolume, '$')} Total Volume
+                      {formatNumber(stats.totalVolume, "$")} Total Volume
                     </p>
                   </div>
                   <div className="flex items-center gap-3">
@@ -187,7 +188,7 @@ const PlatformPerformance = () => {
 
           <div className="absolute bottom-0 right-0 hidden lg:block">
             <Image
-              src="/images/cool-bear.png"
+              src="/images/bnb_bera.png"
               alt="Cool Bear"
               width={400}
               height={400}
@@ -198,7 +199,7 @@ const PlatformPerformance = () => {
 
           <div className="flex justify-center lg:hidden">
             <Image
-              src="/images/cool-bear.png"
+              src="/images/bnb_bera.png"
               alt="Cool Bear"
               width={400}
               height={400}
