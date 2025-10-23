@@ -349,7 +349,7 @@ export default function HomePage() {
           </div>
 
           <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white font-poppins font-bold text-center px-4 max-w-5xl leading-tight">
-            All-In-Ine Liquidity Hub Building Next-Generation DeFi
+            All-In-One Liquidity Hub Building Next-Generation DeFi
             Infrastructure.
           </h2>
         </div>
