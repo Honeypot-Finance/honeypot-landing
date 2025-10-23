@@ -349,7 +349,8 @@ export default function HomePage() {
           </div>
 
           <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white font-poppins font-bold text-center px-4 max-w-5xl leading-tight">
-            DEX++ for on-chain finance
+            All-In-Ine Liquidity Hub Building Next-Generation DeFi
+            Infrastructure.
           </h2>
         </div>
       </div>
