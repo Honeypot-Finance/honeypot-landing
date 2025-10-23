@@ -124,14 +124,24 @@ export default function MissionsPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#80BFE5] font-gliker relative overflow-hidden flex flex-col items-center w-full sm:px-0">
-      {/* Navbar with drop animation */}
-      <div className="mb-6 sm:mb-8 md:mb-12 lg:mb-20 w-[calc(100%-2rem)] fixed top-0 left-1/2 -translate-x-1/2 z-50">
-        <div className="drop-animate [filter:drop-shadow(0_0_10px_rgba(0,0,0,0.6))_drop-shadow(0_0_15px_rgba(255,205,77,0.15))_drop-shadow(0_0_20px_rgba(0,0,0,0.4))] flex justify-center items-center">
+    <div className="min-h-screen bg-[#140E06] font-inter relative overflow-hidden flex flex-col items-center w-full sm:px-0">
+      {/* Honeycomb Pattern Background */}
+      <div
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{
+          backgroundImage: "url(/images/background_honeycomb_pattern.svg)",
+          backgroundRepeat: "repeat",
+          backgroundSize: "100px 100px",
+          backgroundPosition: "center",
+          opacity: 0.8,
+        }}
+      />
+      {/* Navbar with drop animation */}{" "}
+      <div className="mb-6 sm:mb-8 md:mb-12 lg:mb-20 w-full  fixed top-0 left-1/2 -translate-x-1/2 z-50">
+        <div className="drop-animate flex justify-center items-center">
           <Navbar menuList={appPathsList} />
         </div>
       </div>
-
       {/* Decorative floating coins */}
       <div className="absolute left-20 top-[250px] hidden lg:block animate-bounce delay-300">
         <Image
@@ -151,19 +161,18 @@ export default function MissionsPage() {
           className="opacity-70"
         />
       </div>
-
       {/* Hero Section with Title */}
-      <div className="flex flex-col items-center w-full relative drop-animate drop-delay-2 mt-[8rem] sm:mt-[10rem] px-4">
-        <div className="relative z-10 -mb-4 sm:-mb-8 max-w-[900px]">
-          <div className="bg-[#FFCD4D] rounded-xl px-8 sm:px-16 py-3 sm:py-5 border-2 sm:border-4 border-white shadow-[4px_4px_0px_0px_#000] sm:shadow-[8px_8px_0px_0px_#000] transform -rotate-3 origin-top">
-            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-[56px] text-[#202020] font-bold">
+      <div className="flex flex-col items-center w-full relative drop-animate drop-delay-2 mt-[8rem] sm:mt-[10rem] px-4 z-10">
+        <div className="relative z-10 mb-8 max-w-[900px]">
+          <div className="bg-[#1a1a1a] rounded-xl px-8 sm:px-16 py-3 sm:py-5 border-2 sm:border-4 border-gray-700 shadow-[4px_4px_0px_0px_rgba(255,205,77,0.3)] sm:shadow-[8px_8px_0px_0px_rgba(255,205,77,0.3)]">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-[56px] text-white font-bold font-poppins text-center">
               🎯 POT Missions
             </h1>
           </div>
         </div>
 
-        <div className="w-full bg-[#FFCD4D] rounded-[32px] pt-12 pb-8 px-6 sm:px-12 max-w-[900px] relative bg-[url('/images/honey-border.png')] bg-repeat-x bg-[length:auto_40px] bg-[position:-30px_top] border-4 border-white shadow-[8px_8px_0px_0px_#000]">
-          <p className="text-base sm:text-xl md:text-2xl text-center text-[#202020] font-semibold max-w-[700px] mx-auto">
+        <div className="w-full bg-[#1a1a1a] rounded-[32px] pt-12 pb-8 px-6 sm:px-12 max-w-[900px] relative border-2 border-gray-700">
+          <p className="text-base sm:text-xl md:text-2xl text-center text-gray-300 font-semibold max-w-[700px] mx-auto">
             Complete missions to earn rewards, boost your points, and maximize
             your benefits in the Honeypot Finance ecosystem
           </p>
@@ -189,9 +198,8 @@ export default function MissionsPage() {
           </div>
         </div>
       </div>
-
       {/* Missions Section */}
-      <div className="bg-[#271A0C] flex flex-col items-center w-full px-4 py-8 sm:py-12 mt-8">
+      <div className="bg-[#140E06] flex flex-col items-center w-full px-4 py-8 sm:py-12 mt-8 relative z-10">
         {/* Mission Cards */}
         <div className="scroll-animate flex flex-col gap-6 sm:gap-8 w-full max-w-[1200px] mx-auto">
           {/* POT Points Mission */}
@@ -202,9 +210,9 @@ export default function MissionsPage() {
                 "linear-gradient(179deg, rgba(32, 32, 32, 0.00) 0.7%, rgba(32, 32, 32, 0.00) 17.94%, #FFCD4D 99.3%)",
             }}
           >
-            <div className="relative bg-[#202020] rounded-2xl p-6 sm:p-12 border-4 border-[#FFCD4D]/20">
+            <div className="relative bg-[#1a1a1a] rounded-2xl p-6 sm:p-12 border-2 border-gray-700">
               {/* Step Number */}
-              <div className="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#FFCD4D] to-[#FF9500] rounded-full flex items-center justify-center border-4 border-[#271A0C] shadow-[0_0_20px_rgba(255,205,77,0.5)] z-10">
+              <div className="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#FFCD4D] to-[#FF9500] rounded-full flex items-center justify-center border-4 border-[#140E06] shadow-[0_0_20px_rgba(255,205,77,0.5)] z-10">
                 <span className="text-2xl sm:text-3xl font-bold text-black">
                   1
                 </span>
@@ -229,7 +237,7 @@ export default function MissionsPage() {
                 {/* Right side - Content */}
                 <div className="flex-1 flex flex-col gap-6">
                   <div>
-                    <h3 className="text-2xl sm:text-3xl md:text-4xl text-[#FFCD4D] font-bold mb-4">
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl text-[#FFCD4D] font-bold mb-4 font-poppins">
                       POT Points
                     </h3>
                     <p className="text-base sm:text-lg text-gray-300 mb-6">
@@ -348,9 +356,9 @@ export default function MissionsPage() {
                 "linear-gradient(179deg, rgba(32, 32, 32, 0.00) 0.7%, rgba(32, 32, 32, 0.00) 17.94%, #9333EA 99.3%)",
             }}
           >
-            <div className="relative bg-[#202020] rounded-2xl p-6 sm:p-12 border-4 border-purple-500/20">
+            <div className="relative bg-[#1a1a1a] rounded-2xl p-6 sm:p-12 border-2 border-gray-700">
               {/* Step Number */}
-              <div className="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#9333EA] to-[#EC4899] rounded-full flex items-center justify-center border-4 border-[#271A0C] shadow-[0_0_20px_rgba(147,51,234,0.5)] z-10">
+              <div className="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#9333EA] to-[#EC4899] rounded-full flex items-center justify-center border-4 border-[#140E06] shadow-[0_0_20px_rgba(147,51,234,0.5)] z-10">
                 <span className="text-2xl sm:text-3xl font-bold text-white">
                   2
                 </span>
@@ -376,7 +384,7 @@ export default function MissionsPage() {
                 <div className="flex-1 flex flex-col gap-6">
                   <div>
                     <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-4">
-                      <h3 className="text-2xl sm:text-3xl md:text-4xl text-[#FFCD4D] font-bold">
+                      <h3 className="text-2xl sm:text-3xl md:text-4xl text-[#FFCD4D] font-bold font-poppins">
                         NFT Staking
                       </h3>
                       <button
@@ -520,9 +528,9 @@ export default function MissionsPage() {
                 "linear-gradient(179deg, rgba(32, 32, 32, 0.00) 0.7%, rgba(32, 32, 32, 0.00) 17.94%, #DC2626 99.3%)",
             }}
           >
-            <div className="relative bg-[#202020] rounded-2xl p-6 sm:p-12 border-4 border-red-600/20">
+            <div className="relative bg-[#1a1a1a] rounded-2xl p-6 sm:p-12 border-2 border-gray-700">
               {/* Step Number */}
-              <div className="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#DC2626] to-[#F97316] rounded-full flex items-center justify-center border-4 border-[#271A0C] shadow-[0_0_20px_rgba(220,38,38,0.5)] z-10">
+              <div className="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#DC2626] to-[#F97316] rounded-full flex items-center justify-center border-4 border-[#140E06] shadow-[0_0_20px_rgba(220,38,38,0.5)] z-10">
                 <span className="text-2xl sm:text-3xl font-bold text-white">
                   3
                 </span>
@@ -547,7 +555,7 @@ export default function MissionsPage() {
                 {/* Right side - Content */}
                 <div className="flex-1 flex flex-col gap-6">
                   <div>
-                    <h3 className="text-2xl sm:text-3xl md:text-4xl text-[#FFCD4D] font-bold mb-4">
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl text-[#FFCD4D] font-bold mb-4 font-poppins">
                       All in One Vault (AIOV)
                     </h3>
                     <p className="text-base sm:text-lg text-gray-300 mb-6">

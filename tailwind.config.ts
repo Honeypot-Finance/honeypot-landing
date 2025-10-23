@@ -15,6 +15,9 @@ const config: Config = {
       },
       fontFamily: {
         gliker: ["Gliker", "sans-serif"],
+        "bebas-neue": ['"Bebas Neue"', "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
       },
     },
   },

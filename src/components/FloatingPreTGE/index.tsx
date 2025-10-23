@@ -14,7 +14,7 @@ const FloatingPreTGE = () => {
         {/* Collapse/Expand Button */}
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="bg-[#FFCD4D] border-4 border-white border-r-0 rounded-l-2xl px-3 py-4 shadow-[8px_8px_0px_0px_#000] hover:bg-opacity-90 transition-all"
+          className="bg-[#1a1a1a] border-4 border-gray-700 border-r-0 rounded-l-2xl px-3 py-4 shadow-[8px_8px_0px_0px_rgba(255,205,77,0.3)] hover:bg-[#2a2a2a] transition-all"
           aria-label={isCollapsed ? "Expand" : "Collapse"}
         >
           {isCollapsed ? (
@@ -27,13 +27,13 @@ const FloatingPreTGE = () => {
               />
             </div>
           ) : (
-            <span className="text-2xl font-bold text-[#202020]">→</span>
+            <span className="text-2xl font-bold text-white">→</span>
           )}
         </button>
 
         {/* Main Content */}
         <div
-          className={`bg-[#FFCD4D] rounded-l-2xl border-4 border-r-0 border-white shadow-[8px_8px_0px_0px_#000] transition-all duration-300 ${
+          className={`bg-[#1a1a1a] rounded-l-2xl border-4 border-r-0 border-gray-700 shadow-[8px_8px_0px_0px_rgba(255,205,77,0.3)] transition-all duration-300 ${
             isCollapsed ? "w-0 p-0 border-l-0 opacity-0" : "w-[240px] p-6"
           } overflow-hidden`}
         >
@@ -50,11 +50,11 @@ const FloatingPreTGE = () => {
               </div>
             </div>
 
-            <h3 className="text-xl font-bold text-[#202020] text-center whitespace-nowrap">
+            <h3 className="text-xl font-bold text-white text-center whitespace-nowrap">
               🔥Pre-TGE Heat Up🔥
             </h3>
 
-            <p className="text-base text-[#202020] text-center font-semibold">
+            <p className="text-base text-gray-300 text-center font-semibold">
               Earn points for airdrops
             </p>
 
@@ -62,7 +62,7 @@ const FloatingPreTGE = () => {
               onClick={() => {
                 window.location.href = "/missions";
               }}
-              className="w-full px-4 py-3 bg-black text-white rounded-xl hover:bg-opacity-90 transition-all font-bold text-sm border-2 border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)]"
+              className="w-full px-4 py-3 bg-white text-black rounded-xl hover:bg-gray-200 transition-all font-bold text-sm border-2 border-gray-700 shadow-[4px_4px_0px_0px_rgba(255,205,77,0.3)]"
             >
               Join Now
             </button>
@@ -77,10 +77,10 @@ const FloatingPreTGE = () => {
         {/* Collapse/Expand Button */}
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className={`bg-[#FFCD4D] border-4 border-white rounded-t-2xl hover:bg-opacity-90 transition-all ${
+          className={`bg-[#1a1a1a] border-4 border-gray-700 rounded-t-2xl hover:bg-[#2a2a2a] transition-all ${
             isCollapsed
-              ? "border-b-0 px-6 py-3 shadow-[0px_-8px_0px_0px_#000]"
-              : "border-b-0 px-6 py-3 shadow-[0px_-8px_0px_0px_#000]"
+              ? "border-b-0 px-6 py-3 shadow-[0px_-8px_0px_0px_rgba(255,205,77,0.3)]"
+              : "border-b-0 px-6 py-3 shadow-[0px_-8px_0px_0px_rgba(255,205,77,0.3)]"
           }`}
           aria-label={isCollapsed ? "Expand" : "Collapse"}
         >
@@ -94,13 +94,13 @@ const FloatingPreTGE = () => {
               />
             </div>
           ) : (
-            <span className="text-2xl font-bold text-[#202020]">↓</span>
+            <span className="text-2xl font-bold text-white">↓</span>
           )}
         </button>
 
         {/* Main Content */}
         <div
-          className={`bg-[#FFCD4D] w-full border-4 border-b-0 border-white shadow-[0px_-8px_0px_0px_#000] transition-all duration-300 ${
+          className={`bg-[#1a1a1a] w-full border-4 border-b-0 border-gray-700 shadow-[0px_-8px_0px_0px_rgba(255,205,77,0.3)] transition-all duration-300 ${
             isCollapsed ? "h-0 p-0 border-t-0 opacity-0" : "h-auto p-4"
           } overflow-hidden`}
         >
@@ -116,10 +116,10 @@ const FloatingPreTGE = () => {
             </div>
 
             <div className="flex-1 min-w-0">
-              <h3 className="text-base sm:text-lg font-bold text-[#202020]">
+              <h3 className="text-base sm:text-lg font-bold text-white">
                 🔥Pre-TGE Heat Up🔥
               </h3>
-              <p className="text-xs sm:text-sm text-[#202020] font-semibold">
+              <p className="text-xs sm:text-sm text-gray-300 font-semibold">
                 Earn points for airdrops
               </p>
             </div>
@@ -128,7 +128,7 @@ const FloatingPreTGE = () => {
               onClick={() => {
                 window.location.href = "/missions";
               }}
-              className="px-4 py-2 sm:px-6 sm:py-3 bg-black text-white rounded-xl hover:bg-opacity-90 transition-all font-bold text-xs sm:text-sm border-2 border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] whitespace-nowrap flex-shrink-0"
+              className="px-4 py-2 sm:px-6 sm:py-3 bg-white text-black rounded-xl hover:bg-gray-200 transition-all font-bold text-xs sm:text-sm border-2 border-gray-700 shadow-[4px_4px_0px_0px_rgba(255,205,77,0.3)] whitespace-nowrap flex-shrink-0"
             >
               Join Now
             </button>
