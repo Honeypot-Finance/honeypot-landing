@@ -1,11 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const FloatingPreTGE = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const imageUrl = "/airdrop-icon.png";
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsCollapsed(true);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
