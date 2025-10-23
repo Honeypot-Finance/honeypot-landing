@@ -359,7 +359,7 @@ export default function HomePage() {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Perp Trading Card */}
-          <div className="bg-[#1a1a1a] rounded-3xl p-8 flex flex-col items-center justify-between border border-gray-800 hover:border-[#FFCD4D] transition-all cursor-pointer group">
+          <div className="bg-white/5 backdrop-blur-[20px] rounded-3xl p-8 flex flex-col items-center justify-between border border-gray-800 hover:border-[#FFCD4D] transition-all cursor-pointer group">
             <div className="w-32 h-32 mb-6 bg-gradient-to-br from-purple-500 to-blue-600 rounded-2xl flex items-center justify-center p-4">
               <Image
                 src="/images/rocket.png"
@@ -378,7 +378,7 @@ export default function HomePage() {
           </div>
 
           {/* Spot Trading Card */}
-          <div className="bg-[#1a1a1a] rounded-3xl p-8 flex flex-col items-center justify-between border border-gray-800 hover:border-[#FFCD4D] transition-all cursor-pointer group">
+          <div className="bg-white/5 backdrop-blur-[20px] rounded-3xl p-8 flex flex-col items-center justify-between border border-gray-800 hover:border-[#FFCD4D] transition-all cursor-pointer group">
             <div className="w-32 h-32 mb-6 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-2xl flex items-center justify-center p-4">
               <Image
                 src="/images/coin.png"
@@ -397,7 +397,7 @@ export default function HomePage() {
           </div>
 
           {/* Automated AMM Card */}
-          <div className="bg-[#1a1a1a] rounded-3xl p-8 flex flex-col items-center justify-between border border-gray-800 hover:border-[#FFCD4D] transition-all cursor-pointer group">
+          <div className="bg-white/5 backdrop-blur-[20px] rounded-3xl p-8 flex flex-col items-center justify-between border border-gray-800 hover:border-[#FFCD4D] transition-all cursor-pointer group">
             <div className="w-32 h-32 mb-6 bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl flex items-center justify-center p-4">
               <Image
                 src="/images/liquidity.png"
@@ -416,7 +416,7 @@ export default function HomePage() {
           </div>
 
           {/* Multichain Card */}
-          <div className="bg-[#1a1a1a] rounded-3xl p-8 flex flex-col items-center justify-between border border-gray-800 hover:border-[#FFCD4D] transition-all cursor-pointer group">
+          <div className="bg-white/5 backdrop-blur-[20px] rounded-3xl p-8 flex flex-col items-center justify-between border border-gray-800 hover:border-[#FFCD4D] transition-all cursor-pointer group">
             <div className="w-32 h-32 mb-6 bg-gradient-to-br from-orange-400 to-red-600 rounded-2xl flex items-center justify-center p-4">
               <Image
                 src="/images/quantum-hub.png"
