@@ -1035,7 +1035,7 @@ export default function HomePage() {
               <FaXTwitter className="w-6 h-6 text-[#FFCD4D]" />
             </a>
             <a
-              href="https://discord.gg/f82YXEG3AD"
+              href="https://discord.gg/honeypotxyz"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#1a1a1a] border border-gray-700 rounded-xl p-3 flex items-center justify-center hover:bg-[#2a2a2a] hover:scale-110 transition"
