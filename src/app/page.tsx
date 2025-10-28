@@ -352,6 +352,18 @@ export default function HomePage() {
             All-In-One Liquidity Hub Building Next-Generation DeFi
             Infrastructure.
           </h2>
+
+          <button
+            onClick={() => {
+              window.open(
+                "https://wasabee.honeypotfinance.xyz/perp?waitlist=true",
+                "_blank"
+              );
+            }}
+            className="mt-8 px-8 py-4 bg-[#FFCD4D] text-black rounded-xl hover:bg-[#FFD966] transition-all font-bold text-base sm:text-lg md:text-xl shadow-lg hover:shadow-xl hover:scale-105"
+          >
+            Join perp waitlist
+          </button>
         </div>
       </div>
 
