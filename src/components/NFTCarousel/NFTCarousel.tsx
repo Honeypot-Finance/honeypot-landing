@@ -1,4 +1,6 @@
-import { useState, useRef, useEffect } from "react";
+"use client";
+
+import { useState, useEffect } from "react";
 import "./NFTCarousel.css";
 
 interface NFTCarouselProps {
@@ -16,9 +18,12 @@ export default function NFTCarousel({ images }: NFTCarouselProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
   const [dragState, setDragState] = useState<DragState | null>(null);
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1080);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
+    // Initialize on mount
+    setIsDesktop(window.innerWidth >= 1080);
+
     const handleResize = () => {
       setIsDesktop(window.innerWidth >= 1080);
     };
