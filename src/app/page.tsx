@@ -9,6 +9,7 @@ import { BsTelegram } from "react-icons/bs";
 import { FaXTwitter, FaDiscord, FaMedium } from "react-icons/fa6";
 import DexStats from "@/components/DexStats";
 import PlatformPerformance from "@/components/PlatformPerformance";
+import FeatureCard from "@/components/FeatureCard";
 
 // Import images
 import flyingBee from "@/assets/dex_plus_plus_images/flying_bee.svg";
@@ -18,6 +19,7 @@ import lightBgEffectImage from "@/assets/effectItems/light-bg-effect.png";
 import instantLp from "@/assets/home-page/instant-lp.png";
 import earnFromDayOneImage from "@/assets/home-page/earn-from-day-one.png";
 import FloatingPreTGE from "@/components/FloatingPreTGE";
+import NFTCarousel from "@/components/NFTCarousel/NFTCarousel";
 
 // CSS 样式字符串
 const cssStyles = `
@@ -176,7 +178,52 @@ const cssStyles = `
   .floating-bee-3 {
     animation: floatBeeFast 3s ease-in-out infinite;
   }
+
+  @keyframes floatBeeReverse {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-20px) translateX(-10px) rotate(-5deg);
+    }
+    50% {
+      transform: translateY(-10px) translateX(10px) rotate(5deg);
+    }
+    75% {
+      transform: translateY(-25px) translateX(-5px) rotate(-3deg);
+    }
+  }
+
+  @keyframes floatBeeSpiral {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px) rotate(0deg);
+    }
+    33% {
+      transform: translateY(-25px) translateX(-15px) rotate(-8deg);
+    }
+    66% {
+      transform: translateY(-15px) translateX(15px) rotate(8deg);
+    }
+  }
+
+  .floating-bee-4 {
+    animation: floatBeeReverse 4.5s ease-in-out infinite;
+  }
+
+  .floating-bee-5 {
+    animation: floatBeeSpiral 3.5s ease-in-out infinite;
+  }
 `;
+
+const nftImages = [
+  "/nft-rolling-banner/1.avif",
+  "/nft-rolling-banner/2.avif",
+  "/nft-rolling-banner/3.avif",
+  "/nft-rolling-banner/4.avif",
+  "/nft-rolling-banner/5.avif",
+  "/nft-rolling-banner/6.avif",
+  "/nft-rolling-banner/7.avif",
+];
 
 export default function HomePage() {
   // 合并所有 useEffect
@@ -312,6 +359,7 @@ export default function HomePage() {
             width={80}
             height={80}
             className="opacity-80"
+            style={{ transform: "scaleX(-1)" }}
           />
         </div>
         <div className="absolute top-12 right-[20%] floating-bee-2">
@@ -330,6 +378,26 @@ export default function HomePage() {
             width={70}
             height={70}
             className="opacity-80"
+            style={{ transform: "scaleX(-1)" }}
+          />
+        </div>
+        <div className="absolute top-32 left-[8%] floating-bee-4">
+          <Image
+            src={flyingBee}
+            alt="bee"
+            width={65}
+            height={65}
+            className="opacity-80"
+          />
+        </div>
+        <div className="absolute bottom-10 left-[25%] floating-bee-5">
+          <Image
+            src={flyingBee}
+            alt="bee"
+            width={75}
+            height={75}
+            className="opacity-80"
+            style={{ transform: "scaleX(-1)" }}
           />
         </div>
 
@@ -388,601 +456,336 @@ export default function HomePage() {
       {/* Feature Cards Section */}
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-          {/* Perp Trading Card */}
-          <div className="bg-[#1a1a1a] rounded-3xl p-8 flex flex-col items-center justify-between border-2 border-gray-700 hover:border-[#FFCD4D] transition-all cursor-pointer group">
-            <div className="w-32 h-32 mb-6 bg-gradient-to-br from-purple-500 to-blue-600 rounded-2xl flex items-center justify-center p-4">
-              <Image
-                src="/images/rocket.png"
-                alt="Perp Trading"
-                width={80}
-                height={80}
-                className="object-contain"
-              />
-            </div>
-            <h3 className="text-2xl font-poppins font-bold text-white mb-3">
-              Perp Trading
-            </h3>
-            <p className="text-gray-400 text-center text-sm">
-              Trade perpetual futures with up to 100x leverage
-            </p>
-          </div>
-
-          {/* Spot Trading Card */}
-          <div className="bg-[#1a1a1a] rounded-3xl p-8 flex flex-col items-center justify-between border-2 border-gray-700 hover:border-[#FFCD4D] transition-all cursor-pointer group">
-            <div className="w-32 h-32 mb-6 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-2xl flex items-center justify-center p-4">
-              <Image
-                src="/images/coin.png"
-                alt="Spot Trading"
-                width={80}
-                height={80}
-                className="object-contain"
-              />
-            </div>
-            <h3 className="text-2xl font-poppins font-bold text-white mb-3">
-              Spot Trading
-            </h3>
-            <p className="text-gray-400 text-center text-sm">
-              Instant token swaps with deep liquidity
-            </p>
-          </div>
-
-          {/* Automated AMM Card */}
-          <div className="bg-[#1a1a1a] rounded-3xl p-8 flex flex-col items-center justify-between border-2 border-gray-700 hover:border-[#FFCD4D] transition-all cursor-pointer group">
-            <div className="w-32 h-32 mb-6 bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl flex items-center justify-center p-4">
-              <Image
-                src="/images/liquidity.png"
-                alt="Automated AMM"
-                width={80}
-                height={80}
-                className="object-contain"
-              />
-            </div>
-            <h3 className="text-2xl font-poppins font-bold text-white mb-3">
-              Automated AMM
-            </h3>
-            <p className="text-gray-400 text-center text-sm">
-              Automated market making with optimized pricing
-            </p>
-          </div>
-
-          {/* Multichain Card */}
-          <div className="bg-[#1a1a1a] rounded-3xl p-8 flex flex-col items-center justify-between border-2 border-gray-700 hover:border-[#FFCD4D] transition-all cursor-pointer group">
-            <div className="w-32 h-32 mb-6 bg-gradient-to-br from-orange-400 to-red-600 rounded-2xl flex items-center justify-center p-4">
-              <Image
-                src="/images/quantum-hub.png"
-                alt="Multichain"
-                width={80}
-                height={80}
-                className="object-contain"
-              />
-            </div>
-            <h3 className="text-2xl font-poppins font-bold text-white mb-3">
-              Multichain
-            </h3>
-            <p className="text-gray-400 text-center text-sm">
-              Trade across multiple blockchains seamlessly
-            </p>
-          </div>
+          <FeatureCard
+            title="Perp Trading"
+            description="Trade perpetual futures with up to 100x leverage"
+            imageSrc="/images/landing-new-assets-202511/rocket.svg"
+            imageAlt="Perp Trading"
+            link="https://wasabee.honeypotfinance.xyz/perp"
+          />
+          <FeatureCard
+            title="Spot Trading"
+            description="Instant token swaps with deep liquidity"
+            imageSrc="/images/landing-new-assets-202511/infinite.svg"
+            imageAlt="Spot Trading"
+            link="https://wasabee.honeypotfinance.xyz/swap"
+          />
+          <FeatureCard
+            title="Automated AMM"
+            description="Automated market making with optimized pricing"
+            imageSrc="/images/landing-new-assets-202511/charge-honey.svg"
+            imageAlt="Automated AMM"
+            link="https://wasabee.honeypotfinance.xyz/pools"
+          />
+          <FeatureCard
+            title="Multichain"
+            description="Trade across multiple blockchains seamlessly"
+            imageSrc="/images/landing-new-assets-202511/chain.svg"
+            imageAlt="Multichain"
+            link="https://wasabee.honeypotfinance.xyz/swap"
+          />
         </div>
       </div>
 
       {/* DEX Performance Section */}
       <PlatformPerformance />
 
-      {/* Additional DEX Features Section */}
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 mb-20 relative z-10">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl text-white font-poppins font-bold mb-12 text-center">
-          Additional DEX Features
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Multichain Swap */}
-          <div className="bg-[#1a1a1a] rounded-2xl p-6 border border-gray-700 hover:border-gray-600 transition-all">
-            <h3 className="text-xl font-bold text-white mb-3 font-poppins">
-              Multichain Swap
-            </h3>
-            <p className="text-gray-300 text-sm">
-              Trade assets across multiple blockchains seamlessly
-            </p>
-          </div>
+      {/* Honeypots Vision Section */}
+      <div className="w-full py-12 px-4 relative z-10">
+        <div
+          className="max-w-7xl mx-auto rounded-[2.5rem] p-8 sm:p-12 md:p-16"
+          style={{
+            background: "linear-gradient(135deg, #FFA931 0%, #F7941D 100%)",
+          }}
+        >
+          {/* Header */}
+          <h3 className="text-lg sm:text-xl font-bold text-black mb-4">
+            Honeypots Vision
+          </h3>
 
-          {/* MultiToken Swap */}
-          <div className="bg-[#1a1a1a] rounded-2xl p-6 border border-gray-700 hover:border-gray-600 transition-all">
-            <h3 className="text-xl font-bold text-white mb-3 font-poppins">
-              MultiToken Swap
-            </h3>
-            <p className="text-gray-300 text-sm">
-              Swap multiple tokens in a single transaction
-            </p>
-          </div>
+          {/* Main Title */}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-12 leading-tight">
+            Multi-Chain Liquidity Hub For The Future Economy
+          </h2>
 
-          {/* Bridge */}
-          <div className="bg-[#1a1a1a] rounded-2xl p-6 border border-gray-700 hover:border-gray-600 transition-all">
-            <h3 className="text-xl font-bold text-white mb-3 font-poppins">
-              Bridge
-            </h3>
-            <p className="text-gray-300 text-sm">
-              Transfer assets between chains securely
-            </p>
-          </div>
-
-          {/* Limit Order */}
-          <div className="bg-[#1a1a1a] rounded-2xl p-6 border border-gray-700 hover:border-gray-600 transition-all">
-            <h3 className="text-xl font-bold text-white mb-3 font-poppins">
-              Limit Order
-            </h3>
-            <p className="text-gray-300 text-sm">
-              Set your price and let the order execute automatically
-            </p>
-          </div>
-
-          {/* TWAP */}
-          <div className="bg-[#1a1a1a] rounded-2xl p-6 border border-gray-700 hover:border-gray-600 transition-all relative">
-            <div className="flex items-center gap-2 mb-3">
-              <h3 className="text-xl font-bold text-white font-poppins">
-                TWAP
-              </h3>
-              <span className="text-xs px-2 py-1 bg-yellow-500/20 text-yellow-400 rounded-full border border-yellow-500/30">
-                Coming Soon
-              </span>
+          {/* Features Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+            {/* Multichain Swap */}
+            <div className="flex gap-3">
+              <div className="flex-shrink-0">
+                <Image
+                  src="/images/landing-new-assets-202511/side_bee.svg"
+                  alt="bee"
+                  width={24}
+                  height={24}
+                />
+              </div>
+              <div>
+                <h4 className="text-lg sm:text-xl font-bold text-black mb-2">
+                  Multichain Swap
+                </h4>
+                <p className="text-sm sm:text-base text-black/70">
+                  Instant token swaps with deep liquidity across multiple chains
+                </p>
+              </div>
             </div>
-            <p className="text-gray-300 text-sm">
-              Time-Weighted Average Price orders for optimal execution
-            </p>
+
+            {/* Spot Trading */}
+            <div className="flex gap-3">
+              <div className="flex-shrink-0">
+                <Image
+                  src="/images/landing-new-assets-202511/side_bee.svg"
+                  alt="bee"
+                  width={24}
+                  height={24}
+                />
+              </div>
+              <div>
+                <h4 className="text-lg sm:text-xl font-bold text-black mb-2">
+                  Spot Trading
+                </h4>
+                <p className="text-sm sm:text-base text-black/70">
+                  Instant token swaps with deep liquidity
+                </p>
+              </div>
+            </div>
+
+            {/* Bridge */}
+            <div className="flex gap-3">
+              <div className="flex-shrink-0">
+                <Image
+                  src="/images/landing-new-assets-202511/side_bee.svg"
+                  alt="bee"
+                  width={24}
+                  height={24}
+                />
+              </div>
+              <div>
+                <h4 className="text-lg sm:text-xl font-bold text-black mb-2">
+                  Bridge
+                </h4>
+                <p className="text-sm sm:text-base text-black/70">
+                  Instant token swaps with deep liquidity
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Row */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            {/* Limit Order */}
+            <div className="flex gap-3">
+              <div className="flex-shrink-0">
+                <Image
+                  src="/images/landing-new-assets-202511/side_bee.svg"
+                  alt="bee"
+                  width={24}
+                  height={24}
+                />
+              </div>
+              <div>
+                <h4 className="text-lg sm:text-xl font-bold text-black mb-2">
+                  Limit Order
+                </h4>
+                <p className="text-sm sm:text-base text-black/70">
+                  Instant token swaps with deep liquidity
+                </p>
+              </div>
+            </div>
+
+            {/* TWAP */}
+            <div className="flex gap-3">
+              <div className="flex-shrink-0">
+                <Image
+                  src="/images/landing-new-assets-202511/side_bee.svg"
+                  alt="bee"
+                  width={24}
+                  height={24}
+                />
+              </div>
+              <div>
+                <h4 className="text-lg sm:text-xl font-bold text-black mb-2">
+                  TWAP
+                </h4>
+                <p className="text-sm sm:text-base text-black/70">
+                  Instant token swaps with deep liquidity
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* WHY HONEYPOT FINANCE Section */}
-      <div className="bg-[#140E06] flex flex-col items-center gap-y-8 sm:gap-y-12 md:gap-y-20 lg:gap-y-32 w-full px-4 relative z-10">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl text-white text-center font-poppins font-bold">
-          WHY HONEYPOT FINANCE?
-        </h2>
-        <div className="scroll-animate flex flex-col lg:flex-row justify-between gap-8 w-full max-w-[1200px] mx-4 sm:mx-auto">
-          {/* AMM Trading */}
-          <div className="scroll-animate flex-1 rounded-[32px] p-1 bg-gradient-to-b from-gray-800 to-gray-700">
-            <div className="relative bg-[#1a1a1a] rounded-2xl p-8 sm:p-12 h-full">
-              <div className="flex flex-col items-center">
-                <div className="w-full max-w-[300px] h-[250px] flex justify-center items-center relative">
-                  <Image
-                    src={lightBgEffectImage}
-                    alt="Light Effect"
-                    width={300}
-                    height={300}
-                    className="object-contain absolute top-0 left-0 w-full h-full"
-                  />
-                  <Image
-                    src={instantLp}
-                    alt="AMM Trading"
-                    width={250}
-                    height={250}
-                    className="object-contain z-10"
-                  />
-                </div>
-
-                <div className="flex flex-col gap-4">
-                  <h2 className="text-base sm:text-xl md:text-2xl text-white font-poppins">
-                    Advanced AMM
-                  </h2>
-
-                  <p className="text-sm sm:text-base text-gray-300 mb-2">
-                    Traditional DEXs force you to choose between spot trading
-                    and derivatives. Our integrated AMM provides the foundation
-                    for both, sharing liquidity across products for maximum
-                    capital efficiency.
-                  </p>
-
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-3">
-                      <Image
-                        src="/images/honey-box.png"
-                        alt="honey box"
-                        width={20}
-                        height={20}
-                      />
-                      <p className="text-sm sm:text-xl text-white">
-                        Unified liquidity pool
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <Image
-                        src="/images/honey-box.png"
-                        alt="honey box"
-                        width={20}
-                        height={20}
-                      />
-                      <p className="text-sm sm:text-xl text-white">
-                        Cross-product composability
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <Image
-                        src="/images/honey-box.png"
-                        alt="honey box"
-                        width={20}
-                        height={20}
-                      />
-                      <p className="text-sm sm:text-xl text-white">
-                        Lower costs for traders
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+      {/* Honey Genesis NFT Section */}
+      <div className="w-full py-8 sm:py-12 px-4 relative z-10 overflow-visible">
+        <div className="max-w-7xl mx-auto overflow-visible">
+          {/* Mint Sold Out Badge */}
+          <div className="flex justify-center mb-3">
+            <span className="bg-gray-800 text-gray-300 px-6 py-2 rounded-full text-sm font-medium">
+              Mint Sold out
+            </span>
           </div>
 
-          {/* Perpetual Trading */}
-          <div className="scroll-animate flex-1 rounded-[32px] p-1 bg-gradient-to-b from-gray-800 to-gray-700">
-            <div className="relative bg-[#1a1a1a] rounded-2xl p-4 sm:p-12 h-full">
-              <div className="flex flex-col items-center">
-                <div className="w-full max-w-[300px] h-[250px] flex justify-center items-center relative">
-                  <Image
-                    src={lightBgEffectImage}
-                    alt="Light Effect"
-                    width={300}
-                    height={300}
-                    className="object-contain absolute top-0 left-0 w-full h-full"
-                  />
-                  <Image
-                    src={earnFromDayOneImage}
-                    alt="Perp Trading"
-                    width={250}
-                    height={250}
-                    className="object-contain z-10"
-                  />
-                </div>
-
-                <div className="space-y-4">
-                  <h2 className="text-base sm:text-xl md:text-2xl text-white font-poppins">
-                    Perpetual Trading
-                  </h2>
-
-                  <p className="text-sm sm:text-base text-gray-300 mb-2">
-                    By combining perpetuals with our AMM, we create a flywheel
-                    effect: spot trades provide instant liquidity for perp
-                    positions, while perp fees boost LP returns. Everyone wins
-                    in this symbiotic ecosystem.
-                  </p>
-
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-3">
-                      <Image
-                        src="/images/honey-box.png"
-                        alt="honey box"
-                        width={20}
-                        height={20}
-                        sizes="20px"
-                      />
-                      <p className="text-base sm:text-xl text-white">
-                        Up to 100x leverage
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <Image
-                        src="/images/honey-box.png"
-                        alt="honey box"
-                        width={20}
-                        height={20}
-                        sizes="20px"
-                      />
-                      <p className="text-base sm:text-xl text-white">
-                        Shared liquidity with AMM
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <Image
-                        src="/images/honey-box.png"
-                        alt="honey box"
-                        width={20}
-                        height={20}
-                        sizes="20px"
-                      />
-                      <p className="text-base sm:text-xl text-white">
-                        Better price execution
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="scroll-animate w-full max-w-[1200px] mx-4 sm:mx-auto flex flex-col items-center mt-16 z-10">
-          <div className="relative z-10 mb-8 max-w-[800px]">
-            <div className="bg-[#1a1a1a] rounded-xl px-6 sm:px-12 py-3 sm:py-4 border-2 sm:border-4 border-gray-700 shadow-[4px_4px_0px_0px_rgba(255,205,77,0.3)] sm:shadow-[8px_8px_0px_0px_rgba(255,205,77,0.3)]">
-              <h2 className="text-lg sm:text-3xl md:text-4xl lg:text-[48px] text-white font-bold font-poppins text-center">
-                HoneyGenesis NFT
-              </h2>
-            </div>
-          </div>
-
-          <div className="w-full bg-[#1a1a1a] rounded-[32px] relative border-2 border-gray-700 sm:pb-8">
-            <div className="flex flex-col lg:flex-row justify-between lg:items-end">
-              <div className="px-4 pt-12 sm:px-8 md:px-12 space-y-3 sm:space-y-4 flex items-center lg:pb-8">
-                <div className="flex flex-col gap-3 sm:gap-4">
-                  <div className="flex items-center gap-2">
-                    <span className="text-lg sm:text-xl">🏦</span>
-                    <p className="text-sm sm:text-base md:text-lg text-white font-semibold">
-                      Honeypot Finance POL Vault Rewards
-                    </p>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <span className="text-lg sm:text-xl">🪂</span>
-                    <p className="text-sm sm:text-base md:text-lg text-white font-semibold">
-                      HPOT Token Airdrop
-                    </p>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <span className="text-lg sm:text-xl">📊</span>
-                    <p className="text-sm sm:text-base md:text-lg text-white font-semibold">
-                      Perpetual DEX Revenue Sharing
-                    </p>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <span className="text-lg sm:text-xl">🔮</span>
-                    <p className="text-sm sm:text-base md:text-lg text-white font-semibold">
-                      Multi-Chain Fee Sharing
-                    </p>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <span className="text-lg sm:text-xl">🚀</span>
-                    <p className="text-sm sm:text-base md:text-lg text-white font-semibold">
-                      Future Protocol Fees
-                    </p>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <span className="text-lg sm:text-xl">💰</span>
-                    <p className="text-sm sm:text-base md:text-lg text-white font-semibold">
-                      Enhanced Staking Rewards
-                    </p>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <span className="text-lg sm:text-xl">🌟</span>
-                    <p className="text-sm sm:text-base md:text-lg text-white font-semibold">
-                      Ecosystem Access & Benefits
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-col items-center lg:items-end px-6 sm:px-8 md:px-12 lg:flex-shrink-0">
-                <div className="flex items-end w-full">
-                  <div className="hidden sm:block transform -rotate-[50deg] translate-x-6 -translate-y-2">
-                    <Image
-                      src="/images/experiment-bear.png"
-                      alt="Experiment Bear"
-                      width={50}
-                      height={50}
-                      className="object-contain"
-                      sizes="(max-width: 640px) 40px, 50px"
-                    />
-                  </div>
-
-                  <div className="flex flex-col items-center sm:items-end w-full">
-                    <div className="relative w-[140px] sm:w-[160px] md:w-[200px] lg:w-[240px] sm:-mt-32">
-                      <Image
-                        src="/images/cook-bear.png"
-                        alt="Cook Bear"
-                        width={240}
-                        height={240}
-                        className="w-full h-auto object-contain"
-                        sizes="(max-width: 640px) 140px, (max-width: 768px) 160px, (max-width: 1024px) 200px, 240px"
-                      />
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
-                      <button
-                        className="w-full px-8 sm:px-4 py-2 sm:py-3 md:py-4 bg-white text-black rounded-xl hover:bg-gray-200 transition-all font-bold text-sm sm:text-base md:text-lg border border-gray-700 z-10"
-                        onClick={() => {
-                          window.open(
-                            "https://magiceden.io/collections/berachain/0xc3c30fba6387cff83474e684380930dfc64554ef",
-                            "_blank"
-                          );
-                        }}
-                      >
-                        Buy from ME
-                      </button>
-
-                      <button
-                        className="w-full px-8 sm:px-4 py-2 sm:py-3 md:py-4 bg-white text-black rounded-xl hover:bg-gray-200 transition-all font-bold text-sm sm:text-base md:text-lg border border-gray-700 z-10"
-                        onClick={() => {
-                          window.open(
-                            "https://bridge.kingdomly.app/",
-                            "_blank"
-                          );
-                        }}
-                      >
-                        Bridge to Berachain
-                      </button>
-
-                      <button
-                        className="w-full px-8 sm:px-4 py-2 sm:py-3 md:py-4 bg-white text-black rounded-xl hover:bg-gray-200 transition-all font-bold text-sm sm:text-base md:text-lg border border-gray-700 z-10"
-                        onClick={() => {
-                          window.open(
-                            "https://nft.honeypotfinance.xyz/staking",
-                            "_blank"
-                          );
-                        }}
-                      >
-                        Stake
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* Products Section */}
-        <div className="scroll-animate w-full max-w-[1200px] mx-4 sm:mx-auto flex flex-col items-center z-10">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl text-white text-center mb-8 font-poppins font-bold">
-            Products
+          {/* Heading */}
+          <h2 className="text-4xl sm:text-5xl md:text-6xl text-white text-center font-poppins font-bold mb-4">
+            Honey Genesis NFT
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
-            {/* DEX++ */}
-            <div className="bg-[#1a1a1a] rounded-2xl p-6 border border-gray-700 hover:border-gray-600 transition-all">
-              <h3 className="text-xl font-bold text-white mb-4 font-poppins">
-                DEX++
-              </h3>
-              <p className="text-white text-sm mb-4">
-                Advanced AMM and perpetual trading platform with deep liquidity
-              </p>
-              <button
-                onClick={() =>
-                  window.open(
-                    "https://wasabee.honeypotfinance.xyz/swap",
-                    "_blank"
-                  )
-                }
-                className="w-full px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-200 transition-all font-bold text-sm"
-              >
-                Start Trading
-              </button>
-            </div>
+          {/* Description */}
+          <p className="text-gray-400 text-center text-base sm:text-lg max-w-3xl mx-auto mb-8">
+            Buy HoneyGenesis NFTs aftermarket, stake or bridge to join in on the
+            fun and receive{" "}
+            <span className="font-bold">airdrop & perks 👀!</span>
+          </p>
 
-            {/* All in One Vault */}
-            <div className="bg-[#1a1a1a] rounded-2xl p-6 border border-gray-700 hover:border-gray-600 transition-all">
-              <h3 className="text-xl font-bold text-white mb-4 font-poppins">
-                All in One Vault
-              </h3>
-              <p className="text-white text-sm mb-4">
-                Claim your share of the vault&apos;s $LBGT rewards by burning
-                tokens
-              </p>
-              <button
-                onClick={() =>
-                  window.open(
-                    "https://leaderboard.honeypotfinance.xyz/",
-                    "_blank"
-                  )
-                }
-                className="w-full px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-200 transition-all font-bold text-sm"
-              >
-                Enter Vault
-              </button>
-            </div>
+          {/* NFT Carousel */}
+          <div className="mb-8 overflow-visible">
+            <NFTCarousel images={nftImages} />
+          </div>
 
-            {/* Pot2Pump */}
-            <div className="bg-[#1a1a1a] rounded-2xl p-6 border border-gray-700 hover:border-gray-600 transition-all">
-              <h3 className="text-xl font-bold text-white mb-4 font-poppins">
-                Pot2Pump
-              </h3>
-              <p className="text-white text-sm mb-4">
-                Launch meme tokens with built-in liquidity management and
-                rewards
-              </p>
-              <button
-                onClick={() =>
-                  window.open("https://pot2pump.honeypotfinance.xyz/", "_blank")
-                }
-                className="w-full px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-200 transition-all font-bold text-sm"
-              >
-                Launch Meme
-              </button>
-            </div>
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 relative z-20">
+            <button
+              onClick={() =>
+                window.open(
+                  "https://magiceden.io/collections/berachain/0xc3c30fba6387cff83474e684380930dfc64554ef",
+                  "_blank"
+                )
+              }
+              className="bg-[#3B2712] hover:bg-[#5a3e1d] text-white font-bold py-4 px-12 rounded-full transition-all duration-300 hover:scale-105 shadow-lg text-base sm:text-lg w-full sm:w-auto"
+            >
+              Buy from ME
+            </button>
+            <button
+              onClick={() =>
+                window.open("https://bridge.kingdomly.app/", "_blank")
+              }
+              className="bg-[#3B2712] hover:bg-[#5a3e1d] text-white font-bold py-4 px-12 rounded-full transition-all duration-300 hover:scale-105 shadow-lg text-base sm:text-lg w-full sm:w-auto"
+            >
+              Bridge to Berachain
+            </button>
+            <button
+              onClick={() =>
+                window.open("https://nft.honeypotfinance.xyz/staking", "_blank")
+              }
+              className="bg-[#3B2712] hover:bg-[#5a3e1d] text-white font-bold py-4 px-12 rounded-full transition-all duration-300 hover:scale-105 shadow-lg text-base sm:text-lg w-full sm:w-auto"
+            >
+              Stake Now
+            </button>
+          </div>
+        </div>
+      </div>
 
-            {/* Dreampad */}
-            <div className="bg-[#1a1a1a] rounded-2xl p-6 border border-gray-700 hover:border-gray-600 transition-all">
-              <h3 className="text-xl font-bold text-white mb-4 font-poppins">
-                Dreampad
-              </h3>
-              <p className="text-white text-sm mb-4">
-                Fair token launches with 100% liquidity and partner integrations
+      {/* Join Discord Section */}
+      <div className="w-full py-12 px-4 relative z-10">
+        <div className="max-w-7xl mx-auto">
+          <div
+            className="relative rounded-[2.5rem] overflow-hidden h-[400px] sm:h-[450px] md:h-[500px] flex items-center"
+            style={{
+              backgroundImage:
+                "url(/images/landing-new-assets-202511/join-discord-section-banner.jpeg)",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            {/* Content */}
+            <div className="relative z-10 px-6 sm:px-12 md:px-16 lg:px-20 w-full sm:max-w-2xl">
+              {/* Title */}
+              <h2
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight"
+                style={{
+                  color: "#FFCD4D",
+                  WebkitTextStroke: "8px #271A0C",
+                  paintOrder: "stroke fill",
+                }}
+              >
+                Stay up to date with Honeypot
+              </h2>
+
+              {/* Description */}
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-black mb-8 font-medium">
+                Join our community of +10,000 active discord users. Also stay up
+                to date with the latest news!
               </p>
+
+              {/* Join Discord Button */}
               <button
                 onClick={() =>
-                  window.open("https://dreampad.honeypotfinance.xyz/", "_blank")
+                  window.open("https://discord.gg/NfnK78KJxH", "_blank")
                 }
-                className="w-full px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-200 transition-all font-bold text-sm"
+                className="bg-[#3D2A1A] hover:bg-[#5a3e1d] text-white font-bold py-5 px-16 rounded-full transition-all duration-300 hover:scale-105 shadow-lg text-xl sm:text-2xl flex items-center gap-4"
               >
-                Launch Token
+                <span>Join Discord</span>
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M13.5 4.5L21 12M21 12L13.5 19.5M21 12H3"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </button>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Partners Section */}
-        <div className="scroll-animate flex flex-col items-center w-full px-4 sm:px-0 pt-16">
-          <div className="relative z-10 mb-16 flex flex-col items-center">
-            <div className="w-[300px] h-[300px] flex justify-center items-center">
-              <Image
-                src="/images/experiment-bear.png"
-                alt="Experiment Bear"
-                width={512}
-                height={512}
-                className="object-contain w-full h-full"
-              />
-            </div>
-
-            <div className="bg-[#1a1a1a] rounded-xl px-8 sm:px-12 py-3 sm:py-4 border-2 border-gray-700">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[48px] text-white font-bold font-bebas-neue">
-                Backed By
-              </h2>
-            </div>
+      {/* Partners Section */}
+      <div className="w-full py-16 px-4 relative z-10">
+        <div className="max-w-7xl mx-auto">
+          {/* Backed By */}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl text-white text-center font-poppins font-bold mb-12">
+            Backed by
+          </h2>
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-4 sm:gap-6 mb-20 justify-items-center">
+            {investors.map((investor, index) => (
+              <a
+                key={index}
+                href={investor.partnerLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-2xl overflow-hidden flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 hover:scale-110 transition-transform duration-300 relative"
+              >
+                <Image
+                  src={investor.partnerImage}
+                  alt={investor.name}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 640px) 96px, 112px"
+                />
+              </a>
+            ))}
           </div>
 
-          <div className="relative w-full">
-            <div className="grid grid-cols-4 mb-16 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-7 gap-2 sm:gap-4 md:gap-8 w-full max-w-[1200px] mx-auto">
-              {[...investors].map((partner, index) => (
-                <a
-                  key={index}
-                  href={partner.partnerLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="scroll-animate bg-[#1a1a1a] rounded-xl border border-gray-700 hover:border-gray-600 hover:scale-105 transition-all flex items-center justify-center w-[70px] h-[70px] sm:w-[120px] sm:h-[120px] md:w-[140px] md:h-[140px] lg:w-[160px] lg:h-[160px] overflow-hidden"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="w-[50px] h-[50px] sm:w-[90px] sm:h-[90px] md:w-[110px] md:h-[110px] lg:w-[130px] lg:h-[130px] relative rounded-lg">
-                    <Image
-                      src={partner.partnerImage}
-                      alt={partner.name}
-                      fill
-                      className="object-contain rounded-lg"
-                      sizes="(max-width: 640px) 50px, (max-width: 768px) 90px, (max-width: 1024px) 110px, 130px"
-                    />
-                  </div>
-                </a>
-              ))}
-            </div>
-
-            <div className="relative z-10 mb-16 flex flex-col items-center">
-              <div className="bg-[#1a1a1a] rounded-xl px-8 sm:px-12 py-3 sm:py-4 border-2 border-gray-700">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[48px] text-white font-bold font-bebas-neue">
-                  Our Partners
-                </h2>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-7 gap-2 sm:gap-4 md:gap-8 w-full max-w-[1200px] mx-auto">
-              {[...partners].map((partner, index) => (
-                <a
-                  key={index}
-                  href={partner.partnerLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="scroll-animate bg-[#1a1a1a] rounded-xl border border-gray-700 hover:border-gray-600 hover:scale-105 transition-all flex items-center justify-center w-[70px] h-[70px] sm:w-[120px] sm:h-[120px] md:w-[140px] md:h-[140px] lg:w-[160px] lg:h-[160px] overflow-hidden"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="w-[50px] h-[50px] sm:w-[90px] sm:h-[90px] md:w-[110px] md:h-[110px] lg:w-[130px] lg:h-[130px] relative rounded-lg">
-                    <Image
-                      src={partner.partnerImage}
-                      alt={partner.name}
-                      fill
-                      className="object-contain rounded-lg"
-                      sizes="(max-width: 640px) 50px, (max-width: 768px) 90px, (max-width: 1024px) 110px, 130px"
-                    />
-                  </div>
-                </a>
-              ))}
-            </div>
+          {/* Our Partners */}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl text-white text-center font-poppins font-bold mb-12">
+            Our partners
+          </h2>
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-4 sm:gap-6 justify-items-center">
+            {partners.map((partner, index) => (
+              <a
+                key={index}
+                href={partner.partnerLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-2xl overflow-hidden flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 hover:scale-110 transition-transform duration-300 relative"
+              >
+                <Image
+                  src={partner.partnerImage}
+                  alt={partner.name}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 640px) 96px, 112px"
+                />
+              </a>
+            ))}
           </div>
         </div>
       </div>

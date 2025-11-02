@@ -1,0 +1,221 @@
+/* NFT Carousel - Poker Card Hand Style */
+.nft-carousel {
+  display: flex; /* Show on mobile */
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+  margin: 2rem auto 0;
+  width: 100%;
+  position: relative;
+  min-height: 200px;
+  overflow-x: auto;
+  overflow-y: visible;
+  gap: 1rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+
+@media (min-width: 1080px) {
+  .nft-carousel {
+    overflow: visible;
+  }
+}
+
+/* Bottom blur mask - Using SVG (desktop only) */
+.nft-carousel-blur-mask {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(60%);
+  width: 150%;
+  height: 200%;
+  background-image: url('/images/landing-new-assets-202511/blurmask.svg');
+  background-size: 100% 100%;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 1;
+  display: none; /* Hidden on mobile */
+  overflow: visible;
+}
+
+@media (min-width: 1080px) {
+  .nft-carousel-blur-mask {
+    display: block; /* Show on desktop */
+  }
+}
+
+.nft-carousel::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.nft-carousel-item {
+  position: relative;
+  width: 140px;
+  height: 180px;
+  flex-shrink: 0;
+  background: linear-gradient(180deg, #87ceeb 0%, #e0f6ff 100%);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-out, z-index 0s, box-shadow 0.3s ease-out, border-color 0.3s ease-out;
+  cursor: pointer;
+  border: 8px solid rgba(255, 255, 255, 0.5);
+  transform-origin: bottom center;
+  will-change: transform;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  --drag-x: 0px;
+  --drag-y: 0px;
+}
+
+.nft-carousel-item.dragging {
+  cursor: grabbing;
+  z-index: 1000 !important;
+  transition: none !important;
+}
+
+.nft-carousel-item:not(.dragging) {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+/* Mobile: Simple hover effect */
+.nft-carousel-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(247, 148, 29, 0.4);
+  border-color: #f7941d;
+}
+
+.nft-carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+}
+
+@media (min-width: 1080px) {
+  .nft-carousel {
+    display: flex; /* Show on desktop */
+    min-height: 320px;
+    padding: 5rem 1rem 3rem;
+    overflow: visible;
+    gap: 0;
+  }
+
+  .nft-carousel-item {
+    position: absolute;
+    width: 200px;
+    height: 260px;
+    left: 50%;
+    margin-left: -100px; /* Half of card width to center */
+    cursor: grab;
+  }
+
+  /* Fan out effect - each card rotates differently */
+  /* Left cards on top (higher z-index) like a real poker hand */
+  /* Arc shape - center card higher, outer cards lower */
+  /* Cards spread dynamically across 80vw container */
+
+  .nft-carousel-item[data-index="1"]:not(.dragging) {
+    transform: translateX(-450px) rotate(-30deg) translateY(20px);
+  }
+
+  .nft-carousel-item[data-index="1"].dragging {
+    transform: translate(var(--drag-x), var(--drag-y)) translateX(-450px) rotate(0deg) translateY(20px);
+  }
+
+  .nft-carousel-item[data-index="2"]:not(.dragging) {
+    transform: translateX(-300px) rotate(-20deg) translateY(-10px);
+  }
+
+  .nft-carousel-item[data-index="2"].dragging {
+    transform: translate(var(--drag-x), var(--drag-y)) translateX(-300px) rotate(0deg) translateY(-10px);
+  }
+
+  .nft-carousel-item[data-index="3"]:not(.dragging) {
+    transform: translateX(-150px) rotate(-10deg) translateY(-30px);
+  }
+
+  .nft-carousel-item[data-index="3"].dragging {
+    transform: translate(var(--drag-x), var(--drag-y)) translateX(-150px) rotate(0deg) translateY(-30px);
+  }
+
+  .nft-carousel-item[data-index="4"]:not(.dragging) {
+    transform: translateX(0) rotate(0deg) translateY(-40px);
+  }
+
+  .nft-carousel-item[data-index="4"].dragging {
+    transform: translate(var(--drag-x), var(--drag-y)) translateX(0) rotate(0deg) translateY(-40px);
+  }
+
+  .nft-carousel-item[data-index="5"]:not(.dragging) {
+    transform: translateX(150px) rotate(10deg) translateY(-30px);
+  }
+
+  .nft-carousel-item[data-index="5"].dragging {
+    transform: translate(var(--drag-x), var(--drag-y)) translateX(150px) rotate(0deg) translateY(-30px);
+  }
+
+  .nft-carousel-item[data-index="6"]:not(.dragging) {
+    transform: translateX(300px) rotate(20deg) translateY(-10px);
+  }
+
+  .nft-carousel-item[data-index="6"].dragging {
+    transform: translate(var(--drag-x), var(--drag-y)) translateX(300px) rotate(0deg) translateY(-10px);
+  }
+
+  .nft-carousel-item[data-index="7"]:not(.dragging) {
+    transform: translateX(450px) rotate(30deg) translateY(20px);
+  }
+
+  .nft-carousel-item[data-index="7"].dragging {
+    transform: translate(var(--drag-x), var(--drag-y)) translateX(450px) rotate(0deg) translateY(20px);
+  }
+
+  .nft-carousel-item[data-index="1"].hovered:not(.dragging) {
+    transform: translateX(-450px) rotate(0deg) translateY(-80px) scale(1.15) !important;
+  }
+
+  .nft-carousel-item[data-index="2"].hovered:not(.dragging) {
+    transform: translateX(-300px) rotate(0deg) translateY(-80px) scale(1.15) !important;
+  }
+
+  .nft-carousel-item[data-index="3"].hovered:not(.dragging) {
+    transform: translateX(-150px) rotate(0deg) translateY(-80px) scale(1.15) !important;
+  }
+
+  .nft-carousel-item[data-index="4"].hovered:not(.dragging) {
+    transform: translateX(0) rotate(0deg) translateY(-80px) scale(1.15) !important;
+  }
+
+  .nft-carousel-item[data-index="5"].hovered:not(.dragging) {
+    transform: translateX(150px) rotate(0deg) translateY(-80px) scale(1.15) !important;
+  }
+
+  .nft-carousel-item[data-index="6"].hovered:not(.dragging) {
+    transform: translateX(300px) rotate(0deg) translateY(-80px) scale(1.15) !important;
+  }
+
+  .nft-carousel-item[data-index="7"].hovered:not(.dragging) {
+    transform: translateX(450px) rotate(0deg) translateY(-80px) scale(1.15) !important;
+  }
+
+  .nft-carousel-item.hovered {
+    z-index: 100 !important;
+    box-shadow: 0 20px 40px rgba(247, 148, 29, 0.6);
+    border-color: #f7941d;
+  }
+
+  /* Remove mobile hover on desktop */
+  .nft-carousel-item:hover {
+    transform: none;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border-color: #ffffff;
+  }
+}
