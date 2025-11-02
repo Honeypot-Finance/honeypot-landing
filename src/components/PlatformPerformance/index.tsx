@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 
 interface DexStatsData {
   users: number;
@@ -12,14 +11,11 @@ interface DexStatsData {
 
 const PlatformPerformance = () => {
   const [stats, setStats] = useState<DexStatsData | null>(null);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchDexStats = async () => {
       try {
-        setLoading(true);
-
         // Fetch from our proxy API route to avoid CORS issues
         const response = await fetch("/api/dex-stats");
 
@@ -38,8 +34,6 @@ const PlatformPerformance = () => {
       } catch (err) {
         console.error("Error fetching DEX stats:", err);
         setError("Failed to load DEX statistics");
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -64,56 +58,27 @@ const PlatformPerformance = () => {
   if (error || !stats) {
     // Show placeholder values if there's an error
     return (
-      <div className="scroll-animate w-full max-w-[1200px] mx-4 sm:mx-auto flex flex-col items-center z-10">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl text-white text-center mb-8 sm:mb-16 font-poppins font-bold">
-          Platform Performance
-        </h1>
-
-        <div className="scroll-animate bg-[#1a1a1a] rounded-[24px] sm:rounded-[32px] relative w-full overflow-hidden border-2 border-gray-700">
-          <div className="relative">
-            <div className="p-8 sm:p-12 lg:max-w-[60%]">
-              <div className="flex flex-col gap-6 sm:gap-8">
-                <div className="flex items-center">
-                  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white font-bold font-poppins">
-                    <span className="border-b-2 border-gray-600">
-                      DEX++ Multichain
-                    </span>
-                  </h2>
-                </div>
-
-                <div className="space-y-6 sm:space-y-8">
-                  <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white font-bold font-poppins">
-                    Key Metrics
-                  </h3>
-                  <div className="space-y-4 sm:space-y-6">
-                    <div className="text-base sm:text-xl md:text-2xl text-gray-300">
-                      Loading stats...
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <div className="scroll-animate w-full max-w-[1200px] mx-4 sm:mx-auto">
+        <div className="p-8 sm:p-12">
+          <div className="flex flex-col gap-8 sm:gap-12">
+            {/* Live Data Indicator */}
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full"></div>
+              <span className="text-white text-sm sm:text-base font-medium">
+                Live data
+              </span>
             </div>
 
-            <div className="absolute bottom-0 right-0 hidden lg:block">
-              <Image
-                src="/images/cool-bear.png"
-                alt="Cool Bear"
-                width={400}
-                height={400}
-                className="w-[400px] h-auto object-contain"
-                sizes="400px"
-              />
-            </div>
+            {/* Main Heading */}
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white font-bold font-poppins leading-tight">
+              Battle tested
+              <br />
+              infrastructure
+            </h2>
 
-            <div className="flex justify-center lg:hidden">
-              <Image
-                src="/images/cool-bear.png"
-                alt="Cool Bear"
-                width={400}
-                height={400}
-                className="w-[240px] sm:w-[300px] md:w-[350px] h-auto object-contain"
-                sizes="(max-width: 640px) 240px, (max-width: 768px) 300px, 350px"
-              />
+            {/* Loading State */}
+            <div className="text-base sm:text-xl text-gray-400">
+              Loading stats...
             </div>
           </div>
         </div>
@@ -122,92 +87,96 @@ const PlatformPerformance = () => {
   }
 
   return (
-    <div className="scroll-animate w-full max-w-[1200px] mx-4 sm:mx-auto flex flex-col items-center z-10">
-      <h1 className="text-3xl sm:text-4xl md:text-5xl text-white text-center mb-8 sm:mb-16 font-poppins font-bold">
-        Platform Performance
-      </h1>
+    <div className="scroll-animate w-full max-w-[1200px] mx-4 sm:mx-auto">
+      <div className="p-8 sm:p-12">
+          <div className="flex flex-col gap-8 sm:gap-12">
+            {/* Live Data Indicator */}
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full"></div>
+              <span className="text-white text-sm sm:text-base font-medium">
+                Live data
+              </span>
+            </div>
 
-      <div className="scroll-animate bg-[#1a1a1a] rounded-[24px] sm:rounded-[32px] relative w-full overflow-hidden border-2 border-gray-700">
-        <div className="relative">
-          <div className="p-8 sm:p-12 lg:max-w-[60%]">
-            <div className="flex flex-col gap-6 sm:gap-8">
-              <div className="flex items-center">
-                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white font-bold font-poppins">
-                  <span className="border-b-2 border-gray-600">
-                    DEX++ on
-                    {/* {stats.chainCount} */} Chains
-                  </span>
-                </h2>
+            {/* Main Heading */}
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white font-bold font-poppins leading-tight">
+              Battle tested
+              <br />
+              infrastructure
+            </h2>
+
+            {/* Metrics Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6 lg:gap-12">
+              {/* Total Volume */}
+              <div>
+                <div
+                  className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-2"
+                  style={{
+                    backgroundImage: 'linear-gradient(180deg, #FCD729 0%, #F7931A 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    color: 'transparent',
+                  }}
+                >
+                  {formatNumber(stats.totalVolume, "$")}
+                </div>
+                <div className="text-base sm:text-lg font-bold text-white mb-1">
+                  Total Volume
+                </div>
+                <p className="text-sm text-gray-400">
+                  Honeypot Finance has facilitated millions of dollars of
+                  transaction volume
+                </p>
               </div>
 
-              <div className="space-y-6 sm:space-y-8">
-                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white font-bold font-poppins">
-                  Key Metrics
-                </h3>
-                <div className="space-y-4 sm:space-y-6">
-                  <div className="flex items-center gap-3">
-                    <Image
-                      src="/images/honey-box.png"
-                      alt="honey box"
-                      width={24}
-                      height={24}
-                      sizes="24px"
-                    />
-                    <p className="text-base sm:text-xl md:text-2xl text-gray-300">
-                      {formatNumber(stats.totalVolume, "$")} Total Volume
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Image
-                      src="/images/honey-box.png"
-                      alt="honey box"
-                      width={24}
-                      height={24}
-                      sizes="24px"
-                    />
-                    <p className="text-base sm:text-xl md:text-2xl text-gray-300">
-                      {formatNumber(stats.users)} Active Users
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Image
-                      src="/images/honey-box.png"
-                      alt="honey box"
-                      width={24}
-                      height={24}
-                      sizes="24px"
-                    />
-                    <p className="text-base sm:text-xl md:text-2xl text-gray-300">
-                      {formatNumber(stats.totalTrades)} Trades Executed
-                    </p>
-                  </div>
+              {/* Active Users */}
+              <div>
+                <div
+                  className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-2"
+                  style={{
+                    backgroundImage: 'linear-gradient(180deg, #FCD729 0%, #F7931A 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    color: 'transparent',
+                  }}
+                >
+                  {formatNumber(stats.users)}
                 </div>
+                <div className="text-base sm:text-lg font-bold text-white mb-1">
+                  Active Users
+                </div>
+                <p className="text-sm text-gray-400">
+                  Honeypot Finance has facilitated millions of dollars of
+                  transaction volume
+                </p>
+              </div>
+
+              {/* Trades Executed */}
+              <div>
+                <div
+                  className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-2"
+                  style={{
+                    backgroundImage: 'linear-gradient(180deg, #FCD729 0%, #F7931A 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    color: 'transparent',
+                  }}
+                >
+                  {formatNumber(stats.totalTrades)}
+                </div>
+                <div className="text-base sm:text-lg font-bold text-white mb-1">
+                  Trades Executed
+                </div>
+                <p className="text-sm text-gray-400">
+                  Honeypot Finance has facilitated millions of dollars of
+                  transaction volume
+                </p>
               </div>
             </div>
           </div>
-
-          <div className="absolute bottom-0 right-0 hidden lg:block">
-            <Image
-              src="/images/bnb_bera.png"
-              alt="Cool Bear"
-              width={400}
-              height={400}
-              className="w-[400px] h-auto object-contain"
-              sizes="400px"
-            />
-          </div>
-
-          <div className="flex justify-center lg:hidden">
-            <Image
-              src="/images/bnb_bera.png"
-              alt="Cool Bear"
-              width={400}
-              height={400}
-              className="w-[240px] sm:w-[300px] md:w-[350px] h-auto object-contain"
-              sizes="(max-width: 640px) 240px, (max-width: 768px) 300px, 350px"
-            />
-          </div>
-        </div>
       </div>
     </div>
   );

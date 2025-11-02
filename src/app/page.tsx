@@ -355,14 +355,32 @@ export default function HomePage() {
 
           <button
             onClick={() => {
-              window.open(
-                "https://wasabee.honeypotfinance.xyz/perp?waitlist=true",
-                "_blank"
-              );
+              window.open("https://wasabee.honeypotfinance.xyz/perp", "_blank");
             }}
-            className="mt-8 px-8 py-4 bg-[#FFCD4D] text-black rounded-xl hover:bg-[#FFD966] transition-all font-bold text-base sm:text-lg md:text-xl shadow-lg hover:shadow-xl hover:scale-105"
+            className="mt-8 text-black rounded-full hover:opacity-90 transition-all font-bold text-base sm:text-lg md:text-xl shadow-lg hover:shadow-xl hover:scale-105 pl-8 pr-3 py-3 flex items-center gap-4"
+            style={{
+              background: "linear-gradient(180deg, #FCD729 0%, #F7931A 100%)",
+              border: "5px solid #C87304",
+            }}
           >
-            Join perp waitlist
+            <span>Start Trading</span>
+            <div className="bg-black rounded-full w-10 h-10 flex items-center justify-center">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7 17L17 7M17 7H7M17 7V17"
+                  stroke="#F7931A"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
           </button>
         </div>
       </div>
@@ -371,7 +389,7 @@ export default function HomePage() {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Perp Trading Card */}
-          <div className="bg-white/5 backdrop-blur-[20px] rounded-3xl p-8 flex flex-col items-center justify-between border border-gray-800 hover:border-[#FFCD4D] transition-all cursor-pointer group">
+          <div className="bg-[#1a1a1a] rounded-3xl p-8 flex flex-col items-center justify-between border-2 border-gray-700 hover:border-[#FFCD4D] transition-all cursor-pointer group">
             <div className="w-32 h-32 mb-6 bg-gradient-to-br from-purple-500 to-blue-600 rounded-2xl flex items-center justify-center p-4">
               <Image
                 src="/images/rocket.png"
@@ -390,7 +408,7 @@ export default function HomePage() {
           </div>
 
           {/* Spot Trading Card */}
-          <div className="bg-white/5 backdrop-blur-[20px] rounded-3xl p-8 flex flex-col items-center justify-between border border-gray-800 hover:border-[#FFCD4D] transition-all cursor-pointer group">
+          <div className="bg-[#1a1a1a] rounded-3xl p-8 flex flex-col items-center justify-between border-2 border-gray-700 hover:border-[#FFCD4D] transition-all cursor-pointer group">
             <div className="w-32 h-32 mb-6 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-2xl flex items-center justify-center p-4">
               <Image
                 src="/images/coin.png"
@@ -409,7 +427,7 @@ export default function HomePage() {
           </div>
 
           {/* Automated AMM Card */}
-          <div className="bg-white/5 backdrop-blur-[20px] rounded-3xl p-8 flex flex-col items-center justify-between border border-gray-800 hover:border-[#FFCD4D] transition-all cursor-pointer group">
+          <div className="bg-[#1a1a1a] rounded-3xl p-8 flex flex-col items-center justify-between border-2 border-gray-700 hover:border-[#FFCD4D] transition-all cursor-pointer group">
             <div className="w-32 h-32 mb-6 bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl flex items-center justify-center p-4">
               <Image
                 src="/images/liquidity.png"
@@ -428,7 +446,7 @@ export default function HomePage() {
           </div>
 
           {/* Multichain Card */}
-          <div className="bg-white/5 backdrop-blur-[20px] rounded-3xl p-8 flex flex-col items-center justify-between border border-gray-800 hover:border-[#FFCD4D] transition-all cursor-pointer group">
+          <div className="bg-[#1a1a1a] rounded-3xl p-8 flex flex-col items-center justify-between border-2 border-gray-700 hover:border-[#FFCD4D] transition-all cursor-pointer group">
             <div className="w-32 h-32 mb-6 bg-gradient-to-br from-orange-400 to-red-600 rounded-2xl flex items-center justify-center p-4">
               <Image
                 src="/images/quantum-hub.png"
@@ -447,6 +465,9 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+
+      {/* DEX Performance Section */}
+      <PlatformPerformance />
 
       {/* Additional DEX Features Section */}
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 mb-20 relative z-10">
@@ -667,8 +688,6 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* DEX Performance Section */}
-        <PlatformPerformance />
         <div className="scroll-animate w-full max-w-[1200px] mx-4 sm:mx-auto flex flex-col items-center mt-16 z-10">
           <div className="relative z-10 mb-8 max-w-[800px]">
             <div className="bg-[#1a1a1a] rounded-xl px-6 sm:px-12 py-3 sm:py-4 border-2 sm:border-4 border-gray-700 shadow-[4px_4px_0px_0px_rgba(255,205,77,0.3)] sm:shadow-[8px_8px_0px_0px_rgba(255,205,77,0.3)]">
