@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 interface FeatureCardProps {
@@ -16,7 +18,7 @@ const FeatureCard = ({
   link,
 }: FeatureCardProps) => {
   const handleClick = () => {
-    if (link) {
+    if (link && typeof window !== "undefined") {
       window.open(link, "_blank");
     }
   };

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const FloatingPreTGE = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -66,14 +67,12 @@ const FloatingPreTGE = () => {
               Earn points for airdrops
             </p>
 
-            <button
-              onClick={() => {
-                window.location.href = "/missions";
-              }}
-              className="w-full px-4 py-3 bg-white text-black rounded-xl hover:bg-gray-200 transition-all font-bold text-sm border-2 border-gray-700 shadow-[4px_4px_0px_0px_rgba(255,205,77,0.3)]"
+            <Link
+              href="/missions"
+              className="w-full px-4 py-3 bg-white text-black rounded-xl hover:bg-gray-200 transition-all font-bold text-sm border-2 border-gray-700 shadow-[4px_4px_0px_0px_rgba(255,205,77,0.3)] flex items-center justify-center"
             >
               Join Now
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -132,14 +131,12 @@ const FloatingPreTGE = () => {
               </p>
             </div>
 
-            <button
-              onClick={() => {
-                window.location.href = "/missions";
-              }}
-              className="px-4 py-2 sm:px-6 sm:py-3 bg-white text-black rounded-xl hover:bg-gray-200 transition-all font-bold text-xs sm:text-sm border-2 border-gray-700 shadow-[4px_4px_0px_0px_rgba(255,205,77,0.3)] whitespace-nowrap flex-shrink-0"
+            <Link
+              href="/missions"
+              className="px-4 py-2 sm:px-6 sm:py-3 bg-white text-black rounded-xl hover:bg-gray-200 transition-all font-bold text-xs sm:text-sm border-2 border-gray-700 shadow-[4px_4px_0px_0px_rgba(255,205,77,0.3)] whitespace-nowrap flex-shrink-0 flex items-center justify-center"
             >
               Join Now
-            </button>
+            </Link>
           </div>
         </div>
       </div>
