@@ -7,10 +7,10 @@ export const metadata: Metadata = {
   description:
     "Honeypot combines pro trading tools and behaviour-driven incentives, solving idle TVL, inefficient incentives & market fragmentation across DeFi",
   openGraph: {
-    images: ["/banner.jpeg"], // Path to your Open Graph image
+    images: ["/images/landing-new-assets-202511/new_media_banner.jpeg"],
   },
   twitter: {
-    images: ["/banner.jpeg"], // Path to your Twitter Card image
+    images: ["/images/landing-new-assets-202511/new_media_banner.jpeg"],
     card: "summary_large_image",
   },
   icons: {
