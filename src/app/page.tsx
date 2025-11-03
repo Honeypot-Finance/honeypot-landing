@@ -20,6 +20,7 @@ import instantLp from "@/assets/home-page/instant-lp.png";
 import earnFromDayOneImage from "@/assets/home-page/earn-from-day-one.png";
 import FloatingPreTGE from "@/components/FloatingPreTGE";
 import NFTCarousel from "@/components/NFTCarousel/NFTCarousel";
+import PerpDexSection from "@/components/PerpDexSection";
 
 // CSS 样式字符串
 const cssStyles = `
@@ -463,7 +464,7 @@ export default function HomePage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           <FeatureCard
             title="Perp Trading"
-            description="Trade perpetual futures with up to 100x leverage"
+            description="Trade perpetual futures with real on-chain depth, dynamic risk vaults, and 100% AMM-powered liquidity."
             imageSrc="/images/landing-new-assets-202511/rocket.svg"
             imageAlt="Perp Trading"
             link="https://wasabee.honeypotfinance.xyz/perp"
@@ -494,6 +495,9 @@ export default function HomePage() {
 
       {/* DEX Performance Section */}
       <PlatformPerformance />
+
+      {/* Perp DEX Section */}
+      <PerpDexSection />
 
       {/* Honeypots Vision Section */}
       <div className="w-full py-12 px-4 relative z-10">
