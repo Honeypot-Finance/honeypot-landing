@@ -23,7 +23,8 @@ const FloatingPreTGE = () => {
         {/* Collapse/Expand Button */}
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="bg-[#1a1a1a] border-4 border-gray-700 border-r-0 rounded-l-2xl px-3 py-4 shadow-[8px_8px_0px_0px_rgba(255,205,77,0.3)] hover:bg-[#2a2a2a] transition-all"
+          className="bg-[#1F1609] rounded-l-2xl px-3 py-4 shadow-[8px_8px_0px_0px_rgba(255,205,77,0.3)] hover:bg-[#2a2a2a] transition-all"
+          style={{ border: '6px solid #FFA9311A', borderRight: '0' }}
           aria-label={isCollapsed ? "Expand" : "Collapse"}
         >
           {isCollapsed ? (
@@ -42,9 +43,14 @@ const FloatingPreTGE = () => {
 
         {/* Main Content */}
         <div
-          className={`bg-[#1a1a1a] rounded-l-2xl border-4 border-r-0 border-gray-700 shadow-[8px_8px_0px_0px_rgba(255,205,77,0.3)] transition-all duration-300 ${
-            isCollapsed ? "w-0 p-0 border-l-0 opacity-0" : "w-[240px] p-6"
+          className={`bg-[#1F1609] rounded-l-2xl shadow-[8px_8px_0px_0px_rgba(255,205,77,0.3)] transition-all duration-300 ${
+            isCollapsed ? "w-0 p-0 opacity-0" : "w-[240px] p-6"
           } overflow-hidden`}
+          style={{
+            border: isCollapsed ? '6px solid #FFA9311A' : '6px solid #FFA9311A',
+            borderRight: '0',
+            borderLeft: isCollapsed ? '0' : '6px solid #FFA9311A'
+          }}
         >
           <div className="flex flex-col gap-4">
             {/* Airdrop Icon */}
@@ -84,11 +90,12 @@ const FloatingPreTGE = () => {
         {/* Collapse/Expand Button */}
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className={`bg-[#1a1a1a] border-4 border-gray-700 rounded-t-2xl hover:bg-[#2a2a2a] transition-all ${
+          className={`bg-[#1F1609] rounded-t-2xl hover:bg-[#2a2a2a] transition-all ${
             isCollapsed
-              ? "border-b-0 px-6 py-3 shadow-[0px_-8px_0px_0px_rgba(255,205,77,0.3)]"
-              : "border-b-0 px-6 py-3 shadow-[0px_-8px_0px_0px_rgba(255,205,77,0.3)]"
+              ? "px-6 py-3 shadow-[0px_-8px_0px_0px_rgba(255,205,77,0.3)]"
+              : "px-6 py-3 shadow-[0px_-8px_0px_0px_rgba(255,205,77,0.3)]"
           }`}
+          style={{ border: '6px solid #FFA9311A', borderBottom: '0' }}
           aria-label={isCollapsed ? "Expand" : "Collapse"}
         >
           {isCollapsed ? (
@@ -107,9 +114,14 @@ const FloatingPreTGE = () => {
 
         {/* Main Content */}
         <div
-          className={`bg-[#1a1a1a] w-full border-4 border-b-0 border-gray-700 shadow-[0px_-8px_0px_0px_rgba(255,205,77,0.3)] transition-all duration-300 ${
-            isCollapsed ? "h-0 p-0 border-t-0 opacity-0" : "h-auto p-4"
+          className={`bg-[#1F1609] w-full shadow-[0px_-8px_0px_0px_rgba(255,205,77,0.3)] transition-all duration-300 ${
+            isCollapsed ? "h-0 p-0 opacity-0" : "h-auto p-4"
           } overflow-hidden`}
+          style={{
+            border: '6px solid #FFA9311A',
+            borderBottom: '0',
+            borderTop: isCollapsed ? '0' : '6px solid #FFA9311A'
+          }}
         >
           <div className="flex items-center gap-4 justify-between max-w-[600px] mx-auto">
             {/* Airdrop Icon */}

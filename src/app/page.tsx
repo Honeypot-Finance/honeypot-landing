@@ -872,7 +872,7 @@ export default function HomePage() {
               href="https://t.me/+tE1KgsD-GxJhOTg0"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#1a1a1a] border border-gray-700 rounded-xl p-3 flex items-center justify-center hover:bg-[#2a2a2a] hover:scale-110 transition"
+              className="bg-[#2F1F0E] rounded-xl p-3 flex items-center justify-center hover:bg-[#3a2612] hover:scale-110 transition"
             >
               <BsTelegram className="w-6 h-6 text-[#FFCD4D]" />
             </a>
@@ -880,7 +880,7 @@ export default function HomePage() {
               href="https://x.com/honeypotfinance"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#1a1a1a] border border-gray-700 rounded-xl p-3 flex items-center justify-center hover:bg-[#2a2a2a] hover:scale-110 transition"
+              className="bg-[#2F1F0E] rounded-xl p-3 flex items-center justify-center hover:bg-[#3a2612] hover:scale-110 transition"
             >
               <FaXTwitter className="w-6 h-6 text-[#FFCD4D]" />
             </a>
@@ -888,7 +888,7 @@ export default function HomePage() {
               href="https://discord.gg/NfnK78KJxH"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#1a1a1a] border border-gray-700 rounded-xl p-3 flex items-center justify-center hover:bg-[#2a2a2a] hover:scale-110 transition"
+              className="bg-[#2F1F0E] rounded-xl p-3 flex items-center justify-center hover:bg-[#3a2612] hover:scale-110 transition"
             >
               <FaDiscord className="w-6 h-6 text-[#FFCD4D]" />
             </a>
@@ -896,7 +896,7 @@ export default function HomePage() {
               href="https://medium.com/@HoneypotFinance1"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#1a1a1a] border border-gray-700 rounded-xl p-3 flex items-center justify-center hover:bg-[#2a2a2a] hover:scale-110 transition"
+              className="bg-[#2F1F0E] rounded-xl p-3 flex items-center justify-center hover:bg-[#3a2612] hover:scale-110 transition"
             >
               <FaMedium className="w-6 h-6 text-[#FFCD4D]" />
             </a>
