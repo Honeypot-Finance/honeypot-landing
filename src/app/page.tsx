@@ -424,7 +424,10 @@ export default function HomePage() {
           <button
             onClick={() => {
               if (typeof window !== "undefined") {
-                window.open("https://wasabee.honeypotfinance.xyz/perp", "_blank");
+                window.open(
+                  "https://wasabee.honeypotfinance.xyz/perp",
+                  "_blank"
+                );
               }
             }}
             className="mt-8 text-black rounded-full hover:opacity-90 transition-all font-bold text-base sm:text-lg md:text-xl shadow-lg hover:shadow-xl hover:scale-105 pl-8 pr-3 py-3 flex items-center gap-4"
@@ -433,7 +436,7 @@ export default function HomePage() {
               border: "5px solid #C87304",
             }}
           >
-            <span>Start Trading</span>
+            <span>Trading Perp</span>
             <div className="bg-black rounded-full w-10 h-10 flex items-center justify-center">
               <svg
                 width="20"
@@ -673,7 +676,10 @@ export default function HomePage() {
             <button
               onClick={() => {
                 if (typeof window !== "undefined") {
-                  window.open("https://nft.honeypotfinance.xyz/staking", "_blank");
+                  window.open(
+                    "https://nft.honeypotfinance.xyz/staking",
+                    "_blank"
+                  );
                 }
               }}
               className="bg-[#3B2712] hover:bg-[#5a3e1d] text-white font-bold py-4 px-12 rounded-full transition-all duration-300 hover:scale-105 shadow-lg text-base sm:text-lg w-full sm:w-auto"
