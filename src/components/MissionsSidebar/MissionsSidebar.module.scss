@@ -26,74 +26,43 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 
     svg {
       color: #ffc107;
       width: 1.5rem;
       height: 1.5rem;
+      flex-shrink: 0;
     }
 
     h2 {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       font-weight: 700;
       color: #fff;
       margin: 0;
     }
   }
 
-  .total-points {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background: rgba(255, 193, 7, 0.1);
-    border: 1px solid rgba(255, 193, 7, 0.3);
-    border-radius: 0.75rem;
-
-    .points-label {
-      font-size: 0.875rem;
-      color: #a0a0a0;
-    }
-
-    .points-value {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #ffc107;
-    }
+  .header-subtitle {
+    font-size: 0.875rem;
+    color: #a0a0a0;
+    margin: 0;
+    line-height: 1.4;
   }
 }
 
-.mission-filters {
+.move-icon-wrapper {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
   display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 
-  button {
-    flex: 1;
-    min-width: fit-content;
-    padding: 0.5rem 0.75rem;
-    background: rgba(80, 60, 30, 0.3);
-    border: 1px solid rgba(255, 193, 7, 0.2);
-    border-radius: 0.5rem;
-    color: #a0a0a0;
-    font-size: 0.75rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-
-    &:hover {
-      background: rgba(80, 60, 30, 0.5);
-      color: #e0e0e0;
-    }
-
-    &.active {
-      background: rgba(255, 193, 7, 0.2);
-      border-color: rgba(255, 193, 7, 0.5);
-      color: #ffc107;
-    }
+  .move-icon {
+    font-size: 1.5rem;
   }
 }
 
@@ -188,7 +157,55 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  gap: 0.75rem;
+}
+
+.move-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.sidebar-footer {
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 193, 7, 0.1);
+
+  .footer-text {
+    font-size: 0.75rem;
+    color: #a0a0a0;
+    margin: 0;
+    text-align: center;
+    line-height: 1.4;
+  }
 }
 
 .mission-header {
