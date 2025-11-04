@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import './dashboard.scss';
 import Navbar from '@/components/Navbar';
 import { appPathsList } from '@/components/Navbar/allAppPath';
@@ -7,9 +7,12 @@ import MissionsSidebar from '@/components/MissionsSidebar/MissionsSidebar';
 import { useAccount } from 'wagmi';
 import { useConnectModal } from '@rainbow-me/rainbowkit';
 
+type TabType = 'dex' | 'points' | 'nft' | 'leaderboard' | 'vault';
+
 export default function DashboardPage() {
   const { address, isConnected, isConnecting } = useAccount();
   const { openConnectModal } = useConnectModal();
+  const [activeTab, setActiveTab] = useState<TabType>('dex');
 
   const formatAddress = (addressStr: string) => {
     if (!addressStr) return '';
@@ -92,7 +95,10 @@ export default function DashboardPage() {
 
           {/* Navigation Tabs */}
           <div className="dashboard-tabs">
-            <button className="tab active">
+            <button
+              className={`tab ${activeTab === 'dex' ? 'active' : ''}`}
+              onClick={() => setActiveTab('dex')}
+            >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                 <rect x="3" y="3" width="7" height="7" rx="1" fill="currentColor"/>
                 <rect x="14" y="3" width="7" height="7" rx="1" fill="currentColor"/>
@@ -101,13 +107,19 @@ export default function DashboardPage() {
               </svg>
               DEX
             </button>
-            <button className="tab">
+            <button
+              className={`tab ${activeTab === 'points' ? 'active' : ''}`}
+              onClick={() => setActiveTab('points')}
+            >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                 <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
               </svg>
               Points
             </button>
-            <button className="tab">
+            <button
+              className={`tab ${activeTab === 'nft' ? 'active' : ''}`}
+              onClick={() => setActiveTab('nft')}
+            >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                 <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="currentColor"/>
                 <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" fill="none"/>
@@ -115,14 +127,20 @@ export default function DashboardPage() {
               </svg>
               NFT
             </button>
-            <button className="tab">
+            <button
+              className={`tab ${activeTab === 'leaderboard' ? 'active' : ''}`}
+              onClick={() => setActiveTab('leaderboard')}
+            >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                 <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" fill="currentColor"/>
                 <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" fill="currentColor"/>
               </svg>
               Leaderboard
             </button>
-            <button className="tab">
+            <button
+              className={`tab ${activeTab === 'vault' ? 'active' : ''}`}
+              onClick={() => setActiveTab('vault')}
+            >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                 <rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" strokeWidth="2" fill="none"/>
                 <path d="M7 11V7C7 4.23858 9.23858 2 12 2C14.7614 2 17 4.23858 17 7V11" stroke="currentColor" strokeWidth="2"/>
@@ -131,8 +149,11 @@ export default function DashboardPage() {
             </button>
           </div>
 
-          {/* Stats Cards */}
-          <div className="stats-grid">
+          {/* Tab Content */}
+          {activeTab === 'dex' && (
+            <>
+              {/* Stats Cards */}
+              <div className="stats-grid">
             <div className="stat-card">
               <div className="stat-header">
                 <span className="stat-label">Total Value Locked</span>
@@ -255,6 +276,37 @@ export default function DashboardPage() {
               </div>
             </div>
           </div>
+            </>
+          )}
+
+          {activeTab === 'points' && (
+            <div className="tab-content-panel">
+              <h2 className="panel-title">Points Overview</h2>
+              <p className="panel-description">Track your rewards points and earning history</p>
+            </div>
+          )}
+
+          {activeTab === 'nft' && (
+            <div className="tab-content-panel">
+              <h2 className="panel-title">NFT Collection</h2>
+              <p className="panel-description">View and manage your NFT assets</p>
+            </div>
+          )}
+
+          {activeTab === 'leaderboard' && (
+            <div className="tab-content-panel">
+              <h2 className="panel-title">Leaderboard Rankings</h2>
+              <p className="panel-description">See how you rank among other users</p>
+            </div>
+          )}
+
+          {activeTab === 'vault' && (
+            <div className="tab-content-panel">
+              <h2 className="panel-title">Vault Assets</h2>
+              <p className="panel-description">Manage your staked and locked assets</p>
+            </div>
+          )}
+
           </div>
 
           {/* Missions Sidebar */}

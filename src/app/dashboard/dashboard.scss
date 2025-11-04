@@ -219,6 +219,35 @@
   width: 100%;
 }
 
+// Tab Content Panels
+.tab-content-panel {
+  padding: 3rem 2rem;
+  background: rgba(42, 32, 20, 0.4);
+  border: 1px solid rgba(255, 193, 7, 0.15);
+  border-radius: 1rem;
+  text-align: center;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  .panel-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffc107;
+    margin: 0;
+  }
+
+  .panel-description {
+    font-size: 1.125rem;
+    color: #a0a0a0;
+    margin: 0;
+    max-width: 600px;
+  }
+}
+
 // Navigation Tabs
 .dashboard-tabs {
   display: flex;
