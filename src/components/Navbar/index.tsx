@@ -16,6 +16,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "@heroui/react";
+import WalletBar from "@/components/WalletBar/WalletBar";
 
 interface NavbarProps {
   menuList: Menu[];
@@ -165,8 +166,10 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
             {menuList.map(renderMenuItem)}
           </div>
 
-          {/* Right: Spacer to balance layout */}
-          <div className="flex-shrink-0 w-[200px]"></div>
+          {/* Right: Wallet Bar */}
+          <div className="flex-shrink-0">
+            <WalletBar />
+          </div>
         </div>
 
         <div className="w-full flex items-center justify-between sm:hidden">
@@ -193,17 +196,22 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
                 <Image
                   src="/images/honeypot-logo.svg"
                   alt="honeypot-logo"
-                  width={50}
-                  height={50}
+                  width={36}
+                  height={36}
+                  className="shrink-0"
                 />
               )
             }
             className={cn(
-              "will-change-transform transform-gpu transition-all duration-200 ease-out sm:hidden size-9"
+              "will-change-transform transform-gpu transition-all duration-200 ease-out sm:hidden w-9 h-9 p-0 min-w-9"
             )}
           />
-          <div className="block sm:hidden w-full text-white text-sm font-bebas-neue text-center grow">
+          <div className="block sm:hidden w-full text-white text-2xl font-bebas-neue text-center grow">
             HONEYPOT FINANCE
+          </div>
+          {/* Mobile Wallet Bar */}
+          <div className="block sm:hidden">
+            <WalletBar />
           </div>
         </div>
 

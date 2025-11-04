@@ -45,3 +45,111 @@ main {
   font-family: "Gliker";
   src: url("/fonts/Gliker-Regular.ttf") format("truetype");
 }
+
+/* RainbowKit Fine-tuning (using theme API for main styling) */
+[data-rk] {
+  /* Remove any wrapper backgrounds */
+  background: transparent !important;
+  padding: 0 !important;
+  border: none !important;
+
+  /* Ensure account button has fixed height */
+  button[data-testid="rk-account-button"] {
+    height: 2.5rem !important;
+    padding: 0 0.875rem !important;
+    font-size: 0.875rem !important;
+
+    /* Remove all internal div backgrounds and padding */
+    > div {
+      background: transparent !important;
+      padding: 0 !important;
+      border: none !important;
+
+      > div {
+        background: transparent !important;
+        padding: 0 !important;
+        border: none !important;
+      }
+    }
+
+    /* Ensure all nested divs are transparent */
+    div {
+      background: transparent !important;
+    }
+  }
+
+  /* Ensure connect button has fixed height */
+  button[data-testid="rk-connect-button"] {
+    height: 2.5rem !important;
+    padding: 0 1.25rem !important;
+    font-size: 0.875rem !important;
+
+    /* Remove all internal div backgrounds */
+    div {
+      background: transparent !important;
+    }
+  }
+
+  /* Add hover transform effect */
+  button:hover {
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+  }
+
+  /* Wallet option hover effect */
+  [data-testid="rk-wallet-option"]:hover {
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+  }
+
+  /* Address monospace font */
+  .address {
+    font-family: 'Courier New', monospace !important;
+  }
+}
+
+/* Target the RainbowKit wrapper container directly */
+div[data-rk] > div {
+  background: transparent !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+/* Target all RainbowKit internal divs to be transparent */
+button[data-testid="rk-account-button"] div,
+button[data-testid="rk-connect-button"] div {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Mobile responsive - make wallet button square */
+@media (max-width: 768px) {
+  [data-rk] {
+    button[data-testid="rk-account-button"] {
+      width: 2.5rem !important;
+      min-width: 2.5rem !important;
+      padding: 0 !important;
+
+      /* Hide the address text and dropdown arrow on mobile */
+      > div > div:last-child {
+        display: none !important;
+      }
+
+      /* Center the avatar */
+      > div {
+        justify-content: center !important;
+      }
+    }
+
+    button[data-testid="rk-connect-button"] {
+      width: 2.5rem !important;
+      min-width: 2.5rem !important;
+      padding: 0 !important;
+
+      /* Hide text, only show icon */
+      span {
+        display: none !important;
+      }
+    }
+  }
+}

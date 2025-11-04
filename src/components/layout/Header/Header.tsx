@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useMotionValueEvent, useScroll, motion } from "framer-motion";
 import { useState } from "react";
 import { DOMAIN_MAP } from "@/data/pathData";
+import WalletBar from "@/components/WalletBar/WalletBar";
 
 export default function Header() {
   const [headerBg, setHeaderBg] = useState("#80BFE5");
@@ -76,6 +77,7 @@ export default function Header() {
               </Link>
             </li> */}
           </ul>
+          <WalletBar />
         </nav>
       </motion.div>
     </header>
