@@ -404,14 +404,17 @@ export default function DashboardPage() {
                       strokeWidth="2"
                     />
                   </svg>
-                  Vault
+                  AIOV(All In One Vault)
                 </button>
               </div>
 
               {/* Tab Content */}
               {activeTab === "dex" && (
                 <>
-                  <DexStats stats={stats} statsLoading={statsLoading} />
+                  <DexStats
+                    stats={stats}
+                    statsLoading={statsLoading}
+                  />
                   <PositionsTab
                     positions={positions}
                     positionsLoading={positionsLoading}
@@ -449,7 +452,7 @@ export default function DashboardPage() {
 
               {activeTab === "vault" && (
                 <div className="tab-content-panel">
-                  <h2 className="panel-title">Vault Assets</h2>
+                  <h2 className="panel-title">All in one vault Assets</h2>
                   <p className="panel-description">
                     Manage your staked and locked assets
                   </p>
