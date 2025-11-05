@@ -21,6 +21,7 @@ import { NFTTab } from "@/components/dashboard/NFTTab";
 import { LeaderboardTab } from "@/components/dashboard/LeaderboardTab";
 import { VaultTab } from "@/components/dashboard/VaultTab";
 import FloatingPreTGE from "@/components/FloatingPreTGE";
+import { POINT_DOMAIN } from "@/config/domains";
 
 type TabType = "dex" | "points" | "nft" | "leaderboard" | "vault";
 type DexSubTabType = "concentrated" | "vaults";
@@ -215,10 +216,13 @@ export default function DashboardPage() {
                     />
                   </svg>
                   <span className="full-address">{address}</span>
-                  <span className="short-address">{formatAddress(address)}</span>
+                  <span className="short-address">
+                    {formatAddress(address)}
+                  </span>
                 </div>
                 <a
-                  href="/missions"
+                  href={POINT_DOMAIN}
+                  target="_blank"
                   className="pre-tge-banner-btn"
                 >
                   <span className="pre-tge-flame">🔥</span>
@@ -358,27 +362,6 @@ export default function DashboardPage() {
                     />
                   </svg>
                   Leaderboard
-                  <a
-                    href="https://leaderboard.honeypotfinance.xyz/leaderboard"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="tab-external-link"
-                    onClick={(e) => e.stopPropagation()}
-                    title="View full leaderboard"
-                  >
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                      <polyline points="15 3 21 3 21 9" />
-                      <line x1="10" y1="14" x2="21" y2="3" />
-                    </svg>
-                  </a>
                 </button>
                 <button
                   className={`tab ${activeTab === "vault" ? "active" : ""}`}
