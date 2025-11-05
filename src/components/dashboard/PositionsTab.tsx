@@ -29,7 +29,7 @@ export const PositionsTab: React.FC<PositionsTabProps> = ({
       {/* Your Earning Assets Section */}
       <div className="liquidity-section">
         <div className="section-header">
-          <div className="section-title">
+          <div className="section-title" title="Your current liquidity pools and vault positions">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path
                 d="M9 2C9 2 6 2 6 5V7H4C3.44772 7 3 7.44772 3 8V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20V8C21 7.44772 20.5523 7 20 7H18V5C18 2 15 2 15 2H9Z"
@@ -44,9 +44,10 @@ export const PositionsTab: React.FC<PositionsTabProps> = ({
               />
             </svg>
             Your Earning Assets
-          </div>
-          <div className="section-subtitle">
-            Your current liquidity pools and vault positions
+            <svg className="info-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none"/>
+              <path d="M12 16V12M12 8H12.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            </svg>
           </div>
         </div>
 

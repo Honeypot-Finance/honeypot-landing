@@ -25,7 +25,7 @@ export const NFTTab: React.FC<NFTTabProps> = ({
       {/* NFT Section */}
       <div className="liquidity-section">
         <div className="section-header">
-          <div className="section-title">
+          <div className="section-title" title="Your wallet and staked NFTs">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path
                 d="M12 2L2 7L12 12L22 7L12 2Z"
@@ -45,9 +45,10 @@ export const NFTTab: React.FC<NFTTabProps> = ({
               />
             </svg>
             Your NFT Collection
-          </div>
-          <div className="section-subtitle">
-            Your wallet and staked NFTs
+            <svg className="info-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none"/>
+              <path d="M12 16V12M12 8H12.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            </svg>
           </div>
         </div>
 

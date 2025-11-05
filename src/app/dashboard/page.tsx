@@ -187,57 +187,13 @@ export default function DashboardPage() {
         </div>
       ) : isConnected && address ? (
         <div className="dashboard-page">
-          {/* Header */}
+          {/* Header - Connected Wallet */}
           <div className="dashboard-header">
-            <div className="header-top">
-              <div className="header-icon">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <rect
-                    x="3"
-                    y="3"
-                    width="8"
-                    height="8"
-                    rx="1"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="13"
-                    y="3"
-                    width="8"
-                    height="8"
-                    rx="1"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="3"
-                    y="13"
-                    width="8"
-                    height="8"
-                    rx="1"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="13"
-                    y="13"
-                    width="8"
-                    height="8"
-                    rx="1"
-                    fill="currentColor"
-                  />
-                </svg>
-              </div>
-              <h1>User Hub</h1>
-            </div>
             {address && (
-              <div className="wallet-address-subtitle">
+              <div className="wallet-address-header">
                 <svg
-                  width="16"
-                  height="16"
+                  width="20"
+                  height="20"
                   viewBox="0 0 24 24"
                   fill="none"
                 >
