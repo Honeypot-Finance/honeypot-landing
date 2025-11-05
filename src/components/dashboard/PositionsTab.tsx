@@ -106,23 +106,68 @@ export const PositionsTab: React.FC<PositionsTabProps> = ({
               </div>
             </>
           ) : (
-            <div className="empty-state">
-              <svg
-                width="64"
-                height="64"
-                viewBox="0 0 24 24"
-                fill="none"
-                className="empty-icon"
-              >
-                <path
-                  d="M9 2C9 2 6 2 6 5V7H4C3.44772 7 3 7.44772 3 8V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20V8C21 7.44772 20.5523 7 20 7H18V5C18 2 15 2 15 2H9Z"
-                  stroke="currentColor"
-                  strokeWidth="2"
+            <div className="empty-state positions-empty">
+              <div className="empty-icon-wrapper">
+                <div className="empty-icon-bg"></div>
+                <svg
+                  className="empty-icon"
+                  width="80"
+                  height="80"
+                  viewBox="0 0 24 24"
                   fill="none"
-                />
-              </svg>
-              <h3>No Liquidity Positions</h3>
-              <p>You don&apos;t have any active liquidity positions yet.</p>
+                >
+                  <path
+                    d="M9 2C9 2 6 2 6 5V7H4C3.44772 7 3 7.44772 3 8V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20V8C21 7.44772 20.5523 7 20 7H18V5C18 2 15 2 15 2H9Z"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    fill="none"
+                  />
+                  <path
+                    d="M6 7V5C6 3.89543 6.89543 3 8 3H16C17.1046 3 18 3.89543 18 5V7"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  />
+                  <path
+                    d="M12 11V17M9 14H15"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </div>
+              <div className="empty-content">
+                <h3>No Liquidity Positions</h3>
+                <p>
+                  You don&apos;t have any active concentrated liquidity positions. Start providing liquidity to earn trading fees!
+                </p>
+                <button
+                  className="empty-cta primary"
+                  onClick={() => window.open(`${DEX_DOMAIN}pools`, "_blank", "noopener,noreferrer")}
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      fill="none"
+                    />
+                    <path
+                      d="M12 8V16M8 12H16"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                  Add Liquidity
+                </button>
+              </div>
             </div>
           )}
         </>
@@ -165,32 +210,69 @@ export const PositionsTab: React.FC<PositionsTabProps> = ({
               </div>
             </>
           ) : (
-            <div className="empty-state">
-              <svg
-                width="64"
-                height="64"
-                viewBox="0 0 24 24"
-                fill="none"
-                className="empty-icon"
-              >
-                <rect
-                  x="3"
-                  y="11"
-                  width="18"
-                  height="11"
-                  rx="2"
-                  stroke="currentColor"
-                  strokeWidth="2"
+            <div className="empty-state positions-empty">
+              <div className="empty-icon-wrapper">
+                <div className="empty-icon-bg"></div>
+                <svg
+                  className="empty-icon"
+                  width="80"
+                  height="80"
+                  viewBox="0 0 24 24"
                   fill="none"
-                />
-                <path
-                  d="M7 11V7C7 4.23858 9.23858 2 12 2C14.7614 2 17 4.23858 17 7V11"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                />
-              </svg>
-              <h3>No Vault Positions</h3>
-              <p>You don&apos;t have any automated vault positions yet.</p>
+                >
+                  <rect
+                    x="3"
+                    y="11"
+                    width="18"
+                    height="11"
+                    rx="2"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    fill="none"
+                  />
+                  <path
+                    d="M7 11V7C7 4.23858 9.23858 2 12 2C14.7614 2 17 4.23858 17 7V11"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  />
+                  <circle
+                    cx="12"
+                    cy="16"
+                    r="1.5"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <div className="empty-content">
+                <h3>No Vault Positions</h3>
+                <p>
+                  You don&apos;t have any automated vault positions. Let vaults optimize your liquidity strategy automatically!
+                </p>
+                <button
+                  className="empty-cta primary"
+                  onClick={() => window.open(`${DEX_DOMAIN}pools?opentab=vault`, "_blank", "noopener,noreferrer")}
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <path
+                      d="M12 2L2 7L12 12L22 7L12 2Z"
+                      fill="currentColor"
+                      opacity="0.5"
+                    />
+                    <path
+                      d="M2 17L12 22L22 17"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      fill="none"
+                    />
+                  </svg>
+                  Explore Vaults
+                </button>
+              </div>
             </div>
           )}
         </>

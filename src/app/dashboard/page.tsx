@@ -19,6 +19,7 @@ import { PositionsTab } from "@/components/dashboard/PositionsTab";
 import { PointsTab } from "@/components/dashboard/PointsTab";
 import { NFTTab } from "@/components/dashboard/NFTTab";
 import { LeaderboardTab } from "@/components/dashboard/LeaderboardTab";
+import { VaultTab } from "@/components/dashboard/VaultTab";
 
 type TabType = "dex" | "points" | "nft" | "leaderboard" | "vault";
 type DexSubTabType = "concentrated" | "vaults";
@@ -444,14 +445,7 @@ export default function DashboardPage() {
 
               {activeTab === "leaderboard" && <LeaderboardTab />}
 
-              {activeTab === "vault" && (
-                <div className="tab-content-panel">
-                  <h2 className="panel-title">All in one vault Assets</h2>
-                  <p className="panel-description">
-                    Manage your staked and locked assets
-                  </p>
-                </div>
-              )}
+              {activeTab === "vault" && <VaultTab />}
             </div>
 
             {/* Missions Sidebar */}

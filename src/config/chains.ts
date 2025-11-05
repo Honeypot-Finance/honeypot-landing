@@ -266,6 +266,13 @@ export const CHAIN_METADATA: Record<ChainId, ChainMetadata> = {
         logoURI: "/images/tokens/bee-token-icon.jpg",
         isPopular: true,
       },
+      "0x773f8b20cc9bb82a67ad2c5d996bb3db79118ee1": {
+        address: "0x773f8b20cc9bb82a67ad2c5d996bb3db79118ee1",
+        name: "(:-):-):-))",
+        symbol: ":-)",
+        decimals: 18,
+        logoURI: "/images/tokens/happy_face_3.avif",
+      },
     },
   },
   // BNB Smart Chain

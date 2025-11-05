@@ -7,15 +7,13 @@
 
 import { ChainId } from "./chains";
 
-export type SubgraphType = "dex" | "nft" | "nft-staking" | "points" | "leaderboard" | "vault";
+export type SubgraphType = "dex" | "nft" | "nft-staking" | "aiov";
 
 export interface ChainEndpoints {
   dex: string;
   nft: string;
   "nft-staking": string;
-  points: string;
-  leaderboard: string;
-  vault: string;
+  aiov: string;
 }
 
 export interface MultiChainSubgraphConfig {
@@ -31,9 +29,7 @@ export const SUBGRAPH_ENDPOINTS: MultiChainSubgraphConfig = {
     nft: "https://api.goldsky.com/api/public/project_cm78242tjtmme01uvcbkaay27/subgraphs/honeygenesis-berachain/1.0.2/gn",
     "nft-staking":
       "https://api.goldsky.com/api/public/project_cm78242tjtmme01uvcbkaay27/subgraphs/nft-staking-berachain/1.1.0/gn",
-    points: "",
-    leaderboard: "",
-    vault: "",
+    aiov: "https://api.ghostlogs.xyz/gg/pub/5018d16a-abf4-432d-b8a9-760dc08bcb8d",
   },
 
   // BNB Smart Chain
@@ -41,9 +37,7 @@ export const SUBGRAPH_ENDPOINTS: MultiChainSubgraphConfig = {
     dex: "https://api.goldsky.com/api/public/project_cm78242tjtmme01uvcbkaay27/subgraphs/hpot-algebra-bsc/1.0.3/gn",
     nft: "",
     "nft-staking": "",
-    points: "",
-    leaderboard: "",
-    vault: "",
+    aiov: "",
   },
 
   // Add more chains as needed

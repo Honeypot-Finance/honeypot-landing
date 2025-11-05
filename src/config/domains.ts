@@ -6,3 +6,4 @@ export const IPFS_GATEWAY = "https://ipfs.io/ipfs/";
 export const MAGIC_EDEN_URL =
   "https://magiceden.io/collections/berachain/honeygenesis-44";
 export const BERACHAIN_BRIDGE_URL = "https://bridge.kingdomly.app/";
+export const AIOV_DOMAIN = "https://leaderboard.honeypotfinance.xyz/all-in-one-vault";
