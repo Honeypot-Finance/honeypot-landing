@@ -6,10 +6,16 @@ import { appPathsList } from "@/components/Navbar/allAppPath";
 import MissionsSidebar from "@/components/MissionsSidebar/MissionsSidebar";
 import { useAccount } from "wagmi";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
-import { useUserPositions, useUserStats, useUserVaultShares, formatUSD, getChainMetadata } from "@/lib/subgraph";
-import Image from "next/image";
-import TokenLogo from "@/components/TokenLogo";
-import { DEX_DOMAIN } from "@/config/domains";
+import {
+  useUserPositions,
+  useUserStats,
+  useUserVaultShares,
+} from "@/lib/subgraph";
+import { fetchLoyaltyAccounts, CURRENCY_IDS } from "@/lib/snag/snagApi";
+import type { LoyaltyAccount } from "@/lib/snag/snagApi";
+import { DexStats } from "@/components/dashboard/DexStats";
+import { PositionsTab } from "@/components/dashboard/PositionsTab";
+import { PointsTab } from "@/components/dashboard/PointsTab";
 
 type TabType = "dex" | "points" | "nft" | "leaderboard" | "vault";
 type DexSubTabType = "concentrated" | "vaults";
@@ -18,22 +24,69 @@ export default function DashboardPage() {
   const { address, isConnected, isConnecting } = useAccount();
   const { openConnectModal } = useConnectModal();
   const [activeTab, setActiveTab] = useState<TabType>("dex");
-  const [activeDexSubTab, setActiveDexSubTab] = useState<DexSubTabType>("concentrated");
+  const [activeDexSubTab, setActiveDexSubTab] =
+    useState<DexSubTabType>("concentrated");
 
   // Fetch user data from subgraph
   const { data: positions, isLoading: positionsLoading } = useUserPositions();
   const { data: stats, isLoading: statsLoading } = useUserStats();
-  const { data: vaultShares, isLoading: vaultSharesLoading } = useUserVaultShares();
+  const { data: vaultShares, isLoading: vaultSharesLoading } =
+    useUserVaultShares();
+
+  // Points state
+  const [userPoints, setUserPoints] = React.useState<
+    Record<string, LoyaltyAccount | null>
+  >({});
+  const [pointsLoading, setPointsLoading] = React.useState(false);
+
+  // Fetch user points when address changes
+  React.useEffect(() => {
+    if (!address) {
+      setUserPoints({});
+      return;
+    }
+
+    const fetchUserPoints = async () => {
+      setPointsLoading(true);
+      try {
+        const [lpPoints, dexPoints, socialPoints] = await Promise.all([
+          fetchLoyaltyAccounts({
+            loyaltyCurrencyId: CURRENCY_IDS.LP_POINTS,
+            walletAddress: address,
+            limit: 1,
+          }),
+          fetchLoyaltyAccounts({
+            loyaltyCurrencyId: CURRENCY_IDS.DEX_POINTS,
+            walletAddress: address,
+            limit: 1,
+          }),
+          fetchLoyaltyAccounts({
+            loyaltyCurrencyId: CURRENCY_IDS.SOCIAL_POINTS,
+            walletAddress: address,
+            limit: 1,
+          }),
+        ]);
+
+        setUserPoints({
+          [CURRENCY_IDS.LP_POINTS]: lpPoints.data[0] || null,
+          [CURRENCY_IDS.DEX_POINTS]: dexPoints.data[0] || null,
+          [CURRENCY_IDS.SOCIAL_POINTS]: socialPoints.data[0] || null,
+        });
+      } catch (error) {
+        console.error("Failed to fetch user points:", error);
+        setUserPoints({});
+      } finally {
+        setPointsLoading(false);
+      }
+    };
+
+    fetchUserPoints();
+  }, [address]);
 
   const formatAddress = (addressStr: string) => {
     if (!addressStr) return "";
     if (addressStr.length < 12) return addressStr;
     return `${addressStr.slice(0, 6)}...${addressStr.slice(-4)}`;
-  };
-
-  const getChainIcon = (chainId: number) => {
-    const chainMeta = getChainMetadata(chainId);
-    return chainMeta?.iconUrl || "/images/chains/berachain.png";
   };
 
   return (
@@ -355,449 +408,23 @@ export default function DashboardPage() {
               {/* Tab Content */}
               {activeTab === "dex" && (
                 <>
-                  {/* Stats Cards */}
-                  <div className="stats-grid">
-                    <div className="stat-card">
-                      <div className="stat-header">
-                        <span className="stat-label">Total Liquidity</span>
-                        <div className="stat-icon">
-                          <svg
-                            width="20"
-                            height="20"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                          >
-                            <path
-                              d="M3 17L9 11L13 15L21 7"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                            />
-                            <path
-                              d="M14 7H21V14"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                      <div className="stat-value">
-                        {statsLoading
-                          ? "Loading..."
-                          : formatUSD(stats?.totalLiquidityUSD || 0)}
-                      </div>
-                    </div>
-
-                    <div className="stat-card">
-                      <div className="stat-header">
-                        <span className="stat-label">Total Positions</span>
-                        <div className="stat-icon">
-                          <svg
-                            width="20"
-                            height="20"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                          >
-                            <path
-                              d="M9 2C9 2 6 2 6 5V7H4C3.44772 7 3 7.44772 3 8V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20V8C21 7.44772 20.5523 7 20 7H18V5C18 2 15 2 15 2H9Z"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              fill="none"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                      <div className="stat-value">
-                        {statsLoading ? "Loading..." : stats?.positionCount || 0}
-                      </div>
-                    </div>
-
-                    <div className="stat-card">
-                      <div className="stat-header">
-                        <span className="stat-label">Total Swaps</span>
-                        <div className="stat-icon">
-                          <svg
-                            width="20"
-                            height="20"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                          >
-                            <path
-                              d="M7 16V4M7 4L3 8M7 4L11 8"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                            <path
-                              d="M17 8V20M17 20L21 16M17 20L13 16"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                      <div className="stat-value">
-                        {statsLoading ? "Loading..." : stats?.totalSwaps.toLocaleString() || 0}
-                      </div>
-                    </div>
-
-                    <div className="stat-card">
-                      <div className="stat-header">
-                        <span className="stat-label">Total Volume</span>
-                        <div className="stat-icon">
-                          <svg
-                            width="20"
-                            height="20"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                          >
-                            <path
-                              d="M12 2V22M12 2C10.3431 2 9 3.34315 9 5C9 6.65685 10.3431 8 12 8M12 2C13.6569 2 15 3.34315 15 5C15 6.65685 13.6569 8 12 8M12 8C10.3431 8 9 9.34315 9 11C9 12.6569 10.3431 14 12 14M12 8C13.6569 8 15 9.34315 15 11C15 12.6569 13.6569 14 12 14M12 14C10.3431 14 9 15.3431 9 17C9 18.6569 10.3431 20 12 20M12 14C13.6569 14 15 15.3431 15 17C15 18.6569 13.6569 20 12 20M12 20C10.3431 20 9 21.3431 9 23M12 20C13.6569 20 15 21.3431 15 23"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                      <div className="stat-value">
-                        {statsLoading ? "Loading..." : formatUSD(stats?.totalVolumeUSD || 0)}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Your Earning Assets */}
-                  <div className="liquidity-section">
-                    <div className="section-header">
-                      <div className="section-title">
-                        <svg
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                        >
-                          <path
-                            d="M9 2C9 2 6 2 6 5V7H4C3.44772 7 3 7.44772 3 8V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20V8C21 7.44772 20.5523 7 20 7H18V5C18 2 15 2 15 2H9Z"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            fill="none"
-                          />
-                          <path
-                            d="M6 7V5C6 3.89543 6.89543 3 8 3H16C17.1046 3 18 3.89543 18 5V7"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                          />
-                        </svg>
-                        Your Earning Assets
-                      </div>
-                      <div className="section-subtitle">
-                        Your current liquidity pools and vault positions
-                      </div>
-                    </div>
-
-                    {/* Sub-tabs for Concentrated Liquidity and Automated Vaults */}
-                    <div className="dex-sub-tabs">
-                      <button
-                        className={`sub-tab ${activeDexSubTab === "concentrated" ? "active" : ""}`}
-                        onClick={() => setActiveDexSubTab("concentrated")}
-                      >
-                        Concentrated Liquidity
-                      </button>
-                      <button
-                        className={`sub-tab ${activeDexSubTab === "vaults" ? "active" : ""}`}
-                        onClick={() => setActiveDexSubTab("vaults")}
-                      >
-                        Automated Vaults
-                      </button>
-                    </div>
-
-                    {/* Concentrated Liquidity Tab */}
-                    {activeDexSubTab === "concentrated" && (
-                      <>
-                        {positionsLoading ? (
-                          <div className="loading-state">
-                            <div className="loading-spinner"></div>
-                            <p>Loading positions...</p>
-                          </div>
-                        ) : positions && positions.length > 0 ? (
-                          <div className="liquidity-cards">
-                            {positions.map((position) => (
-                              <a
-                                href={`${DEX_DOMAIN}pool-detail/${position.poolId}?chainid=${position.chainId}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                key={`${position.chainId}-${position.poolId}`}
-                                className="liquidity-card-link"
-                              >
-                                <div className="liquidity-card">
-                                  <div className="liquidity-header">
-                                    <div className="liquidity-pair">
-                                      <span>
-                                        {position.token0Symbol}/{position.token1Symbol}
-                                      </span>
-                                    </div>
-                                    <div className="chain-icon-wrapper" title={position.chainName}>
-                                      <Image
-                                        src={getChainIcon(position.chainId)}
-                                        alt={position.chainName}
-                                        width={24}
-                                        height={24}
-                                        className="chain-icon"
-                                      />
-                                    </div>
-                                  </div>
-                                  <div className="liquidity-details">
-                                    <div className="liquidity-info">
-                                      <span className="info-label">Liquidity:</span>
-                                      <span className="info-value">
-                                        {formatUSD(position.liquidityUSD)}
-                                      </span>
-                                    </div>
-                                  </div>
-                                  <div className="position-amounts">
-                                    <div className="amount-row">
-                                      <div className="amount-token">
-                                        <TokenLogo
-                                          address={position.token0Address}
-                                          chainId={position.chainId}
-                                          symbol={position.token0Symbol}
-                                          size={20}
-                                          className="amount-token-icon"
-                                        />
-                                        <span className="amount-label">
-                                          {position.token0Symbol}:
-                                        </span>
-                                      </div>
-                                      <span className="amount-value">
-                                        {parseFloat(position.depositedToken0).toFixed(4)}
-                                      </span>
-                                    </div>
-                                    <div className="amount-row">
-                                      <div className="amount-token">
-                                        <TokenLogo
-                                          address={position.token1Address}
-                                          chainId={position.chainId}
-                                          symbol={position.token1Symbol}
-                                          size={20}
-                                          className="amount-token-icon"
-                                        />
-                                        <span className="amount-label">
-                                          {position.token1Symbol}:
-                                        </span>
-                                      </div>
-                                      <span className="amount-value">
-                                        {parseFloat(position.depositedToken1).toFixed(4)}
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                              </a>
-                            ))}
-                          </div>
-                        ) : null}
-
-                        {!positionsLoading && positions && positions.length > 0 && (
-                          <div className="see-more-container">
-                            <a
-                              href={`${DEX_DOMAIN}pools?my=true`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="see-more-btn"
-                            >
-                              See More
-                              <svg
-                                width="16"
-                                height="16"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                              >
-                                <path
-                                  d="M5 12H19M19 12L12 5M19 12L12 19"
-                                  stroke="currentColor"
-                                  strokeWidth="2"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                />
-                              </svg>
-                            </a>
-                          </div>
-                        )}
-
-                        {!positionsLoading && (!positions || positions.length === 0) && (
-                          <div className="empty-state">
-                            <svg
-                              width="64"
-                              height="64"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              className="empty-icon"
-                            >
-                              <path
-                                d="M9 2C9 2 6 2 6 5V7H4C3.44772 7 3 7.44772 3 8V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20V8C21 7.44772 20.5523 7 20 7H18V5C18 2 15 2 15 2H9Z"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                fill="none"
-                              />
-                            </svg>
-                            <h3>No Liquidity Positions</h3>
-                            <p>You don&apos;t have any active liquidity positions yet.</p>
-                          </div>
-                        )}
-                      </>
-                    )}
-
-                    {/* Automated Vaults Tab */}
-                    {activeDexSubTab === "vaults" && (
-                      <>
-                        {vaultSharesLoading ? (
-                          <div className="loading-state">
-                            <div className="loading-spinner"></div>
-                            <p>Loading vault positions...</p>
-                          </div>
-                        ) : vaultShares && vaultShares.length > 0 ? (
-                          <div className="liquidity-cards">
-                            {vaultShares.map((share) => {
-                              // Extract vault address from share ID (format: "vaultAddress-userAddress")
-                              const vaultAddress = share.id.split('-')[0];
-                              return (
-                                <a
-                                  href={`${DEX_DOMAIN}vault/${vaultAddress}?chainid=${share.chainId}`}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  key={share.id}
-                                  className="liquidity-card-link"
-                                >
-                                  <div className="liquidity-card">
-                                    <div className="liquidity-header">
-                                      <div className="liquidity-pair">
-                                        <span>
-                                          {share.tokenASymbol}/{share.tokenBSymbol}
-                                        </span>
-                                      </div>
-                                      <div className="chain-icon-wrapper" title={share.chainName}>
-                                        <Image
-                                          src={getChainIcon(share.chainId)}
-                                          alt={share.chainName}
-                                          width={24}
-                                          height={24}
-                                          className="chain-icon"
-                                        />
-                                      </div>
-                                    </div>
-                                    <div className="position-amounts">
-                                      <div className="amount-row">
-                                        <div className="amount-token">
-                                          <TokenLogo
-                                            address={share.vault.tokenA}
-                                            chainId={share.chainId}
-                                            symbol={share.tokenASymbol}
-                                            size={20}
-                                            className="amount-token-icon"
-                                          />
-                                          <span className="amount-label">
-                                            {share.tokenASymbol}:
-                                          </span>
-                                        </div>
-                                        <span className="amount-value">
-                                          {share.userAmount0}
-                                        </span>
-                                      </div>
-                                      <div className="amount-row">
-                                        <div className="amount-token">
-                                          <TokenLogo
-                                            address={share.vault.tokenB}
-                                            chainId={share.chainId}
-                                            symbol={share.tokenBSymbol}
-                                            size={20}
-                                            className="amount-token-icon"
-                                          />
-                                          <span className="amount-label">
-                                            {share.tokenBSymbol}:
-                                          </span>
-                                        </div>
-                                        <span className="amount-value">
-                                          {share.userAmount1}
-                                        </span>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </a>
-                              );
-                            })}
-                          </div>
-                        ) : null}
-
-                        {!vaultSharesLoading && vaultShares && vaultShares.length > 0 && (
-                          <div className="see-more-container">
-                            <a
-                              href={`${DEX_DOMAIN}pools?opentab=vault&my=true`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="see-more-btn"
-                            >
-                              See More
-                              <svg
-                                width="16"
-                                height="16"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                              >
-                                <path
-                                  d="M5 12H19M19 12L12 5M19 12L12 19"
-                                  stroke="currentColor"
-                                  strokeWidth="2"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                />
-                              </svg>
-                            </a>
-                          </div>
-                        )}
-
-                        {!vaultSharesLoading && (!vaultShares || vaultShares.length === 0) && (
-                          <div className="empty-state">
-                            <svg
-                              width="64"
-                              height="64"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              className="empty-icon"
-                            >
-                              <rect
-                                x="3"
-                                y="11"
-                                width="18"
-                                height="11"
-                                rx="2"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                fill="none"
-                              />
-                              <path
-                                d="M7 11V7C7 4.23858 9.23858 2 12 2C14.7614 2 17 4.23858 17 7V11"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                              />
-                            </svg>
-                            <h3>No Vault Positions</h3>
-                            <p>You don&apos;t have any automated vault positions yet.</p>
-                          </div>
-                        )}
-                      </>
-                    )}
-                  </div>
+                  <DexStats stats={stats} statsLoading={statsLoading} />
+                  <PositionsTab
+                    positions={positions}
+                    positionsLoading={positionsLoading}
+                    vaultShares={vaultShares}
+                    vaultSharesLoading={vaultSharesLoading}
+                    liquiditySubTab={activeDexSubTab}
+                    setLiquiditySubTab={setActiveDexSubTab}
+                  />
                 </>
               )}
 
               {activeTab === "points" && (
-                <div className="tab-content-panel">
-                  <h2 className="panel-title">Points Overview</h2>
-                  <p className="panel-description">
-                    Track your rewards points and earning history
-                  </p>
-                </div>
+                <PointsTab
+                  userPoints={userPoints}
+                  pointsLoading={pointsLoading}
+                />
               )}
 
               {activeTab === "nft" && (

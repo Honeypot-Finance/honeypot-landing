@@ -769,3 +769,73 @@
     }
   }
 }
+
+.points-banner {
+  margin-top: 2rem;
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.15) 0%, rgba(255, 179, 0, 0.1) 100%);
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  border-radius: 1rem;
+  padding: 2rem;
+
+  .banner-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+    }
+
+    .banner-text {
+      h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #fff;
+        margin: 0 0 0.5rem 0;
+      }
+
+      p {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.8);
+        margin: 0;
+      }
+    }
+
+    .banner-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.75rem;
+      background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);
+      border: none;
+      border-radius: 0.5rem;
+      color: #1a1510;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+
+      svg {
+        width: 16px;
+        height: 16px;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover {
+        background: linear-gradient(135deg, #ffca28 0%, #ffc107 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(255, 193, 7, 0.4);
+
+        svg {
+          transform: translateX(4px);
+        }
+      }
+    }
+  }
+}
+
