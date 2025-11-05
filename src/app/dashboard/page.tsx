@@ -18,6 +18,7 @@ import { DexStats } from "@/components/dashboard/DexStats";
 import { PositionsTab } from "@/components/dashboard/PositionsTab";
 import { PointsTab } from "@/components/dashboard/PointsTab";
 import { NFTTab } from "@/components/dashboard/NFTTab";
+import { LeaderboardTab } from "@/components/dashboard/LeaderboardTab";
 
 type TabType = "dex" | "points" | "nft" | "leaderboard" | "vault";
 type DexSubTabType = "concentrated" | "vaults";
@@ -441,14 +442,7 @@ export default function DashboardPage() {
                 />
               )}
 
-              {activeTab === "leaderboard" && (
-                <div className="tab-content-panel">
-                  <h2 className="panel-title">Leaderboard Rankings</h2>
-                  <p className="panel-description">
-                    See how you rank among other users
-                  </p>
-                </div>
-              )}
+              {activeTab === "leaderboard" && <LeaderboardTab />}
 
               {activeTab === "vault" && (
                 <div className="tab-content-panel">
