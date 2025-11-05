@@ -35,12 +35,13 @@ export type {
 
 // Query module exports
 export * from './queries/dex';
+export * from './queries/nft';
 
 // Hook exports
 export * from './hooks/useDexData';
+export * from './hooks/useNftData';
 
 // Additional query modules - Add when ready
-// export * from './queries/nft';
 // export * from './queries/points';
 // export * from './queries/leaderboard';
 // export * from './queries/vault';

@@ -35,6 +35,11 @@ const nextConfig = {
         hostname: "app.oogabooga.io",
         pathname: "/_next/image/**",
       },
+      {
+        protocol: "https",
+        hostname: "ipfs.io",
+        pathname: "/ipfs/**",
+      },
     ],
   },
   async redirects() {

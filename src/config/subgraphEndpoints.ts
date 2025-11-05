@@ -7,11 +7,12 @@
 
 import { ChainId } from "./chains";
 
-export type SubgraphType = "dex" | "nft" | "points" | "leaderboard" | "vault";
+export type SubgraphType = "dex" | "nft" | "nft-staking" | "points" | "leaderboard" | "vault";
 
 export interface ChainEndpoints {
   dex: string;
   nft: string;
+  "nft-staking": string;
   points: string;
   leaderboard: string;
   vault: string;
@@ -27,7 +28,9 @@ export const SUBGRAPH_ENDPOINTS: MultiChainSubgraphConfig = {
   // Berachain Mainnet
   80094: {
     dex: "https://api.goldsky.com/api/public/project_cm78242tjtmme01uvcbkaay27/subgraphs/hpot-algebra-core/2.4.0/gn",
-    nft: "",
+    nft: "https://api.goldsky.com/api/public/project_cm78242tjtmme01uvcbkaay27/subgraphs/honeygenesis-berachain/1.0.2/gn",
+    "nft-staking":
+      "https://api.goldsky.com/api/public/project_cm78242tjtmme01uvcbkaay27/subgraphs/nft-staking-berachain/1.1.0/gn",
     points: "",
     leaderboard: "",
     vault: "",
@@ -37,6 +40,7 @@ export const SUBGRAPH_ENDPOINTS: MultiChainSubgraphConfig = {
   56: {
     dex: "https://api.goldsky.com/api/public/project_cm78242tjtmme01uvcbkaay27/subgraphs/hpot-algebra-bsc/1.0.3/gn",
     nft: "",
+    "nft-staking": "",
     points: "",
     leaderboard: "",
     vault: "",

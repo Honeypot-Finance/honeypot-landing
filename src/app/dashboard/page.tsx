@@ -10,12 +10,14 @@ import {
   useUserPositions,
   useUserStats,
   useUserVaultShares,
+  useUserAllNFTs,
 } from "@/lib/subgraph";
 import { fetchLoyaltyAccounts, CURRENCY_IDS } from "@/lib/snag/snagApi";
 import type { LoyaltyAccount } from "@/lib/snag/snagApi";
 import { DexStats } from "@/components/dashboard/DexStats";
 import { PositionsTab } from "@/components/dashboard/PositionsTab";
 import { PointsTab } from "@/components/dashboard/PointsTab";
+import { NFTTab } from "@/components/dashboard/NFTTab";
 
 type TabType = "dex" | "points" | "nft" | "leaderboard" | "vault";
 type DexSubTabType = "concentrated" | "vaults";
@@ -32,6 +34,7 @@ export default function DashboardPage() {
   const { data: stats, isLoading: statsLoading } = useUserStats();
   const { data: vaultShares, isLoading: vaultSharesLoading } =
     useUserVaultShares();
+  const { data: nftData, isLoading: nftLoading } = useUserAllNFTs();
 
   // Points state
   const [userPoints, setUserPoints] = React.useState<
@@ -428,12 +431,11 @@ export default function DashboardPage() {
               )}
 
               {activeTab === "nft" && (
-                <div className="tab-content-panel">
-                  <h2 className="panel-title">NFT Collection</h2>
-                  <p className="panel-description">
-                    View and manage your NFT assets
-                  </p>
-                </div>
+                <NFTTab
+                  walletNFTs={nftData?.walletNFTs || null}
+                  stakedNFTs={nftData?.stakedNFTs || null}
+                  isLoading={nftLoading}
+                />
               )}
 
               {activeTab === "leaderboard" && (
