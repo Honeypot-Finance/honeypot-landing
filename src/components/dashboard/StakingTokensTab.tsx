@@ -339,7 +339,7 @@ export const StakingTokensTab: React.FC<StakingTokensTabProps> = ({ isActive }) 
       {/* Tokens List */}
       <div className="staking-tokens-list-section">
         <div className="section-header">
-          <div className="section-title">
+          <div className="section-title" title="Burn these tokens to earn rewards in the All In One Vault">
             <svg
               width="24"
               height="24"
@@ -364,9 +364,10 @@ export const StakingTokensTab: React.FC<StakingTokensTabProps> = ({ isActive }) 
               />
             </svg>
             Supported Burn Tokens
-          </div>
-          <div className="section-subtitle">
-            Burn these tokens to earn rewards in the All In One Vault
+            <svg className="info-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none"/>
+              <path d="M12 16V12M12 8H12.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            </svg>
           </div>
         </div>
 
