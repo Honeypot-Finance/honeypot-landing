@@ -110,7 +110,15 @@ export interface VaultShareWithChain extends VaultShare {
 
 const USER_POSITIONS_QUERY = `
   query GetUserPositions($owner: Bytes!) {
-    positions(where: { owner: $owner }) {
+    positions(
+      first: 10
+      orderBy: liquidity
+      orderDirection: desc
+      where: {
+        owner: $owner
+        liquidity_gt: "0"
+      }
+    ) {
       pool {
         id
         token0 {
@@ -193,7 +201,15 @@ const USER_ACCOUNT_QUERY = `
 
 const USER_VAULT_SHARES_QUERY = `
   query GetUserVaultShares($user: Bytes!) {
-    vaultShares(where: { user: $user }) {
+    vaultShares(
+      first: 10
+      orderBy: vaultShareBalance
+      orderDirection: desc
+      where: {
+        user: $user
+        vaultShareBalance_gt: "0"
+      }
+    ) {
       id
       vault {
         tokenA
@@ -583,9 +599,7 @@ export async function getUserVaultSharesAllChains(
 
   // Transform to typed data with chain info
   const allVaultShares = aggregated.success.flatMap((chainResult) =>
-    chainResult.data.vaultShares
-      .filter((share: any) => parseFloat(share.vaultShareBalance) > 0) // Only show vaults with balance
-      .map((share: any) => {
+    chainResult.data.vaultShares.map((share: any) => {
         const { vault } = share;
 
         // Calculate user's token amounts

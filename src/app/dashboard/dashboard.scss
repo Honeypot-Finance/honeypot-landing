@@ -729,4 +729,43 @@
     color: #a0a0a0;
     margin-top: 0.25rem;
   }
+
+  .see-more-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+
+    .see-more-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: rgba(42, 32, 20, 0.6);
+      border: 1px solid rgba(255, 193, 7, 0.3);
+      border-radius: 0.5rem;
+      color: #ffc107;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+
+      svg {
+        width: 16px;
+        height: 16px;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover {
+        background: rgba(255, 193, 7, 0.1);
+        border-color: rgba(255, 193, 7, 0.5);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(255, 193, 7, 0.2);
+
+        svg {
+          transform: translateX(4px);
+        }
+      }
+    }
+  }
 }
