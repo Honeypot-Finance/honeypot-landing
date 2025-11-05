@@ -394,7 +394,7 @@
 // Liquidity Section
 .liquidity-section {
   .section-header {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 
     .section-title {
       display: flex;
@@ -417,17 +417,69 @@
     }
   }
 
-  .liquidity-cards {
+  .dex-sub-tabs {
     display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid rgba(255, 193, 7, 0.1);
+
+    .sub-tab {
+      flex: 0 0 auto;
+      padding: 0.75rem 1.5rem;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      color: #a0a0a0;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+
+      &:hover {
+        color: #e0e0e0;
+        border-bottom-color: rgba(255, 193, 7, 0.3);
+      }
+
+      &.active {
+        color: #ffc107;
+        border-bottom-color: #ffc107;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .liquidity-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 1280px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 1536px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .liquidity-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    cursor: pointer;
   }
 
   .liquidity-card {
     background: rgba(42, 32, 20, 0.4);
     border: 1px solid rgba(255, 193, 7, 0.15);
-    border-radius: 1rem;
-    padding: 1.75rem;
+    border-radius: 0.75rem;
+    padding: 1rem 1.25rem;
     transition: all 0.3s ease;
 
     &:hover {
@@ -437,17 +489,17 @@
     }
 
     .liquidity-pair {
-      font-size: 1.25rem;
+      font-size: 1.125rem;
       font-weight: 700;
       color: #fff;
-      margin-bottom: 1rem;
+      margin-bottom: 0;
     }
 
     .liquidity-details {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
 
       .liquidity-info {
         display: flex;
@@ -492,5 +544,189 @@
         font-weight: 600;
       }
     }
+  }
+
+  // New styles for integrated data
+  .liquidity-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+
+    .token-icons {
+      display: flex;
+      gap: 0.25rem;
+      margin-right: 0.5rem;
+
+      .token-icon {
+        border: 2px solid rgba(255, 193, 7, 0.2);
+      }
+    }
+  }
+
+  .chain-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    background: rgba(255, 193, 7, 0.1);
+    border: 1px solid rgba(255, 193, 7, 0.3);
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #ffc107;
+  }
+
+  .chain-icon-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+    background: rgba(42, 32, 20, 0.6);
+    border: 1px solid rgba(255, 193, 7, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    .chain-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    &:hover {
+      background: rgba(255, 193, 7, 0.15);
+      border-color: rgba(255, 193, 7, 0.4);
+      transform: scale(1.1);
+    }
+
+    // Tooltip on hover
+    &::after {
+      content: attr(title);
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0.5rem 0.75rem;
+      background: rgba(26, 21, 16, 0.95);
+      border: 1px solid rgba(255, 193, 7, 0.3);
+      border-radius: 0.5rem;
+      color: #ffc107;
+      font-size: 0.75rem;
+      font-weight: 600;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 10;
+    }
+
+    // Tooltip arrow
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: calc(100% + 2px);
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: rgba(255, 193, 7, 0.3);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 10;
+    }
+
+    &:hover::after,
+    &:hover::before {
+      opacity: 1;
+    }
+  }
+
+  .position-amounts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 193, 7, 0.1);
+    font-size: 0.875rem;
+
+    .amount-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .amount-token {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        .amount-token-icon {
+          flex-shrink: 0;
+        }
+
+        .amount-label {
+          color: #a0a0a0;
+          font-weight: 500;
+        }
+      }
+
+      .amount-value {
+        color: #fff;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .loading-state {
+    text-align: center;
+    padding: 3rem 2rem;
+
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      margin: 0 auto 1.5rem;
+      border: 4px solid rgba(255, 193, 7, 0.2);
+      border-top-color: #ffc107;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    p {
+      color: #a0a0a0;
+      font-size: 1rem;
+    }
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 3rem 2rem;
+
+    .empty-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 1.5rem;
+      color: rgba(255, 193, 7, 0.3);
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      color: #a0a0a0;
+      font-size: 0.875rem;
+    }
+  }
+
+  .stat-subtitle {
+    font-size: 0.75rem;
+    color: #a0a0a0;
+    margin-top: 0.25rem;
   }
 }

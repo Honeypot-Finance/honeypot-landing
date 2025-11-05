@@ -1,0 +1,310 @@
+/**
+ * Example DEX Query File
+ *
+ * This file demonstrates best practices for querying multi-chain data
+ * and presenting it with chain context.
+ *
+ * USAGE: Copy this file and remove the .example extension when ready to implement
+ */
+
+import { queryMultiChain } from '../client';
+import type { ChainId } from '@/config/chains';
+import {
+  aggregateMultiChainData,
+  flattenMultiChainData,
+  sumAcrossChains,
+  sortByValue,
+  groupByKey,
+  formatUSD,
+} from '../utils';
+import type { ChainData } from '../utils';
+import { getAvailableChains, getChainsForSubgraph } from '@/config/subgraphEndpoints';
+
+// ============================================================================
+// Type Definitions
+// ============================================================================
+
+export interface LiquidityPool {
+  id: string;
+  token0Symbol: string;
+  token1Symbol: string;
+  token0Address: string;
+  token1Address: string;
+  liquidityUSD: string;
+  volumeUSD: string;
+  apr: number;
+}
+
+export interface LiquidityPoolWithChain extends LiquidityPool {
+  chainId: ChainId;
+  chainName: string;
+}
+
+export interface UserLiquidityPosition {
+  poolId: string;
+  token0Symbol: string;
+  token1Symbol: string;
+  liquidityUSD: string;
+  earnedUSD: string;
+}
+
+export interface UserLiquidityPositionWithChain extends UserLiquidityPosition {
+  chainId: ChainId;
+  chainName: string;
+}
+
+// ============================================================================
+// GraphQL Queries
+// ============================================================================
+
+const LIQUIDITY_POOLS_QUERY = `
+  query GetLiquidityPools($first: Int!) {
+    pairs(
+      first: $first
+      orderBy: reserveUSD
+      orderDirection: desc
+      where: { reserveUSD_gt: "1000" }
+    ) {
+      id
+      token0 {
+        id
+        symbol
+      }
+      token1 {
+        id
+        symbol
+      }
+      reserveUSD
+      volumeUSD
+    }
+  }
+`;
+
+const USER_POSITIONS_QUERY = `
+  query GetUserPositions($userAddress: Bytes!) {
+    liquidityPositions(
+      where: { user: $userAddress, liquidityTokenBalance_gt: "0" }
+    ) {
+      id
+      pair {
+        id
+        token0 {
+          symbol
+        }
+        token1 {
+          symbol
+        }
+      }
+      liquidityUSD
+      user {
+        usdSwapped
+      }
+    }
+  }
+`;
+
+// ============================================================================
+// Query Functions - Multi-Chain Aware
+// ============================================================================
+
+/**
+ * Get top liquidity pools across all chains
+ *
+ * Returns pools with chain information, sorted by liquidity
+ *
+ * Example output:
+ * [
+ *   { token0: "BERA", token1: "HONEY", liquidityUSD: "250000", chainId: 80084, chainName: "Berachain" },
+ *   { token0: "BNB", token1: "USDT", liquidityUSD: "100000", chainId: 56, chainName: "BSC" },
+ * ]
+ */
+export async function getTopPoolsAllChains(
+  limit: number = 10
+): Promise<LiquidityPoolWithChain[]> {
+  // Get all chains where DEX subgraph is available
+  const chains = getChainsForSubgraph('dex');
+
+  if (chains.length === 0) {
+    console.warn('No chains with DEX subgraph available');
+    return [];
+  }
+
+  // Query all chains in parallel
+  const results = await queryMultiChain<{ pairs: any[] }>(
+    chains,
+    'dex',
+    LIQUIDITY_POOLS_QUERY,
+    { first: limit }
+  );
+
+  // Aggregate results with chain context
+  const aggregated = aggregateMultiChainData(results);
+
+  // Transform to typed data
+  const poolsData = aggregated.success.map((chainResult) => ({
+    chainId: chainResult.chainId,
+    chainName: chainResult.chainName,
+    data: chainResult.data.pairs.map((pair: any) => ({
+      id: pair.id,
+      token0Symbol: pair.token0.symbol,
+      token1Symbol: pair.token1.symbol,
+      token0Address: pair.token0.id,
+      token1Address: pair.token1.id,
+      liquidityUSD: pair.reserveUSD,
+      volumeUSD: pair.volumeUSD,
+      apr: 0, // Calculate based on your logic
+    })),
+  }));
+
+  // Flatten all pools into single array with chain info
+  const allPools = poolsData.flatMap((chainData) =>
+    chainData.data.map((pool) => ({
+      ...pool,
+      chainId: chainData.chainId,
+      chainName: chainData.chainName,
+    }))
+  );
+
+  // Sort by liquidity (highest first) and take top N
+  const topPools = sortByValue(
+    allPools,
+    (pool) => parseFloat(pool.liquidityUSD),
+    false
+  ).slice(0, limit);
+
+  return topPools;
+}
+
+/**
+ * Get user's liquidity positions across all chains
+ *
+ * Groups positions by pool pair to show same pool on different chains
+ *
+ * Example output:
+ * [
+ *   {
+ *     poolId: "...",
+ *     token0: "BERA",
+ *     token1: "HONEY",
+ *     liquidityUSD: "25",
+ *     chainId: 80084,
+ *     chainName: "Berachain"
+ *   },
+ *   {
+ *     poolId: "...",
+ *     token0: "BNB",
+ *     token1: "HONEY",
+ *     liquidityUSD: "100",
+ *     chainId: 56,
+ *     chainName: "BSC"
+ *   }
+ * ]
+ */
+export async function getUserPositionsAllChains(
+  userAddress: string
+): Promise<UserLiquidityPositionWithChain[]> {
+  const chains = getChainsForSubgraph('dex');
+
+  if (chains.length === 0) {
+    return [];
+  }
+
+  // Query all chains
+  const results = await queryMultiChain<{ liquidityPositions: any[] }>(
+    chains,
+    'dex',
+    USER_POSITIONS_QUERY,
+    { userAddress: userAddress.toLowerCase() }
+  );
+
+  const aggregated = aggregateMultiChainData(results);
+
+  // Log failed chains for debugging
+  if (aggregated.failed.length > 0) {
+    console.warn('Failed to fetch positions from chains:', aggregated.failed);
+  }
+
+  // Transform to typed data with chain info
+  const allPositions = aggregated.success.flatMap((chainResult) =>
+    chainResult.data.liquidityPositions.map((position: any) => ({
+      poolId: position.pair.id,
+      token0Symbol: position.pair.token0.symbol,
+      token1Symbol: position.pair.token1.symbol,
+      liquidityUSD: position.liquidityUSD,
+      earnedUSD: position.user.usdSwapped || '0',
+      chainId: chainResult.chainId,
+      chainName: chainResult.chainName,
+    }))
+  );
+
+  // Sort by liquidity value
+  return sortByValue(
+    allPositions,
+    (pos) => parseFloat(pos.liquidityUSD),
+    false
+  );
+}
+
+/**
+ * Get aggregated stats across all chains
+ *
+ * Example output:
+ * {
+ *   totalLiquidityUSD: 375000,
+ *   byChain: [
+ *     { chainId: 80084, chainName: "Berachain", liquidityUSD: 250000 },
+ *     { chainId: 56, chainName: "BSC", liquidityUSD: 125000 }
+ *   ]
+ * }
+ */
+export async function getAggregatedStats(userAddress: string) {
+  const positions = await getUserPositionsAllChains(userAddress);
+
+  // Group by chain
+  const byChain = new Map<ChainId, { chainId: ChainId; chainName: string; liquidityUSD: number }>();
+
+  positions.forEach((pos) => {
+    if (!byChain.has(pos.chainId)) {
+      byChain.set(pos.chainId, {
+        chainId: pos.chainId,
+        chainName: pos.chainName,
+        liquidityUSD: 0,
+      });
+    }
+    byChain.get(pos.chainId)!.liquidityUSD += parseFloat(pos.liquidityUSD);
+  });
+
+  const totalLiquidityUSD = Array.from(byChain.values()).reduce(
+    (sum, chain) => sum + chain.liquidityUSD,
+    0
+  );
+
+  return {
+    totalLiquidityUSD,
+    byChain: Array.from(byChain.values()),
+  };
+}
+
+/**
+ * Get pools grouped by pair across chains
+ *
+ * Useful for showing "BERA/HONEY pool exists on Berachain ($250k) and BSC ($100k)"
+ *
+ * Example output:
+ * Map {
+ *   "BERA/HONEY" => [
+ *     { liquidityUSD: "250000", chainId: 80084, chainName: "Berachain" },
+ *     { liquidityUSD: "100000", chainId: 56, chainName: "BSC" }
+ *   ]
+ * }
+ */
+export async function getPoolsGroupedByPair(
+  limit: number = 20
+): Promise<Map<string, LiquidityPoolWithChain[]>> {
+  const allPools = await getTopPoolsAllChains(limit);
+
+  return groupByKey(
+    allPools,
+    (pool) => `${pool.token0Symbol}/${pool.token1Symbol}`
+  );
+}

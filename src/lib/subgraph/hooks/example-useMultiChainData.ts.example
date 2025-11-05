@@ -1,0 +1,295 @@
+/**
+ * Example React Hook for Multi-Chain Data
+ *
+ * This demonstrates how to use the subgraph system in React components
+ * with proper loading states and error handling.
+ *
+ * USAGE: Copy this file and remove the .example extension when ready to implement
+ */
+
+'use client';
+
+import { useState, useEffect } from 'react';
+import { useAccount } from 'wagmi';
+import type { ChainId } from '../config';
+
+// ============================================================================
+// Generic Multi-Chain Data Hook
+// ============================================================================
+
+interface UseMultiChainDataOptions<T> {
+  /**
+   * Function that fetches data across chains
+   */
+  fetcher: () => Promise<T>;
+
+  /**
+   * Dependencies that trigger refetch
+   */
+  deps?: any[];
+
+  /**
+   * Enable/disable automatic fetching
+   */
+  enabled?: boolean;
+
+  /**
+   * Refetch interval in milliseconds
+   */
+  refetchInterval?: number;
+}
+
+interface UseMultiChainDataReturn<T> {
+  data: T | null;
+  isLoading: boolean;
+  error: Error | null;
+  refetch: () => Promise<void>;
+}
+
+/**
+ * Generic hook for fetching multi-chain data
+ */
+export function useMultiChainData<T>({
+  fetcher,
+  deps = [],
+  enabled = true,
+  refetchInterval,
+}: UseMultiChainDataOptions<T>): UseMultiChainDataReturn<T> {
+  const [data, setData] = useState<T | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
+
+  const fetchData = async () => {
+    if (!enabled) return;
+
+    try {
+      setIsLoading(true);
+      setError(null);
+      const result = await fetcher();
+      setData(result);
+    } catch (err) {
+      console.error('Multi-chain data fetch error:', err);
+      setError(err instanceof Error ? err : new Error('Unknown error'));
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+
+    // Set up refetch interval if specified
+    if (refetchInterval) {
+      const interval = setInterval(fetchData, refetchInterval);
+      return () => clearInterval(interval);
+    }
+  }, [enabled, ...deps]);
+
+  return {
+    data,
+    isLoading,
+    error,
+    refetch: fetchData,
+  };
+}
+
+// ============================================================================
+// Specific Hook Examples
+// ============================================================================
+
+/**
+ * Example: Hook for user's liquidity positions across all chains
+ *
+ * Usage in component:
+ *
+ * ```tsx
+ * const { data, isLoading, error } = useUserPositionsAllChains();
+ *
+ * if (isLoading) return <Loading />;
+ * if (error) return <Error message={error.message} />;
+ *
+ * return (
+ *   <div>
+ *     {data?.map(position => (
+ *       <div key={`${position.chainId}-${position.poolId}`}>
+ *         {position.token0Symbol}/{position.token1Symbol} on {position.chainName}
+ *         - ${position.liquidityUSD}
+ *       </div>
+ *     ))}
+ *   </div>
+ * );
+ * ```
+ */
+export function useUserPositionsAllChains() {
+  const { address, isConnected } = useAccount();
+
+  return useMultiChainData({
+    fetcher: async () => {
+      if (!address) return [];
+
+      // Import your actual query function
+      const { getUserPositionsAllChains } = await import('../queries/example-dex.ts.example');
+      return getUserPositionsAllChains(address);
+    },
+    deps: [address],
+    enabled: isConnected && !!address,
+    refetchInterval: 30000, // Refetch every 30 seconds
+  });
+}
+
+/**
+ * Example: Hook for top pools across all chains
+ */
+export function useTopPoolsAllChains(limit: number = 10) {
+  return useMultiChainData({
+    fetcher: async () => {
+      const { getTopPoolsAllChains } = await import('../queries/example-dex.ts.example');
+      return getTopPoolsAllChains(limit);
+    },
+    deps: [limit],
+    enabled: true,
+    refetchInterval: 60000, // Refetch every minute
+  });
+}
+
+/**
+ * Example: Hook for aggregated stats across chains
+ */
+export function useAggregatedStats() {
+  const { address, isConnected } = useAccount();
+
+  return useMultiChainData({
+    fetcher: async () => {
+      if (!address) return null;
+
+      const { getAggregatedStats } = await import('../queries/example-dex.ts.example');
+      return getAggregatedStats(address);
+    },
+    deps: [address],
+    enabled: isConnected && !!address,
+  });
+}
+
+/**
+ * Example: Hook for pools grouped by pair
+ *
+ * Shows same pool across different chains
+ */
+export function usePoolsGroupedByPair(limit: number = 20) {
+  return useMultiChainData({
+    fetcher: async () => {
+      const { getPoolsGroupedByPair } = await import('../queries/example-dex.ts.example');
+      const grouped = await getPoolsGroupedByPair(limit);
+
+      // Convert Map to array for easier rendering
+      return Array.from(grouped.entries()).map(([pair, pools]) => ({
+        pair,
+        pools,
+        totalLiquidityUSD: pools.reduce(
+          (sum, pool) => sum + parseFloat(pool.liquidityUSD),
+          0
+        ),
+      }));
+    },
+    deps: [limit],
+    enabled: true,
+  });
+}
+
+// ============================================================================
+// Component Usage Examples
+// ============================================================================
+
+/**
+ * Example component showing liquidity positions
+ *
+ * ```tsx
+ * export function UserPositions() {
+ *   const { data: positions, isLoading, error } = useUserPositionsAllChains();
+ *
+ *   if (isLoading) return <div>Loading positions...</div>;
+ *   if (error) return <div>Error: {error.message}</div>;
+ *   if (!positions || positions.length === 0) return <div>No positions found</div>;
+ *
+ *   return (
+ *     <div>
+ *       <h2>Your Liquidity Positions</h2>
+ *       {positions.map((position) => (
+ *         <div key={`${position.chainId}-${position.poolId}`}>
+ *           <div>
+ *             <strong>{position.token0Symbol}/{position.token1Symbol}</strong>
+ *             <span> on {position.chainName}</span>
+ *           </div>
+ *           <div>Liquidity: ${formatUSD(position.liquidityUSD)}</div>
+ *           <div>Earned: ${formatUSD(position.earnedUSD)}</div>
+ *         </div>
+ *       ))}
+ *     </div>
+ *   );
+ * }
+ * ```
+ */
+
+/**
+ * Example component showing pools grouped by pair
+ *
+ * ```tsx
+ * export function CrossChainPools() {
+ *   const { data: poolGroups, isLoading } = usePoolsGroupedByPair(10);
+ *
+ *   if (isLoading) return <div>Loading pools...</div>;
+ *
+ *   return (
+ *     <div>
+ *       <h2>Liquidity Pools Across Chains</h2>
+ *       {poolGroups?.map(({ pair, pools, totalLiquidityUSD }) => (
+ *         <div key={pair}>
+ *           <h3>{pair}</h3>
+ *           <div>Total Liquidity: ${formatUSD(totalLiquidityUSD)}</div>
+ *
+ *           <div>Available on:</div>
+ *           {pools.map((pool) => (
+ *             <div key={`${pool.chainId}-${pool.id}`}>
+ *               <span>{pool.chainName}:</span>
+ *               <span>${formatUSD(pool.liquidityUSD)}</span>
+ *             </div>
+ *           ))}
+ *         </div>
+ *       ))}
+ *     </div>
+ *   );
+ * }
+ * ```
+ */
+
+/**
+ * Example component showing aggregated stats
+ *
+ * ```tsx
+ * export function StatsOverview() {
+ *   const { data: stats, isLoading } = useAggregatedStats();
+ *
+ *   if (isLoading) return <div>Loading stats...</div>;
+ *   if (!stats) return null;
+ *
+ *   return (
+ *     <div>
+ *       <div>
+ *         <h3>Total Liquidity</h3>
+ *         <div>${formatUSD(stats.totalLiquidityUSD)}</div>
+ *       </div>
+ *
+ *       <div>
+ *         <h4>By Chain</h4>
+ *         {stats.byChain.map((chain) => (
+ *           <div key={chain.chainId}>
+ *             <span>{chain.chainName}:</span>
+ *             <span>${formatUSD(chain.liquidityUSD)}</span>
+ *           </div>
+ *         ))}
+ *       </div>
+ *     </div>
+ *   );
+ * }
+ * ```
+ */

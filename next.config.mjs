@@ -3,6 +3,40 @@ const nextConfig = {
   sassOptions: {
     includePaths: ["./src/styles"],
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "bscscan.com",
+        pathname: "/token/images/**",
+      },
+      {
+        protocol: "https",
+        hostname: "berascan.com",
+        pathname: "/token/images/**",
+      },
+      {
+        protocol: "https",
+        hostname: "assets.coingecko.com",
+        pathname: "/coins/images/**",
+      },
+      {
+        protocol: "https",
+        hostname: "infrared.finance",
+        pathname: "/assets/**",
+      },
+      {
+        protocol: "https",
+        hostname: "images.oogabooga.io",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "app.oogabooga.io",
+        pathname: "/_next/image/**",
+      },
+    ],
+  },
   async redirects() {
     return [
       {
