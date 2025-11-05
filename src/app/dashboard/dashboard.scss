@@ -601,7 +601,6 @@
   gap: 1rem;
   margin-bottom: 1.5rem;
   flex-wrap: nowrap; // Keep items on same line
-}
 
   .wallet-address-header {
     display: flex;
@@ -707,31 +706,31 @@
       transition: transform 0.3s ease;
     }
   }
+}
 
-  @keyframes flame-pulse {
-    0%, 100% {
-      transform: scale(1);
-      filter: brightness(1);
-    }
-    50% {
-      transform: scale(1.1);
-      filter: brightness(1.2);
-    }
+@keyframes flame-pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: brightness(1);
   }
+  50% {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+  }
+}
 
-  @keyframes flame-flicker {
-    0%, 100% {
-      transform: scale(1);
-    }
-    25% {
-      transform: scale(1.15) rotate(-5deg);
-    }
-    50% {
-      transform: scale(1.1) rotate(5deg);
-    }
-    75% {
-      transform: scale(1.15) rotate(-3deg);
-    }
+@keyframes flame-flicker {
+  0%, 100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.15) rotate(-5deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(5deg);
+  }
+  75% {
+    transform: scale(1.15) rotate(-3deg);
   }
 }
 
