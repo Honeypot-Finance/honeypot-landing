@@ -190,32 +190,51 @@ export default function DashboardPage() {
           {/* Header - Connected Wallet */}
           <div className="dashboard-header">
             {address && (
-              <div className="wallet-address-header">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <rect
-                    x="3"
-                    y="11"
-                    width="18"
-                    height="11"
-                    rx="2"
-                    stroke="currentColor"
-                    strokeWidth="2"
+              <>
+                <div className="wallet-address-header">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
                     fill="none"
-                  />
-                  <path
-                    d="M7 11V7C7 4.23858 9.23858 2 12 2C14.7614 2 17 4.23858 17 7V11"
+                  >
+                    <rect
+                      x="3"
+                      y="11"
+                      width="18"
+                      height="11"
+                      rx="2"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      fill="none"
+                    />
+                    <path
+                      d="M7 11V7C7 4.23858 9.23858 2 12 2C14.7614 2 17 4.23858 17 7V11"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    />
+                  </svg>
+                  <span className="full-address">{address}</span>
+                  <span className="short-address">{formatAddress(address)}</span>
+                </div>
+                <a
+                  href="/missions"
+                  className="pre-tge-banner-btn"
+                >
+                  <span className="pre-tge-flame">🔥</span>
+                  <span className="pre-tge-text">Pre-TGE Campaign</span>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
-                  />
-                </svg>
-                <span className="full-address">{address}</span>
-                <span className="short-address">{formatAddress(address)}</span>
-              </div>
+                  >
+                    <polyline points="9 18 15 12 9 6" />
+                  </svg>
+                </a>
+              </>
             )}
           </div>
 
