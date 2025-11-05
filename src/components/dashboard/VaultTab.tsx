@@ -80,13 +80,17 @@ export const VaultTab: React.FC = () => {
       {/* Sub-tab Navigation */}
       <div className="vault-sub-tabs">
         <button
-          className={`vault-sub-tab ${activeSubTab === "receipts" ? "active" : ""}`}
+          className={`vault-sub-tab ${
+            activeSubTab === "receipts" ? "active" : ""
+          }`}
           onClick={() => setActiveSubTab("receipts")}
         >
           Your Receipts
         </button>
         <button
-          className={`vault-sub-tab ${activeSubTab === "staking" ? "active" : ""}`}
+          className={`vault-sub-tab ${
+            activeSubTab === "staking" ? "active" : ""
+          }`}
           onClick={() => setActiveSubTab("staking")}
         >
           Burn Tokens
@@ -144,11 +148,14 @@ export const VaultTab: React.FC = () => {
               <div className="empty-content">
                 <h3>No Unclaimed Receipts</h3>
                 <p>
-                  Start staking tokens in the All In One Vault to receive receipts that you can claim for rewards.
+                  Start staking tokens in the All In One Vault to receive
+                  receipts that you can claim for rewards.
                 </p>
                 <button
                   className="empty-cta"
-                  onClick={() => window.open(AIOV_DOMAIN, "_blank", "noopener,noreferrer")}
+                  onClick={() =>
+                    window.open(AIOV_DOMAIN, "_blank", "noopener,noreferrer")
+                  }
                 >
                   Go to Vault
                   <svg
@@ -172,123 +179,124 @@ export const VaultTab: React.FC = () => {
 
           {!loading && unclaimedReceipts.length > 0 && (
             <div className="vault-section">
-      {/* Receipts List */}
-      <div className="vault-receipts-section">
-        <div className="section-header">
-          <div className="section-title">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-            >
-              <rect
-                x="3"
-                y="3"
-                width="18"
-                height="18"
-                rx="2"
-                stroke="currentColor"
-                strokeWidth="2"
-                fill="none"
-              />
-              <path
-                d="M9 9H15M9 13H15M9 17H13"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
-            Your Receipts
-          </div>
-          <div className="section-subtitle">
-            Manage your vault receipts and track claimable assets
-          </div>
-        </div>
-
-        <div className="receipts-grid">
-          {unclaimedReceipts.map((receipt) => {
-            const claimable = isReceiptClaimable(receipt);
-            return (
-              <div
-                key={receipt.id}
-                className={`receipt-card ${claimable ? "claimable-card" : ""}`}
-                onClick={claimable ? handleClaimClick : undefined}
-                style={{ cursor: claimable ? "pointer" : "default" }}
-              >
-                <div className="receipt-header">
-                  <div className="receipt-id">
-                    <span className="receipt-label">Receipt #</span>
-                    <span className="receipt-number">{receipt.receiptId}</span>
-                  </div>
-                  <div
-                    className={`receipt-status ${
-                      claimable ? "claimable" : "locked"
-                    }`}
-                  >
-                    {claimable ? "Claimable" : "Locked"}
-                  </div>
-                </div>
-
-                <div className="receipt-details">
-                  <div className="receipt-detail-row">
-                    <span className="detail-label">Weight</span>
-                    <span className="detail-value weight-value">
-                      {formatWeight(receipt.receiptWeight)}
-                    </span>
-                  </div>
-
-                  <div className="receipt-detail-row">
-                    <span className="detail-label">Token</span>
-                    <div className="receipt-token-info">
-                      <TokenLogo
-                        address={receipt.token}
-                        chainId={CHAIN_ID}
-                        size={24}
-                      />
-                      <span
-                        className="detail-value token-value"
-                        title={receipt.token}
-                      >
-                        {shortenToken(receipt.token)}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="receipt-detail-row">
-                    <span className="detail-label">Claimable At</span>
-                    <span className="detail-value date-value">
-                      {formatClaimableDate(receipt.claimableAt)}
-                    </span>
-                  </div>
-                </div>
-
-                {claimable && (
-                  <div className="receipt-claim-overlay">
-                    <div className="claim-text">
-                      <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
+              {/* Receipts List */}
+              <div className="vault-receipts-section">
+                <div className="section-header">
+                  <div className="section-title">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <rect
+                        x="3"
+                        y="3"
+                        width="18"
+                        height="18"
+                        rx="2"
+                        stroke="currentColor"
+                        strokeWidth="2"
                         fill="none"
-                      >
-                        <path
-                          d="M7 17L17 7M17 7H8M17 7V16"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                      Claim
-                    </div>
+                      />
+                      <path
+                        d="M9 9H15M9 13H15M9 17H13"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                    Your Receipts
                   </div>
-                )}
+                </div>
+
+                <div className="receipts-grid">
+                  {unclaimedReceipts.map((receipt) => {
+                    const claimable = isReceiptClaimable(receipt);
+                    return (
+                      <div
+                        key={receipt.id}
+                        className={`receipt-card ${
+                          claimable ? "claimable-card" : ""
+                        }`}
+                        onClick={claimable ? handleClaimClick : undefined}
+                        style={{ cursor: claimable ? "pointer" : "default" }}
+                      >
+                        <div className="receipt-header">
+                          <div className="receipt-id">
+                            <span className="receipt-label">Receipt #</span>
+                            <span className="receipt-number">
+                              {receipt.receiptId}
+                            </span>
+                          </div>
+                          <div
+                            className={`receipt-status ${
+                              claimable ? "claimable" : "locked"
+                            }`}
+                          >
+                            {claimable ? "Claimable" : "Locked"}
+                          </div>
+                        </div>
+
+                        <div className="receipt-details">
+                          <div className="receipt-detail-row">
+                            <span className="detail-label">Weight</span>
+                            <span className="detail-value weight-value">
+                              {formatWeight(receipt.receiptWeight)}
+                            </span>
+                          </div>
+
+                          <div className="receipt-detail-row">
+                            <span className="detail-label">Token</span>
+                            <div className="receipt-token-info">
+                              <TokenLogo
+                                address={receipt.token}
+                                chainId={CHAIN_ID}
+                                size={24}
+                              />
+                              <span
+                                className="detail-value token-value"
+                                title={receipt.token}
+                              >
+                                {shortenToken(receipt.token)}
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="receipt-detail-row">
+                            <span className="detail-label">Claimable At</span>
+                            <span className="detail-value date-value">
+                              {formatClaimableDate(receipt.claimableAt)}
+                            </span>
+                          </div>
+                        </div>
+
+                        {claimable && (
+                          <div className="receipt-claim-overlay">
+                            <div className="claim-text">
+                              <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                              >
+                                <path
+                                  d="M7 17L17 7M17 7H8M17 7V16"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                              </svg>
+                              Claim
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-            );
-          })}
-        </div>
-      </div>
             </div>
           )}
         </>
