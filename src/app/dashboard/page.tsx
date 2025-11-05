@@ -20,6 +20,7 @@ import { PointsTab } from "@/components/dashboard/PointsTab";
 import { NFTTab } from "@/components/dashboard/NFTTab";
 import { LeaderboardTab } from "@/components/dashboard/LeaderboardTab";
 import { VaultTab } from "@/components/dashboard/VaultTab";
+import FloatingPreTGE from "@/components/FloatingPreTGE";
 
 type TabType = "dex" | "points" | "nft" | "leaderboard" | "vault";
 type DexSubTabType = "concentrated" | "vaults";
@@ -261,6 +262,9 @@ export default function DashboardPage() {
               </div>
             )}
           </div>
+
+          {/* Pre-TGE Floating Component */}
+          <FloatingPreTGE />
 
           <div className="dashboard-wrapper">
             <div className="dashboard-container">

@@ -2394,8 +2394,12 @@
 
     .staking-tokens-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      grid-template-columns: 1fr;
       gap: 1.5rem;
+
+      @media (min-width: 640px) {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      }
     }
 
     .staking-token-card {
@@ -2403,8 +2407,12 @@
       background: rgba(42, 32, 20, 0.4);
       border: 1px solid rgba(255, 193, 7, 0.2);
       border-radius: 0.75rem;
-      padding: 1.5rem;
+      padding: 1rem;
       transition: all 0.3s ease;
+
+      @media (min-width: 640px) {
+        padding: 1.5rem;
+      }
 
       &.stakeable-card {
         cursor: pointer;
@@ -2427,6 +2435,7 @@
           display: flex;
           align-items: center;
           gap: 1rem;
+          overflow: hidden;
 
           .token-icon-placeholder {
             flex-shrink: 0;
@@ -2459,6 +2468,8 @@
               font-size: 0.8125rem;
               font-weight: 500;
               color: rgba(255, 193, 7, 0.7);
+              word-break: break-all;
+              overflow-wrap: break-word;
             }
           }
         }
