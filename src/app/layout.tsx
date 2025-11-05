@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@/styles/global.scss";
 import LayoutWrapper from "@/components/layout/LayoutWrapper";
 import { Analytics } from "@vercel/analytics/next";
+import { Providers } from "@/components/Providers";
 
 export const metadata: Metadata = {
   title: "Honeypot Finance: Next-Gen Dex++",
@@ -58,9 +59,11 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-[#140E06] font-inter">
-        <Analytics />
-        {/* <LayoutWrapper>{children}</LayoutWrapper> */}
-        {children}
+        <Providers>
+          <Analytics />
+          {/* <LayoutWrapper>{children}</LayoutWrapper> */}
+          {children}
+        </Providers>
       </body>
     </html>
   );

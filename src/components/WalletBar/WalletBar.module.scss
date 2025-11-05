@@ -1,0 +1,202 @@
+.wallet-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+// Profile Button
+.profile-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: rgba(80, 60, 30, 0.6);
+  border: 1px solid rgba(255, 193, 7, 0.2);
+  border-radius: 0.75rem;
+  color: #ffc107;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(80, 60, 30, 0.8);
+    border-color: rgba(255, 193, 7, 0.4);
+    transform: translateY(-2px);
+  }
+
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+// Wallet Address Display
+.wallet-address {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0 1.25rem;
+  height: 3rem;
+  background: rgba(80, 60, 30, 0.6);
+  border: 1px solid rgba(255, 193, 7, 0.2);
+  border-radius: 0.75rem;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  min-width: 10rem;
+
+  .wallet-avatar {
+    width: 1.5rem;
+    height: 1.5rem;
+    background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  span {
+    font-family: 'Courier New', monospace;
+  }
+}
+
+// Connect Button (custom - when not connected)
+.connect-button-custom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 2.5rem;
+  padding: 0 1.25rem;
+  background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  border-radius: 0.75rem;
+  color: #1a1510;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.875rem;
+  font-weight: 700;
+
+  .wallet-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .connect-text {
+    white-space: nowrap;
+  }
+
+  &:hover {
+    background: linear-gradient(135deg, #ffca28 0%, #ffc107 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(255, 193, 7, 0.3);
+  }
+}
+
+// Account Button (custom - when connected)
+.account-button-custom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  padding: 0 0.875rem;
+  background: rgba(80, 60, 30, 0.6);
+  border: 1px solid rgba(255, 193, 7, 0.2);
+  border-radius: 0.75rem;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.875rem;
+  font-weight: 500;
+
+  &:hover {
+    background: rgba(80, 60, 30, 0.8);
+    border-color: rgba(255, 193, 7, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .account-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .wallet-icon {
+    width: 1rem;
+    height: 1rem;
+    color: #ffc107;
+    flex-shrink: 0;
+  }
+
+  .account-address {
+    font-family: 'Courier New', monospace;
+    white-space: nowrap;
+  }
+
+  .dropdown-icon {
+    flex-shrink: 0;
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .wallet-bar {
+    gap: 0.5rem;
+  }
+
+  .wallet-address {
+    padding: 0 0.75rem;
+    min-width: auto;
+    height: 2.5rem;
+
+    span {
+      display: none;
+    }
+
+    .wallet-avatar {
+      margin: 0;
+    }
+  }
+
+  .profile-button {
+    width: 2.5rem;
+    height: 2.5rem;
+
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+
+  // Custom connect button - square on mobile with only icon
+  .connect-button-custom {
+    width: 2.5rem;
+    min-width: 2.5rem;
+    padding: 0;
+
+    .connect-text {
+      display: none;
+    }
+
+    .wallet-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+
+  // Custom account button - square on mobile with only wallet icon
+  .account-button-custom {
+    width: 2.5rem;
+    min-width: 2.5rem;
+    padding: 0;
+
+    .account-address,
+    .dropdown-icon {
+      display: none;
+    }
+
+    .wallet-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+}

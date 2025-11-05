@@ -4,7 +4,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Honeypot Landing is a Next.js 14 marketing website for Honeypot Finance, a DeFi platform on Berachain. The site features heavy animations, multiple product showcases, and partner displays.
+Honeypot Landing is a Next.js 14 application for Honeypot Finance, a multi-chain DeFi platform. The project includes:
+1. **Marketing Website** - Heavy animations, product showcases, partner displays
+2. **User Dashboard** - Real-time DeFi data from multiple blockchain networks via GraphQL subgraphs
+3. **Leaderboard System** - Multi-chain ranking and aggregation system
 
 ## Development Commands
 
@@ -32,25 +35,100 @@ The codebase follows atomic design principles:
 - `/src/components/atoms/` - Basic reusable UI components (Button, IntroCard)
 - `/src/components/molecules/` - Composite components combining atoms
 - `/src/components/layout/` - Layout components (Header, Footer, LayoutWrapper)
-- `/src/components/HomePage/` - Page-specific sections
+- `/src/components/HomePage/` - Marketing page sections
+- `/src/components/dashboard/` - Dashboard-specific components (DexStats, LeaderboardTab, PositionsTab, etc.)
+
+### Multi-Chain Subgraph Architecture
+
+The dashboard queries GraphQL subgraphs across multiple chains (Berachain, BSC) to aggregate DeFi data:
+
+**Configuration** (`/src/config/subgraphEndpoints.ts`):
+- Centralized subgraph endpoint configuration per chain
+- Supports multiple subgraph types: `dex`, `nft`, `nft-staking`, `points`, `leaderboard`, `vault`
+- Helper functions: `getSubgraphEndpoint()`, `getChainsForSubgraph()`, `isSubgraphAvailable()`
+
+**Client** (`/src/lib/subgraph/client.ts`):
+- `querySubgraph()` - Single chain query with 60s cache revalidation
+- `querySubgraphWithRetry()` - Retry logic with exponential backoff
+- `queryMultiChain()` - Parallel queries across multiple chains, returns results with chainId
+
+**Query Pattern** (`/src/lib/subgraph/queries/`):
+- Each query module defines GraphQL queries and data fetching functions
+- Queries use specific `orderBy` fields matching the ranking metric (e.g., `LAUNCHES_QUERY` orders by `pot2PumpLaunchCount`)
+- Multi-chain aggregation: Data from same address across chains is summed using `Map<address, account>` pattern
+- Rankings calculated after aggregation to ensure accurate cross-chain positioning
+
+**Example Multi-Chain Query Flow**:
+```typescript
+// 1. Get chains with DEX subgraph deployed
+const chains = getChainsForSubgraph('dex');
+
+// 2. Query all chains in parallel
+const results = await queryMultiChain(chains, 'dex', QUERY, variables);
+
+// 3. Aggregate by address
+const accountMap = new Map<string, Account>();
+for (const result of results) {
+  // Sum values for same address across chains
+}
+
+// 4. Sort aggregated results
+const sorted = Array.from(accountMap.values()).sort(...);
+```
+
+### Dashboard Data Fetching Pattern
+
+**Client-Side Fetching with Caching**:
+- Each tab manages its own data fetching with React hooks
+- Data fetched only when tab becomes active (`if (activeTab !== 'target') return;`)
+- One-time fetch per session using `dataFetched` flag to prevent refetching on tab switches
+- User must refresh browser to reload data
+
+**State Management Pattern**:
+```typescript
+const [data, setData] = useState();
+const [loading, setLoading] = useState(true);
+const [dataFetched, setDataFetched] = useState(false);
+
+useEffect(() => {
+  if (activeTab !== 'target' || !address || dataFetched) {
+    setLoading(false);
+    return;
+  }
+  // Fetch data...
+  setDataFetched(true);
+}, [activeTab, address, dataFetched]);
+```
 
 ### Styling Strategy
 - **Tailwind CSS** for utility classes
 - **SCSS modules** for component-specific styles (co-located with components)
+- **Dashboard styles** in `/src/app/dashboard/dashboard.scss` - comprehensive styling for all dashboard components
 - **Global styles** in `/src/styles/global.scss`
-- Custom Gliker font loaded from `/public/fonts/`
+- **Theme**: Gold/honey color scheme (`#ffc107`) with dark backgrounds
+
+### Web3 Integration
+- **Wagmi** for wallet connection and blockchain interactions
+- **RainbowKit** for wallet connection UI
+- Multi-chain support configured in `/src/config/chains.ts`
+- Chain-specific token/NFT metadata in `/src/config/`
 
 ### Key Technical Decisions
 1. **Animation Library**: Framer Motion for complex animations
 2. **Carousel**: React Slick with CDN-loaded stylesheets
-3. **Layout Pattern**: Conditional wrapper hides header/footer on specific routes
-4. **Multiple Homepage Variants**: Several iterations in `/src/app/homepage[1-4]/` and `/new-homepage/`
+3. **GraphQL Client**: Custom fetch-based client with retry logic (no Apollo/URQL)
+4. **Data Aggregation**: Client-side aggregation across multiple chains
+5. **Caching Strategy**: Server-side 60s revalidation + client-side session persistence
 
 ### Important Files & Locations
 - **Main Landing Page**: `/src/app/page.tsx`
-- **Layout Configuration**: `/src/app/layout.tsx` - Contains metadata and root layout
-- **Partner Data**: `/src/data/partners.ts` - Partner/investor logos and metadata
-- **Assets**: Images in both `/public/images/` and `/src/assets/`
+- **Dashboard Page**: `/src/app/dashboard/page.tsx` - Main dashboard with wallet connection guard
+- **Dashboard Styles**: `/src/app/dashboard/dashboard.scss` - All dashboard styling including loading states
+- **Subgraph Config**: `/src/config/subgraphEndpoints.ts` - Multi-chain endpoint configuration
+- **Subgraph Client**: `/src/lib/subgraph/client.ts` - GraphQL query utilities
+- **Leaderboard Queries**: `/src/lib/subgraph/queries/leaderboard.ts` - DEX and Meme ranking logic
+- **Layout Configuration**: `/src/app/layout.tsx` - Metadata and root layout with CDN styles
+- **Domain Config**: `/src/config/domains.ts` - External service URLs (DEX, NFT marketplace, etc.)
 
 ### External Dependencies & CDN
 The project loads Slick carousel styles from CDN in the layout:
@@ -65,3 +143,5 @@ The project loads Slick carousel styles from CDN in the layout:
 - No testing framework currently configured
 - ESLint configured for code quality (run with `pnpm lint`)
 - Both pnpm-lock.yaml and package-lock.json exist - use pnpm as primary package manager
+- Subgraph queries may timeout if including expensive nested fields (avoid deeply nested transaction data)
+- When adding new chains, update `/src/config/subgraphEndpoints.ts` with endpoint URLs
