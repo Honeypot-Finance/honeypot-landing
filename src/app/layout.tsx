@@ -6,6 +6,7 @@ import { Providers } from "@/components/Providers";
 import { inter, poppins, bebasNeue } from "./fonts";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://honeypotfinance.xyz'),
   title: "Honeypot Finance: Next-Gen Dex++",
   description:
     "Honeypot combines pro trading tools and behaviour-driven incentives, solving idle TVL, inefficient incentives & market fragmentation across DeFi",
