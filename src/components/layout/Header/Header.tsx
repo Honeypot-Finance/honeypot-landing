@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useMotionValueEvent, useScroll, motion } from "framer-motion";
 import { useState } from "react";
-import { DOMAIN_MAP } from "@/data/pathData";
+import { POT2PUMP_DOMAIN } from "@/config/domains";
 import WalletBar from "@/components/WalletBar/WalletBar";
 
 export default function Header() {
@@ -39,7 +39,7 @@ export default function Header() {
         <nav className={styles["nav"]}>
           <ul className={styles["nav-list"]}>
             <li className={styles["nav-item"]}>
-              <Link href={`${DOMAIN_MAP.POT2PUMP}`} target="_blank">
+              <Link href={POT2PUMP_DOMAIN} target="_blank">
                 <span className={styles["nav-link"]}>Launch App</span>
               </Link>
             </li>{" "}

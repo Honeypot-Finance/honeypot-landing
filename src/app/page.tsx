@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
-import { appPathsList } from "@/components/Navbar/allAppPath";
-import { partners, investors } from "@/data/partners";
+import { appPathsList } from "@/config/allAppPath";
+import { partners, investors } from "@/config/partners";
 import { useEffect } from "react";
 import { BsTelegram } from "react-icons/bs";
 import { FaXTwitter, FaDiscord, FaMedium } from "react-icons/fa6";

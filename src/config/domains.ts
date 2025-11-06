@@ -9,3 +9,9 @@ export const MAGIC_EDEN_URL =
 export const BERACHAIN_BRIDGE_URL = "https://bridge.kingdomly.app/";
 export const AIOV_DOMAIN =
   "https://leaderboard.honeypotfinance.xyz/all-in-one-vault";
+
+// App domains
+export const MAIN_APP_DOMAIN = "https://app.honeypotfinance.xyz";
+export const POT2PUMP_DOMAIN = "https://pot2pump.honeypotfinance.xyz";
+export const DREAMPAD_DOMAIN = "https://dreampad.honeypotfinance.xyz";
+export const WASABEE_DOMAIN = "https://wasabee.honeypotfinance.xyz";

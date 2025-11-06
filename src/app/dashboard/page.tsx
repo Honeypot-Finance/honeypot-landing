@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import "./dashboard.scss";
 import Navbar from "@/components/Navbar";
-import { appPathsList } from "@/components/Navbar/allAppPath";
+import { appPathsList } from "@/config/allAppPath";
 import MissionsSidebar from "@/components/MissionsSidebar/MissionsSidebar";
 import { useAccount } from "wagmi";
 import { useConnectModal } from "@rainbow-me/rainbowkit";

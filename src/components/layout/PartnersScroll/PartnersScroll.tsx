@@ -1,6 +1,6 @@
 import PartnerScrollItem from "@/components/atoms/PartnerScrollItem/PartnerScrollItem";
 import HorizontalScroll from "@/components/molecules/HorizontalScroll/HorizontalScroll";
-import { partners, investors } from "@/data/partners";
+import { partners, investors } from "@/config/partners";
 
 export function InvestorsScroll() {
   const scrollItems = investors.map((investors, index) => ({

@@ -1,6 +1,6 @@
 import SectionContainer from "@/components/atoms/SectionContainer/SectionContainer";
 import IntroCard from "@/components/atoms/IntroCard/IntroCard";
-import { partners, investors } from "@/data/partners";
+import { partners, investors } from "@/config/partners";
 
 export default function PartnersPage() {
   return (

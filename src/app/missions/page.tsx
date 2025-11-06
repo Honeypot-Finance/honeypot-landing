@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
-import { appPathsList } from "@/components/Navbar/allAppPath";
+import { appPathsList } from "@/config/allAppPath";
 import { useEffect, useState } from "react";
 
 // CSS styles

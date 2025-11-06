@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { Menu } from "./allAppPath";
+import { Menu } from "@/config/allAppPath";
 import { useRouter, usePathname } from "next/navigation";
 import { Button } from "@heroui/react";
 
@@ -65,7 +65,8 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
               ? "ml-4 bg-[#1a1a1a] text-base font-medium border-l-2 border-[#FFCD4D] pl-3"
               : "bg-[#2a2a2a]"
           )}
-          target="_blank"
+          target={m.external !== false ? "_blank" : undefined}
+          rel={m.external !== false ? "noopener noreferrer" : undefined}
           onClick={() => setIsMenuOpen(false)}
         >
           {m.title}
@@ -100,7 +101,15 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
                   className="w-full text-left text-gray-300 hover:bg-[#2a2a2a] hover:text-white rounded-md p-2"
                   onClick={() => {
                     if (submenu.routePath) {
-                      window.open(submenu.routePath, "_blank");
+                      if (submenu.external !== false) {
+                        window.open(
+                          submenu.routePath,
+                          "_blank",
+                          "noopener,noreferrer"
+                        );
+                      } else {
+                        router.push(submenu.routePath);
+                      }
                     }
                   }}
                 >
@@ -123,7 +132,11 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
         )}
         onPress={() => {
           if (typeof menu.path === "string") {
-            router.push(menu.path);
+            if (menu.external !== false) {
+              window.open(menu.path, "_blank", "noopener,noreferrer");
+            } else {
+              router.push(menu.path);
+            }
           }
         }}
       >
@@ -155,7 +168,7 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
               alt="honeypot-logo"
               width={35}
               height={35}
-              style={{ height: 'auto' }}
+              style={{ height: "auto" }}
             />
             <span className="text-white font-bebas-neue text-xl tracking-wider whitespace-nowrap">
               HONEYPOT FINANCE
@@ -199,20 +212,20 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
                   alt="honeypot-logo"
                   width={36}
                   height={36}
-                  style={{ height: 'auto' }}
+                  style={{ height: "auto" }}
                   className="shrink-0"
                 />
               )
             }
             className={cn(
-              "will-change-transform transform-gpu transition-all duration-200 ease-out sm:hidden w-9 h-9 p-0 min-w-9"
+              "will-change-transform transform-gpu transition-all duration-200 ease-out  w-9 h-9 p-0 min-w-9"
             )}
           />
-          <div className="block sm:hidden w-full text-white text-2xl font-bebas-neue text-center grow">
+          <div className="block w-full text-white text-2xl font-bebas-neue text-center grow">
             HONEYPOT FINANCE
           </div>
           {/* Mobile Wallet Bar */}
-          <div className="block sm:hidden">
+          <div className="block">
             <WalletBar />
           </div>
         </div>
