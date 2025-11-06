@@ -83,6 +83,12 @@ export const appPathsList: Menu[] = [
         routePath: "https://leaderboard.honeypotfinance.xyz/",
         external: true,
       },
+      {
+        title: "NFT Staking",
+        path: "https://nft.honeypotfinance.xyz/staking",
+        routePath: "https://nft.honeypotfinance.xyz/staking",
+        external: true,
+      },
     ],
   },
   {
@@ -127,18 +133,6 @@ export const appPathsList: Menu[] = [
         title: "App Leaderboard",
         path: "https://leaderboard.honeypotfinance.xyz/leaderboard",
         routePath: "https://leaderboard.honeypotfinance.xyz/leaderboard",
-        external: true,
-      },
-      {
-        title: "All in one vault",
-        path: "https://leaderboard.honeypotfinance.xyz/all-in-one-vault",
-        routePath: "https://leaderboard.honeypotfinance.xyz/all-in-one-vault",
-        external: true,
-      },
-      {
-        title: "NFT Staking",
-        path: "https://nft.honeypotfinance.xyz/staking",
-        routePath: "https://nft.honeypotfinance.xyz/staking",
         external: true,
       },
     ],
