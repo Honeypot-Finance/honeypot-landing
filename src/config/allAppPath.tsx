@@ -66,6 +66,12 @@ export const appPathsList: Menu[] = [
     title: "Earn",
     path: [
       {
+        title: "Points",
+        path: "https://points.honeypotfinance.xyz/loyalty",
+        routePath: "https://points.honeypotfinance.xyz/loyalty",
+        external: true,
+      },
+      {
         title: "Pools",
         path: "https://wasabee.honeypotfinance.xyz/pools",
         routePath: "https://wasabee.honeypotfinance.xyz/pools",
