@@ -37,6 +37,7 @@ export const VaultCard: React.FC<VaultCardProps> = ({ share }) => {
               alt={share.chainName}
               width={24}
               height={24}
+              style={{ height: 'auto' }}
               className="chain-icon"
             />
           </div>

@@ -85,9 +85,9 @@ export const PositionsTab: React.FC<PositionsTabProps> = ({
             ) : positions && positions.length > 0 ? (
               <>
                 <div className="liquidity-cards">
-                  {positions.map((position) => (
+                  {positions.map((position, index) => (
                     <LiquidityCard
-                      key={`${position.chainId}-${position.poolId}`}
+                      key={`${position.chainId}-${position.poolId}-${index}`}
                       position={position}
                     />
                   ))}

@@ -116,6 +116,7 @@ export const NFTCard: React.FC<NFTCardProps> = ({ nft, type }) => {
             alt={nft.chainName}
             width={16}
             height={16}
+            style={{ height: 'auto' }}
             className="chain-icon"
           />
         </div>

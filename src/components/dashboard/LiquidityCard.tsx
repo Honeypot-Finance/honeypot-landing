@@ -35,6 +35,7 @@ export const LiquidityCard: React.FC<LiquidityCardProps> = ({ position }) => {
               alt={position.chainName}
               width={24}
               height={24}
+              style={{ height: 'auto' }}
               className="chain-icon"
             />
           </div>

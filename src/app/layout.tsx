@@ -3,6 +3,7 @@ import "@/styles/global.scss";
 import LayoutWrapper from "@/components/layout/LayoutWrapper";
 import { Analytics } from "@vercel/analytics/next";
 import { Providers } from "@/components/Providers";
+import { inter, poppins, bebasNeue } from "./fonts";
 
 export const metadata: Metadata = {
   title: "Honeypot Finance: Next-Gen Dex++",
@@ -26,20 +27,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${poppins.variable} ${bebasNeue.variable}`}>
       <head>
+        <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
         <link
-          rel="preconnect"
-          href="https://fonts.googleapis.com"
+          rel="preload"
+          href="/images/honeypot-logo.svg"
+          as="image"
         />
         <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700;800&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-          rel="stylesheet"
+          rel="preload"
+          href="/images/background_honeycomb_pattern.svg"
+          as="image"
         />
         <link
           rel="stylesheet"
@@ -58,7 +57,7 @@ export default function RootLayout({
           sizes="any"
         />
       </head>
-      <body className="bg-[#140E06] font-inter">
+      <body className={`bg-[#140E06] ${inter.className}`} suppressHydrationWarning>
         <Providers>
           <Analytics />
           {/* <LayoutWrapper>{children}</LayoutWrapper> */}

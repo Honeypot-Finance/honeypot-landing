@@ -32,6 +32,11 @@ export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState<TabType>("dex");
   const [activeDexSubTab, setActiveDexSubTab] =
     useState<DexSubTabType>("concentrated");
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Fetch user data from subgraph
   const { data: positions, isLoading: positionsLoading } = useUserPositions();
@@ -95,6 +100,40 @@ export default function DashboardPage() {
     if (addressStr.length < 12) return addressStr;
     return `${addressStr.slice(0, 6)}...${addressStr.slice(-4)}`;
   };
+
+  // Don't render wallet-dependent content until mounted to avoid hydration issues
+  if (!mounted) {
+    return (
+      <div className="min-h-screen bg-[#140E06] font-inter relative overflow-hidden flex flex-col items-center w-full">
+        {/* Honeycomb Pattern Background */}
+        <div
+          className="fixed inset-0 pointer-events-none z-0"
+          style={{
+            backgroundImage: "url(/images/background_honeycomb_pattern.svg)",
+            backgroundRepeat: "repeat",
+            backgroundSize: "100px 100px",
+            backgroundPosition: "center",
+            opacity: 0.8,
+          }}
+        />
+
+        {/* Navbar */}
+        <div className="mb-3 sm:mb-4 md:mb-6 lg:mb-10 w-full fixed top-0 left-1/2 -translate-x-1/2 z-50">
+          <div className="flex justify-center items-center">
+            <Navbar menuList={appPathsList} />
+          </div>
+        </div>
+
+        {/* Loading State */}
+        <div className="connect-wallet-prompt">
+          <div className="prompt-container">
+            <div className="loading-spinner"></div>
+            <p>Loading...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#140E06] font-inter relative overflow-hidden flex flex-col items-center w-full">

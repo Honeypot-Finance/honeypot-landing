@@ -236,8 +236,10 @@ export default function HomePage() {
     styleElement.textContent = cssStyles;
     document.head.appendChild(styleElement);
 
-    // 滚动处理
-    const handleScroll = () => {
+    // Defer scroll handler setup to after initial render
+    const initScrollHandler = () => {
+      // 滚动处理
+      const handleScroll = () => {
       const scrolled = window.scrollY;
       const viewportHeight = window.innerHeight;
 
@@ -313,16 +315,38 @@ export default function HomePage() {
       }
     };
 
-    // 初始触发一次处理
-    handleScroll();
+      // 初始触发一次处理
+      handleScroll();
 
-    window.addEventListener("scroll", scrollHandler);
-    window.addEventListener("resize", handleScroll);
+      window.addEventListener("scroll", scrollHandler);
+      window.addEventListener("resize", handleScroll);
 
-    // 清理函数
+      // 清理函数返回
+      return () => {
+        window.removeEventListener("scroll", scrollHandler);
+        window.removeEventListener("resize", handleScroll);
+      };
+    };
+
+    // Use requestIdleCallback or setTimeout to defer initialization
+    let cleanup: (() => void) | undefined;
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => {
+        cleanup = initScrollHandler();
+      });
+    } else {
+      const timer = setTimeout(() => {
+        cleanup = initScrollHandler();
+      }, 100);
+      return () => {
+        clearTimeout(timer);
+        if (cleanup) cleanup();
+        document.head.removeChild(styleElement);
+      };
+    }
+
     return () => {
-      window.removeEventListener("scroll", scrollHandler);
-      window.removeEventListener("resize", handleScroll);
+      if (cleanup) cleanup();
       document.head.removeChild(styleElement);
     };
   }, []);
@@ -361,6 +385,7 @@ export default function HomePage() {
             height={80}
             className="opacity-80"
             style={{ transform: "scaleX(-1)" }}
+            loading="lazy"
           />
         </div>
         <div className="absolute top-12 right-[20%] floating-bee-2">
@@ -370,6 +395,7 @@ export default function HomePage() {
             width={60}
             height={60}
             className="opacity-80"
+            loading="lazy"
           />
         </div>
         <div className="absolute bottom-5 right-[15%] floating-bee-3">
@@ -380,6 +406,7 @@ export default function HomePage() {
             height={70}
             className="opacity-80"
             style={{ transform: "scaleX(-1)" }}
+            loading="lazy"
           />
         </div>
         <div className="absolute top-32 left-[8%] floating-bee-4">
@@ -389,6 +416,7 @@ export default function HomePage() {
             width={65}
             height={65}
             className="opacity-80"
+            loading="lazy"
           />
         </div>
         <div className="absolute bottom-10 left-[25%] floating-bee-5">
@@ -399,6 +427,7 @@ export default function HomePage() {
             height={75}
             className="opacity-80"
             style={{ transform: "scaleX(-1)" }}
+            loading="lazy"
           />
         </div>
 
@@ -411,6 +440,7 @@ export default function HomePage() {
               width={100}
               height={100}
               className="w-12 h-12 sm:w-18 sm:h-18 md:w-[100px] md:h-[100px]"
+              priority
             />
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#FFCD4D] font-bebas-neue tracking-wider translate-x-[-20px] lg:translate-x-[-30px]">
               HONEYPOT FINANCE

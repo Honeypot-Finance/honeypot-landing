@@ -2,8 +2,15 @@
 import Link from "next/link";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import styles from "./WalletBar.module.scss";
+import { useEffect, useState } from "react";
 
 export default function WalletBar() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <div className={styles["wallet-bar"]}>
       {/* Profile Button */}
@@ -35,7 +42,7 @@ export default function WalletBar() {
           openConnectModal,
           mounted,
         }) => {
-          const ready = mounted;
+          const ready = mounted && isMounted;
           const connected = ready && account && chain;
 
           return (

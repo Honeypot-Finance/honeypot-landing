@@ -33,6 +33,7 @@ const FloatingPreTGE = () => {
                 src={imageUrl}
                 alt="Airdrop"
                 fill
+                sizes="32px"
                 className="object-contain scale-[200%]"
               />
             </div>
@@ -60,6 +61,7 @@ const FloatingPreTGE = () => {
                   src={imageUrl}
                   alt="Airdrop"
                   fill
+                  sizes="96px"
                   className="object-contain"
                 />
               </div>
@@ -104,6 +106,7 @@ const FloatingPreTGE = () => {
                 src={imageUrl}
                 alt="Airdrop"
                 fill
+                sizes="32px"
                 className="object-contain scale-[200%]"
               />
             </div>
@@ -130,6 +133,7 @@ const FloatingPreTGE = () => {
                 src={imageUrl}
                 alt="Airdrop"
                 fill
+                sizes="64px"
                 className="object-contain"
               />
             </div>

@@ -228,6 +228,8 @@ export default function MissionsPage() {
                         src="/airdrop-icon.png"
                         alt="POT Points"
                         fill
+                        sizes="(max-width: 640px) 80px, 112px"
+                        priority
                         className="object-contain"
                       />
                     </div>

@@ -16,7 +16,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "@heroui/react";
-import WalletBar from "@/components/WalletBar/WalletBar";
+import WalletBar from "@/components/WalletBar/WalletBarLazy";
 
 interface NavbarProps {
   menuList: Menu[];
@@ -144,7 +144,7 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
         }}
         className="grow w-full bg-[#1B1308]/95 backdrop-blur-md flex flex-col py-2 px-4 lg:py-4 lg:px-6 max-w-none"
       >
-        <div className="w-full sm:flex grow hidden items-center justify-between lg:py-1 relative">
+        <div className="w-full md:flex grow hidden items-center justify-between lg:py-1 relative">
           {/* Left: Logo + Brand Name */}
           <button
             onClick={() => router.push("/")}
@@ -154,7 +154,8 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
               src="/images/honeypot-logo.svg"
               alt="honeypot-logo"
               width={35}
-              height={36}
+              height={35}
+              style={{ height: 'auto' }}
             />
             <span className="text-white font-bebas-neue text-xl tracking-wider whitespace-nowrap">
               HONEYPOT FINANCE
@@ -172,7 +173,7 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
           </div>
         </div>
 
-        <div className="w-full flex items-center justify-between sm:hidden">
+        <div className="w-full flex items-center justify-between md:hidden">
           <NavbarMenuToggle
             sr-only=""
             icon={
@@ -198,6 +199,7 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
                   alt="honeypot-logo"
                   width={36}
                   height={36}
+                  style={{ height: 'auto' }}
                   className="shrink-0"
                 />
               )
