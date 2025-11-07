@@ -5,11 +5,23 @@ import Link from "next/link";
 import Image from "next/image";
 import { useMotionValueEvent, useScroll, motion } from "framer-motion";
 import { useState } from "react";
-import { POT2PUMP_DOMAIN } from "@/config/domains";
+import { appPathsList } from "@/config/allAppPath";
 import WalletBar from "@/components/WalletBar/WalletBar";
+
+// Helper function to check if URL is external
+const isExternalUrl = (url: string): boolean => {
+  if (typeof window === "undefined") return true; // SSR: assume external
+  try {
+    const urlObj = new URL(url, window.location.origin);
+    return urlObj.hostname !== window.location.hostname;
+  } catch {
+    return false; // Relative URLs are internal
+  }
+};
 
 export default function Header() {
   const [headerBg, setHeaderBg] = useState("#80BFE5");
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -19,6 +31,7 @@ export default function Header() {
       setHeaderBg("#80BFE5");
     }
   });
+
   return (
     <header className={styles["header"]}>
       <motion.div
@@ -38,44 +51,61 @@ export default function Header() {
         </Link>
         <nav className={styles["nav"]}>
           <ul className={styles["nav-list"]}>
-            <li className={styles["nav-item"]}>
-              <Link href={POT2PUMP_DOMAIN} target="_blank">
-                <span className={styles["nav-link"]}>Launch App</span>
-              </Link>
-            </li>{" "}
-            <li className={styles["nav-item"]}>
-              <Link href="https://docs.honeypotfinance.xyz/" target="_blank">
-                <span className={styles["nav-link"]}>Docs</span>
-              </Link>
-            </li>
-            <li className={styles["nav-item"]}>
-              <Link
-                href="https://docs.google.com/forms/d/e/1FAIpQLSeOS9Ws_jlUtWl79OFQHnyUlgKHOReK826sppzj8lTmEQCjCQ/viewform"
-                target="_blank"
-              >
-                <span className={styles["nav-link"]}>Get In Touch</span>
-              </Link>
-            </li>
-            {/* <li className={styles["nav-item"]}>
-              <Link href="/homepage1">
-                <span className={styles["nav-link"]}>Introduction</span>
-              </Link>
-            </li>
-            <li className={styles["nav-item"]}>
-              <Link href="/homepage2">
-                <span className={styles["nav-link"]}>Architecture</span>
-              </Link>
-            </li>
-            <li className={styles["nav-item"]}>
-              <Link href="/homepage3">
-                <span className={styles["nav-link"]}>FTO Model</span>
-              </Link>
-            </li>
-            <li className={styles["nav-item"]}>
-              <Link href="/homepage4">
-                <span className={styles["nav-link"]}>Custom Hooks</span>
-              </Link>
-            </li> */}
+            {appPathsList.map((menu, index) => {
+              const isDropdown = Array.isArray(menu.path);
+              const isOpen = openDropdown === menu.title;
+
+              if (isDropdown) {
+                return (
+                  <li
+                    key={index}
+                    className={`${styles["nav-item"]} ${styles["nav-dropdown"]}`}
+                    onMouseEnter={() => setOpenDropdown(menu.title)}
+                    onMouseLeave={() => setOpenDropdown(null)}
+                  >
+                    {menu.beforeElement}
+                    <span className={styles["nav-link"]}>
+                      {menu.title}
+                      <span className={styles["dropdown-arrow"]}>▼</span>
+                    </span>
+                    {menu.afterElement}
+                    {isOpen && Array.isArray(menu.path) && (
+                      <ul className={styles["dropdown-menu"]}>
+                        {menu.path.map((subItem, subIndex) => (
+                          <li key={subIndex} className={styles["dropdown-item"]}>
+                            <Link
+                              href={subItem.path}
+                              target={isExternalUrl(subItem.path) ? "_blank" : "_self"}
+                              rel={isExternalUrl(subItem.path) ? "noopener noreferrer" : undefined}
+                            >
+                              {subItem.beforeElement}
+                              {subItem.title}
+                              {subItem.afterElement}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                );
+              }
+
+              // Simple menu item (path is string)
+              const menuPath = menu.path as string;
+              return (
+                <li key={index} className={styles["nav-item"]}>
+                  <Link
+                    href={menuPath}
+                    target={isExternalUrl(menuPath) ? "_blank" : "_self"}
+                    rel={isExternalUrl(menuPath) ? "noopener noreferrer" : undefined}
+                  >
+                    {menu.beforeElement}
+                    <span className={styles["nav-link"]}>{menu.title}</span>
+                    {menu.afterElement}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
           <WalletBar />
         </nav>

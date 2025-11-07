@@ -7,6 +7,16 @@ import { Menu } from "@/config/allAppPath";
 import { useRouter, usePathname } from "next/navigation";
 import { Button } from "@heroui/react";
 
+// Helper function to check if URL is external
+const isExternalUrl = (url: string): boolean => {
+  try {
+    const urlObj = new URL(url, window.location.origin);
+    return urlObj.hostname !== window.location.hostname;
+  } catch {
+    return false; // Relative URLs are internal
+  }
+};
+
 import { Navbar, NavbarMenu, NavbarMenuToggle } from "@heroui/react";
 import { useState } from "react";
 import Link from "next/link";
@@ -46,12 +56,14 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
         >
           <div
             className={cn(
-              "p-3 text-white text-lg font-poppins font-bold rounded-lg transition hover:bg-[#2a2a2a] cursor-pointer",
+              "p-3 text-white text-lg font-poppins font-bold rounded-lg transition hover:bg-[#2a2a2a] cursor-pointer flex items-center gap-1",
               isSub ? "bg-[#1a1a1a] text-base font-medium" : "bg-[#2a2a2a]"
             )}
             onClick={() => setIsMenuOpen(false)}
           >
+            {m.beforeElement}
             {m.title}
+            {m.afterElement}
           </div>
           {listToNavbarItem(m.path as Menu[], true)}
         </div>
@@ -60,16 +72,18 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
           key={m.title}
           href={m.path as string}
           className={cn(
-            "block p-3 text-white text-lg font-poppins font-bold rounded-lg transition hover:bg-[#2a2a2a]",
+            "flex items-center gap-1 p-3 text-white text-lg font-poppins font-bold rounded-lg transition hover:bg-[#2a2a2a]",
             isSub
               ? "ml-4 bg-[#1a1a1a] text-base font-medium border-l-2 border-[#FFCD4D] pl-3"
               : "bg-[#2a2a2a]"
           )}
-          target={m.external !== false ? "_blank" : undefined}
-          rel={m.external !== false ? "noopener noreferrer" : undefined}
+          target={isExternalUrl(m.path as string) ? "_blank" : undefined}
+          rel={isExternalUrl(m.path as string) ? "noopener noreferrer" : undefined}
           onClick={() => setIsMenuOpen(false)}
         >
+          {m.beforeElement}
           {m.title}
+          {m.afterElement}
         </Link>
       )
     );
@@ -91,17 +105,19 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
               activeDropdown === menu.title ? "bg-[#2a2a2a] text-white" : ""
             )}
           >
+            {menu.beforeElement}
             {menu.title}
+            {menu.afterElement}
           </Button>
           {activeDropdown === menu.title && (
             <div className="absolute top-[calc(100%-1px)] left-0 bg-[#1a1a1a] border border-gray-700 rounded-lg shadow-lg p-2 min-w-[200px] z-50">
               {menu.path.map((submenu) => (
                 <button
                   key={submenu.title}
-                  className="w-full text-left text-gray-300 hover:bg-[#2a2a2a] hover:text-white rounded-md p-2"
+                  className="w-full text-left text-gray-300 hover:bg-[#2a2a2a] hover:text-white rounded-md p-2 flex items-center gap-1"
                   onClick={() => {
                     if (submenu.routePath) {
-                      if (submenu.external !== false) {
+                      if (isExternalUrl(submenu.routePath)) {
                         window.open(
                           submenu.routePath,
                           "_blank",
@@ -113,7 +129,9 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
                     }
                   }}
                 >
+                  {submenu.beforeElement}
                   {submenu.title}
+                  {submenu.afterElement}
                 </button>
               ))}
             </div>
@@ -132,7 +150,7 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
         )}
         onPress={() => {
           if (typeof menu.path === "string") {
-            if (menu.external !== false) {
+            if (isExternalUrl(menu.path)) {
               window.open(menu.path, "_blank", "noopener,noreferrer");
             } else {
               router.push(menu.path);
@@ -140,7 +158,9 @@ const HoneyNavbar: React.FC<NavbarProps> = ({ menuList }) => {
           }
         }}
       >
+        {menu.beforeElement}
         {menu.title}
+        {menu.afterElement}
       </Button>
     );
   };

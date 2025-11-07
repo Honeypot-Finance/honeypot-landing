@@ -10,20 +10,20 @@ export type Menu = {
         title: string;
         routePath: string;
         icon?: StaticImageData;
-        footer?: ReactNode;
-        external?: boolean;
+        beforeElement?: ReactNode;
+        afterElement?: ReactNode;
       }[];
   title: string;
   routePath?: string;
   icon?: StaticImageData;
-  external?: boolean;
+  beforeElement?: ReactNode;
+  afterElement?: ReactNode;
 };
 
 export type flatMenu = {
   path: string;
   title: string;
   icon?: StaticImageData;
-  external?: boolean;
 };
 
 export const appPathsList: Menu[] = [
@@ -34,31 +34,44 @@ export const appPathsList: Menu[] = [
         title: "Perp",
         path: "https://wasabee.honeypotfinance.xyz/perp",
         routePath: "https://wasabee.honeypotfinance.xyz/perp",
-        external: true,
+        afterElement: (
+          <span
+            style={{
+              color: "#FF4444",
+              backgroundColor: "rgba(255, 68, 68, 0.1)",
+              fontSize: "10px",
+              fontWeight: "bold",
+              marginLeft: "6px",
+              padding: "2px 6px",
+              borderRadius: "4px",
+              border: "1px solid #FF4444",
+              display: "inline-block",
+              lineHeight: "1",
+            }}
+          >
+            BETA
+          </span>
+        ),
       },
       {
         title: "Swap",
         path: "https://wasabee.honeypotfinance.xyz/swap",
         routePath: "https://wasabee.honeypotfinance.xyz/swap",
-        external: true,
       },
       {
         title: "Multi-Token Swap",
         path: "https://wasabee.honeypotfinance.xyz/xswap",
         routePath: "https://wasabee.honeypotfinance.xyz/xswap",
-        external: true,
       },
       {
         title: "Cross-Chain Swap",
         path: "https://wasabee.honeypotfinance.xyz/cross-chain-swap",
         routePath: "https://wasabee.honeypotfinance.xyz/cross-chain-swap",
-        external: true,
       },
       {
         title: "Bridge",
         path: "https://wasabee.honeypotfinance.xyz/bridge",
         routePath: "https://wasabee.honeypotfinance.xyz/bridge",
-        external: true,
       },
     ],
   },
@@ -69,31 +82,44 @@ export const appPathsList: Menu[] = [
         title: "Points",
         path: "https://points.honeypotfinance.xyz/loyalty",
         routePath: "https://points.honeypotfinance.xyz/loyalty",
-        external: true,
+        afterElement: (
+          <span
+            style={{
+              color: "#FFB800",
+              backgroundColor: "rgba(255, 184, 0, 0.1)",
+              fontSize: "10px",
+              fontWeight: "bold",
+              marginLeft: "6px",
+              padding: "2px 6px",
+              borderRadius: "4px",
+              border: "1px solid #FFB800",
+              display: "inline-block",
+              lineHeight: "1",
+            }}
+          >
+            Pre-TGE
+          </span>
+        ),
       },
       {
         title: "Pools",
         path: "https://wasabee.honeypotfinance.xyz/pools",
         routePath: "https://wasabee.honeypotfinance.xyz/pools",
-        external: true,
       },
       {
         title: "Automated Vaults",
         path: "https://wasabee.honeypotfinance.xyz/pools",
         routePath: "https://wasabee.honeypotfinance.xyz/pools",
-        external: true,
       },
       {
         title: "All In One Vault",
         path: "https://leaderboard.honeypotfinance.xyz/",
         routePath: "https://leaderboard.honeypotfinance.xyz/",
-        external: true,
       },
       {
         title: "NFT Staking",
         path: "https://nft.honeypotfinance.xyz/staking",
         routePath: "https://nft.honeypotfinance.xyz/staking",
-        external: true,
       },
     ],
   },
@@ -104,25 +130,21 @@ export const appPathsList: Menu[] = [
         title: "Dreampad",
         path: "https://dreampad.honeypotfinance.xyz/",
         routePath: "https://dreampad.honeypotfinance.xyz/",
-        external: true,
       },
       {
         title: "Pot2Pump Overview",
         path: "https://pot2pump.honeypotfinance.xyz/",
         routePath: "https://pot2pump.honeypotfinance.xyz/",
-        external: true,
       },
       {
         title: "Launch Meme",
         path: "https://pot2pump.honeypotfinance.xyz/potting",
         routePath: "https://pot2pump.honeypotfinance.xyz/potting",
-        external: true,
       },
       {
         title: "Trade Meme",
         path: "https://pot2pump.honeypotfinance.xyz/pumping",
         routePath: "https://pot2pump.honeypotfinance.xyz/pumping",
-        external: true,
       },
     ],
   },
@@ -133,20 +155,17 @@ export const appPathsList: Menu[] = [
         title: "Points",
         path: "https://points.honeypotfinance.xyz/loyalty",
         routePath: "https://points.honeypotfinance.xyz/loyalty",
-        external: true,
       },
       {
         title: "App Leaderboard",
         path: "https://leaderboard.honeypotfinance.xyz/leaderboard",
         routePath: "https://leaderboard.honeypotfinance.xyz/leaderboard",
-        external: true,
       },
     ],
   },
   {
     title: "Docs",
     path: "https://docs.honeypotfinance.xyz/",
-    external: true,
   },
 ];
 
@@ -158,7 +177,6 @@ const getFlatPaths = (paths: Menu[]): flatMenu[] => {
       flatPaths.push({
         path: path.path,
         title: path.title,
-        external: path.external,
       });
     }
     if (Array.isArray(path.path)) {
