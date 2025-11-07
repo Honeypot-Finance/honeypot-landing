@@ -161,6 +161,11 @@ export const appPathsList: Menu[] = [
         path: "https://leaderboard.honeypotfinance.xyz/leaderboard",
         routePath: "https://leaderboard.honeypotfinance.xyz/leaderboard",
       },
+      {
+        title: "User Dashboard",
+        path: "https://honeypotfinance.xyz/dashboard",
+        routePath: "https://honeypotfinance.xyz/dashboard",
+      },
     ],
   },
   {
