@@ -32,8 +32,8 @@ export const appPathsList: Menu[] = [
     path: [
       {
         title: "Perp",
-        path: "https://wasabee.honeypotfinance.xyz/perp",
-        routePath: "https://wasabee.honeypotfinance.xyz/perp",
+        path: "https://perp.honeypotfinance.xyz",
+        routePath: "https://perp.honeypotfinance.xyz",
         afterElement: (
           <span
             style={{
