@@ -40,6 +40,15 @@ const recommendedMoves: RecommendedMove[] = [
     link: 'https://leaderboard.honeypotfinance.xyz/',
     gradient: 'linear-gradient(135deg, #DC2626 0%, #F97316 100%)'
   },
+  {
+    id: '4',
+    title: 'Follow on Binance Square',
+    description: 'Stay updated with the latest news, announcements, and insights from Honeypot Finance',
+    icon: '📢',
+    action: 'Follow Now',
+    link: 'https://www.binance.com/en/square/profile/honeypotfinance',
+    gradient: 'linear-gradient(135deg, #F0B90B 0%, #F3BA2F 100%)'
+  },
 ];
 
 export default function MissionsSidebar() {
