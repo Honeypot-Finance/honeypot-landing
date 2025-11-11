@@ -240,80 +240,80 @@ export default function HomePage() {
     const initScrollHandler = () => {
       // 滚动处理
       const handleScroll = () => {
-      const scrolled = window.scrollY;
-      const viewportHeight = window.innerHeight;
+        const scrolled = window.scrollY;
+        const viewportHeight = window.innerHeight;
 
-      const parallaxElements =
-        document.querySelectorAll<HTMLElement>(".parallax");
-      const floatingElements =
-        document.querySelectorAll<HTMLElement>(".floating");
-      const scaleElements =
-        document.querySelectorAll<HTMLElement>(".scale-on-scroll");
-      const scrollAnimateElements =
-        document.querySelectorAll<HTMLElement>(".scroll-animate");
+        const parallaxElements =
+          document.querySelectorAll<HTMLElement>(".parallax");
+        const floatingElements =
+          document.querySelectorAll<HTMLElement>(".floating");
+        const scaleElements =
+          document.querySelectorAll<HTMLElement>(".scale-on-scroll");
+        const scrollAnimateElements =
+          document.querySelectorAll<HTMLElement>(".scroll-animate");
 
-      // 处理视差滚动元素
-      parallaxElements.forEach((element) => {
-        const speed = parseFloat(element.getAttribute("data-speed") || "0.5");
-        const rect = element.getBoundingClientRect();
-        const elementTop = rect.top + scrolled;
+        // 处理视差滚动元素
+        parallaxElements.forEach((element) => {
+          const speed = parseFloat(element.getAttribute("data-speed") || "0.5");
+          const rect = element.getBoundingClientRect();
+          const elementTop = rect.top + scrolled;
 
-        // 只有当元素接近视口时才计算动画
-        if (Math.abs(elementTop - scrolled) < viewportHeight * 1.5) {
-          const xPos = (scrolled - elementTop) * speed;
-          element.style.setProperty(
-            "transform",
-            `translateX(${xPos}px)`,
-            "important"
-          );
-        }
-      });
-
-      // 处理浮动元素
-      floatingElements.forEach((element) => {
-        const rect = element.getBoundingClientRect();
-        const elementTop = rect.top + scrolled;
-
-        if (Math.abs(elementTop - scrolled) < viewportHeight * 1.5) {
-          const yPos = Math.sin((scrolled - elementTop) * 0.002) * 20;
-          element.style.transform = `translateY(${yPos}px)`;
-        }
-      });
-
-      // 处理缩放元素
-      scaleElements.forEach((element) => {
-        const rect = element.getBoundingClientRect();
-        const elementMiddle = rect.top + rect.height / 2;
-        const viewportMiddle = viewportHeight / 2;
-        const distanceFromCenter = Math.abs(elementMiddle - viewportMiddle);
-
-        if (distanceFromCenter < viewportHeight) {
-          const scale =
-            1 + Math.max(0, (1 - distanceFromCenter / viewportHeight) * 0.1);
-          element.style.transform = `scale(${Math.min(scale, 1.1)})`;
-        }
-      });
-
-      // 处理滚动显示动画
-      scrollAnimateElements.forEach((element) => {
-        const rect = element.getBoundingClientRect();
-        if (rect.top < viewportHeight * 0.85 && rect.bottom > 0) {
-          element.classList.add("animate");
-        }
-      });
-    };
-
-    // 添加滚动监听，使用 requestAnimationFrame 优化性能
-    let ticking = false;
-    const scrollHandler = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          handleScroll();
-          ticking = false;
+          // 只有当元素接近视口时才计算动画
+          if (Math.abs(elementTop - scrolled) < viewportHeight * 1.5) {
+            const xPos = (scrolled - elementTop) * speed;
+            element.style.setProperty(
+              "transform",
+              `translateX(${xPos}px)`,
+              "important"
+            );
+          }
         });
-        ticking = true;
-      }
-    };
+
+        // 处理浮动元素
+        floatingElements.forEach((element) => {
+          const rect = element.getBoundingClientRect();
+          const elementTop = rect.top + scrolled;
+
+          if (Math.abs(elementTop - scrolled) < viewportHeight * 1.5) {
+            const yPos = Math.sin((scrolled - elementTop) * 0.002) * 20;
+            element.style.transform = `translateY(${yPos}px)`;
+          }
+        });
+
+        // 处理缩放元素
+        scaleElements.forEach((element) => {
+          const rect = element.getBoundingClientRect();
+          const elementMiddle = rect.top + rect.height / 2;
+          const viewportMiddle = viewportHeight / 2;
+          const distanceFromCenter = Math.abs(elementMiddle - viewportMiddle);
+
+          if (distanceFromCenter < viewportHeight) {
+            const scale =
+              1 + Math.max(0, (1 - distanceFromCenter / viewportHeight) * 0.1);
+            element.style.transform = `scale(${Math.min(scale, 1.1)})`;
+          }
+        });
+
+        // 处理滚动显示动画
+        scrollAnimateElements.forEach((element) => {
+          const rect = element.getBoundingClientRect();
+          if (rect.top < viewportHeight * 0.85 && rect.bottom > 0) {
+            element.classList.add("animate");
+          }
+        });
+      };
+
+      // 添加滚动监听，使用 requestAnimationFrame 优化性能
+      let ticking = false;
+      const scrollHandler = () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            handleScroll();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      };
 
       // 初始触发一次处理
       handleScroll();
@@ -330,7 +330,7 @@ export default function HomePage() {
 
     // Use requestIdleCallback or setTimeout to defer initialization
     let cleanup: (() => void) | undefined;
-    if ('requestIdleCallback' in window) {
+    if ("requestIdleCallback" in window) {
       requestIdleCallback(() => {
         cleanup = initScrollHandler();
       });
@@ -455,10 +455,7 @@ export default function HomePage() {
           <button
             onClick={() => {
               if (typeof window !== "undefined") {
-                window.open(
-                  "https://wasabee.honeypotfinance.xyz/perp",
-                  "_blank"
-                );
+                window.open("https://perp.honeypotfinance.xyz/", "_blank");
               }
             }}
             className="mt-8 text-black rounded-full hover:opacity-90 transition-all font-bold text-base sm:text-lg md:text-xl shadow-lg hover:shadow-xl hover:scale-105 pl-8 pr-3 py-3 flex items-center gap-4"
