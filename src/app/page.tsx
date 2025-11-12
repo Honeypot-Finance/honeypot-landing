@@ -494,7 +494,7 @@ export default function HomePage() {
             description="Trade perpetual futures with real on-chain depth, dynamic risk vaults, and 100% AMM-powered liquidity."
             imageSrc="/images/landing-new-assets-202511/rocket.svg"
             imageAlt="Perp Trading"
-            link="https://wasabee.honeypotfinance.xyz/perp"
+            link="https://perp.honeypotfinance.xyz/"
           />
           <FeatureCard
             title="Spot Trading"
