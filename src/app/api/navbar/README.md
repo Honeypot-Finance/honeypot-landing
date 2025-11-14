@@ -12,15 +12,17 @@ GET /api/navbar
 
 ```typescript
 type Menu = {
-  path: string | Array<{
-    path: string;
-    title: string;
-    routePath: string;
-    icon?: StaticImageData;
-    external?: boolean;
-    beforeElement?: ReactNode;
-    afterElement?: ReactNode;
-  }>;
+  path:
+    | string
+    | Array<{
+        path: string;
+        title: string;
+        routePath: string;
+        icon?: StaticImageData;
+        external?: boolean;
+        beforeElement?: ReactNode;
+        afterElement?: ReactNode;
+      }>;
   title: string;
   routePath?: string;
   icon?: StaticImageData;
@@ -56,14 +58,14 @@ interface NavbarResponse {
       "path": [
         {
           "title": "Perp",
-          "path": "https://wasabee.honeypotfinance.xyz/perp",
-          "routePath": "https://wasabee.honeypotfinance.xyz/perp",
+          "path": "https://dex.honeypotfinance.xyz/perp",
+          "routePath": "https://dex.honeypotfinance.xyz/perp",
           "external": true
         },
         {
           "title": "Swap",
-          "path": "https://wasabee.honeypotfinance.xyz/swap",
-          "routePath": "https://wasabee.honeypotfinance.xyz/swap",
+          "path": "https://dex.honeypotfinance.xyz/swap",
+          "routePath": "https://dex.honeypotfinance.xyz/swap",
           "external": true
         }
       ]
@@ -93,15 +95,17 @@ interface NavbarResponse {
 ### In React/Next.js
 
 ```typescript
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 type Menu = {
-  path: string | Array<{
-    path: string;
-    title: string;
-    routePath: string;
-    external?: boolean;
-  }>;
+  path:
+    | string
+    | Array<{
+        path: string;
+        title: string;
+        routePath: string;
+        external?: boolean;
+      }>;
   title: string;
   routePath?: string;
   external?: boolean;
@@ -122,14 +126,14 @@ export function useNavbarConfig() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('https://honeypotfinance.xyz/api/navbar')
-      .then(res => res.json())
-      .then(data => {
+    fetch("https://honeypotfinance.xyz/api/navbar")
+      .then((res) => res.json())
+      .then((data) => {
         setConfig(data);
         setLoading(false);
       })
-      .catch(err => {
-        console.error('Failed to load navbar config:', err);
+      .catch((err) => {
+        console.error("Failed to load navbar config:", err);
         setLoading(false);
       });
   }, []);
@@ -141,13 +145,14 @@ export function useNavbarConfig() {
 ### Direct Fetch
 
 ```typescript
-const response = await fetch('https://honeypotfinance.xyz/api/navbar');
+const response = await fetch("https://honeypotfinance.xyz/api/navbar");
 const navbarConfig = await response.json();
 ```
 
 ## Caching
 
 The endpoint is configured with the following cache headers:
+
 - `Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400`
 - Static generation enabled for optimal performance
 
@@ -159,6 +164,7 @@ The menu supports both simple links and nested dropdown menus:
 - **Dropdown menu**: Menu item with `path` as an array of submenu items (e.g., Trade, Earn)
 
 Each menu item can have:
+
 - `title`: Display text for the menu item
 - `path`: URL string or array of submenu items
 - `routePath`: Used for routing (in submenu items)

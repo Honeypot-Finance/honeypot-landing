@@ -1,4 +1,4 @@
-export const DEX_DOMAIN = "https://wasabee.honeypotfinance.xyz/";
+export const DEX_DOMAIN = "https://dex.honeypotfinance.xyz/";
 export const NFT_DOMAIN = "https://nft.honeypotfinance.xyz/";
 export const POINT_DOMAIN = "https://points.honeypotfinance.xyz/loyalty";
 export const NFT_METADATA_BASE_URL =
@@ -14,4 +14,4 @@ export const AIOV_DOMAIN =
 export const MAIN_APP_DOMAIN = "https://app.honeypotfinance.xyz";
 export const POT2PUMP_DOMAIN = "https://pot2pump.honeypotfinance.xyz";
 export const DREAMPAD_DOMAIN = "https://dreampad.honeypotfinance.xyz";
-export const WASABEE_DOMAIN = "https://wasabee.honeypotfinance.xyz";
+export const WASABEE_DOMAIN = "https://dex.honeypotfinance.xyz";

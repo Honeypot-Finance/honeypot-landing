@@ -501,21 +501,21 @@ export default function HomePage() {
             description="Instant token swaps with deep liquidity"
             imageSrc="/images/landing-new-assets-202511/infinite.svg"
             imageAlt="Spot Trading"
-            link="https://wasabee.honeypotfinance.xyz/swap"
+            link="https://dex.honeypotfinance.xyz/swap"
           />
           <FeatureCard
             title="Automated AMM"
             description="Automated market making with optimized pricing"
             imageSrc="/images/landing-new-assets-202511/charge-honey.svg"
             imageAlt="Automated AMM"
-            link="https://wasabee.honeypotfinance.xyz/pools"
+            link="https://dex.honeypotfinance.xyz/pools"
           />
           <FeatureCard
             title="Multichain"
             description="Trade across multiple blockchains seamlessly"
             imageSrc="/images/landing-new-assets-202511/chain.svg"
             imageAlt="Multichain"
-            link="https://wasabee.honeypotfinance.xyz/swap"
+            link="https://dex.honeypotfinance.xyz/swap"
           />
         </div>
       </div>
@@ -890,7 +890,7 @@ export default function HomePage() {
               Meme
             </a>
             <a
-              href="https://wasabee.honeypotfinance.xyz/"
+              href="https://dex.honeypotfinance.xyz/"
               target="_blank"
               rel="noopener noreferrer"
             >
