@@ -34,24 +34,6 @@ export const appPathsList: Menu[] = [
         title: "Perp",
         path: "https://perp.honeypotfinance.xyz",
         routePath: "https://perp.honeypotfinance.xyz",
-        afterElement: (
-          <span
-            style={{
-              color: "#FF4444",
-              backgroundColor: "rgba(255, 68, 68, 0.1)",
-              fontSize: "10px",
-              fontWeight: "bold",
-              marginLeft: "6px",
-              padding: "2px 6px",
-              borderRadius: "4px",
-              border: "1px solid #FF4444",
-              display: "inline-block",
-              lineHeight: "1",
-            }}
-          >
-            BETA
-          </span>
-        ),
       },
       {
         title: "Swap",
