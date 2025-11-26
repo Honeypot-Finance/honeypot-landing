@@ -1,4 +1,21 @@
 import { getDefaultConfig } from "@rainbow-me/rainbowkit";
+import {
+  coinbaseWallet,
+  metaMaskWallet,
+  walletConnectWallet,
+  rainbowWallet,
+  trustWallet,
+  okxWallet,
+  phantomWallet,
+  ledgerWallet,
+  argentWallet,
+  bitgetWallet,
+  gateWallet,
+  bybitWallet,
+  rabbyWallet,
+  safeWallet,
+  injectedWallet,
+} from "@rainbow-me/rainbowkit/wallets";
 import { berachain, bsc } from "wagmi/chains";
 import { createConfig, http } from "wagmi";
 
@@ -32,11 +49,13 @@ export const getConfig = () => {
   }
 
   if (!configInstance) {
+    const projectId =
+      process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ||
+      "23b1ff4e22147bdf7cab13c0ee4bed90";
+
     configInstance = getDefaultConfig({
       appName: "Honeypot Finance",
-      projectId:
-        process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ||
-        "23b1ff4e22147bdf7cab13c0ee4bed90",
+      projectId,
       chains: [berachain, bsc],
       ssr: true,
       batch: {
@@ -44,6 +63,33 @@ export const getConfig = () => {
           wait: 50,
         },
       },
+      wallets: [
+        {
+          groupName: "Popular",
+          wallets: [
+            metaMaskWallet,
+            walletConnectWallet,
+            coinbaseWallet,
+            rabbyWallet,
+            okxWallet,
+            trustWallet,
+          ],
+        },
+        {
+          groupName: "More Wallets",
+          wallets: [
+            phantomWallet,
+            rainbowWallet,
+            bybitWallet,
+            bitgetWallet,
+            gateWallet,
+            ledgerWallet,
+            argentWallet,
+            safeWallet,
+            injectedWallet,
+          ],
+        },
+      ],
     });
 
     // Store in global singleton
