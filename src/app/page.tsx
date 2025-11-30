@@ -13,6 +13,7 @@ import AnimationWrapper from "@/components/AnimationWrapper/AnimationWrapper";
 import PerpDexSection from "@/components/PerpDexSection";
 import { FAQSection } from "@/components/FAQ/FAQSection";
 import { DirectAnswers } from "@/components/DirectAnswers/DirectAnswers";
+import { AuthoritySection } from "@/components/Authority/AuthoritySection";
 
 // Import images
 import flyingBee from "@/assets/dex_plus_plus_images/flying_bee.svg";
@@ -345,6 +346,9 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Authority Section - Team, partners, investors for credibility */}
+        <AuthoritySection />
+
         {/* Direct Answers Section - Quotable content for RAG systems */}
         <DirectAnswers />
 
@@ -391,7 +395,7 @@ export default function HomePage() {
         </section>
 
         {/* Partners Section */}
-        <section className="w-full py-16 px-4 relative z-10 scroll-animate">
+        <section id="partners" className="w-full py-16 px-4 relative z-10 scroll-animate">
           <div className="max-w-7xl mx-auto">
             {/* Investors */}
             <h2 className="text-3xl sm:text-4xl md:text-5xl text-white text-center font-poppins font-bold mb-12">

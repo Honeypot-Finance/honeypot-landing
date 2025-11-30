@@ -13,7 +13,7 @@ export function OrganizationSchema() {
     url: "https://honeypotfinance.xyz",
     logo: "https://honeypotfinance.xyz/images/honeypot-logo.svg",
     description:
-      "Honeypot Finance is a next-generation multi-chain DeFi liquidity hub offering perpetual trading, spot trading, automated AMM, and cross-chain swaps.",
+      "Honeypot Finance is a next-generation multi-chain DeFi liquidity hub offering perpetual trading, spot trading, automated AMM, and cross-chain swaps. Built by a team of Ph.D. blockchain specialists, former CTOs, and top-ranked senior developers.",
     foundingDate: "2024",
     sameAs: [
       "https://x.com/honeypotfinance",
@@ -27,6 +27,54 @@ export function OrganizationSchema() {
       contactType: "customer support",
       url: "https://discord.gg/NfnK78KJxH",
     },
+    member: [
+      {
+        "@type": "Person",
+        name: "Wilson",
+        jobTitle: "CEO",
+        sameAs: "https://twitter.com/0xWilsonWu",
+      },
+      {
+        "@type": "Person",
+        name: "Taki",
+        jobTitle: "CTO",
+        sameAs: "https://twitter.com/0xTaki_eth",
+      },
+      {
+        "@type": "Person",
+        name: "Pot the Bera",
+        jobTitle: "Operations Manager",
+        sameAs: "https://twitter.com/PotTheBera",
+      },
+      {
+        "@type": "Person",
+        name: "Ian",
+        jobTitle: "Marketing & Partnerships",
+        sameAs: "https://twitter.com/naibother_",
+      },
+      {
+        "@type": "Person",
+        name: "Punk",
+        jobTitle: "Smart Contract Developer",
+        sameAs: "https://x.com/punk2sang",
+      },
+    ],
+    funder: [
+      { "@type": "Organization", name: "Mask Network", url: "https://mask.io/" },
+      { "@type": "Organization", name: "AC Capital", url: "https://accapital.io/" },
+      { "@type": "Organization", name: "TKX Capital", url: "https://link3.to/tkx" },
+      { "@type": "Organization", name: "Sanyuan Capital", url: "https://www.sanyuanlab.com/" },
+      { "@type": "Organization", name: "Aquanow", url: "https://www.aquanow.com/" },
+      { "@type": "Organization", name: "CSP DAO", url: "https://www.cspdao.network/" },
+    ],
+    sponsor: [
+      { "@type": "Organization", name: "Chainlink", url: "https://chain.link/" },
+      { "@type": "Organization", name: "Axelar", url: "https://axelar.network/" },
+      { "@type": "Organization", name: "OKX", url: "https://www.okx.com/" },
+      { "@type": "Organization", name: "Particle Network", url: "https://particle.network/" },
+      { "@type": "Organization", name: "Algebra", url: "https://algebra.finance/" },
+      { "@type": "Organization", name: "Fjord Foundry", url: "https://www.fjordfoundry.com/" },
+    ],
   };
 
   const websiteSchema = {
