@@ -25,6 +25,7 @@ import NFTCarousel from "@/components/NFTCarousel/NFTCarousel";
 import { HeroButtons } from "@/components/HomePage/HeroButtons";
 import { NFTButtons } from "@/components/HomePage/NFTButtons";
 import { DiscordButton } from "@/components/HomePage/DiscordButton";
+import { GetStartedCTA } from "@/components/HomePage/GetStartedCTA";
 
 const nftImages = [
   "/nft-rolling-banner/1.avif",
@@ -393,6 +394,9 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        {/* Get Started CTA - Final conversion point */}
+        <GetStartedCTA />
 
         {/* Partners Section */}
         <section id="partners" className="w-full py-16 px-4 relative z-10 scroll-animate">
