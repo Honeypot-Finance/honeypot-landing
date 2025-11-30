@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import style from "./page.module.scss";
 import Image from "next/image";
 
@@ -9,6 +10,17 @@ import seaStar from "@/assets/other/sea_star.svg";
 import seaLayer from "@/assets/what_is_berachain/sea_layer.png";
 import wibTitle from "@/assets/what_is_berachain/wib_title.png";
 import questionBera from "@/assets/beras/question.png";
+
+export const metadata: Metadata = {
+  title: "What is Berachain?",
+  description:
+    "Learn about Berachain, the innovative Layer 1 blockchain featuring Proof of Liquidity consensus. Discover how Honeypot Finance leverages Berachain for DeFi.",
+  openGraph: {
+    title: "What is Berachain? | Honeypot Finance",
+    description:
+      "Understand Berachain's unique Proof of Liquidity mechanism and its DeFi ecosystem.",
+  },
+};
 
 export default function WhatIsBerachain() {
   return (

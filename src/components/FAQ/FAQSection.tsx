@@ -1,12 +1,9 @@
-"use client";
-
-import { useState } from "react";
-
 /**
- * FAQ Accordion Component
+ * FAQ Section Component (Server Component)
  *
- * Interactive accordion with compact default state.
- * Maintains semantic markup for RAG systems while providing good UX.
+ * Uses native HTML details/summary for accordion - works without JavaScript.
+ * All content is server-rendered and visible to crawlers/AI systems.
+ * Progressive enhancement: CSS adds smooth animations.
  */
 
 const faqs = [
@@ -54,45 +51,32 @@ const faqs = [
 
 function FAQItem({
   faq,
-  isOpen,
-  onToggle,
   index,
 }: {
   faq: { question: string; answer: string };
-  isOpen: boolean;
-  onToggle: () => void;
   index: number;
 }) {
   return (
-    <article
-      className="bg-[#1F1609] border border-[#3a2f1a] rounded-2xl overflow-hidden hover:border-[#FFCD4D]/50 transition-colors"
+    <details
+      className="group bg-[#1F1609] border border-[#3a2f1a] rounded-2xl overflow-hidden hover:border-[#FFCD4D]/50 transition-colors"
       itemScope
       itemProp="mainEntity"
       itemType="https://schema.org/Question"
     >
-      {/* Question - Always visible */}
-      <button
-        onClick={onToggle}
-        className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 group"
-        aria-expanded={isOpen}
-        aria-controls={`faq-answer-${index}`}
-      >
+      {/* Question - Always visible, clickable summary */}
+      <summary className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
         <h3
-          className="text-base sm:text-lg font-bold text-white flex items-start gap-3 flex-1"
+          className="text-base sm:text-lg font-bold text-white flex items-start gap-3 flex-1 group-hover:text-[#FFCD4D] transition-colors"
           itemProp="name"
         >
-          <span className="text-[#FFCD4D] text-xl leading-none shrink-0">Q:</span>
-          <span className="group-hover:text-[#FFCD4D] transition-colors">
-            {faq.question}
+          <span className="text-[#FFCD4D] text-xl leading-none shrink-0">
+            Q:
           </span>
+          <span>{faq.question}</span>
         </h3>
 
-        {/* Chevron icon */}
-        <span
-          className={`shrink-0 w-6 h-6 flex items-center justify-center text-[#FFCD4D] transition-transform duration-300 ${
-            isOpen ? "rotate-180" : ""
-          }`}
-        >
+        {/* Chevron icon - rotates on open */}
+        <span className="shrink-0 w-6 h-6 flex items-center justify-center text-[#FFCD4D] transition-transform duration-300 group-open:rotate-180">
           <svg
             width="20"
             height="20"
@@ -109,38 +93,24 @@ function FAQItem({
             />
           </svg>
         </span>
-      </button>
+      </summary>
 
-      {/* Answer - Collapsible */}
+      {/* Answer - Server-rendered, visible in HTML source for crawlers */}
       <div
-        id={`faq-answer-${index}`}
-        className={`grid transition-all duration-300 ease-in-out ${
-          isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-        }`}
+        className="px-5 sm:px-6 pb-5 sm:pb-6 pt-0 pl-12 sm:pl-14 animate-fade-in"
         itemScope
         itemProp="acceptedAnswer"
         itemType="https://schema.org/Answer"
       >
-        <div className="overflow-hidden">
-          <p
-            className="px-5 sm:px-6 pb-5 sm:pb-6 pt-0 text-gray-300 leading-relaxed pl-12 sm:pl-14"
-            itemProp="text"
-          >
-            {faq.answer}
-          </p>
-        </div>
+        <p className="text-gray-300 leading-relaxed" itemProp="text">
+          {faq.answer}
+        </p>
       </div>
-    </article>
+    </details>
   );
 }
 
 export function FAQSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const handleToggle = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
   return (
     <section
       className="w-full py-16 px-4 relative z-10"
@@ -162,16 +132,10 @@ export function FAQSection() {
           </p>
         </div>
 
-        {/* FAQ Accordion */}
+        {/* FAQ Accordion - All content is in HTML, works without JS */}
         <div className="space-y-3">
           {faqs.map((faq, index) => (
-            <FAQItem
-              key={index}
-              faq={faq}
-              index={index}
-              isOpen={openIndex === index}
-              onToggle={() => handleToggle(index)}
-            />
+            <FAQItem key={index} faq={faq} index={index} />
           ))}
         </div>
 

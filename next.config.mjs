@@ -3,6 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   compress: true,
+  poweredByHeader: false, // Remove X-Powered-By header for security
   sassOptions: {
     includePaths: ["./src/styles"],
   },
@@ -61,11 +62,55 @@ const nextConfig = {
         destination: "https://dex.honeypotfinance.xyz/swap",
         permanent: false,
       },
-
       {
         source: "/cross-chain-swap",
         destination: "https://dex.honeypotfinance.xyz/cross-chain-swap",
         permanent: false,
+      },
+    ];
+  },
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          {
+            key: "X-DNS-Prefetch-Control",
+            value: "on",
+          },
+          {
+            key: "X-Content-Type-Options",
+            value: "nosniff",
+          },
+          {
+            key: "Referrer-Policy",
+            value: "strict-origin-when-cross-origin",
+          },
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=()",
+          },
+        ],
+      },
+      {
+        // Cache static assets aggressively
+        source: "/images/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        // Cache fonts
+        source: "/fonts/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
       },
     ];
   },

@@ -1,6 +1,18 @@
+import type { Metadata } from "next";
 import SectionContainer from "@/components/atoms/SectionContainer/SectionContainer";
 import IntroCard from "@/components/atoms/IntroCard/IntroCard";
 import { partners, investors } from "@/config/partners";
+
+export const metadata: Metadata = {
+  title: "Partners & Investors",
+  description:
+    "Explore Honeypot Finance's ecosystem of partners and investors including Chainlink, Axelar, OKX, Mask Network, AC Capital, and more leading Web3 organizations.",
+  openGraph: {
+    title: "Honeypot Finance Partners & Investors",
+    description:
+      "Backed by leading venture capital and integrated with top blockchain infrastructure providers.",
+  },
+};
 
 export default function PartnersPage() {
   return (
