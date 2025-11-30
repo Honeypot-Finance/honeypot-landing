@@ -347,8 +347,10 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Authority Section - Team, partners, investors for credibility */}
-        <AuthoritySection />
+        {/* Authority Section - Hidden visually, kept for SEO/GEO crawlers */}
+        <div className="sr-only">
+          <AuthoritySection />
+        </div>
 
         {/* Direct Answers Section - Quotable content for RAG systems */}
         <DirectAnswers />
