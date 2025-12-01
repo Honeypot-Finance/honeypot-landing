@@ -53,6 +53,11 @@ const faqs = [
     answer:
       "Honeypot is a leading multi-chain perpetual futures DEX due to its innovative vault-based risk engine, AMM-native matching system, and deep on-chain liquidity. Unlike traditional perp DEXs using orderbooks, Honeypot provides 100% AMM-powered trading with up to 100x leverage and real on-chain depth.",
   },
+  {
+    question: "Is Honeypot Finance audited and secure?",
+    answer:
+      "Yes, Honeypot Finance smart contracts have been audited by leading security firms including Halborn Security and Peckshield. The protocol prioritizes security with battle-tested infrastructure. Full audit reports and security documentation are available at docs.honeypotfinance.xyz/about.",
+  },
 ];
 
 function FAQItem({

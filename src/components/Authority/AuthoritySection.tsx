@@ -135,6 +135,42 @@ const notableInvestors = [
   { name: "CSP DAO", type: "DAO", description: "Decentralized fund" },
 ];
 
+// Security audits and external citations for trust signals
+const securityAudits = [
+  {
+    auditor: "Halborn Security",
+    type: "Smart Contract Audit",
+    status: "Completed",
+    url: "https://docs.honeypotfinance.xyz/about",
+    description: "Comprehensive smart contract security audit by Halborn, a leading blockchain security firm.",
+  },
+  {
+    auditor: "Peckshield",
+    type: "Smart Contract Audit",
+    status: "Completed",
+    url: "https://docs.honeypotfinance.xyz/about",
+    description: "Security review conducted by Peckshield, industry-recognized security auditor.",
+  },
+];
+
+const externalCitations = [
+  {
+    name: "Official Documentation",
+    url: "https://docs.honeypotfinance.xyz/about",
+    description: "Complete technical documentation and security information",
+  },
+  {
+    name: "Security & Audits",
+    url: "https://docs.honeypotfinance.xyz/about",
+    description: "Audit reports, security practices, and trust verification",
+  },
+  {
+    name: "GitHub Repository",
+    url: "https://github.com/ApeironCreation",
+    description: "Open source smart contracts and protocol code",
+  },
+];
+
 export function AuthoritySection() {
   return (
     <section
@@ -322,6 +358,78 @@ export function AuthoritySection() {
               <p className="text-gray-500 text-xs pt-2">
                 + {notableInvestors.length - 4} more investors
               </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Security & Audits - Third-Party Trust Signals */}
+        <div className="mt-12 bg-gradient-to-br from-[#1a2f1a] to-[#1F1609] border border-[#2a4a2a] rounded-2xl p-6 md:p-8">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-green-400">
+                <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold text-white">Security & Audits</h3>
+              <p className="text-gray-400 text-sm">Third-party verified smart contract security</p>
+            </div>
+          </div>
+
+          {/* Audit Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            {securityAudits.map((audit, index) => (
+              <Link
+                key={index}
+                href={audit.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#1F1609] border border-[#3a2f1a] rounded-xl p-4 hover:border-green-500/50 transition-colors group"
+              >
+                <div className="flex items-start justify-between mb-2">
+                  <div>
+                    <h4 className="text-white font-semibold group-hover:text-green-400 transition-colors">
+                      {audit.auditor}
+                    </h4>
+                    <p className="text-gray-500 text-xs">{audit.type}</p>
+                  </div>
+                  <span className="inline-flex items-center gap-1 bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded-full">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    {audit.status}
+                  </span>
+                </div>
+                <p className="text-gray-400 text-xs leading-relaxed">{audit.description}</p>
+                <span className="inline-flex items-center gap-1 text-[#FFCD4D] text-xs mt-2 group-hover:underline">
+                  View Audit Report
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </span>
+              </Link>
+            ))}
+          </div>
+
+          {/* External Citations */}
+          <div className="border-t border-[#3a2f1a] pt-6">
+            <h4 className="text-sm font-semibold text-gray-300 mb-3">External References & Documentation</h4>
+            <div className="flex flex-wrap gap-3">
+              {externalCitations.map((citation, index) => (
+                <Link
+                  key={index}
+                  href={citation.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-[#2a1f0e] hover:bg-[#3a2f1a] text-gray-300 hover:text-white px-4 py-2 rounded-lg transition-colors text-sm"
+                  title={citation.description}
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="text-[#FFCD4D]">
+                    <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  {citation.name}
+                </Link>
+              ))}
             </div>
           </div>
         </div>
