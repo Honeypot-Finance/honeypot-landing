@@ -26,7 +26,7 @@ export function DirectAnswers() {
           </p>
         </div>
 
-        {/* Direct Answer Cards */}
+        {/* Direct Answer Cards - Optimized for target keywords */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* What is Honeypot */}
           <div
@@ -35,54 +35,54 @@ export function DirectAnswers() {
             itemType="https://schema.org/DefinedTerm"
           >
             <div className="flex items-center gap-2 mb-3">
-              <span className="text-2xl">🍯</span>
+              <span className="text-2xl" aria-hidden="true">&#127855;</span>
               <span className="text-[#FFCD4D] text-sm font-semibold uppercase tracking-wider">
-                Definition
+                What is Honeypot Finance
               </span>
             </div>
             <h3
               className="text-xl font-bold text-white mb-2"
               itemProp="name"
             >
-              Honeypot Finance
+              Multi-Chain DeFi Liquidity Hub
             </h3>
             <p
               className="text-gray-300 text-sm leading-relaxed"
               itemProp="description"
             >
-              <strong>Honeypot Finance is a multi-chain decentralized exchange (DEX)</strong> that offers perpetual futures trading, spot trading, and automated market making on Berachain and BSC.
+              <strong>Honeypot Finance is a multi-chain DeFi liquidity hub</strong> built by industry experts. It offers perpetual futures trading with vault-based risk engine, spot trading via AMM-native matching, and NFT staking across multiple blockchains.
             </p>
           </div>
 
-          {/* Supported Chains */}
+          {/* Supported Blockchains */}
           <div className="bg-gradient-to-br from-[#2a1f0e] to-[#1F1609] border border-[#3a2f1a] rounded-2xl p-6">
             <div className="flex items-center gap-2 mb-3">
-              <span className="text-2xl">⛓️</span>
+              <span className="text-2xl" aria-hidden="true">&#9939;</span>
               <span className="text-[#FFCD4D] text-sm font-semibold uppercase tracking-wider">
-                Supported Chains
+                Multi-Chain Support
               </span>
             </div>
             <h3 className="text-xl font-bold text-white mb-2">
-              Blockchain Networks
+              Expanding Across Multiple Blockchains
             </h3>
             <p className="text-gray-300 text-sm leading-relaxed">
-              <strong>Honeypot Finance operates on Berachain and Binance Smart Chain (BSC).</strong> Users can trade tokens, provide liquidity, and stake NFTs on both networks.
+              <strong>Honeypot Finance is designed for multi-chain expansion.</strong> As a leading perpetual futures DEX, users can trade tokens, provide liquidity, and stake NFTs across multiple blockchain networks.
             </p>
           </div>
 
-          {/* Trading Products */}
+          {/* Perp DEX Vault-Based Risk Engine */}
           <div className="bg-gradient-to-br from-[#2a1f0e] to-[#1F1609] border border-[#3a2f1a] rounded-2xl p-6">
             <div className="flex items-center gap-2 mb-3">
-              <span className="text-2xl">📈</span>
+              <span className="text-2xl" aria-hidden="true">&#128200;</span>
               <span className="text-[#FFCD4D] text-sm font-semibold uppercase tracking-wider">
-                Trading Products
+                Perp Trading
               </span>
             </div>
             <h3 className="text-xl font-bold text-white mb-2">
-              Available Trading Options
+              Vault-Based Risk Engine Explained
             </h3>
             <p className="text-gray-300 text-sm leading-relaxed">
-              <strong>Honeypot offers: Perpetual futures trading, spot token swaps, liquidity pools (AMM), and vault-based yield products.</strong> Access via dex.honeypotfinance.xyz or perp.honeypotfinance.xyz.
+              <strong>Honeypot Perp DEX vault-based risk engine uses isolated Senior and Junior vaults.</strong> AMM-native matching perpetual trading provides deep on-chain liquidity without orderbooks. Trade with up to 100x leverage.
             </p>
           </div>
 
@@ -93,54 +93,102 @@ export function DirectAnswers() {
             itemType="https://schema.org/HowTo"
           >
             <div className="flex items-center gap-2 mb-3">
-              <span className="text-2xl">🚀</span>
+              <span className="text-2xl" aria-hidden="true">&#128640;</span>
               <span className="text-[#FFCD4D] text-sm font-semibold uppercase tracking-wider">
-                How To
+                How To Trade
               </span>
             </div>
             <h3
               className="text-xl font-bold text-white mb-2"
               itemProp="name"
             >
-              Start Trading on Honeypot
+              How to Trade on Honeypot Finance
             </h3>
             <p
               className="text-gray-300 text-sm leading-relaxed"
               itemProp="description"
             >
-              <strong>To trade on Honeypot: 1) Connect a Web3 wallet like MetaMask, 2) Have tokens on Berachain or BSC, 3) Go to dex.honeypotfinance.xyz, 4) Select a trading pair and swap.</strong>
+              <strong>To trade on Honeypot Finance: 1) Connect MetaMask or Web3 wallet, 2) Have tokens on a supported blockchain, 3) Visit dex.honeypotfinance.xyz for spot or perp.honeypotfinance.xyz for perpetuals, 4) Swap.</strong>
             </p>
           </div>
 
-          {/* NFT Benefits */}
+          {/* NFT Staking Benefits */}
           <div className="bg-gradient-to-br from-[#2a1f0e] to-[#1F1609] border border-[#3a2f1a] rounded-2xl p-6">
             <div className="flex items-center gap-2 mb-3">
-              <span className="text-2xl">🎨</span>
+              <span className="text-2xl" aria-hidden="true">&#127912;</span>
               <span className="text-[#FFCD4D] text-sm font-semibold uppercase tracking-wider">
-                NFT Benefits
+                NFT Staking
               </span>
             </div>
             <h3 className="text-xl font-bold text-white mb-2">
-              Honey Genesis NFT Perks
+              Honey Genesis NFT Staking Benefits
             </h3>
             <p className="text-gray-300 text-sm leading-relaxed">
-              <strong>Honey Genesis NFT holders receive: Exclusive airdrops, staking rewards, platform perks, and early access to new features.</strong> Buy on Magic Eden or stake at nft.honeypotfinance.xyz.
+              <strong>Honey Genesis NFT staking benefits include: Exclusive airdrops, ongoing staking rewards, platform perks, and early access.</strong> Stake at nft.honeypotfinance.xyz or buy on Magic Eden.
             </p>
           </div>
 
-          {/* Earning Rewards */}
+          {/* How to Earn Rewards */}
           <div className="bg-gradient-to-br from-[#2a1f0e] to-[#1F1609] border border-[#3a2f1a] rounded-2xl p-6">
             <div className="flex items-center gap-2 mb-3">
-              <span className="text-2xl">💰</span>
+              <span className="text-2xl" aria-hidden="true">&#128176;</span>
               <span className="text-[#FFCD4D] text-sm font-semibold uppercase tracking-wider">
                 Earning
               </span>
             </div>
             <h3 className="text-xl font-bold text-white mb-2">
-              Ways to Earn Rewards
+              How to Earn Rewards on Honeypot Finance
             </h3>
             <p className="text-gray-300 text-sm leading-relaxed">
-              <strong>Earn on Honeypot by: Providing liquidity for trading fee rewards, staking Genesis NFTs, joining the Pre-TGE points campaign, or depositing into Perp vaults for yield.</strong>
+              <strong>Earn rewards on Honeypot Finance by: Providing liquidity for trading fee rewards, staking Honey Genesis NFTs, joining Pre-TGE points campaign, or depositing into vault-based Perp products.</strong>
+            </p>
+          </div>
+
+          {/* Team Expertise */}
+          <div className="bg-gradient-to-br from-[#2a1f0e] to-[#1F1609] border border-[#3a2f1a] rounded-2xl p-6">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-2xl" aria-hidden="true">&#128101;</span>
+              <span className="text-[#FFCD4D] text-sm font-semibold uppercase tracking-wider">
+                Built By Experts
+              </span>
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">
+              Honeypot Finance Team Expertise
+            </h3>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              <strong>Honeypot Finance team expertise: CEO with 10+ years engineering, CTO with Ph.D. in Blockchain, top-500 ranked smart contract developer.</strong> Industry experts building DeFi infrastructure.
+            </p>
+          </div>
+
+          {/* Multi-Chain Liquidity Hub Explained */}
+          <div className="bg-gradient-to-br from-[#2a1f0e] to-[#1F1609] border border-[#3a2f1a] rounded-2xl p-6">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-2xl" aria-hidden="true">&#127760;</span>
+              <span className="text-[#FFCD4D] text-sm font-semibold uppercase tracking-wider">
+                Architecture
+              </span>
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">
+              DeFi Multi-Chain Liquidity Hub Explained
+            </h3>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              <strong>A DeFi multi-chain liquidity hub aggregates trading across multiple blockchains.</strong> Honeypot enables cross-chain swaps, unified liquidity, and deeper pools than single-chain DEXs.
+            </p>
+          </div>
+
+          {/* Multi-Chain Perpetual Futures DEX */}
+          <div className="bg-gradient-to-br from-[#2a1f0e] to-[#1F1609] border border-[#3a2f1a] rounded-2xl p-6">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-2xl" aria-hidden="true">&#128293;</span>
+              <span className="text-[#FFCD4D] text-sm font-semibold uppercase tracking-wider">
+                Perp DEX
+              </span>
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">
+              Multi-Chain Perpetual Futures DEX
+            </h3>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              <strong>Honeypot is a leading multi-chain perpetual futures DEX.</strong> Features vault-based risk engine, AMM-native matching, 100x leverage, and real on-chain depth without orderbooks or off-chain brokers.
             </p>
           </div>
         </div>

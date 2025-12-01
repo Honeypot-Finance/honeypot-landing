@@ -32,7 +32,7 @@ export function OrganizationSchema() {
           "@id": `${baseUrl}/#logo`,
         },
         description:
-          "Honeypot Finance is a next-generation multi-chain DeFi liquidity hub offering perpetual trading, spot trading, automated AMM, and cross-chain swaps on Berachain and BSC.",
+          "What is Honeypot Finance? A multi-chain DeFi liquidity hub built by industry experts. Learn how to trade on Honeypot Finance with perpetual futures (vault-based risk engine), AMM-native matching for spot trading, and earn rewards through Honey Genesis NFT staking across multiple blockchains.",
         foundingDate: "2024",
         founder: [
           { "@id": `${baseUrl}/#person-wilson` },
@@ -59,12 +59,15 @@ export function OrganizationSchema() {
           availableLanguage: ["English"],
         },
         knowsAbout: [
-          "Decentralized Finance",
-          "Cryptocurrency Trading",
-          "Perpetual Futures",
+          "Decentralized Finance (DeFi)",
+          "Multi-chain DeFi liquidity hub",
+          "Perpetual futures trading with vault-based risk engine",
+          "AMM-native matching perpetual trading",
           "Automated Market Making",
-          "Blockchain Technology",
-          "NFT Staking",
+          "Perpetual futures DEX",
+          "Honey Genesis NFT staking benefits",
+          "Cross-chain token swaps",
+          "DeFi rewards and yield generation",
         ],
         areaServed: "Worldwide",
         slogan: "All-In-One Liquidity Hub Building Next-Generation DeFi Infrastructure",
@@ -217,9 +220,9 @@ export function OrganizationSchema() {
         "@type": "WebPage",
         "@id": `${baseUrl}/#webpage`,
         url: baseUrl,
-        name: "Honeypot Finance: Next-Gen Multi-Chain DeFi Liquidity Hub",
+        name: "Honeypot Finance | Multi-Chain DeFi Liquidity Hub",
         description:
-          "Trade perpetual futures, swap tokens, and earn rewards on Honeypot Finance - the all-in-one DeFi platform on Berachain and BSC.",
+          "Learn what Honeypot Finance is and how to trade perpetual futures with vault-based risk engine, swap tokens via AMM-native matching, stake Honey Genesis NFTs for rewards, and earn across multiple blockchains.",
         isPartOf: { "@id": `${baseUrl}/#website` },
         about: { "@id": `${baseUrl}/#organization` },
         primaryImageOfPage: { "@id": `${baseUrl}/#logo` },
@@ -248,14 +251,14 @@ export function OrganizationSchema() {
       {
         "@type": "FinancialProduct",
         "@id": `${baseUrl}/#service-dex`,
-        name: "Honeypot DEX",
+        name: "Honeypot DEX - Multi-Chain Spot Trading",
         description:
-          "Decentralized exchange for spot trading with deep liquidity on Berachain and BSC.",
+          "Learn how to trade on Honeypot Finance DEX with AMM-native matching for spot token swaps. This multi-chain DeFi liquidity hub provides deep liquidity pools across multiple blockchains. Earn rewards by providing liquidity.",
         url: "https://dex.honeypotfinance.xyz",
         provider: { "@id": `${baseUrl}/#organization` },
         category: "Decentralized Exchange",
         feesAndCommissionsSpecification:
-          "Competitive trading fees that vary by pool. Liquidity providers earn a share of fees.",
+          "Competitive trading fees that vary by pool. Liquidity providers earn trading fee rewards.",
         offers: {
           "@type": "Offer",
           price: "0",
@@ -266,9 +269,9 @@ export function OrganizationSchema() {
       {
         "@type": "FinancialProduct",
         "@id": `${baseUrl}/#service-perp`,
-        name: "Honeypot Perp DEX",
+        name: "Honeypot Perp DEX - Multi-Chain Perpetual Futures",
         description:
-          "Perpetual futures trading with up to 100x leverage using vault-based risk engine.",
+          "Honeypot Perp DEX features a vault-based risk engine for perpetual futures trading with up to 100x leverage. AMM-native matching ensures deep on-chain liquidity without orderbooks. A leading multi-chain perpetual futures DEX.",
         url: "https://perp.honeypotfinance.xyz",
         provider: { "@id": `${baseUrl}/#organization` },
         category: "Derivatives Trading",
@@ -278,9 +281,9 @@ export function OrganizationSchema() {
       {
         "@type": "Product",
         "@id": `${baseUrl}/#service-nft`,
-        name: "Honey Genesis NFT",
+        name: "Honey Genesis NFT - Staking Benefits & Rewards",
         description:
-          "Official NFT collection with exclusive benefits including airdrops, staking rewards, and platform perks.",
+          "Honey Genesis NFT staking benefits include exclusive airdrops, platform perks, and ongoing staking rewards. Stake your NFTs to earn on Honeypot Finance. Learn how to earn rewards through NFT staking.",
         url: "https://nft.honeypotfinance.xyz",
         brand: { "@id": `${baseUrl}/#organization` },
         category: "NFT Collection",
@@ -296,13 +299,13 @@ export function OrganizationSchema() {
       {
         "@type": "SoftwareApplication",
         "@id": `${baseUrl}/#app`,
-        name: "Honeypot Finance DApp",
+        name: "Honeypot Finance DApp - Multi-Chain DeFi Liquidity Hub",
         applicationCategory: "FinanceApplication",
         applicationSubCategory: "Decentralized Exchange",
         operatingSystem: "Web Browser",
         url: "https://dex.honeypotfinance.xyz",
         description:
-          "Web-based decentralized finance application for trading, liquidity provision, and NFT staking.",
+          "Honeypot Finance is a multi-chain DeFi liquidity hub built by industry experts. Trade perpetual futures with vault-based risk engine, swap tokens via AMM-native matching, and earn rewards through Honey Genesis NFT staking across multiple blockchains.",
         author: { "@id": `${baseUrl}/#organization` },
         offers: {
           "@type": "Offer",
@@ -310,18 +313,18 @@ export function OrganizationSchema() {
           priceCurrency: "USD",
         },
         featureList: [
-          "Perpetual Trading with up to 100x leverage",
-          "Spot Trading with deep liquidity",
-          "Automated Market Making (AMM)",
-          "Multi-chain support (Berachain, BSC)",
+          "Perpetual futures trading with vault-based risk engine",
+          "AMM-native matching for spot trading",
+          "Automated Market Making (AMM) with deep liquidity",
+          "Multi-chain support across multiple blockchains",
           "Cross-chain token swaps",
-          "NFT staking rewards",
-          "Vault-based yield products",
+          "Honey Genesis NFT staking benefits and rewards",
+          "Vault-based yield products for earning",
         ],
         screenshot: `${baseUrl}/images/landing-new-assets-202511/new_media_banner.jpeg`,
       },
 
-      // 8. FAQPage
+      // 8. FAQPage - Optimized for target keywords
       {
         "@type": "FAQPage",
         "@id": `${baseUrl}/#faq`,
@@ -332,7 +335,7 @@ export function OrganizationSchema() {
             name: "What is Honeypot Finance?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Honeypot Finance is an all-in-one multi-chain DeFi liquidity hub that combines perpetual trading, spot trading, automated market making (AMM), and cross-chain functionality. It provides next-generation decentralized finance infrastructure on Berachain and Binance Smart Chain (BSC).",
+              text: "Honeypot Finance is a multi-chain DeFi liquidity hub built by industry experts that combines perpetual trading, spot trading, automated market making (AMM), and cross-chain functionality. It provides decentralized finance infrastructure across multiple blockchains.",
               url: baseUrl,
             },
           },
@@ -342,64 +345,74 @@ export function OrganizationSchema() {
             name: "What blockchains does Honeypot Finance support?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Honeypot Finance currently supports Berachain and Binance Smart Chain (BSC). The platform is designed for multi-chain expansion and will add support for additional blockchains in the future.",
+              text: "Honeypot Finance is a multi-chain DeFi liquidity hub designed for expansion across multiple blockchains. The platform continuously adds support for new networks to provide users with the best trading experience.",
             },
           },
           {
             "@type": "Question",
             "@id": `${baseUrl}/#faq-3`,
-            name: "How does perpetual trading work on Honeypot?",
+            name: "How does the Honeypot Perp DEX vault-based risk engine work?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Honeypot Perp DEX uses a vault-based risk engine with isolated Senior and Junior vaults. Liquidity providers can choose between stable yield (Senior vault) or leveraged exposure (Junior vault). All trades are executed through AMM-native matching without orderbooks or off-chain brokers.",
+              text: "Honeypot Perp DEX uses a vault-based risk engine with isolated Senior and Junior vaults. This multi-chain perpetual futures DEX allows liquidity providers to choose between stable yield (Senior vault) or leveraged exposure (Junior vault). All trades are executed through AMM-native matching perpetual trading without orderbooks or off-chain brokers.",
               url: "https://perp.honeypotfinance.xyz",
             },
           },
           {
             "@type": "Question",
             "@id": `${baseUrl}/#faq-4`,
-            name: "What is the Honey Genesis NFT?",
+            name: "What are the Honey Genesis NFT staking benefits?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Honey Genesis NFT is Honeypot Finance's official NFT collection. Holders receive exclusive benefits including airdrops, platform perks, and staking rewards. The mint is sold out, but NFTs can be purchased on secondary markets like Magic Eden or bridged from other chains.",
+              text: "Honey Genesis NFT staking benefits include exclusive airdrops, platform perks, and ongoing staking rewards. NFT holders can stake their NFTs to earn on Honeypot Finance. The mint is sold out, but NFTs can be purchased on secondary markets like Magic Eden or bridged from other chains.",
               url: "https://nft.honeypotfinance.xyz",
             },
           },
           {
             "@type": "Question",
             "@id": `${baseUrl}/#faq-5`,
-            name: "How do I start trading on Honeypot Finance?",
+            name: "How to trade on Honeypot Finance?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "To start trading: 1) Connect your wallet (MetaMask, Rabby, or other Web3 wallets), 2) Ensure you have tokens on Berachain or BSC, 3) Visit dex.honeypotfinance.xyz for spot trading or perp.honeypotfinance.xyz for perpetual futures, 4) Select your trading pair and execute your trade.",
+              text: "To trade on Honeypot Finance: 1) Connect your wallet (MetaMask, Rabby, or other Web3 wallets), 2) Ensure you have tokens on a supported blockchain, 3) Visit dex.honeypotfinance.xyz for spot trading with AMM-native matching or perp.honeypotfinance.xyz for perpetual futures trading, 4) Select your trading pair and execute your trade.",
               url: "https://dex.honeypotfinance.xyz",
             },
           },
           {
             "@type": "Question",
             "@id": `${baseUrl}/#faq-6`,
-            name: "What are the trading fees on Honeypot DEX?",
+            name: "How to earn rewards on Honeypot Finance?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Honeypot DEX offers competitive trading fees optimized for traders. Fees vary by pool and trading type. Liquidity providers earn a share of trading fees as rewards for providing liquidity to the protocol.",
+              text: "You can earn rewards on Honeypot Finance through multiple ways: 1) Provide liquidity to earn trading fee rewards, 2) Stake Honey Genesis NFTs for staking benefits and rewards, 3) Participate in the Pre-TGE campaign to earn points, 4) Supply liquidity to the vault-based risk engine on the Perp DEX for yield.",
             },
           },
           {
             "@type": "Question",
             "@id": `${baseUrl}/#faq-7`,
-            name: "How can I earn rewards on Honeypot Finance?",
+            name: "What is a DeFi multi-chain liquidity hub explained?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "You can earn rewards through multiple ways: 1) Provide liquidity to earn trading fees, 2) Stake Honey Genesis NFTs for staking rewards, 3) Participate in the Pre-TGE campaign to earn points, 4) Supply liquidity to vaults on the Perp DEX for yield.",
+              text: "A DeFi multi-chain liquidity hub like Honeypot Finance aggregates trading liquidity across multiple blockchain networks. It enables users to trade tokens, swap across chains, and provide liquidity all from one unified platform. This architecture provides deeper liquidity pools and more trading opportunities than single-chain DEXs.",
             },
           },
           {
             "@type": "Question",
             "@id": `${baseUrl}/#faq-8`,
-            name: "Is Honeypot Finance audited and secure?",
+            name: "Who is behind Honeypot Finance? (Team expertise)",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Honeypot Finance prioritizes security with battle-tested infrastructure that has processed millions of dollars in trading volume. The protocol undergoes security reviews and uses proven DeFi mechanisms for asset protection.",
+              text: "Honeypot Finance team expertise includes a CEO with 10+ years software engineering experience, a CTO with a Ph.D. in Blockchain who contributed to major DeFi protocols, and a smart contract developer ranked in the top 500. The team brings extensive experience in DeFi operations, blockchain security, and strategic partnerships.",
+            },
+          },
+          {
+            "@type": "Question",
+            "@id": `${baseUrl}/#faq-9`,
+            name: "What makes Honeypot a leading multi-chain perpetual futures DEX?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Honeypot is a leading multi-chain perpetual futures DEX due to its innovative vault-based risk engine, AMM-native matching system, and deep on-chain liquidity. Unlike traditional perp DEXs using orderbooks, Honeypot provides 100% AMM-powered trading with up to 100x leverage and real on-chain depth.",
+              url: "https://perp.honeypotfinance.xyz",
             },
           },
         ],

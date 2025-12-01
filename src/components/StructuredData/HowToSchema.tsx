@@ -15,13 +15,13 @@ export function HowToSchema() {
   const howToSchema = {
     "@context": "https://schema.org",
     "@graph": [
-      // 1. How to Trade on Honeypot DEX (Spot)
+      // 1. How to Trade on Honeypot Finance (Spot)
       {
         "@type": "HowTo",
         "@id": `${baseUrl}/#howto-trade-spot`,
-        name: "How to Trade on Honeypot DEX",
+        name: "How to Trade on Honeypot Finance - Spot Trading Guide",
         description:
-          "Complete step-by-step guide to swap tokens on Honeypot Finance decentralized exchange on Berachain or BSC.",
+          "Complete step-by-step guide on how to trade on Honeypot Finance. Swap tokens via AMM-native matching on this multi-chain DeFi liquidity hub.",
         image: {
           "@type": "ImageObject",
           url: `${baseUrl}/images/landing-new-assets-202511/new_media_banner.jpeg`,
@@ -39,7 +39,7 @@ export function HowToSchema() {
           {
             "@type": "HowToSupply",
             name: "Cryptocurrency tokens",
-            description: "Tokens on Berachain or BSC network for trading",
+            description: "Tokens on a supported blockchain network for trading",
           },
         ],
         tool: [
@@ -67,7 +67,7 @@ export function HowToSchema() {
             "@type": "HowToStep",
             position: 2,
             name: "Select Your Network",
-            text: "Ensure you're connected to the correct network - either Berachain or Binance Smart Chain (BSC). You can switch networks using the network selector or directly in your wallet.",
+            text: "Ensure you're connected to a supported network. You can switch networks using the network selector or directly in your wallet.",
           },
           {
             "@type": "HowToStep",
@@ -90,13 +90,13 @@ export function HowToSchema() {
         ],
       },
 
-      // 2. How to Trade Perpetual Futures
+      // 2. How to Trade Perpetual Futures - Multi-Chain Perp DEX
       {
         "@type": "HowTo",
         "@id": `${baseUrl}/#howto-trade-perp`,
-        name: "How to Trade Perpetual Futures on Honeypot",
+        name: "How to Trade Perpetual Futures on Honeypot Perp DEX",
         description:
-          "Learn how to open leveraged long and short positions using Honeypot Perp DEX's vault-based perpetual trading system.",
+          "Learn how to trade perpetual futures on Honeypot, a leading multi-chain perpetual futures DEX. Open leveraged positions using the innovative vault-based risk engine with AMM-native matching perpetual trading.",
         image: {
           "@type": "ImageObject",
           url: `${baseUrl}/images/landing-new-assets-202511/rocket.svg`,
@@ -165,13 +165,13 @@ export function HowToSchema() {
         ],
       },
 
-      // 3. How to Stake Honey Genesis NFT
+      // 3. How to Stake Honey Genesis NFT - Staking Benefits
       {
         "@type": "HowTo",
         "@id": `${baseUrl}/#howto-stake-nft`,
-        name: "How to Stake Honey Genesis NFT for Rewards",
+        name: "Honey Genesis NFT Staking Benefits - How to Earn Rewards",
         description:
-          "Step-by-step guide to stake your Honey Genesis NFT and earn staking rewards on Honeypot Finance.",
+          "Step-by-step guide to Honey Genesis NFT staking benefits. Learn how to earn rewards on Honeypot Finance by staking your NFTs for exclusive airdrops and ongoing rewards.",
         totalTime: "PT3M",
         supply: [
           {
@@ -223,13 +223,13 @@ export function HowToSchema() {
         ],
       },
 
-      // 4. How to Provide Liquidity
+      // 4. How to Earn Rewards by Providing Liquidity
       {
         "@type": "HowTo",
         "@id": `${baseUrl}/#howto-provide-liquidity`,
-        name: "How to Provide Liquidity on Honeypot DEX",
+        name: "How to Earn Rewards on Honeypot Finance - Liquidity Provider Guide",
         description:
-          "Complete guide to becoming a liquidity provider on Honeypot Finance and earning trading fees from AMM pools.",
+          "Complete guide on how to earn rewards on Honeypot Finance by providing liquidity. Learn about this multi-chain DeFi liquidity hub and earn trading fee rewards from AMM pools across multiple blockchains.",
         image: {
           "@type": "ImageObject",
           url: `${baseUrl}/images/landing-new-assets-202511/charge-honey.svg`,

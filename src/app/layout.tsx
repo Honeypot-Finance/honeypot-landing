@@ -1,39 +1,52 @@
 import type { Metadata } from "next";
 import "@/styles/global.scss";
-import LayoutWrapper from "@/components/layout/LayoutWrapper";
+// import LayoutWrapper from "@/components/layout/LayoutWrapper"; // Commented out - not currently used
 import { Analytics } from "@vercel/analytics/next";
 import { Providers } from "@/components/Providers";
 import { inter, poppins, bebasNeue } from "./fonts";
 import { OrganizationSchema } from "@/components/StructuredData/OrganizationSchema";
 import { HowToSchema } from "@/components/StructuredData/HowToSchema";
 
-// Enhanced metadata for GEO (Generative Engine Optimization)
+// Enhanced metadata for GEO (Generative Engine Optimization) and SEO
 export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "https://honeypotfinance.xyz"
   ),
   title: {
-    default: "Honeypot Finance: Next-Gen Multi-Chain DeFi Liquidity Hub",
+    default: "Honeypot Finance | Multi-Chain DeFi Liquidity Hub",
     template: "%s | Honeypot Finance",
   },
   description:
-    "Honeypot Finance is an all-in-one multi-chain DeFi liquidity hub offering perpetual trading, spot trading, automated AMM, and cross-chain swaps on Berachain and BSC. Trade with deep liquidity and earn rewards.",
+    "Learn what Honeypot Finance is and how to trade on this multi-chain DeFi platform. Trade perpetual futures with vault-based risk engine, swap tokens via AMM-native matching, stake Honey Genesis NFTs for rewards, and earn across multiple blockchains.",
   keywords: [
-    "DeFi",
-    "DEX",
-    "Decentralized Exchange",
+    // Primary brand keywords
     "Honeypot Finance",
-    "Berachain",
-    "BSC",
-    "Perpetual Trading",
-    "Spot Trading",
-    "AMM",
-    "Liquidity",
-    "Crypto Trading",
-    "NFT Staking",
-    "Multi-chain",
-    "Cross-chain",
-    "Web3",
+    "what is Honeypot Finance",
+    "how to trade on Honeypot Finance",
+    // Blockchain & chain keywords
+    "Honeypot Finance supported blockchains",
+    "perpetual futures DEX",
+    "multi-chain DEX",
+    "multi-chain DeFi",
+    // Product & feature keywords
+    "Honeypot Perp DEX vault based risk engine",
+    "AMM native matching perpetual trading",
+    "perpetual futures trading",
+    "spot trading",
+    "decentralized exchange",
+    // NFT keywords
+    "Honey Genesis NFT staking benefits",
+    "NFT staking rewards",
+    // Earning & rewards keywords
+    "how to earn rewards on Honeypot Finance",
+    "DeFi liquidity provision",
+    "trading fee rewards",
+    // Technical keywords
+    "DeFi multi-chain liquidity hub explained",
+    "automated market maker",
+    "cross-chain swaps",
+    // Team & credibility
+    "Honeypot Finance team expertise",
   ],
   authors: [{ name: "Honeypot Finance Team" }],
   creator: "Honeypot Finance",
@@ -54,9 +67,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://honeypotfinance.xyz",
     siteName: "Honeypot Finance",
-    title: "Honeypot Finance: Next-Gen Multi-Chain DeFi Liquidity Hub",
+    title: "Honeypot Finance | How to Trade on Multi-Chain DeFi Liquidity Hub",
     description:
-      "All-in-one DeFi platform for perpetual trading, spot trading, and automated market making on Berachain and BSC.",
+      "Learn what Honeypot Finance is: a multi-chain DeFi liquidity hub with perpetual trading (vault-based risk engine), spot trading via AMM-native matching, and Honey Genesis NFT staking across multiple blockchains.",
     images: [
       {
         url: "/images/landing-new-assets-202511/new_media_banner.jpeg",
@@ -70,9 +83,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@honeypotfinance",
     creator: "@honeypotfinance",
-    title: "Honeypot Finance: Next-Gen Multi-Chain DeFi Liquidity Hub",
+    title: "Honeypot Finance | Multi-Chain DeFi Liquidity Hub",
     description:
-      "All-in-one DeFi platform for perpetual trading, spot trading, and automated market making.",
+      "What is Honeypot Finance? A multi-chain DeFi hub with perpetual futures (vault-based risk engine), AMM-native spot trading, and Honey Genesis NFT staking rewards.",
     images: ["/images/landing-new-assets-202511/new_media_banner.jpeg"],
   },
   alternates: {
