@@ -55,31 +55,6 @@ const faqs = [
   },
 ];
 
-// Generate JSON-LD schema for FAQPage
-function FAQPageSchema() {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: JSON.stringify(faqSchema),
-      }}
-    />
-  );
-}
-
 function FAQItem({
   faq,
 }: {
@@ -141,10 +116,6 @@ function FAQItem({
 
 export function FAQSection() {
   return (
-    <>
-      {/* JSON-LD Structured Data for FAQPage */}
-      <FAQPageSchema />
-
       <section
         className="w-full py-16 px-4 relative z-10"
         aria-labelledby="faq-heading"
@@ -203,6 +174,5 @@ export function FAQSection() {
         </div>
       </div>
       </section>
-    </>
   );
 }

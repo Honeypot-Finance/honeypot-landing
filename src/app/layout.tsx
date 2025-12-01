@@ -6,6 +6,7 @@ import { Providers } from "@/components/Providers";
 import { inter, poppins, bebasNeue } from "./fonts";
 import { OrganizationSchema } from "@/components/StructuredData/OrganizationSchema";
 import { HowToSchema } from "@/components/StructuredData/HowToSchema";
+import { FAQSchema } from "@/components/StructuredData/FAQSchema";
 
 // Enhanced metadata for GEO (Generative Engine Optimization) and SEO
 export const metadata: Metadata = {
@@ -133,10 +134,12 @@ export default function RootLayout({
           href="/favicon.ico"
           sizes="any"
         />
-      </head>
-      <body className={`bg-[#140E06] ${inter.className}`} suppressHydrationWarning>
+        {/* JSON-LD Structured Data in head for better SEO analyzer detection */}
         <OrganizationSchema />
         <HowToSchema />
+        <FAQSchema />
+      </head>
+      <body className={`bg-[#140E06] ${inter.className}`} suppressHydrationWarning>
         <Providers>
           <Analytics />
           {/* <LayoutWrapper>{children}</LayoutWrapper> */}
