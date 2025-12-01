@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 /**
@@ -135,39 +134,53 @@ const notableInvestors = [
   { name: "CSP DAO", type: "DAO", description: "Decentralized fund" },
 ];
 
-// Security audits and external citations for trust signals
+// Security audits with direct links to audit reports
 const securityAudits = [
   {
-    auditor: "Halborn Security",
-    type: "Smart Contract Audit",
+    auditor: "Hashlock",
+    type: "Launchpad (FTO Model & Hooks)",
     status: "Completed",
-    url: "https://docs.honeypotfinance.xyz/about",
-    description: "Comprehensive smart contract security audit by Halborn, a leading blockchain security firm.",
+    url: "https://hashlock.com/wp-content/uploads/2024/10/Honeypot-Finance-Smart-Contract-Audit-Report-Final-Report-v1.pdf",
+    description: "Comprehensive smart contract audit for Honeypot Finance Launchpad by Hashlock.",
   },
   {
-    auditor: "Peckshield",
-    type: "Smart Contract Audit",
+    auditor: "Hashlock",
+    type: "All-in-One Vault",
     status: "Completed",
-    url: "https://docs.honeypotfinance.xyz/about",
-    description: "Security review conducted by Peckshield, industry-recognized security auditor.",
+    url: "https://hashlock.com/wp-content/uploads/2024/10/Honeypot-Finance-2nd-Smart-Contract-Audit-Report-Final-Report-v2.pdf",
+    description: "Security audit for Honeypot Finance Vault contracts by Hashlock.",
+  },
+  {
+    auditor: "Shieldify Security",
+    type: "Meme Launchpad (Pot2Pump)",
+    status: "Completed",
+    url: "https://github.com/shieldify-security/audits-portfolio/blob/main/reports/HoneypotFinance-Security-Review.pdf",
+    description: "Security review for Pot2Pump meme launchpad by Shieldify Security.",
+  },
+  {
+    auditor: "Algebra Finance",
+    type: "DEX Core (Algebra Integral)",
+    status: "Completed",
+    url: "https://docs.algebra.finance/algebra-integral-documentation/algebra-integral-technical-reference/audits",
+    description: "DEX infrastructure audits via Algebra Integral technology partner.",
   },
 ];
 
 const externalCitations = [
   {
-    name: "Official Documentation",
+    name: "All Audit Reports",
     url: "https://docs.honeypotfinance.xyz/about",
-    description: "Complete technical documentation and security information",
+    description: "Complete list of security audits and reports",
   },
   {
-    name: "Security & Audits",
-    url: "https://docs.honeypotfinance.xyz/about",
-    description: "Audit reports, security practices, and trust verification",
+    name: "Technical Docs",
+    url: "https://docs.honeypotfinance.xyz",
+    description: "Full technical documentation",
   },
   {
-    name: "GitHub Repository",
+    name: "GitHub",
     url: "https://github.com/ApeironCreation",
-    description: "Open source smart contracts and protocol code",
+    description: "Open source protocol code",
   },
 ];
 

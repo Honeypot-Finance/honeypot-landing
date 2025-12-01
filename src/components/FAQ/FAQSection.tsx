@@ -56,7 +56,7 @@ const faqs = [
   {
     question: "Is Honeypot Finance audited and secure?",
     answer:
-      "Yes, Honeypot Finance smart contracts have been audited by leading security firms including Halborn Security and Peckshield. The protocol prioritizes security with battle-tested infrastructure. Full audit reports and security documentation are available at docs.honeypotfinance.xyz/about.",
+      "Yes, Honeypot Finance smart contracts have been audited by multiple security firms including Hashlock and Shieldify Security. The DEX infrastructure is powered by audited Algebra Integral technology. Full audit reports (PDFs) are publicly available at docs.honeypotfinance.xyz/about.",
   },
 ];
 
