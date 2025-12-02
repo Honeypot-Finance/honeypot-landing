@@ -72,9 +72,9 @@ export function OrganizationSchema() {
         areaServed: "Worldwide",
         slogan: "All-In-One Liquidity Hub Building Next-Generation DeFi Infrastructure",
         makesOffer: [
-          { "@id": `${baseUrl}/#service-dex` },
-          { "@id": `${baseUrl}/#service-perp` },
-          { "@id": `${baseUrl}/#service-nft` },
+          { "@id": `${baseUrl}/#offer-dex` },
+          { "@id": `${baseUrl}/#offer-perp` },
+          { "@id": `${baseUrl}/#offer-nft` },
         ],
         funder: [
           {
@@ -247,51 +247,75 @@ export function OrganizationSchema() {
         ],
       },
 
-      // 6. Services/Products
+      // 6. Offers (for makesOffer property)
       {
-        "@type": "FinancialProduct",
-        "@id": `${baseUrl}/#service-dex`,
+        "@type": "Offer",
+        "@id": `${baseUrl}/#offer-dex`,
         name: "Honeypot DEX - Multi-Chain Spot Trading",
         description:
           "Learn how to trade on Honeypot Finance DEX with AMM-native matching for spot token swaps. This multi-chain DeFi liquidity hub provides deep liquidity pools across multiple blockchains. Earn rewards by providing liquidity.",
         url: "https://dex.honeypotfinance.xyz",
-        provider: { "@id": `${baseUrl}/#organization` },
+        offeredBy: { "@id": `${baseUrl}/#organization` },
         category: "Decentralized Exchange",
-        feesAndCommissionsSpecification:
-          "Competitive trading fees that vary by pool. Liquidity providers earn trading fee rewards.",
-        offers: {
-          "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+        priceSpecification: {
+          "@type": "PriceSpecification",
           price: "0",
           priceCurrency: "USD",
           description: "Free to use - only pay network gas fees and swap fees",
         },
+        itemOffered: {
+          "@type": "Service",
+          name: "Spot Trading Service",
+          description: "AMM-native matching for spot token swaps with deep liquidity pools",
+          provider: { "@id": `${baseUrl}/#organization` },
+        },
       },
       {
-        "@type": "FinancialProduct",
-        "@id": `${baseUrl}/#service-perp`,
+        "@type": "Offer",
+        "@id": `${baseUrl}/#offer-perp`,
         name: "Honeypot Perp DEX - Multi-Chain Perpetual Futures",
         description:
           "Honeypot Perp DEX features a vault-based risk engine for perpetual futures trading with up to 100x leverage. AMM-native matching ensures deep on-chain liquidity without orderbooks. A leading multi-chain perpetual futures DEX.",
         url: "https://perp.honeypotfinance.xyz",
-        provider: { "@id": `${baseUrl}/#organization` },
+        offeredBy: { "@id": `${baseUrl}/#organization` },
         category: "Derivatives Trading",
-        feesAndCommissionsSpecification:
-          "Trading fees on perpetual positions. Vault depositors earn yield from trading activity.",
+        price: "0",
+        priceCurrency: "USD",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          price: "0",
+          priceCurrency: "USD",
+          description: "Trading fees on perpetual positions. Vault depositors earn yield from trading activity.",
+        },
+        itemOffered: {
+          "@type": "Service",
+          name: "Perpetual Futures Trading Service",
+          description: "Vault-based risk engine for perpetual futures trading with up to 100x leverage",
+          provider: { "@id": `${baseUrl}/#organization` },
+        },
       },
       {
-        "@type": "Product",
-        "@id": `${baseUrl}/#service-nft`,
+        "@type": "Offer",
+        "@id": `${baseUrl}/#offer-nft`,
         name: "Honey Genesis NFT - Staking Benefits & Rewards",
         description:
           "Honey Genesis NFT staking benefits include exclusive airdrops, platform perks, and ongoing staking rewards. Stake your NFTs to earn on Honeypot Finance. Learn how to earn rewards through NFT staking.",
         url: "https://nft.honeypotfinance.xyz",
-        brand: { "@id": `${baseUrl}/#organization` },
+        offeredBy: { "@id": `${baseUrl}/#organization` },
         category: "NFT Collection",
-        offers: {
-          "@type": "Offer",
-          availability: "https://schema.org/SoldOut",
+        availability: "https://schema.org/SoldOut",
+        priceSpecification: {
+          "@type": "PriceSpecification",
           description: "Mint sold out. Available on secondary markets like Magic Eden.",
           url: "https://magiceden.io/collections/berachain/honeygenesis-44",
+        },
+        itemOffered: {
+          "@type": "Product",
+          name: "Honey Genesis NFT",
+          description: "NFT collection with staking benefits including exclusive airdrops and platform perks",
+          brand: { "@id": `${baseUrl}/#organization` },
         },
       },
 
