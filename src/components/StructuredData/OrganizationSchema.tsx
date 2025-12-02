@@ -305,7 +305,11 @@ export function OrganizationSchema() {
           "@type": "Product",
           name: "Honey Genesis NFT",
           description: "NFT collection with staking benefits including exclusive airdrops and platform perks. Primary mint sold out - available on secondary markets.",
-          brand: { "@id": `${baseUrl}/#organization` },
+          image: `${baseUrl}/images/honeypot-logo.svg`,
+          brand: {
+            "@type": "Brand",
+            name: "Honeypot Finance",
+          },
           offers: {
             "@type": "Offer",
             url: "https://magiceden.io/collections/berachain/honeygenesis-44",
@@ -313,7 +317,10 @@ export function OrganizationSchema() {
             price: "0",
             priceCurrency: "USD",
             priceValidUntil: "2025-12-31",
-            seller: { "@id": `${baseUrl}/#organization` },
+            seller: {
+              "@type": "Organization",
+              name: "Honeypot Finance",
+            },
           },
         },
       },
