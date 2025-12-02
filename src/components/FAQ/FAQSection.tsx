@@ -66,18 +66,10 @@ function FAQItem({
   faq: { question: string; answer: string };
 }) {
   return (
-    <details
-      className="group bg-[#1F1609] border border-[#3a2f1a] rounded-2xl overflow-hidden hover:border-[#FFCD4D]/50 transition-colors"
-      itemScope
-      itemProp="mainEntity"
-      itemType="https://schema.org/Question"
-    >
+    <details className="group bg-[#1F1609] border border-[#3a2f1a] rounded-2xl overflow-hidden hover:border-[#FFCD4D]/50 transition-colors">
       {/* Question - Always visible, clickable summary */}
       <summary className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-        <h3
-          className="text-base sm:text-lg font-bold text-white flex items-start gap-3 flex-1 group-hover:text-[#FFCD4D] transition-colors"
-          itemProp="name"
-        >
+        <h3 className="text-base sm:text-lg font-bold text-white flex items-start gap-3 flex-1 group-hover:text-[#FFCD4D] transition-colors">
           <span className="text-[#FFCD4D] text-xl leading-none shrink-0">
             Q:
           </span>
@@ -105,13 +97,8 @@ function FAQItem({
       </summary>
 
       {/* Answer - Server-rendered, visible in HTML source for crawlers */}
-      <div
-        className="px-5 sm:px-6 pb-5 sm:pb-6 pt-0 pl-12 sm:pl-14 animate-fade-in"
-        itemScope
-        itemProp="acceptedAnswer"
-        itemType="https://schema.org/Answer"
-      >
-        <p className="text-gray-300 leading-relaxed" itemProp="text">
+      <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-0 pl-12 sm:pl-14 animate-fade-in">
+        <p className="text-gray-300 leading-relaxed">
           {faq.answer}
         </p>
       </div>
@@ -124,8 +111,6 @@ export function FAQSection() {
       <section
         className="w-full py-16 px-4 relative z-10"
         aria-labelledby="faq-heading"
-        itemScope
-        itemType="https://schema.org/FAQPage"
       >
         <div className="max-w-4xl mx-auto">
         {/* Section Header */}
