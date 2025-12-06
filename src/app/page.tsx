@@ -4,8 +4,7 @@ import { Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import { appPathsList } from "@/config/allAppPath";
 import { partners, investors } from "@/config/partners";
-import { BsTelegram } from "react-icons/bs";
-import { FaXTwitter, FaDiscord, FaMedium } from "react-icons/fa6";
+import Footer from "@/components/Footer";
 import PlatformPerformanceServer from "@/components/PlatformPerformance/PlatformPerformanceServer";
 import { PlatformPerformanceSkeleton } from "@/components/PlatformPerformance/PlatformPerformanceSkeleton";
 import FeatureCardServer from "@/components/FeatureCard/FeatureCardServer";
@@ -454,119 +453,7 @@ export default function HomePage() {
         </section>
 
         {/* Footer Section */}
-        <footer className="w-full bg-[#140E06] border-t border-gray-800 flex flex-col items-center pt-12 pb-8 relative z-10">
-          <div className="flex flex-col items-center gap-6">
-            {/* Logo and Brand */}
-            <div className="flex flex-col items-center gap-2">
-              <Image
-                src="/images/honeypot-logo.svg"
-                width={40}
-                height={40}
-                alt="Honeypot Finance logo"
-              />
-              <span className="font-bebas-neue text-xl text-[#FFCD4D]">
-                HONEYPOT FINANCE
-              </span>
-            </div>
-            {/* Links */}
-            <nav className="flex flex-wrap justify-center gap-6 text-gray-300 font-medium text-lg">
-              <Link
-                href="https://docs.honeypotfinance.xyz/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Docs
-              </Link>
-              <Link
-                href="https://github.com/Honeypot-Finance"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub
-              </Link>
-              <Link
-                href="https://medium.com/@HoneypotFinance1"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Medium
-              </Link>
-              <Link
-                href="https://magiceden.io/collections/berachain/honeygenesis-44"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                HoneyGenesis NFT
-              </Link>
-              <Link
-                href="https://pot2pump.honeypotfinance.xyz/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Meme
-              </Link>
-              <Link
-                href="https://dex.honeypotfinance.xyz/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Honeypot DEX
-              </Link>
-            </nav>
-            {/* Legal Links */}
-            <nav className="flex flex-wrap justify-center gap-6 text-gray-400 text-sm">
-              <Link href="/privacy-policy" className="hover:text-gray-300 transition-colors">
-                Privacy Policy
-              </Link>
-              <Link href="/terms-of-use" className="hover:text-gray-300 transition-colors">
-                Terms of Use
-              </Link>
-            </nav>
-            {/* Social Icons */}
-            <div className="flex gap-6 mt-2">
-              <Link
-                href="https://t.me/+tE1KgsD-GxJhOTg0"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-[#2F1F0E] rounded-xl p-3 flex items-center justify-center hover:bg-[#3a2612] hover:scale-110 transition"
-                aria-label="Join our Telegram"
-              >
-                <BsTelegram className="w-6 h-6 text-[#FFCD4D]" />
-              </Link>
-              <Link
-                href="https://x.com/honeypotfinance"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-[#2F1F0E] rounded-xl p-3 flex items-center justify-center hover:bg-[#3a2612] hover:scale-110 transition"
-                aria-label="Follow us on X (Twitter)"
-              >
-                <FaXTwitter className="w-6 h-6 text-[#FFCD4D]" />
-              </Link>
-              <Link
-                href="https://discord.gg/NfnK78KJxH"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-[#2F1F0E] rounded-xl p-3 flex items-center justify-center hover:bg-[#3a2612] hover:scale-110 transition"
-                aria-label="Join our Discord"
-              >
-                <FaDiscord className="w-6 h-6 text-[#FFCD4D]" />
-              </Link>
-              <Link
-                href="https://medium.com/@HoneypotFinance1"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-[#2F1F0E] rounded-xl p-3 flex items-center justify-center hover:bg-[#3a2612] hover:scale-110 transition"
-                aria-label="Read our Medium blog"
-              >
-                <FaMedium className="w-6 h-6 text-[#FFCD4D]" />
-              </Link>
-            </div>
-            {/* Copyright */}
-            <div className="text-gray-400 text-sm mt-2 mb-4 text-center">
-              &copy; Copyright 2025, All Rights Reserved by Honeypot
-            </div>
-          </div>
-        </footer>
+        <Footer className="relative z-10" />
       </div>
     </AnimationWrapper>
   );
