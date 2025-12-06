@@ -9,12 +9,13 @@ interface DocxViewerProps {
 
 export default function DocxViewer({ docxUrl }: DocxViewerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const styleContainerRef = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function loadDocument() {
-      if (!containerRef.current) return;
+      if (!containerRef.current || !styleContainerRef.current) return;
 
       try {
         setLoading(true);
@@ -27,18 +28,43 @@ export default function DocxViewer({ docxUrl }: DocxViewerProps) {
 
         const blob = await response.blob();
 
-        await renderAsync(blob, containerRef.current, undefined, {
-          className: "docx-wrapper",
-          inWrapper: true,
+        // Render with separate style container so we can manipulate styles
+        await renderAsync(blob, containerRef.current, styleContainerRef.current, {
+          className: "docx",
+          inWrapper: false, // Disable wrapper to avoid gray background
           ignoreWidth: true,
           ignoreHeight: true,
-          ignoreFonts: false,
+          ignoreFonts: true,
           breakPages: false,
           renderHeaders: true,
           renderFooters: true,
           renderFootnotes: true,
           renderEndnotes: true,
         });
+
+        // Post-process: Remove all inline background styles from content
+        if (containerRef.current) {
+          const allElements = containerRef.current.querySelectorAll("*");
+          allElements.forEach((el) => {
+            const htmlEl = el as HTMLElement;
+            if (htmlEl.style) {
+              htmlEl.style.backgroundColor = "";
+              htmlEl.style.background = "";
+              htmlEl.style.color = "";
+            }
+          });
+        }
+
+        // Remove problematic styles from the style container
+        if (styleContainerRef.current) {
+          const styleTags = styleContainerRef.current.querySelectorAll("style");
+          styleTags.forEach((styleTag) => {
+            styleTag.textContent = (styleTag.textContent || "")
+              .replace(/background-color\s*:\s*[^;]+;?/gi, "")
+              .replace(/background\s*:\s*[^;]+;?/gi, "")
+              .replace(/color\s*:\s*[^;]+;?/gi, "");
+          });
+        }
 
         setLoading(false);
       } catch (err) {
@@ -53,67 +79,82 @@ export default function DocxViewer({ docxUrl }: DocxViewerProps) {
 
   return (
     <>
+      {/* Hidden container for docx-preview styles */}
+      <div ref={styleContainerRef} className="hidden" />
+
       {/* Custom styles for the docx-preview output */}
       <style jsx global>{`
-        .docx-wrapper {
-          background: transparent !important;
+        /* Document content styling */
+        .docx-viewer-content {
+          color: #d1d5db;
+          line-height: 1.7;
         }
-        .docx-wrapper > section.docx {
+
+        .docx-viewer-content * {
+          color: inherit !important;
+          background: transparent !important;
+          background-color: transparent !important;
+          font-family: inherit !important;
+        }
+
+        /* Section styling */
+        .docx-viewer-content section.docx {
           background: transparent !important;
           box-shadow: none !important;
           padding: 0 !important;
-          margin-bottom: 0 !important;
           width: 100% !important;
-          min-height: auto !important;
         }
-        .docx-wrapper .docx > * {
-          color: #d1d5db !important; /* gray-300 */
-        }
-        .docx-wrapper .docx h1,
-        .docx-wrapper .docx h2,
-        .docx-wrapper .docx h3,
-        .docx-wrapper .docx h4,
-        .docx-wrapper .docx h5,
-        .docx-wrapper .docx h6 {
+
+        /* Headings */
+        .docx-viewer-content h1,
+        .docx-viewer-content h2,
+        .docx-viewer-content h3,
+        .docx-viewer-content h4,
+        .docx-viewer-content h5,
+        .docx-viewer-content h6 {
           color: #ffffff !important;
+          font-weight: bold !important;
+          margin-top: 1.5rem !important;
+          margin-bottom: 0.75rem !important;
         }
-        .docx-wrapper .docx p {
-          margin-bottom: 1rem !important;
-          line-height: 1.6 !important;
+
+        .docx-viewer-content h1 { font-size: 1.875rem !important; }
+        .docx-viewer-content h2 { font-size: 1.5rem !important; }
+        .docx-viewer-content h3 { font-size: 1.25rem !important; }
+
+        /* Paragraphs */
+        .docx-viewer-content p {
+          margin-bottom: 0.75rem !important;
         }
-        .docx-wrapper .docx a {
+
+        /* Links */
+        .docx-viewer-content a {
           color: #FFCD4D !important;
         }
-        .docx-wrapper .docx a:hover {
+        .docx-viewer-content a:hover {
           text-decoration: underline !important;
         }
-        .docx-wrapper .docx table {
+
+        /* Tables */
+        .docx-viewer-content table {
           border-collapse: collapse !important;
           width: 100% !important;
+          margin: 1rem 0 !important;
         }
-        .docx-wrapper .docx td,
-        .docx-wrapper .docx th {
+        .docx-viewer-content td,
+        .docx-viewer-content th {
           border: 1px solid #374151 !important;
           padding: 0.5rem !important;
         }
-        .docx-wrapper .docx ul,
-        .docx-wrapper .docx ol {
+
+        /* Lists */
+        .docx-viewer-content ul,
+        .docx-viewer-content ol {
           padding-left: 2rem !important;
-          margin-bottom: 1rem !important;
+          margin-bottom: 0.75rem !important;
         }
-        .docx-wrapper .docx li {
-          margin-bottom: 0.5rem !important;
-        }
-        /* Override any background colors */
-        .docx-wrapper .docx span[style*="background"] {
-          background: transparent !important;
-        }
-        /* Ensure highlight/mark styling is visible */
-        .docx-wrapper .docx mark,
-        .docx-wrapper .docx span[style*="yellow"] {
-          background: #FFCD4D !important;
-          color: #000000 !important;
-          padding: 0 0.25rem !important;
+        .docx-viewer-content li {
+          margin-bottom: 0.25rem !important;
         }
       `}</style>
 
@@ -132,7 +173,7 @@ export default function DocxViewer({ docxUrl }: DocxViewerProps) {
 
       <div
         ref={containerRef}
-        className={loading ? "hidden" : ""}
+        className={`docx-viewer-content ${loading ? "hidden" : ""}`}
       />
     </>
   );

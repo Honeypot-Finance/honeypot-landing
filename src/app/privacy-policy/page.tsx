@@ -26,12 +26,12 @@ export default function PrivacyPolicyPage() {
               HONEYPOT FINANCE
             </span>
           </Link>
-          <Link
+          <a
             href="/"
             className="text-gray-400 hover:text-white transition-colors"
           >
             Back to Home
-          </Link>
+          </a>
         </div>
       </header>
 
