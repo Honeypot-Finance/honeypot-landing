@@ -513,6 +513,15 @@ export default function HomePage() {
                 Honeypot DEX
               </Link>
             </nav>
+            {/* Legal Links */}
+            <nav className="flex flex-wrap justify-center gap-6 text-gray-400 text-sm">
+              <Link href="/privacy-policy" className="hover:text-gray-300 transition-colors">
+                Privacy Policy
+              </Link>
+              <Link href="/terms-of-use" className="hover:text-gray-300 transition-colors">
+                Terms of Use
+              </Link>
+            </nav>
             {/* Social Icons */}
             <div className="flex gap-6 mt-2">
               <Link
