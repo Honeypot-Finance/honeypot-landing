@@ -75,8 +75,8 @@ interface NavbarResponse {
       "path": [
         {
           "title": "Points",
-          "path": "https://points.honeypotfinance.xyz/loyalty",
-          "routePath": "https://points.honeypotfinance.xyz/loyalty",
+          "path": "https://points.honeypotfinance.xyz",
+          "routePath": "https://points.honeypotfinance.xyz",
           "external": true
         }
       ]

@@ -20,7 +20,7 @@ const recommendedMoves: RecommendedMove[] = [
       "Participate in activities to earn points for the upcoming TGE airdrop allocation",
     icon: "🎯",
     action: "Start Earning",
-    link: "https://points.honeypotfinance.xyz/loyalty",
+    link: "https://points.honeypotfinance.xyz",
     gradient: "linear-gradient(135deg, #FFCD4D 0%, #FF9500 100%)",
   },
   {

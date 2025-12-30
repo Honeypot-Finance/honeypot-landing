@@ -62,8 +62,8 @@ export const appPathsList: Menu[] = [
     path: [
       {
         title: "Points",
-        path: "https://points.honeypotfinance.xyz/loyalty",
-        routePath: "https://points.honeypotfinance.xyz/loyalty",
+        path: "https://points.honeypotfinance.xyz",
+        routePath: "https://points.honeypotfinance.xyz",
         afterElement: (
           <span
             style={{
@@ -135,8 +135,8 @@ export const appPathsList: Menu[] = [
     path: [
       {
         title: "Points",
-        path: "https://points.honeypotfinance.xyz/loyalty",
-        routePath: "https://points.honeypotfinance.xyz/loyalty",
+        path: "https://points.honeypotfinance.xyz",
+        routePath: "https://points.honeypotfinance.xyz",
       },
       {
         title: "App Leaderboard",

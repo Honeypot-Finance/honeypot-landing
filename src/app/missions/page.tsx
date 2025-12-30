@@ -337,7 +337,7 @@ export default function MissionsPage() {
                   <button
                     onClick={() =>
                       window.open(
-                        "https://points.honeypotfinance.xyz/loyalty",
+                        "https://points.honeypotfinance.xyz",
                         "_blank"
                       )
                     }

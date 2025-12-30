@@ -1,6 +1,6 @@
 export const DEX_DOMAIN = "https://dex.honeypotfinance.xyz/";
 export const NFT_DOMAIN = "https://nft.honeypotfinance.xyz/";
-export const POINT_DOMAIN = "https://points.honeypotfinance.xyz/loyalty";
+export const POINT_DOMAIN = "https://points.honeypotfinance.xyz";
 export const NFT_METADATA_BASE_URL =
   "https://ipfs.io/ipfs/QmPvz8VBGsCGyxaKnMzLxmtirNjbaAYUEpA2W4EsW18Hrx/";
 export const IPFS_GATEWAY = "https://ipfs.io/ipfs/";
