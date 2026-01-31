@@ -1,12 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import { appPathsList } from "@/config/allAppPath";
 import { partners, investors } from "@/config/partners";
 import Footer from "@/components/Footer";
 import PlatformPerformanceServer from "@/components/PlatformPerformance/PlatformPerformanceServer";
-import { PlatformPerformanceSkeleton } from "@/components/PlatformPerformance/PlatformPerformanceSkeleton";
 import FeatureCardServer from "@/components/FeatureCard/FeatureCardServer";
 import AnimationWrapper from "@/components/AnimationWrapper/AnimationWrapper";
 import PerpDexSection from "@/components/PerpDexSection";
@@ -179,9 +177,7 @@ export default function HomePage() {
 
         {/* DEX Performance Section - Server Component with Suspense */}
         <section className="w-full relative z-10">
-          <Suspense fallback={<PlatformPerformanceSkeleton />}>
-            <PlatformPerformanceServer />
-          </Suspense>
+          <PlatformPerformanceServer />
         </section>
 
         {/* Perp DEX Section - Already a Server Component */}
