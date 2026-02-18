@@ -64,24 +64,6 @@ export const appPathsList: Menu[] = [
         title: "Points",
         path: "https://points.honeypotfinance.xyz",
         routePath: "https://points.honeypotfinance.xyz",
-        afterElement: (
-          <span
-            style={{
-              color: "#FFB800",
-              backgroundColor: "rgba(255, 184, 0, 0.1)",
-              fontSize: "10px",
-              fontWeight: "bold",
-              marginLeft: "6px",
-              padding: "2px 6px",
-              borderRadius: "4px",
-              border: "1px solid #FFB800",
-              display: "inline-block",
-              lineHeight: "1",
-            }}
-          >
-            Pre-TGE
-          </span>
-        ),
       },
       {
         title: "Pools",
