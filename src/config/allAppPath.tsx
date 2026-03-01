@@ -55,6 +55,11 @@ export const appPathsList: Menu[] = [
         path: "https://dex.honeypotfinance.xyz/bridge",
         routePath: "https://dex.honeypotfinance.xyz/bridge",
       },
+      {
+        title: "USDC Bridge",
+        path: "https://bridge.honeypotfinance.xyz/",
+        routePath: "https://bridge.honeypotfinance.xyz/",
+      },
     ],
   },
   {
