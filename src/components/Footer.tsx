@@ -89,8 +89,34 @@ export default function Footer({ className = "" }: FooterProps) {
         </div>
 
         {/* Copyright */}
-        <div className="text-gray-400 text-sm mt-2 mb-4 text-center">
+        <div className="text-gray-400 text-sm mt-2 text-center">
           &copy; Copyright {new Date().getFullYear()}, All Rights Reserved by Honeypot
+        </div>
+
+        {/* Credits */}
+        <div className="text-gray-500 text-xs mb-4 text-center flex flex-col gap-1">
+          <span>
+            GTM powered by{" "}
+            <a
+              href="https://florus.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gray-300 transition-colors underline underline-offset-2"
+            >
+              florus.ai
+            </a>
+          </span>
+          <span>
+            Design and product prototypes powered by{" "}
+            <a
+              href="https://yexlabs.xyz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gray-300 transition-colors underline underline-offset-2"
+            >
+              Yexlabs
+            </a>
+          </span>
         </div>
       </div>
     </footer>
