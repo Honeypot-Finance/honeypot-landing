@@ -1,5 +1,32 @@
 # Honeypot editorial writing harness
 
+## Standing use
+
+This is the continuing standard for all Honeypot articles, not only the five pieces described below. The root [AGENTS.md](../AGENTS.md) directs future editorial tasks here. Read this document and a relevant existing article before a new draft or substantial rewrite; use only the relevant criteria for copy corrections or layout changes.
+
+The per-article briefs and review record below describe the September 2026 revision. They are examples and historical evidence, not proof that a future revision has been reviewed. Factual status, dates, benchmark results, and product availability must be checked again when relevant. Existing editions are reference points, not an assertion that every sentence is ideal or that the owner approved every detail.
+
+## Choosing a hook and building the argument
+
+The hook gives the reader a specific reason to care that the article will repay. Choose from the evidence and the reader's question before choosing a catchy sentence.
+
+| When the material supports it | Launchvibes article pattern | What the opening must establish |
+| --- | --- | --- |
+| A development changes a real decision | Timely Impact Lead / Timely Shift | What changed, for whom, and the decision now in view. A date alone is insufficient. |
+| Results expose an engineering tradeoff | Research Findings Lead / Proof-Led Claim | The actual result, whose measurement it is, its limits, and the question it raises. |
+| Familiar terminology hides a consequential mistake | Misconception Correction Lead / Contrarian Data Correction | A precise belief the sources can correct, with the mechanism that makes the distinction matter. |
+| Different mechanisms answer different questions | Framework Comparison Lead / Reader Categorization + Authority Through Specificity | A concrete situation in which confusing the questions produces a poor decision. |
+
+These are working choices drawn from the prior Launchvibes pass, not an exhaustive registry or a mandatory rotation. Consider two or three genuinely different openings, choose the one the evidence can sustain, and record why. Do not invent a surprising statistic or a contrarian position to fit a pattern. If the Launchvibes checkout is available, consult `.agents/skills/launchvibes-creator-writing/SKILL.md`, `platforms/seoBlogRegistry.ts`, and `platforms/hookRegistry.ts` there for new patterns. Treat it as a read-only reference. If unavailable, use this portable guidance and disclose that no live registry resolution was performed.
+
+A brief should identify the reader's question, differentiated angle, one-sentence thesis, selected hook, argument sequence, sources and limits, concrete example, visual explanation, and intended closing insight. Titles, section headings, and card summaries should convey that particular article's promise. Public copy must not expose internal pattern names.
+
+The usual movement is a specific tension → the mechanism and evidence → a consequential tradeoff → the reader's changed understanding. It is a reasoning path, not a fixed set of headings. Each section must add a step; remove repeated setup and generic scene-setting. Technical depth should serve the argument.
+
+An earned ending (昇華性的收尾) returns to the original tension, explains what the demonstrated mechanism changes, and develops one larger consequence. For example, Muse's permission design leads to the owner being able to stop mentally carrying the task; Jev's bounded output leads to engineering knowledge that can survive a model change. Those consequences belong to those arguments. Do not reuse them as universal endings.
+
+Use two checks on the actual prose: **opening/ending check**—does the ending answer the opening's question? **swap check**—could this ending be pasted into another article without meaningful changes? A failed check requires revision, not a more grandiose final sentence. Connected paragraphs, authorial judgment, and specific examples should carry the voice; avoid repeated “not X, but Y” constructions, slogan chains, unsupported hype, generic “the future is…” endings, and summaries disguised as insight.
+
 ## Purpose and provenance
 
 This revision applies the actual Launchvibes repository writing instructions through Codex, rather than using its public marketing pages as a loose style reference. It does not call Launchvibes’s hosted generation service or claim a scored experiment.
@@ -17,7 +44,7 @@ Voice reference: the owner’s [original Honeypot manifesto](https://x.com/honey
 - **Owned voice:** the manifesto can use “we” for the intentions and history in the original. Other pieces can state Honeypot’s interpretation without inventing product testing, customers, investment outcomes, or personal experiences.
 - **Evidence:** preserve source scope, dates, methodological limits, and distinctions between released behavior, proposals, and roadmap items. Put a qualification beside the claim it qualifies, then continue the argument. Do not turn each paragraph into a disclaimer.
 - **Boundaries:** no borrowed personal stories, inflated metrics, unsupported inevitability, clickbait, canned opposition formulas, or a final list posing as a conclusion. Do not manufacture a second thesis merely to sound profound.
-- **Visuals:** keep the five anime covers and existing concept diagrams. The diagram should arrive where the reader needs the mechanism; it is not a substitute for explaining why that mechanism matters.
+- **Visuals:** use an article-specific anime cover and an in-article animated explanation where the reader needs the mechanism. Preserve useful concept diagrams. Visuals support the argument and do not replace explaining why the mechanism matters; see the presentation requirements below.
 
 ## Per-article briefs
 
@@ -89,10 +116,25 @@ Voice reference: the owner’s [original Honeypot manifesto](https://x.com/honey
 4. Write the ending from the article’s demonstrated mechanism: return to the opening → name what the evidence changes → develop a specific larger consequence → finish on the reader’s new understanding.
 5. Review separately for evidence and editorial quality. Reject an ending if it could be pasted into another article, simply restates a checklist, or introduces unsupported predictions.
 6. Review the opening and ending together. The ending must answer the tension the opening created, and every intervening section must earn a step in that answer.
-7. Check all five as a portfolio: distinct lead, concrete example, thesis, and closing insight. Avoid five variations of the same “human control” sermon.
-8. Verify routes, source IDs, references, read times, diagrams, existing category assignments, desktop/mobile reading, and build. Keep planning labels out of public article copy.
+7. Compare the changed pieces with neighboring articles: distinct lead, concrete example, thesis, and closing insight. Avoid a portfolio of variations on the same “human control” sermon. Use a separate editorial reviewer when available; if self-reviewed, state that accurately.
+8. Verify routes, source IDs, references, read times, illustrations, existing category assignments, and desktop/mobile reading. Run an application build for a new article, substantial rewrite, or rendering/routing change. For a small text-only correction, use focused checks and report any skipped build. Keep planning labels out of public article copy.
+9. Complete the [review record](editorial-review-template.md) for each new article or substantial rewrite, citing passages, checks, and fixes. A layout-only change can report applicable checks in its PR without creating five redundant article records. Failed criteria stay open until fixed; do not backfill fictional checks for old articles.
 
-## Review record
+## Presentation requirements from owner feedback
+
+- Publish original native English editions with references. AI, Web3, and Technical Education remain distinct. The Credits lesson is Technical Education. Alpha is separately planned for crypto, AI, and semiconductor investment insights; do not fabricate a published research library for it.
+- Every article needs both relevant anime artwork and an **in-article** animated explanation; a cover with a hover effect alone is insufficient. Use Pot/Professor Pot where it helps connect the illustration to Honeypot. Draw a mechanism, sequence, or change in state rather than merely decorating a paragraph.
+- The current implementation uses `ArticleMotion.tsx` and `ArticleDiagram.tsx`. Each new diagram kind needs a corresponding meaningful scene and detailed explanation, plus its content type/artwork mapping. Preserve play/pause/replay, manual steps, a readable non-animated state, reduced-motion behavior, and offscreen/hidden-tab pausing. Verify the visual makes the same claim as the prose and label conceptual examples accurately.
+- Every article displays the linked credit **“Content writing supported by florus.ai”** through the shared article template. Retain the separate footer **“GTM powered by florus.ai”** credit.
+- Keep the homepage visually led with spacious artwork and readable type, while preserving useful context: numbered category label, expressive section heading, a short introduction, article title, and a concise card summary. The reference balance is **“01 / ARTIFICIAL INTELLIGENCE” → “AI, beyond the demo.” → one useful introductory sentence**. Remove redundant decoration selectively; do not strip meaningful copy wholesale. Current labels are 13px and supporting copy is 16–17px.
+
+## Keeping the standard reliable
+
+The workflow is **project instructions → this guide and examples → a brief → draft → evidence and editorial review → recorded fixes and verification**. New owner corrections should update this guide so the next task does not have to rediscover them.
+
+Project instructions improve continuity when the checkout contains these files. They cannot guarantee taste, source accuracy, or perfect compliance. The PR checklist is a review aid, not a CI or branch-protection gate; no automated prose evaluator is installed. Mechanical tests can check data and links, but a reader must still judge whether the argument and ending are earned. New checkouts based on `main` receive these rules after their PR is merged; other repositories need their own explicit pointer or copy of the standard.
+
+## Historical review record — September 2026 portfolio rewrite
 
 The actual Launchvibes registry resolver was executed for all five briefs; every selected article hook resolved to the canonical mapping above. The Codex writing agent drafted the full portfolio, a separate reviewer examined prose and conclusions, and an evidence reviewer checked factual scope. The source review found no blocking factual defects.
 
