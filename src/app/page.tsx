@@ -22,6 +22,7 @@ function StoryCard({ article }: { article: Article }) {
         <ArticleVisual visual={article.visual} sizes="(max-width: 760px) calc(100vw - 44px), (max-width: 1440px) 46vw, 650px" />
         <div className={styles.storyBody}>
           <h3>{article.title}</h3>
+          <p className={styles.storyDescription}>{article.description}</p>
           <div className={styles.storyMeta}><span>{article.readTime}</span><Arrow /></div>
         </div>
       </Link>
@@ -90,18 +91,25 @@ export default function HomePage() {
         </section>
 
         <section id="ai" className={`${styles.readingSection} ${styles.container}`} aria-labelledby="ai-title">
-          <h2 id="ai-title" className={styles.sectionTitle}>AI</h2>
+          <div className={styles.sectionHeading}>
+            <div><span className={styles.sectionEyebrow}>01 / ARTIFICIAL INTELLIGENCE</span><h2 id="ai-title" className={styles.sectionTitle}>AI, beyond the demo.</h2></div>
+            <p className={styles.sectionIntro}>A closer look at the ideas, agents, and people changing what technology can do.</p>
+          </div>
           <div className={styles.storyGrid}>{aiArticles.map((article) => <StoryCard key={article.slug} article={article} />)}</div>
         </section>
 
         <section id="web3" className={`${styles.web3Section} ${styles.container}`} aria-labelledby="web3-title">
-          <h2 id="web3-title" className={styles.sectionTitle}>Web3</h2>
+          <div className={styles.sectionHeading}>
+            <div><span className={styles.sectionEyebrow}>02 / THE ONCHAIN WORLD</span><h2 id="web3-title" className={styles.sectionTitle}>Web3, beneath the surface.</h2></div>
+            <p className={styles.sectionIntro}>How ownership, trust, and coordination work in the onchain world.</p>
+          </div>
           {web3Articles.map((article) => (
             <article key={article.slug} className={styles.web3Feature}>
               <Link href={`/articles/${article.slug}`}>
                 <ArticleVisual visual={article.visual} sizes="(max-width: 760px) calc(100vw - 44px), (max-width: 1440px) 56vw, 750px" />
                 <div className={styles.web3StoryBody}>
                   <h3>{article.title}</h3>
+                  <p className={styles.storyDescription}>{article.description}</p>
                   <div className={styles.storyMeta}><span>{article.readTime}</span><Arrow /></div>
                 </div>
               </Link>
@@ -112,7 +120,11 @@ export default function HomePage() {
         <section id="technical-education" className={styles.academy} aria-labelledby="academy-title">
           <div className={styles.container}>
             <div className={styles.academyHeading}>
-              <h2 id="academy-title" className={styles.sectionTitle}>Technical<br />Education</h2>
+              <div className={styles.academyHeadingCopy}>
+                <span className={styles.sectionEyebrow}>03 / TECHNICAL EDUCATION</span>
+                <h2 id="academy-title" className={styles.sectionTitle}>Big breakthroughs.<br /><span>Small first steps.</span></h2>
+                <p className={styles.sectionIntro}>Original guides and clear diagrams to help you understand how new technology works.</p>
+              </div>
               <figure className={styles.professorPot}>
                 <Image src="/images/experiment-bear.png" alt="Professor Pot in his original red cap, lab coat, and goggles, holding a flask of honey." width={230} height={276} sizes="(max-width: 540px) 112px, 170px" />
                 <figcaption>Learn with<br />Professor Pot</figcaption>

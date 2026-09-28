@@ -30,6 +30,9 @@ $honey: #ffd342;
 .textLink { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; font-size: 15px; font-weight: 550; padding: 10px 0; &:hover { text-decoration: underline; text-underline-offset: 5px; } svg { width: 19px; height: 19px; } }
 .sectionTitle { font-size: clamp(36px, 3.7vw, 50px); font-weight: 550; letter-spacing: -.045em; line-height: 1.1; }
 
+.sectionHeading { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, .8fr); align-items: end; gap: 45px; }
+.sectionEyebrow { display: block; font-size: 13px; line-height: 1.6; letter-spacing: .8px; font-weight: 600; color: $muted; margin-bottom: 15px; }
+.sectionIntro { font-size: 17px; line-height: 1.7; color: $muted; max-width: 430px; }
 .readingSection { padding-bottom: 74px; }
 .storyGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; margin-top: 29px; }
 .storyCard {
@@ -40,6 +43,7 @@ $honey: #ffd342;
   padding-top: 20px;
   h3 { font-size: clamp(24px, 2.4vw, 33px); font-weight: 550; line-height: 1.2; letter-spacing: -.035em; max-width: 570px; }
 }
+.storyDescription { font-size: 16px; line-height: 1.75; color: $muted; margin-top: 16px; max-width: 590px; }
 .storyMeta { display: flex; justify-content: space-between; align-items: center; gap: 18px; color: $muted; font-size: 14px; margin-top: 20px; svg { width: 21px; height: 21px; color: $ink; flex-shrink: 0; } }
 .web3Section { padding-bottom: 76px; }
 .web3Feature {
@@ -53,7 +57,8 @@ $honey: #ffd342;
 }
 
 .academy { background: #e9ecdf; padding-top: 49px; padding-bottom: 59px; border-top: 1px solid #d8decb; border-bottom: 1px solid #d8decb; }
-.academyHeading { display: flex; align-items: center; justify-content: space-between; gap: 35px; }
+.academyHeading { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 35px; }
+.academyHeadingCopy { min-width: 0; .sectionTitle > span { color: #607148; } .sectionIntro { max-width: 580px; margin-top: 20px; } }
 .professorPot { display: flex; align-items: center; gap: 24px; margin: -19px 27px -10px 0; > img { width: 170px; height: auto; flex-shrink: 0; } figcaption { font-size: 18px; line-height: 1.4; font-weight: 500; color: #536044; } }
 .academy .storyGrid { margin-top: 31px; }
 
@@ -101,6 +106,7 @@ $honey: #ffd342;
   .heroCopy > p { font-size: 16px; }
   .heroImage { height: 450px; }
   .storyGrid { gap: 25px; }
+  .web3Feature > a { grid-template-columns: 1fr 1fr; }
   .web3StoryBody { padding: 24px; }
   .web3StoryBody h3 { font-size: 31px; }
   .licensing { gap: 34px; }
@@ -117,6 +123,8 @@ $honey: #ffd342;
   .heroCopy h1 { font-size: clamp(62px, 11vw, 80px); margin-bottom: 23px; max-width: 660px; br:nth-of-type(2) { display: none; } > span::before { content: " "; } }
   .heroCopy > p { font-size: 18px; max-width: 480px; margin-bottom: 23px; }
   .heroImage { height: auto; aspect-ratio: 3 / 2; }
+  .sectionHeading { grid-template-columns: 1fr; gap: 18px; }
+  .sectionIntro { max-width: 600px; font-size: 16px; }
   .storyGrid { grid-template-columns: 1fr; gap: 36px; }
   .storyBody h3 { font-size: 29px; max-width: 620px; }
   .readingSection { padding-bottom: 57px; }
@@ -124,9 +132,9 @@ $honey: #ffd342;
   .web3Feature > a { grid-template-columns: 1fr; }
   .web3StoryBody { padding: 24px; h3 { font-size: 32px; max-width: 580px; } .storyMeta { margin-top: 20px; } }
   .academy { padding-top: 37px; padding-bottom: 47px; }
-  .academyHeading { gap: 20px; }
+  .academyHeading { gap: 25px; }
   .academyHeading .sectionTitle { font-size: 37px; }
-  .professorPot { gap: 0; margin: -8px -6px -8px 0; > img { width: 140px; } figcaption { display: none; } }
+  .professorPot { gap: 0; margin: 0; > img { width: 140px; } figcaption { display: none; } }
   .alphaSection { padding-top: 57px; padding-bottom: 55px; }
   .alphaPanel { padding: 29px 25px 28px; > p { font-size: 17px; max-width: 470px; } }
   .alphaSubjects { margin-top: 21px; }
@@ -150,8 +158,9 @@ $honey: #ffd342;
   .storyBody { padding-top: 17px; h3 { font-size: 27px; } }
   .storyMeta { margin-top: 16px; }
   .web3StoryBody { padding: 21px; h3 { font-size: 29px; } }
-  .academyHeading .sectionTitle { font-size: clamp(29px, 7.2vw, 38px); }
-  .professorPot > img { width: 112px; }
+  .academyHeading { grid-template-columns: 1fr; gap: 22px; }
+  .academyHeading .sectionTitle { font-size: clamp(32px, 8vw, 38px); }
+  .professorPot { gap: 22px; > img { width: 112px; } figcaption { display: block; font-size: 16px; } }
   .academy .storyGrid { margin-top: 27px; }
   .alphaPanel { padding: 27px 22px 24px; }
   .alphaHeading { gap: 18px; }
@@ -174,7 +183,6 @@ $honey: #ffd342;
   .alphaSubjects > div { grid-template-columns: 107px 1fr; }
   .alphaMotif { width: 116px; }
   .alphaSubjects h3 { font-size: 17px; }
-  .professorPot > img { width: 94px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .site *, .site *::before, .site *::after { scroll-behavior: auto !important; transition: none !important; }
