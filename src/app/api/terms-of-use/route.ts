@@ -71,7 +71,7 @@ export async function GET() {
   try {
     const docxPath = path.join(
       process.cwd(),
-      "public/docs/Honeypot Finance - Terms of Use (Nov, 2025).docx"
+      "public/docs/terms-of-use.docx"
     );
 
     if (!fs.existsSync(docxPath)) {

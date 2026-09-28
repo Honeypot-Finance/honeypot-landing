@@ -1,6 +1,5 @@
-import Image from "next/image";
-import { ReactNode } from "react";
-import { StaticImageData } from "next/image";
+import type { ReactNode } from "react";
+import type { StaticImageData } from "next/image";
 
 export type Menu = {
   path:
@@ -26,139 +25,26 @@ export type flatMenu = {
   icon?: StaticImageData;
 };
 
+export const legacyAppLinks = [
+  { title: "Leaderboard", path: "https://leaderboard.honeypotfinance.xyz/leaderboard" },
+  { title: "Docs", path: "https://docs.honeypotfinance.xyz/" },
+  { title: "All-in-one vault", path: "https://leaderboard.honeypotfinance.xyz/" },
+  { title: "NFT staking", path: "https://nft.honeypotfinance.xyz/staking" },
+];
+
 export const appPathsList: Menu[] = [
+  { title: "AI", path: "/#ai" },
+  { title: "Web3", path: "/#web3" },
+  { title: "Technical Education", path: "/#technical-education" },
+  { title: "Licensing", path: "/#licensing" },
   {
-    title: "Trade",
-    path: [
-      {
-        title: "Perp",
-        path: "https://perp.honeypotfinance.xyz",
-        routePath: "https://perp.honeypotfinance.xyz",
-      },
-      {
-        title: "Swap",
-        path: "https://dex.honeypotfinance.xyz/swap",
-        routePath: "https://dex.honeypotfinance.xyz/swap",
-      },
-      {
-        title: "Multi-Token Swap",
-        path: "https://dex.honeypotfinance.xyz/xswap",
-        routePath: "https://dex.honeypotfinance.xyz/xswap",
-      },
-      {
-        title: "Cross-Chain Swap",
-        path: "https://dex.honeypotfinance.xyz/cross-chain-swap",
-        routePath: "https://dex.honeypotfinance.xyz/cross-chain-swap",
-      },
-      {
-        title: "Bridge",
-        path: "https://dex.honeypotfinance.xyz/bridge",
-        routePath: "https://dex.honeypotfinance.xyz/bridge",
-      },
-      {
-        title: "USDC Bridge",
-        path: "https://bridge.honeypotfinance.xyz/",
-        routePath: "https://bridge.honeypotfinance.xyz/",
-      },
-    ],
-  },
-  {
-    title: "Earn",
-    path: [
-      {
-        title: "Points",
-        path: "https://points.honeypotfinance.xyz",
-        routePath: "https://points.honeypotfinance.xyz",
-      },
-      {
-        title: "Pools",
-        path: "https://dex.honeypotfinance.xyz/pools",
-        routePath: "https://dex.honeypotfinance.xyz/pools",
-      },
-      {
-        title: "Automated Vaults",
-        path: "https://dex.honeypotfinance.xyz/pools",
-        routePath: "https://dex.honeypotfinance.xyz/pools",
-      },
-      {
-        title: "All In One Vault",
-        path: "https://leaderboard.honeypotfinance.xyz/",
-        routePath: "https://leaderboard.honeypotfinance.xyz/",
-      },
-      {
-        title: "NFT Staking",
-        path: "https://nft.honeypotfinance.xyz/staking",
-        routePath: "https://nft.honeypotfinance.xyz/staking",
-      },
-    ],
-  },
-  {
-    title: "Token Launch",
-    path: [
-      {
-        title: "Dreampad",
-        path: "https://dreampad.honeypotfinance.xyz/",
-        routePath: "https://dreampad.honeypotfinance.xyz/",
-      },
-      {
-        title: "Pot2Pump Overview",
-        path: "https://pot2pump.honeypotfinance.xyz/",
-        routePath: "https://pot2pump.honeypotfinance.xyz/",
-      },
-      {
-        title: "Launch Meme",
-        path: "https://pot2pump.honeypotfinance.xyz/potting",
-        routePath: "https://pot2pump.honeypotfinance.xyz/potting",
-      },
-      {
-        title: "Trade Meme",
-        path: "https://pot2pump.honeypotfinance.xyz/pumping",
-        routePath: "https://pot2pump.honeypotfinance.xyz/pumping",
-      },
-    ],
-  },
-  {
-    title: "Leaderboard",
-    path: [
-      {
-        title: "Points",
-        path: "https://points.honeypotfinance.xyz",
-        routePath: "https://points.honeypotfinance.xyz",
-      },
-      {
-        title: "App Leaderboard",
-        path: "https://leaderboard.honeypotfinance.xyz/leaderboard",
-        routePath: "https://leaderboard.honeypotfinance.xyz/leaderboard",
-      },
-      {
-        title: "User Dashboard",
-        path: "https://honeypotfinance.xyz/dashboard",
-        routePath: "https://honeypotfinance.xyz/dashboard",
-      },
-    ],
-  },
-  {
-    title: "Docs",
-    path: "https://docs.honeypotfinance.xyz/",
+    title: "Legacy apps",
+    path: legacyAppLinks.map((link) => ({ ...link, routePath: link.path })),
   },
 ];
 
-const getFlatPaths = (paths: Menu[]): flatMenu[] => {
-  let flatPaths: flatMenu[] = [];
-
-  paths.forEach((path) => {
-    if (typeof path.path === "string") {
-      flatPaths.push({
-        path: path.path,
-        title: path.title,
-      });
-    }
-    if (Array.isArray(path.path)) {
-      flatPaths = [...flatPaths, ...getFlatPaths(path.path)];
-    }
-  });
-
-  return flatPaths;
-};
-
-export const flatAppPath = getFlatPaths(appPathsList);
+export const flatAppPath: flatMenu[] = appPathsList.flatMap((menu) =>
+  typeof menu.path === "string"
+    ? [{ path: menu.path, title: menu.title }]
+    : menu.path.map(({ path, title }) => ({ path, title }))
+);

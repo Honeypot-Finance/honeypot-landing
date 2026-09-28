@@ -2,7 +2,7 @@
 import postgres from 'postgres';
 
 // Optimized postgres configuration for serverless environments
-export const pg = postgres(process.env['DB']!, {
+export const pg = process.env.DB ? postgres(process.env.DB, {
   // Reduce connection pool size for serverless functions
   max: process.env['NODE_ENV'] === 'development' ? 5 : 10,
   // Increase idle timeout for serverless cold starts
@@ -24,41 +24,33 @@ export const pg = postgres(process.env['DB']!, {
       console.warn('PostgreSQL notice:', notice);
     }
   },
-  // Debug configuration
-  debug:
-    process.env['DEBUG'] === 'true'
-      ? function (connection, query, params) {
-          const newQuery = query.replace(/\$(\d+)/g, (_, p1) => {
-            const replace = params[p1 - 1];
-            return typeof replace === 'string' ? `'${replace}'` : replace;
-          });
-          console.log(newQuery);
-        }
-      : false,
-});
+  // Never interpolate query parameters into logs: they may contain private data.
+  debug: false,
+}) : null;
 
 // Utility function for safe database operations with proper error handling
 export const withDatabase = async <T>(
-  operation: (db: typeof pg) => Promise<T>
+  operation: (db: NonNullable<typeof pg>) => Promise<T>
 ): Promise<T> => {
   try {
+    if (!pg) throw new Error("Database is not configured");
     const result = await operation(pg);
     return result;
   } catch (error) {
-    console.error('Database operation failed:', error);
+    console.error('Database operation failed');
     throw error;
   }
 };
 
 // Graceful shutdown handler for serverless environments
-if (typeof process !== 'undefined') {
+if (pg) {
   process.on('SIGTERM', async () => {
     console.log('Received SIGTERM, closing postgres connections...');
-    await pg.end();
+    await pg?.end();
   });
 
   process.on('SIGINT', async () => {
     console.log('Received SIGINT, closing postgres connections...');
-    await pg.end();
+    await pg?.end();
   });
 }

@@ -12,7 +12,7 @@ export const poppins = Poppins({
   weight: ['400', '500', '600', '700', '800'],
   variable: '--font-poppins',
   display: 'swap',
-  preload: true,
+  preload: false,
 });
 
 export const bebasNeue = Bebas_Neue({
@@ -20,5 +20,5 @@ export const bebasNeue = Bebas_Neue({
   weight: ['400'],
   variable: '--font-bebas-neue',
   display: 'swap',
-  preload: true,
+  preload: false,
 });

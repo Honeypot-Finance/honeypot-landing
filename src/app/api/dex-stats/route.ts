@@ -2,6 +2,9 @@ import { NextResponse } from 'next/server';
 import { pg } from '@/lib/db/db';
 
 export async function GET() {
+  if (!pg) {
+    return NextResponse.json({ error: "DEX statistics are unavailable" }, { status: 503 });
+  }
   try {
     // GraphQL endpoint for Berachain mainnet
     const BERACHAIN_MAINNET = "https://api.goldsky.com/api/public/project_cm78242tjtmme01uvcbkaay27/subgraphs/hpot-algebra-core/2.4.0/gn";
@@ -33,12 +36,13 @@ export async function GET() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ query: statsQuery }),
+      signal: AbortSignal.timeout(10_000),
+      next: { revalidate: 60 },
     });
 
+    if (!response.ok) throw new Error("Subgraph request failed");
     const data = await response.json();
 
-    console.log("Database users result:", usersResult);
-    console.log("Berachain API Response:", data);
 
     if (data.errors) {
       throw new Error("GraphQL query failed");
@@ -50,7 +54,6 @@ export async function GET() {
     const totalTrades = factory?.txCount || "0";
     const totalVolume = factory?.untrackedVolumeUSD || "0";
 
-    console.log("Extracted values - Users:", users, "Chains:", chainCount, "Trades:", totalTrades, "Volume:", totalVolume);
 
     return NextResponse.json({
       users,
@@ -59,7 +62,7 @@ export async function GET() {
       totalVolume,
     });
   } catch (error) {
-    console.error("Error fetching DEX stats:", error);
+    console.error("Error fetching DEX stats");
     return NextResponse.json(
       { error: "Failed to load DEX statistics" },
       { status: 500 }

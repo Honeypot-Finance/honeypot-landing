@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import DocxViewer from "@/components/DocxViewer";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Honeypot Finance",
+  title: "Privacy Policy",
   description:
     "Honeypot Finance Privacy Policy - Learn how we collect, use, and protect your information.",
 };
@@ -15,7 +15,7 @@ export default function PrivacyPolicyPage() {
       <SimpleHeader />
 
       <main className="max-w-4xl mx-auto px-4 py-12 flex-1">
-        <DocxViewer docxUrl="/docs/Honeypot Finance - Privacy Policy (Nov, 2025).docx" />
+        <DocxViewer docxUrl="/docs/privacy-policy.docx" />
       </main>
 
       <Footer />
