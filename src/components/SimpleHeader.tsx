@@ -1,5 +1,5 @@
+import Brand from "@/components/editorial/Brand";
 import Link from "next/link";
-import Image from "next/image";
 
 interface SimpleHeaderProps {
   className?: string;
@@ -7,25 +7,15 @@ interface SimpleHeaderProps {
 
 export default function SimpleHeader({ className = "" }: SimpleHeaderProps) {
   return (
-    <header className={`w-full py-6 px-4 border-b border-gray-800 ${className}`}>
+    <header className={`w-full bg-[#f7f5ee] py-6 px-4 border-b border-[#deded3] ${className}`}>
       <div className="max-w-4xl mx-auto flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <Image
-            src="/images/honeypot-logo.svg"
-            width={32}
-            height={32}
-            alt="Honeypot Finance logo"
-          />
-          <span className="font-bebas-neue text-lg text-[#FFCD4D]">
-            HONEYPOT FINANCE
-          </span>
-        </Link>
-        <a
+        <Brand />
+        <Link
           href="/"
-          className="text-gray-400 hover:text-white transition-colors"
+          className="text-[#394537] hover:underline transition-colors"
         >
           Back to Home
-        </a>
+        </Link>
       </div>
     </header>
   );

@@ -1,0 +1,35 @@
+# Editorial assets
+
+- `honeypot-logo.png`: unchanged owner-supplied `honeypot-cool-logo-concept.png`.
+- `honeypot-world.png`: new editorial illustration generated using the built-in image generation tool, with the supplied logo as the character/brand reference. No external stock image was used.
+
+## Generation prompt
+
+Use case: illustration-story. Generate a new premium editorial website hero illustration, using input image only as character/brand reference (not an edit target). Wide landscape 3:2 composition. Elegant whimsical hand drawn Japanese anime background painting with warm vintage manga ink outlines and restrained watercolor/gouache textures, sophisticated editorial illustration. Scene: a little solarpunk discovery island and open-air research studio floating among soft cream clouds, lush olive-green plants and oversized leafy tree, tiny curved paths, small futuristic observatory, simple retro computer showing an abstract constellation. Central hero subject: a round honey-yellow honey pot character wearing bold black sunglasses exactly inspired by the reference pot shape, with tiny simple arms and legs, seated on a rock reading a notebook; one much smaller companion honey pot near the studio. AI and Web3 suggested subtly with constellation-like connected stars and tiny orbiting geometric cubes; focus warmth, curiosity, learning, human scale. Palette warm ivory background #f7f5ee, golden yellow, moss olive, sage and warm black ink, very small apricot accents. Airy composition with generous cream negative space at edges; world occupies middle 85%, balanced low horizon; not a full-bleed noisy landscape. Clever details and beautiful gentle shading; feels like an art-book illustration for a thoughtful indie technology media brand. Absolutely NO text, no letters, no title, no captions, no wordmarks, no watermark. Avoid generic glossy 3D, gradients, purple neon, photorealism, crowded UI. Character pot must be recognizable as supplied pot with sunglasses; preserve honey pot lip and rounded silhouette.
+## Article cover collection
+
+Generated with the built-in `image_gen.imagegen` tool on September 27, 2026. Each cover uses the supplied sunglasses-pot logo and the repository’s original `experiment-bear.png` as mascot references. Final PNGs are copied unchanged; responsive optimization is handled by Next.js Image. These original editorial illustrations are conceptual artwork, not screenshots of the products discussed.
+
+### Shared art direction
+
+Use case: illustration-story. Asset: a distinctive anime editorial cover for Honeypot Finance, 1536x1024 landscape. Reimagine the supplied mascot references as characters inside a vivid Japanese anime adventure scene. Reference 1 establishes the honey-yellow rounded jar with black sunglasses, add tiny expressive limbs; Reference 2 establishes Professor Pot, a friendly brown bear in a red cap, goggles and white lab coat. Use only the characters requested in the specific scene. Strong clean hand-drawn anime line art, beautiful cel shading, painterly environment, compelling character expressions, cinematic depth, crisp silhouettes, lively but carefully composed. Cream/olive/golden brand foundations with richer teal, coral, sky blue and warm light. Original anime art, not photorealism, not 3D, not flat UI mockup, no diagram boxes. No lettering, no text, no watermark, no logos or artist signatures. Important characters occupy central 70 percent so the image works in responsive landscape cards. Preserve mascot visual identity without including the original image background or wordmark. Each cover must feel like a different episode of the same imaginative world.
+
+### manifesto-anime.png
+
+Scene: an adult anime woman explorer with short chestnut hair, moss-green travel jacket and a sketchbook, standing with the small sunglasses honey-pot companion on the balcony of a fantastical floating library at sunrise. Streams of glowing paper birds carry discoveries between distant island observatories, wind lifts pages and ribbons. Large amber sun, teal islands, warm cream clouds. The woman excitedly points to a newly glowing star. Medium-wide dramatic composition, tactile ink details, a sense of curiosity and discovery. The pot is prominently seated on the balcony rail at her side. No Professor bear in this scene.
+
+### muse-anime.png
+
+Scene: an adult anime woman with short indigo hair and an ivory bomber jacket sits at a cozy future-city cafe workstation. Her small sunglasses honey-pot companion helps organize a swirl of floating travel postcards and task tokens. Her hand holds a luminous little key above a brass permission gate on the desk, making the human in control visually clear. A friendly tiny sky-blue star-shaped robotic familiar hovers near her shoulder. Lavender twilight skyline, warm coral cafe lanterns, teal foliage. Dynamic diagonal composition, intimate expressive anime character moment, magical agency and everyday life. No bear in this scene.
+
+### jev-anime.png
+
+Scene: Professor Pot the brown bear in his red cap, goggles and white lab coat enthusiastically operates a whimsical brass sorting machine in a sunlit floating research workshop. Three distinct glowing paths route paper airplanes and colored wooden tokens toward a notebook, a human-review bell, and a finished-task basket. A small sunglasses honey-pot helper catches a paper plane. Expressive anime brown bear face, exaggerated delighted pose, mint-teal machinery, honey-yellow sparks, coral levers, dust motes, clever handcrafted mechanical details. Medium shot, lively readable action, central characters substantial. No technical labels or text.
+
+### contracts-anime.png
+
+Scene: an adult anime courier with tousled dark hair, a red scarf and cream explorer coat accompanies the sunglasses honey-pot character across a luminous bridge into a bustling floating city of friendly agents. Three elegant archways carry wordless symbols: a portrait medallion, star-shaped community tokens, and a crystal magnifying lens. A quiet glowing barrier and a small separate locked coin pouch suggest trust and permission are distinct. Rich teal architecture, golden dusk, coral banners, airy cloud layers. Strong adventurous storybook-anime composition with character interaction, no grids, no infographic boxes, no bear.
+
+### credits-anime.png
+
+Scene: Professor Pot the brown bear with red cap and lab goggles, now wearing an artist apron over his white coat, works in a magical printmaking studio with the sunglasses honey-pot helper. A stream of small original abstract cyan-magenta-yellow-black art cards moves into a transparent locked archive chest, while the bear carefully lifts one large luminous new art frame above the workbench. This is a visual metaphor for many artworks becoming one while source cards remain in custody; no flames or actual destruction. Vivid CMYK paint accents, warm apricot light, teal shadows, brushed paper, jars of pigment, animated anime gesture. Clearly drawn bear and pot characters, medium-wide scene, no numbers or words, do not imitate any existing artist's artwork.

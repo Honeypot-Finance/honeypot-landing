@@ -1,124 +1,45 @@
 import Link from "next/link";
-import Image from "next/image";
-import { BsTelegram } from "react-icons/bs";
-import { FaXTwitter, FaDiscord, FaMedium } from "react-icons/fa6";
+import { legacyAppLinks } from "@/config/allAppPath";
+import Brand from "@/components/editorial/Brand";
+import Arrow from "@/components/editorial/Arrow";
+import styles from "@/components/editorial/Editorial.module.scss";
 
-const navLinks = [
-  { href: "https://docs.honeypotfinance.xyz/", label: "Docs", external: true },
-  { href: "https://github.com/Honeypot-Finance", label: "GitHub", external: true },
-  { href: "https://medium.com/@HoneypotFinance1", label: "Medium", external: true },
-  { href: "https://magiceden.io/collections/berachain/honeygenesis-44", label: "HoneyGenesis NFT", external: true },
-  { href: "https://pot2pump.honeypotfinance.xyz/", label: "Meme", external: true },
-  { href: "https://dex.honeypotfinance.xyz/", label: "Honeypot DEX", external: true },
-];
-
-const legalLinks = [
-  { href: "/privacy-policy", label: "Privacy Policy" },
-  { href: "/terms-of-use", label: "Terms of Use" },
-];
-
-const socialLinks = [
-  { href: "https://t.me/+tE1KgsD-GxJhOTg0", icon: BsTelegram, label: "Join our Telegram" },
-  { href: "https://x.com/honeypotfinance", icon: FaXTwitter, label: "Follow us on X (Twitter)" },
-  { href: "https://discord.gg/NfnK78KJxH", icon: FaDiscord, label: "Join our Discord" },
-  { href: "https://medium.com/@HoneypotFinance1", icon: FaMedium, label: "Read our Medium blog" },
-];
-
-interface FooterProps {
-  className?: string;
-}
-
-export default function Footer({ className = "" }: FooterProps) {
+export default function Footer({ className = "" }: { className?: string }) {
   return (
-    <footer className={`w-full bg-[#140E06] border-t border-gray-800 flex flex-col items-center pt-12 pb-8 ${className}`}>
-      <div className="flex flex-col items-center gap-6">
-        {/* Logo and Brand */}
-        <div className="flex flex-col items-center gap-2">
-          <Image
-            src="/images/honeypot-logo.svg"
-            width={40}
-            height={40}
-            alt="Honeypot Finance logo"
-          />
-          <span className="font-bebas-neue text-xl text-[#FFCD4D]">
-            HONEYPOT FINANCE
-          </span>
+    <footer className={`${styles.footer} ${className}`}>
+      <div className={styles.footerTop}>
+        <div className={styles.footerBrand}>
+          <Brand />
+          <p>Curious minds. Open frontiers.<br />A sweeter way to see what’s next.</p>
         </div>
-
-        {/* Navigation Links */}
-        <nav className="flex flex-wrap justify-center gap-6 text-gray-300 font-medium text-lg">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              target={link.external ? "_blank" : undefined}
-              rel={link.external ? "noopener noreferrer" : undefined}
-            >
-              {link.label}
-            </Link>
-          ))}
+        <nav aria-label="Explore" className={styles.footerColumn}>
+          <h2>Explore</h2>
+          <Link href="/#ai">AI</Link>
+          <Link href="/#web3">Web3</Link>
+          <Link href="/#technical-education">Technical Education</Link>
+          <Link href="/#licensing">Technology licensing</Link>
+          <Link href="/articles/attention-network-for-the-agi-era">Our new chapter<Arrow /></Link>
         </nav>
-
-        {/* Legal Links */}
-        <nav className="flex flex-wrap justify-center gap-6 text-gray-400 text-sm">
-          {legalLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="hover:text-gray-300 transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
+        <nav aria-label="Community" className={styles.footerColumn}>
+          <h2>Find your people</h2>
+          <a href="https://x.com/honeypotfinance" target="_blank" rel="noopener noreferrer">X / Twitter<Arrow diagonal /></a>
+          <a href="https://discord.gg/NfnK78KJxH" target="_blank" rel="noopener noreferrer">Discord<Arrow diagonal /></a>
+          <a href="https://github.com/Honeypot-Finance" target="_blank" rel="noopener noreferrer">GitHub<Arrow diagonal /></a>
+          <h2 className={styles.footerSubheading}>Licensing enquiries</h2>
+          <a href="https://t.me/wilsoncaroline1210" target="_blank" rel="noopener noreferrer">Telegram<Arrow diagonal /></a>
+          <a href="mailto:contact@honeypotfinance.xyz">contact@honeypotfinance.xyz</a>
         </nav>
-
-        {/* Social Icons */}
-        <div className="flex gap-6 mt-2">
-          {socialLinks.map((social) => (
-            <Link
-              key={social.href}
-              href={social.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#2F1F0E] rounded-xl p-3 flex items-center justify-center hover:bg-[#3a2612] hover:scale-110 transition"
-              aria-label={social.label}
-            >
-              <social.icon className="w-6 h-6 text-[#FFCD4D]" />
-            </Link>
-          ))}
-        </div>
-
-        {/* Copyright */}
-        <div className="text-gray-400 text-sm mt-2 text-center">
-          &copy; Copyright {new Date().getFullYear()}, All Rights Reserved by Honeypot
-        </div>
-
-        {/* Credits */}
-        <div className="text-gray-500 text-xs mb-4 text-center flex flex-col gap-1">
-          <span>
-            GTM powered by{" "}
-            <a
-              href="https://florus.ai"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-gray-300 transition-colors underline underline-offset-2"
-            >
-              florus.ai
-            </a>
-          </span>
-          <span>
-            Design and product prototypes powered by{" "}
-            <a
-              href="https://yexlabs.xyz"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-gray-300 transition-colors underline underline-offset-2"
-            >
-              Yexlabs
-            </a>
-          </span>
-        </div>
+        <nav aria-label="Legacy apps" className={styles.footerColumn}>
+          <h2>Legacy apps</h2>
+          {legacyAppLinks.map((link) => <a key={link.title} href={link.path} target="_blank" rel="noopener noreferrer">{link.title}<Arrow diagonal /></a>)}
+        </nav>
       </div>
+      <div className={styles.footerBottom}>
+        <p>© {new Date().getFullYear()} Honeypot Finance</p>
+        <span>Made for the endlessly curious.</span>
+        <div><Link href="/privacy-policy">Privacy</Link><Link href="/terms-of-use">Terms</Link></div>
+      </div>
+      <div className={styles.footerCredits}>GTM powered by <a href="https://florus.ai/" target="_blank" rel="noopener noreferrer">florus.ai</a></div>
     </footer>
   );
 }

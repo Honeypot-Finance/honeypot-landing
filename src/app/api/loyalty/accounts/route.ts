@@ -1,46 +1,66 @@
 import { NextRequest, NextResponse } from "next/server";
+import { validateLoyaltyQuery } from "@/lib/snag/query";
+import type { LoyaltyAccount } from "@/lib/snag/snagApi";
 
 const SNAG_API_BASE_URL = "https://points.honeypotfinance.xyz";
-const SNAG_API_KEY = "81208dcfa7d5455183a3d6b2a72d8ca5";
-const ORGANIZATION_ID = "dc42201d-d1cb-47c2-a3ac-94367cdf40ea";
-const WEBSITE_ID = "4a2be9fc-12fb-4b39-bd2c-c721deafce39";
 
 export async function GET(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams;
+  const query = validateLoyaltyQuery(request.nextUrl.searchParams);
+  if (!query) {
+    return NextResponse.json({ message: "Invalid loyalty query" }, { status: 400 });
+  }
 
-  // Build query string from search params
-  const queryParams = new URLSearchParams();
-  searchParams.forEach((value, key) => {
-    queryParams.append(key, value);
-  });
+  // Never put this credential in a NEXT_PUBLIC_ variable or fall back to a tracked key.
+  const apiKey = process.env.SNAG_API_KEY;
+  if (!apiKey) {
+    return NextResponse.json(
+      { message: "Loyalty service is temporarily unavailable" },
+      { status: 503 }
+    );
+  }
 
   try {
     const response = await fetch(
-      `${SNAG_API_BASE_URL}/api/loyalty/accounts?${queryParams.toString()}`,
+      `${SNAG_API_BASE_URL}/api/loyalty/accounts?${query.toString()}`,
       {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "x-api-key": SNAG_API_KEY,
-        },
+        headers: { "x-api-key": apiKey },
+        cache: "no-store",
+        redirect: "error",
+        signal: AbortSignal.timeout(10_000),
       }
     );
 
     if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
       return NextResponse.json(
-        { message: errorData.message || "Failed to fetch loyalty accounts" },
-        { status: response.status }
+        { message: "Unable to load loyalty accounts" },
+        { status: response.status === 429 ? 429 : 502 }
       );
     }
 
-    const data = await response.json();
-    return NextResponse.json(data);
-  } catch (error) {
-    console.error("Snag API error:", error);
+    const result = await response.json();
+    if (!Array.isArray(result.data)) throw new Error("Invalid loyalty response");
+
+    // Only expose the public fields used by the leaderboard, not the upstream user object.
+    const data = result.data.slice(0, Number(query.get("limit"))).map((account: LoyaltyAccount) => ({
+      id: account.id,
+      amount: account.amount,
+      loyaltyCurrencyId: account.loyaltyCurrencyId,
+      userId: account.userId,
+      user: account.user ? {
+        id: account.user.id,
+        walletAddress: account.user.walletAddress,
+        username: account.user.username,
+      } : undefined,
+    }));
+
     return NextResponse.json(
-      { message: "Internal server error" },
-      { status: 500 }
+      { data, hasNextPage: Boolean(result.hasNextPage), message: "Success" },
+      { headers: { "Cache-Control": "private, no-store" } }
+    );
+  } catch {
+    return NextResponse.json(
+      { message: "Unable to load loyalty accounts" },
+      { status: 502 }
     );
   }
 }

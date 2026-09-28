@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import DocxViewer from "@/components/DocxViewer";
 
 export const metadata: Metadata = {
-  title: "Terms of Use | Honeypot Finance",
+  title: "Terms of Use",
   description:
     "Honeypot Finance Terms of Use - Read our terms and conditions for using our services.",
 };
@@ -15,7 +15,7 @@ export default function TermsOfUsePage() {
       <SimpleHeader />
 
       <main className="max-w-4xl mx-auto px-4 py-12 flex-1">
-        <DocxViewer docxUrl="/docs/Honeypot Finance - Terms of Use (Nov, 2025).docx" />
+        <DocxViewer docxUrl="/docs/terms-of-use.docx" />
       </main>
 
       <Footer />
