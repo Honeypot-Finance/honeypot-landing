@@ -36,6 +36,7 @@ export const appPathsList: Menu[] = [
   { title: "AI", path: "/#ai" },
   { title: "Web3", path: "/#web3" },
   { title: "Technical Education", path: "/#technical-education" },
+  { title: "Alpha", path: "/#alpha" },
   { title: "Licensing", path: "/#licensing" },
   {
     title: "Legacy apps",
