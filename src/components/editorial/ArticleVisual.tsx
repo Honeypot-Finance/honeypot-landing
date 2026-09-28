@@ -29,11 +29,6 @@ export default function ArticleVisual({
           style={{ objectPosition: artwork.objectPosition }}
         />
       </div>
-      <span className={styles.artShimmer} aria-hidden="true" />
-      <span className={styles.artSparkle} aria-hidden="true">✦</span>
-      <span className={styles.artSparkleSmall} aria-hidden="true">✧</span>
-      <span className={styles.artCategory} aria-hidden="true">{artwork.category}</span>
-      <span className={styles.artCaption} aria-hidden="true">{artwork.caption}</span>
     </div>
   );
 }
