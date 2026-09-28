@@ -40,10 +40,16 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
 
 const sectionLinks = { AI: "/#ai", Web3: "/#web3", "Technical Education": "/#technical-education" };
 
+function ArticleParagraph({ text, linkLaunchvibes }: { text: string; linkLaunchvibes: boolean }) {
+  const index = linkLaunchvibes ? text.indexOf("Launchvibes") : -1;
+  return <p>{index < 0 ? text : <>{text.slice(0, index)}<a href="https://www.launchvibes.tech/" target="_blank" rel="noopener noreferrer">Launchvibes</a>{text.slice(index + "Launchvibes".length)}</>}</p>;
+}
+
 export default async function ArticlePage({ params }: ArticlePageProps) {
   const article = getArticle((await params).slug);
   if (!article) notFound();
   const related = article.relatedSlugs.flatMap((slug) => { const item = getArticle(slug); return item ? [item] : []; });
+  const firstProductMention = article.sections.flatMap(({ paragraphs }) => paragraphs).find((paragraph) => paragraph.includes("Launchvibes"));
   const date = new Intl.DateTimeFormat("en", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" }).format(new Date(article.date));
 
   return (
@@ -62,14 +68,13 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           <aside className={styles.articleSidebar}><nav aria-label="On this page"><span className={styles.sidebarLabel}>IN THIS FIELD NOTE</span>{article.sections.map((section, index) => <a key={section.id} href={`#${section.id}`}><span>{String(index + 1).padStart(2, "0")}</span>{section.title}</a>)}<a href="#sources"><span>↗</span>Sources & further reading</a></nav><Link href={sectionLinks[article.section]} className={styles.backLink}>Back to {article.section}<Arrow /></Link></aside>
           <article id="article-content" className={styles.articleBody}>
             <p className={styles.articleHook}>{article.hook}</p>
-            <div className={styles.takeaway}><span>THE IDEA TO TAKE WITH YOU</span><p>{article.takeaway}</p></div>
-            {article.sections.map((section) => (
-              <section key={section.id} id={section.id} className={styles.proseSection}>
+            {article.sections.map((section, sectionIndex) => (
+              <section key={section.id} id={section.id} className={`${styles.proseSection} ${sectionIndex === article.sections.length - 1 ? styles.closingSection : ""}`}>
                 <h2>{section.title}</h2>
-                {section.paragraphs.map((paragraph, index) => <p key={`${section.id}-${index}`}>{paragraph}</p>)}
+                {section.paragraphs.map((paragraph, index) => <ArticleParagraph key={`${section.id}-${index}`} text={paragraph} linkLaunchvibes={paragraph === firstProductMention} />)}
                 {section.bullets ? <ul>{section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul> : null}
                 {section.diagram ? <ArticleDiagram kind={section.diagram} /> : null}
-                {section.sourceIds?.length ? <div className={styles.inlineSources}><span>Source notes</span>{section.sourceIds.map((id) => { const source = article.sources.find((item) => item.id === id); return source ? <a href={`#source-${id}`} key={id}>{source.label}<Arrow diagonal /></a> : null; })}</div> : null}
+                {section.sourceIds?.length ? <div className={styles.inlineSources}><span>References</span>{section.sourceIds.map((id) => { const sourceIndex = article.sources.findIndex((item) => item.id === id); const source = article.sources[sourceIndex]; return source ? <a href={`#source-${id}`} key={id} title={source.label} aria-label={`Reference ${sourceIndex + 1}: ${source.label}`}>[{sourceIndex + 1}]</a> : null; })}</div> : null}
               </section>
             ))}
             <section id="sources" className={styles.articleSources} aria-labelledby="sources-title"><span className={styles.articleEyebrow}>FOLLOW THE THREAD</span><h2 id="sources-title">Sources & further reading</h2><p>Our explanation is a starting point. These are the primary materials and references behind it.</p><ol>{article.sources.map((source) => <li key={source.id} id={`source-${source.id}`}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.label}<Arrow diagonal /></a>{source.note ? <p>{source.note}</p> : null}<span>{new URL(source.url).hostname}</span></li>)}</ol></section>
