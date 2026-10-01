@@ -4,6 +4,8 @@
 
 This is the continuing standard for all Honeypot articles, not only the five pieces described below. The root [AGENTS.md](../AGENTS.md) directs future editorial tasks here. Read this document and a relevant existing article before a new draft or substantial rewrite; use only the relevant criteria for copy corrections or layout changes.
 
+When the owner supplies an already-written article for republication, preserve its first-person voice, argument, and ending. Treat the original as the source text; do not automatically impose a new hook or rewrite it into house reporting. Recover the original publication date and assets when possible, identify the actual author and relevant affiliations, distinguish republication from new reporting, and document any copy edits or factual qualifications. The September 2026 Pons import is the reference example.
+
 The per-article briefs and review record below describe the September 2026 revision. They are examples and historical evidence, not proof that a future revision has been reviewed. Factual status, dates, benchmark results, and product availability must be checked again when relevant. Existing editions are reference points, not an assertion that every sentence is ideal or that the owner approved every detail.
 
 ## Choosing a hook and building the argument

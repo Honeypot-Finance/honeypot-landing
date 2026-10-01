@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { articles, getArticle } from "@/content/articles";
@@ -24,6 +25,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   return {
     title: article.title,
     description: article.description,
+    authors: [{ name: article.author?.name ?? "Honeypot Finance" }],
     alternates: { canonical: `/articles/${article.slug}` },
     openGraph: {
       type: "article",
@@ -31,7 +33,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
       description: article.description,
       url: `/articles/${article.slug}`,
       publishedTime: article.date,
-      authors: ["Honeypot Finance"],
+      authors: [article.author?.name ?? "Honeypot Finance"],
       tags: [article.section],
       images: [{ url: artwork.src, width: 1536, height: 1024, alt: artwork.alt }],
     },
@@ -61,7 +63,14 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         <header className={styles.articleHeader}>
           <nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/">Home</Link><span aria-hidden="true">/</span><Link href={sectionLinks[article.section]}>{article.section}</Link></nav>
           <div className={styles.articleHeaderGrid}>
-            <div><h1>{article.title}</h1><p className={styles.articleDescription}>{article.description}</p><div className={styles.byline}><span>Honeypot Editorial</span><span aria-hidden="true">·</span><time dateTime={article.date}>{date}</time><span aria-hidden="true">·</span><span>{article.readTime}</span></div><p className={styles.writingCredit}>Content writing supported by <a href="https://florus.ai/" target="_blank" rel="noopener noreferrer">florus.ai</a></p></div>
+            <div>
+              <h1>{article.title}</h1>
+              <p className={styles.articleDescription}>{article.description}</p>
+              <div className={styles.byline}><span>{article.author?.name ?? "Honeypot Editorial"}</span><span aria-hidden="true">·</span><time dateTime={article.date}>{date}</time><span aria-hidden="true">·</span><span>{article.readTime}</span></div>
+              {article.author?.role ? <p className={styles.authorRole}>{article.author.role}</p> : null}
+              <p className={styles.writingCredit}>Content writing supported by <a href="https://florus.ai/" target="_blank" rel="noopener noreferrer">florus.ai</a></p>
+              {article.publicationNote ? <p className={styles.publicationNote}>{article.publicationNote}</p> : null}
+            </div>
             <ArticleVisual visual={article.visual} priority sizes="(max-width: 800px) calc(100vw - 44px), (max-width: 1328px) 40vw, 490px" />
           </div>
         </header>
@@ -69,6 +78,13 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           <aside className={styles.articleSidebar}><details className={styles.contents}><summary>In this article</summary><nav aria-label="On this page">{article.sections.map((section) => <a key={section.id} href={`#${section.id}`}>{section.title}</a>)}<a href="#sources">Sources</a></nav></details><Link href={sectionLinks[article.section]} className={styles.backLink}>Back to {article.section}<Arrow /></Link></aside>
           <article id="article-content" className={styles.articleBody}>
             <p className={styles.articleHook}>{article.hook}</p>
+            {article.leadImage ? (
+              <figure className={styles.leadImage}>
+                <Image src={article.leadImage.src} alt={article.leadImage.alt} width={article.leadImage.width} height={article.leadImage.height} sizes="(max-width: 800px) calc(100vw - 44px), 760px" />
+                <figcaption>{article.leadImage.caption} <a href={article.leadImage.sourceUrl} target="_blank" rel="noopener noreferrer">Original source<Arrow diagonal /></a></figcaption>
+              </figure>
+            ) : null}
+            {article.introParagraphs?.map((paragraph, index) => <p className={styles.introParagraph} key={`intro-${index}`}>{paragraph}</p>)}
             {article.sections.map((section, sectionIndex) => (
               <section key={section.id} id={section.id} className={`${styles.proseSection} ${sectionIndex === article.sections.length - 1 ? styles.closingSection : ""}`}>
                 <h2>{section.title}</h2>
