@@ -8,15 +8,19 @@ export type Article = {
   description: string;
   readTime: string;
   date: string;
+  author?: { name: string; role?: string };
+  publicationNote?: string;
   hook: string;
+  introParagraphs?: string[];
+  leadImage?: { src: string; alt: string; width: number; height: number; caption: string; sourceUrl: string };
   takeaway: string;
-  visual: "manifesto" | "jev" | "muse" | "contracts" | "credits";
+  visual: "manifesto" | "jev" | "muse" | "contracts" | "credits" | "pons";
   sections: {
     id: string;
     title: string;
     paragraphs: string[];
     bullets?: string[];
-    diagram?: "attention" | "decisions" | "permissions" | "trust" | "assembly";
+    diagram?: "attention" | "decisions" | "permissions" | "trust" | "assembly" | "launch";
     sourceIds?: string[];
   }[];
   sources: { id: string; label: string; url: string; note?: string }[];
@@ -256,6 +260,176 @@ export const articles: Article[] = [
     "relatedSlugs": [
       "jev-decision-models",
       "erc-8004-agent-trust"
+    ]
+  },
+  {
+    "slug": "pons-why-i-backed-ozzy",
+    "section": "Web3",
+    "eyebrow": "A FOUNDER’S INVESTOR LETTER",
+    "title": "Pons: “The Fastest Company Ever to Reach $100M Annualized Revenue”—in Just Two Months",
+    "description": "Why I backed Ozzy before I knew where he would win",
+    "readTime": "8 min read",
+    "date": "2026-09-11",
+    "author": {
+      "name": "Wilson",
+      "role": "Honeypot Finance founder · early RootsFi investor"
+    },
+    "publicationNote": "First published September 11, 2026. Republished on Honeypot Finance September 30, 2026, preserving the author’s original account.",
+    "hook": "First place! Approximately two months to a $100 million annualized revenue run-rate. That is where the comparison chart accompanying this piece places Pons.",
+    "introParagraphs": [
+      "When I look at that chart, I think about the Ozzy I knew on Berachain, long before Pons had a place on it. I had already decided to back him. I just did not know where his breakthrough would happen.",
+      "I’m Wilson, founder of Honeypot Finance and an early investor in RootsFi. I can only write from Honeypot Finance's official account because my personal X account, @0xwilsonwu, remains suspended. I still don’t understand the specific reason, and repeated appeals haven’t restored it."
+    ],
+    "leadImage": {
+      "src": "/images/editorial/pons-revenue-chart.jpg",
+      "alt": "The original comparison chart ranks Pons first at approximately two months to a reported $100 million annualized revenue run-rate. Footnotes indicate different measurement starting points for some companies.",
+      "width": 900,
+      "height": 560,
+      "caption": "Comparison chart from the original essay. Annualized revenue is a run-rate, not revenue already earned. Some companies use different starting points, as the footnotes show; the ranking and underlying calculations have not been independently verified.",
+      "sourceUrl": "https://www.chaincatcher.com/en/article/2289068"
+    },
+    "takeaway": "I believed in Ozzy before I knew where he would win. Watching him find that place has been deeply satisfying. And I’m still betting on what comes next.",
+    "visual": "pons",
+    "sections": [
+      {
+        "id": "the-builder-i-met-on-berachain",
+        "title": "The builder I met on Berachain",
+        "paragraphs": [
+          "I met Ozzy, @MEADGod, through Berachain. His sincerity first got my attention. Over time, I came to appreciate his technical ability, his confidence, and a stubbornness that made him very difficult to knock down.",
+          "I also watched him go through treatment I considered needlessly harsh. There was a side of the Berachain community that, in my experience, felt like an inner circle. Recognition could seem to depend too much on proximity. A team could keep shipping and still struggle to feel its work was getting a fair hearing.",
+          "I won’t name individuals. People who built there may recognize that experience. Others may remember it differently. This is how it felt from where I stood.",
+          "At Honeypot Finance, our community repeatedly asked whether we were being supported. We were building Pot2Pump and exploring a different approach to meme launches, yet we often felt overlooked. Those questions were painful because we were asking some of them ourselves.",
+          "So when I saw what Ozzy was going through, I understood something of it. His ability and determination convinced me to invest in RootsFi. I also introduced Ozzy to a friend of mine in Toronto, who goes by @GeekedDao on X. He invested in RootsFi as well (I told him that I bet this young man would be successful!). We saw talent, urgency, and someone willing to keep working through disappointment.",
+          "I believed he would find his opportunity. I wasn’t convinced it had to happen on Berachain."
+        ],
+        "sourceIds": [
+          "original"
+        ]
+      },
+      {
+        "id": "he-kept-trying",
+        "title": "He kept trying to make it work",
+        "paragraphs": [
+          "What impressed me further was how much energy he continued to give the ecosystem. Even after feeling dismissed, he kept thinking about how Berachain could work better.",
+          "His May 2025 PoL V1.3 proposal examined liquidity, incentives, and value extraction, responding to V1.1 and the then-developing V1.2. Looking back, I think several of those concerns deserved much more serious consideration. I still wonder how things might have developed if they had received it.",
+          "Eventually, he carried that energy elsewhere. RootsFi found new ground on Canton and expanded to Tempo. To me, that showed an important kind of founder judgment: knowing when to give your work a different environment in which to grow."
+        ],
+        "sourceIds": [
+          "pol-proposal",
+          "roots-canton",
+          "roots-tempo"
+        ]
+      },
+      {
+        "id": "a-meal-a-coffee-and-carl",
+        "title": "A meal, a coffee, and Carl",
+        "paragraphs": [
+          "Carl helped me understand the other half of that team. Earlier this year, I met him in the US. We had a meal and coffee, and talked about meme trading, Canton, Tempo, and the payments business he and Ozzy wanted to build through RootsFi.",
+          "We spent more than an hour on RootsFi. I remember how animated he became when he talked about where it could go. There was so much he wanted to build, and he could walk me through why it mattered.",
+          "Carl has a talent for building relationships early, and he seems comfortable giving first. Even his insistence on picking up the bill stayed with me. It fit how he approached the conversation: generous with his time, interested in people, and thinking beyond the immediate transaction. I believe that instinct helped RootsFi recognize and pursue its opportunity on Canton.",
+          "Although Carl leans toward the commercial side, he also gets involved in technical work alongside Ozzy. Between them, I saw the ability to build, explain, sell, and keep learning across the boundaries of their roles. That breadth matters to me as an investor.",
+          "Before we parted, I encouraged him to help Ozzy explore a visa and spend time in the US. I wanted Ozzy to have access to more conversations, more relationships, and more chances to be understood. When I look at Pons now, I think back to that conversation."
+        ],
+        "sourceIds": [
+          "original"
+        ]
+      },
+      {
+        "id": "why-this-environment-mattered",
+        "title": "Why this environment mattered",
+        "paragraphs": [
+          "Then we saw the breakthrough happen on Robinhood Chain with Pons. I think there is an important reason why Robinhood and Pons fit together.",
+          "Robinhood Chain puts stock-linked assets into the same programmable environment as crypto. Its Stock Tokens are ERC-20s providing economic exposure to underlying securities, without ownership rights in the underlying companies. Developers can compose those assets into onchain applications.",
+          "@ponsdotfamily gives that environment a launch and trading product. Its V2 design starts tokens on a bonding curve and graduates them into permanently locked Uniswap v4 liquidity positions. The selected quote asset carries through both stages.",
+          "The detail that caught my attention was the quote asset: native ETH or an ERC-20 explicitly approved by Pons. That asset is used from the first trades through graduation, and fees are denominated in it too.",
+          "For a launch using an approved stock token, that asset participates in the market itself: what traders buy with, what the new token is priced against, and what the pool holds. The meme token does not become a share of the underlying company, and its price is not guaranteed to track that stock.",
+          "My interpretation is that this creates a compelling meeting point between meme culture and companies people already follow. Earnings, products, and familiar tickers give communities something to discuss. Pons gives them tools to create and trade around those interests. The assets, the audience’s interests, and the launch mechanism can reinforce one another."
+        ],
+        "sourceIds": [
+          "robinhood-tokens",
+          "pons-v2"
+        ],
+        "diagram": "launch"
+      },
+      {
+        "id": "back-to-pot2pump",
+        "title": "The part that brought me back to Pot2Pump",
+        "paragraphs": [
+          "At Honeypot Finance, we had explored flexibility in the assets used to fund launches and form liquidity. Pons V2 touches a question familiar to us, although the launch mechanics differ.",
+          "At the time, we weren’t building around tokenized stocks, and we didn’t have this combination of assets and market attention. Seeing Ozzy carry a related direction into a setting where it resonates makes me happy. I know how much persistence it can take for an idea to find its moment."
+        ],
+        "sourceIds": [
+          "original"
+        ]
+      },
+      {
+        "id": "what-comes-after-the-chart",
+        "title": "What comes after the chart",
+        "paragraphs": [
+          "The chart measures approximately two months from launch to a $100M annualized revenue pace. It cannot show all the work that came before launch: the ideas, the disappointments, the relationships, and the decision to keep going somewhere new.",
+          "If Pons could move this quickly when those pieces came together, what could the next chapter look like? I’m interested in what the team can make durable: repeat participation, useful markets, and the trust required to keep operating after the initial excitement. There is still a great deal to build.",
+          "Perhaps this is the part of the American dream I connect with most: talented people finding enough room to try again, meeting people willing to help, and creating something larger than their original circumstances seemed to allow.",
+          "I will keep supporting Ozzy and betting on what he builds next. I’m excited to see how much potential this young man still has to reveal. Watching Pons grow even makes me wonder: could he be the next @elonmusk? I want to be there to see how far his ambition and ability can take him."
+        ],
+        "sourceIds": [
+          "original"
+        ]
+      },
+      {
+        "id": "to-the-other-founders",
+        "title": "To the other founders I’ve backed",
+        "paragraphs": [
+          "Ozzy is one of several founders I’ve backed on Berachain. To the others: I know you have faced some of the same frustrations that Ozzy and I have experienced. I also see your talent and your grit. Those qualities still matter, even when the recognition hasn’t arrived.",
+          "If you’ve received a check from me, it means I saw in you many of the qualities I believe extraordinary success requires. I put my own money behind that judgment. I hope you remember that when the work feels lonely or your progress goes unnoticed.",
+          "Stay focused. Keep building, keep learning, and give yourself time to find the right opening (and never tell anyone Wilson invested in you!). Sometimes one opportunity can change the trajectory of everything you have been working toward. I hope I’ll get to write about your breakthrough one day, too.",
+          "I believed in Ozzy before I knew where he would win. Watching him find that place has been deeply satisfying. And I’m still betting on what comes next."
+        ],
+        "sourceIds": [
+          "original"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "original",
+        "label": "Wilson / Honeypot Finance — original Pons founder-investor essay",
+        "url": "https://www.chaincatcher.com/en/article/2289068",
+        "note": "Published September 11, 2026. Source of the first-person account and comparison chart; the chart’s ranking is not independently verified."
+      },
+      {
+        "id": "pol-proposal",
+        "label": "Ozzy — PoL V1.3: The End of the Great Extraction",
+        "url": "https://forum.berachain.com/t/pol-v1-3-the-end-of-the-great-extraction/1573",
+        "note": "Forum repost of the proposal dated May 31, 2025."
+      },
+      {
+        "id": "roots-canton",
+        "label": "Roots — Bringing our SDK and payment solution to Canton Network",
+        "url": "https://cantonnews.org/insights/bringing-our-sdk-and-payment-solution-to-canton-network",
+        "note": "Roots-authored announcement, April 28, 2026."
+      },
+      {
+        "id": "roots-tempo",
+        "label": "RootsFi — stcUSD integration on Tempo",
+        "url": "https://rss.globenewswire.com/news-release/2026/06/16/3312821/0/en/rootsfi-integrates-cap-s-stcusd-on-tempo-as-a-primary-yield-source.html",
+        "note": "Company-issued announcement, June 16, 2026."
+      },
+      {
+        "id": "robinhood-tokens",
+        "label": "Robinhood Chain — Stock Tokens",
+        "url": "https://docs.robinhood.com/chain/stock-tokens/",
+        "note": "ERC-20 stock-token design and economic exposure; underlying company ownership rights do not transfer."
+      },
+      {
+        "id": "pons-v2",
+        "label": "Pons V2 — launch lifecycle, custom pairs, and payouts",
+        "url": "https://docs.ponsfamily.com/v2",
+        "note": "Primary documentation for the quote asset, bonding curve, graduation, and Uniswap v4 liquidity. The added illustration explains this mechanism conceptually."
+      }
+    ],
+    "relatedSlugs": [
+      "erc-8004-agent-trust",
+      "attention-network-for-the-agi-era"
     ]
   },
   {

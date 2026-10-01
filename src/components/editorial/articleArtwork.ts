@@ -37,6 +37,13 @@ export const articleArtwork = {
     category: "THE ONCHAIN WORLD",
     caption: "Trust begins with a better question.",
   },
+  pons: {
+    src: "/images/editorial/pons-anime.png",
+    alt: "Two fictional anime builders and a sunglasses-wearing honey pot look across a stone bridge toward a sunlit harbor city, carrying a worn sketchbook and travel suitcase.",
+    objectPosition: "50% 50%",
+    category: "A FOUNDER’S INVESTOR LETTER",
+    caption: "The work before the breakthrough.",
+  },
   credits: {
     src: "/images/editorial/credits-anime.png",
     alt: "Professor Pot presents a finished painting beside a honey pot and a locked transparent chest that still holds the source art cards.",

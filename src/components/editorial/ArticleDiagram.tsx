@@ -24,6 +24,11 @@ const diagrams = {
     caption: "An illustrative custody-based assembly, not a claim about a deployed project. Existing source-token approvals must be in place; a source contract’s real burn operation is different from transferring an NFT to custody.",
     steps: [{ title: "80 distinct IDs", detail: "Select the source NFTs to assemble" }, { title: "Check the rules", detail: "Ownership, approvals, uniqueness, and cap" }, { title: "Transfer to custody", detail: "The contract becomes the token owner" }, { title: "Mint one Statement", detail: "Create the assembled output NFT" }],
   },
+  launch: {
+    title: "The quote asset carries through the launch",
+    caption: "A conceptual Pons V2 flow. Pairing with a stock token does not grant stock ownership or guarantee that the launch token tracks its price.",
+    steps: [{ title: "Choose the asset", detail: "Native ETH or a Pons-approved ERC-20" }, { title: "Trade the curve", detail: "Buy and sell using that quote asset" }, { title: "Graduate", detail: "Quote reserves and reserved launch tokens seed the pool" }, { title: "Locked liquidity", detail: "Uniswap v4 liquidity is permanently locked; creator fee payouts use the quote asset" }],
+  },
   trust: {
     title: "Three kinds of signals. Your own risk rules.",
     caption: "ERC-8004 remains a draft. Identity and Reputation have mainnet deployments; Validation is evolving. These signals do not independently authorize an action or move money.",

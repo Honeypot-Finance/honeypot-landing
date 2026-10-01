@@ -47,6 +47,16 @@ const stories = {
       ["Evaluate", "The application weighs the available evidence against its own risk rules. Spending authority is a separate decision."],
     ],
   },
+  launch: {
+    title: "One quote asset, from launch to liquidity",
+    note: "Conceptual Pons V2 mechanics. The quote asset is fixed at creation; pairing does not confer stock ownership or guarantee price tracking.",
+    frames: [
+      ["Choose", "Select native ETH or a Pons-approved ERC-20 as the quote asset."],
+      ["Trade", "Buy and sell launch tokens on the bonding curve using that same asset."],
+      ["Graduate", "At graduation, quote reserves and the launch tokens reserved for liquidity seed a Uniswap v4 pool."],
+      ["Pool", "The liquidity position is permanently locked. Creator fee payouts are claimable in the selected quote asset."],
+    ],
+  },
   assembly: {
     title: "80 NFTs become one composition. The originals remain.",
     note: "Illustrative custody-based assembly from the tutorial, not a depiction of production contracts. A real burn removes ownership instead.",
@@ -131,6 +141,54 @@ function Scene({ kind, step, uid }: { kind: Kind; step: number; uid: string }) {
       <g className={lit(3)}><rect x="240" y="265" width="266" height="77" rx="16" fill="#fff9e5" stroke="#7c9065" strokeWidth="3" /><path d="m263 299 9 10 18-23" fill="none" stroke="#6d8557" strokeWidth="4" strokeLinecap="round" /><text x="391" y="312">Your risk rules</text></g>
       <text x="553" y="241" className={styles.annotation}>Evolving</text><Pot />
       <path d="M261 375h225" stroke="#8da077" strokeWidth="2" /><text x="374" y="397" className={styles.annotation}>Evidence is not spending authority</text>
+    </> : null}
+
+    {kind === "launch" ? <>
+      <path className={styles.flow} d="M114 68h504m-504 22v31m168-31v31m168-31v31m168-31v31" fill="none" stroke="#8b9c71" strokeWidth="3" strokeDasharray="8 8" />
+      <g className={styles.tokenStack} style={{ transform: `translate(${step * 168}px, 0)` }}>
+        <circle cx="114" cy="68" r="24" fill="#f6cd59" stroke="#826b48" strokeWidth="2.5" />
+        <text x="114" y="77">Q</text>
+      </g>
+      <g className={lit(0)}>
+        <rect x="63" y="127" width="102" height="94" rx="14" fill="#fff9e8" stroke="#a59267" strokeWidth="2" />
+        <circle cx="101" cy="164" r="19" fill="#eadba8" stroke="#826b48" strokeWidth="2" />
+        <path d="m101 149-10 16 10 6 10-6-10-16Zm-9 21 9 14 9-14-9 5-9-5Z" fill="#826b48" />
+        <circle cx="132" cy="188" r="18" fill="#cbdcce" stroke="#647c62" strokeWidth="2" />
+        <path d="m123 188 6 6 12-14" fill="none" stroke="#647c62" strokeWidth="3" strokeLinecap="round" />
+        <text x="114" y="259">Quote asset</text>
+      </g>
+      <g className={lit(1)}>
+        <rect x="231" y="127" width="102" height="94" rx="14" fill="#e0e9d5" stroke="#6c805a" strokeWidth="2" />
+        <circle cx="263" cy="161" r="18" fill="#f6cd59" stroke="#826b48" strokeWidth="2" /><text x="263" y="170">Q</text>
+        <circle cx="300" cy="192" r="18" fill="#d7c4df" stroke="#8d7996" strokeWidth="2" /><text x="300" y="201">T</text>
+        <path d="M284 151h24l-7-7m7 7-7 7m-19 44h-24l7-7m-7 7 7 7" fill="none" stroke="#6c805a" strokeWidth="2.5" strokeLinecap="round" />
+        <text x="282" y="259">Curve</text>
+      </g>
+      <g className={lit(2)}>
+        <path d="M399 134h102v84H399Z" fill="#fff9e8" stroke="#9d9677" strokeWidth="2" />
+        <path d="M395 126h110v18H395Z" fill="#e5d5a0" stroke="#9d9677" strokeWidth="2" />
+        <circle cx="429" cy="178" r="18" fill="#f6cd59" stroke="#826b48" strokeWidth="2" /><text x="429" y="187">Q</text>
+        <circle cx="472" cy="178" r="18" fill="#d7c4df" stroke="#8d7996" strokeWidth="2" /><text x="472" y="187">T</text>
+        <path d="M446 162v31m-9-15h18" stroke="#6c805a" strokeWidth="2" />
+        <text x="450" y="259">Reserves</text>
+      </g>
+      <g className={lit(3)}>
+        <ellipse cx="618" cy="181" rx="54" ry="34" fill="#c5d9d3" stroke="#647f74" strokeWidth="2" />
+        <path d="M564 166v16c0 19 108 19 108 0v-16" fill="#a9c5bb" stroke="#647f74" strokeWidth="2" />
+        <ellipse cx="618" cy="165" rx="54" ry="24" fill="#e8f0e0" stroke="#647f74" strokeWidth="2" />
+        <circle cx="596" cy="165" r="13" fill="#f6cd59" stroke="#826b48" strokeWidth="2" />
+        <circle cx="640" cy="165" r="13" fill="#d7c4df" stroke="#8d7996" strokeWidth="2" />
+        <rect x="603" y="196" width="30" height="24" rx="5" fill="#f6d781" stroke="#647c62" strokeWidth="2" />
+        <path d="M609 196v-8a9 9 0 0 1 18 0v8" fill="none" stroke="#647c62" strokeWidth="2.5" />
+        <text x="618" y="259">Locked LP</text>
+        <path className={styles.flow} d="M618 279v28h-90" fill="none" stroke="#8b9c71" strokeWidth="3" strokeDasharray="7 6" />
+        <path d="m538 300-10 7 10 7" fill="none" stroke="#8b9c71" strokeWidth="3" />
+        <rect x="364" y="283" width="163" height="56" rx="10" fill="#fff9e8" stroke="#9d9677" strokeWidth="2" />
+        <circle cx="391" cy="311" r="17" fill="#f6cd59" stroke="#826b48" strokeWidth="2" /><text x="391" y="320">Q</text>
+        <text x="463" y="320" className={styles.annotation}>Creator</text>
+      </g>
+      <Pot />
+      <text x="431" y="382" className={styles.annotation}>Q = quote asset · T = launch token</text>
     </> : null}
 
     {kind === "assembly" ? <>

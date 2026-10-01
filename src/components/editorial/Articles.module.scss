@@ -10,6 +10,7 @@ $line: #d9dece;
 .jev { background: #e9d4c2; }
 .contracts { background: #ccdcd7; }
 .credits { background: #d9d1e9; }
+.pons { background: #d9e2d3; }
 .artLayer { position: absolute; inset: 0; animation: illustrationArrival 4.5s cubic-bezier(.18, .65, .3, 1) 1 both; }
 .artImage { object-fit: cover; transition: transform .7s cubic-bezier(.2, .65, .3, 1); }
 .visual:hover .artImage, a:focus-visible .visual .artImage { transform: scale(1.035) translateY(-2px); }
@@ -133,3 +134,15 @@ $line: #d9dece;
 .writingCredit { font-size: 14px; color: $muted; line-height: 1.7; margin-top: 14px; a { color: $ink; text-decoration: underline; text-underline-offset: 4px; } }
 .contents { summary { cursor: pointer; font-size: 15px; font-weight: 600; padding: 8px 0; } nav { margin-top: 18px; } }
 .diagramDetails { margin: 10px 0 24px; summary { cursor: pointer; color: #526543; font-size: 15px; padding: 10px 0; text-decoration: underline; text-underline-offset: 4px; } }
+
+.authorRole { font-size: 14px; line-height: 1.65; color: $muted; margin-top: 7px; }
+.publicationNote { max-width: 575px; font-size: 14px; line-height: 1.7; color: $muted; border-left: 2px solid #c4cfb3; padding-left: 14px; margin-top: 19px; }
+.launchDiagram .diagramSteps { grid-template-columns: repeat(2, minmax(0, 1fr)); > li { strong { font-size: 14px; } p { font-size: 14px; } &:nth-child(2)::after { content: none; } } }
+.launchDiagram figcaption { font-size: 13px; }
+@media (max-width: 540px) {
+  .launchDiagram .diagramSteps { grid-template-columns: 1fr; > li:nth-child(2)::after { content: "↓"; } }
+}
+
+.leadImage { margin: 29px 0; > img { display: block; width: 100%; height: auto; border: 1px solid $line; border-radius: 5px; } figcaption { font-size: 14px; line-height: 1.7; color: $muted; margin-top: 13px; } a { display: inline-flex; align-items: center; gap: 5px; color: $ink; text-decoration: underline; text-underline-offset: 3px; svg { width: 14px; height: 14px; } } }
+.introParagraph { font-size: 18px; line-height: 1.85; color: #505a49; margin-bottom: 19px; }
+@media (max-width: 540px) { .introParagraph { font-size: 17px; } }
