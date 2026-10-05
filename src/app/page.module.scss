@@ -62,6 +62,11 @@ $honey: #ffd342;
 .professorPot { display: flex; align-items: center; gap: 24px; margin: -19px 27px -10px 0; > img { width: 170px; height: auto; flex-shrink: 0; } figcaption { font-size: 18px; line-height: 1.4; font-weight: 500; color: #536044; } }
 .academy .storyGrid { margin-top: 31px; }
 
+.potuberSection { padding-bottom: 76px; }
+.potuberPanel { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: center; overflow: hidden; background: #eeeddf; border: 1px solid $line; border-radius: 6px; }
+.potuberArt { display: block; width: 100%; height: auto; }
+.potuberCopy { min-width: 0; padding: clamp(28px, 4vw, 58px); > p { max-width: 430px; font-size: 18px; line-height: 1.7; color: $muted; margin: 24px 0 28px; } .primaryButton { display: inline-flex; flex-wrap: wrap; justify-content: center; } }
+
 .alphaSection { padding-top: 76px; padding-bottom: 72px; }
 .alphaPanel { background: #f0efe4; border: 1px solid #d8dccb; border-radius: 6px; padding: 36px 43px 31px; > p { font-size: 18px; line-height: 1.6; color: $muted; margin-top: 16px; } }
 .alphaHeading { display: flex; align-items: center; gap: 22px; }
@@ -118,6 +123,9 @@ $honey: #ffd342;
   .investorGrid { gap: 25px 12px; }
 }
 @media (max-width: 760px) {
+  .potuberSection { padding-bottom: 56px; }
+  .potuberPanel { grid-template-columns: 1fr; }
+  .potuberCopy { padding: 30px 24px; > p { font-size: 17px; } }
   .container { padding-left: 24px; padding-right: 24px; }
   .hero { grid-template-columns: 1fr; gap: 31px; padding-top: 37px; padding-bottom: 55px; }
   .heroCopy h1 { font-size: clamp(62px, 11vw, 80px); margin-bottom: 23px; max-width: 660px; br:nth-of-type(2) { display: none; } > span::before { content: " "; } }

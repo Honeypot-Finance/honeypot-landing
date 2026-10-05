@@ -47,3 +47,7 @@ Prompt: Create one finished 1536x1024 landscape anime editorial cover for Honeyp
 Recovered unchanged (900×560) from the [owner's original September 11 essay](https://www.chaincatcher.com/en/article/2289068) for his requested republication. [Original image](https://pbs.twimg.com/media/HR3E-ntW4AMvbkK?format=jpg&name=900x900). No bars, labels, rankings, or footnotes were regenerated or edited. The chart's underlying calculations and ranking methodology have not been independently verified; the article caption states that limitation and distinguishes annualized run-rate from earned revenue. Original footer annotations use different starting points for some comparisons.
 
 The inline Pons launch animation and accessible static explanation are implemented in `ArticleMotion.tsx` and `ArticleDiagram.tsx`, based on the primary Pons V2 documentation. They illustrate quote-asset continuity and do not depict revenue performance, equity ownership, or guaranteed stock-price tracking.
+
+### potuber-profile.png
+
+Reused unchanged from the owner's generated Potuber profile artwork: a cute bear and small honey-pot companion wearing sunglasses and formalwear, with sakura and glowing lanterns. Original square PNG, 1254×1254. Used as channel artwork in the homepage Potuber section; this is an illustration, not a video thumbnail or footage.

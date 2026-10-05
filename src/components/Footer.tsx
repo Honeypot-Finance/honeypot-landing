@@ -23,6 +23,7 @@ export default function Footer({ className = "" }: { className?: string }) {
         </nav>
         <nav aria-label="Community" className={styles.footerColumn}>
           <h2>Community</h2>
+          <a href="https://www.youtube.com/@potuber" target="_blank" rel="noopener noreferrer">Potuber / YouTube<Arrow diagonal /></a>
           <a href="https://x.com/honeypotfinance" target="_blank" rel="noopener noreferrer">X / Twitter<Arrow diagonal /></a>
           <a href="https://discord.gg/NfnK78KJxH" target="_blank" rel="noopener noreferrer">Discord<Arrow diagonal /></a>
           <a href="https://github.com/Honeypot-Finance" target="_blank" rel="noopener noreferrer">GitHub<Arrow diagonal /></a>
