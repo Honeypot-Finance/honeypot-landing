@@ -149,6 +149,21 @@ export default function HomePage() {
           </div>
         </section>
 
+        <section id="potuber" className={`${styles.potuberSection} ${styles.container}`} aria-labelledby="potuber-title">
+          <div className={styles.potuberPanel}>
+            <Image className={styles.potuberArt} src="/images/editorial/potuber-profile.png" alt="Pot the bear and his little honey-pot companion in sunglasses and bow ties, surrounded by sakura and glowing lanterns." width={1254} height={1254} sizes="(max-width: 760px) calc(100vw - 48px), (max-width: 1440px) 42vw, 540px" />
+            <div className={styles.potuberCopy}>
+              <span className={styles.sectionEyebrow}>POTUBER / ON YOUTUBE</span>
+              <h2 id="potuber-title" className={styles.sectionTitle}>Curiosity looks<br />good on you.</h2>
+              <p>Come explore AI, Web3, and how it all works—with Pot. Follow the ideas from the page to the screen.</p>
+              <a href="https://www.youtube.com/@potuber" target="_blank" rel="noopener noreferrer" className={styles.primaryButton}>
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 5v14l11-7z" /></svg>
+                Subscribe on YouTube<Arrow diagonal />
+              </a>
+            </div>
+          </div>
+        </section>
+
         <section id="licensing" className={`${styles.licensing} ${styles.container}`} aria-labelledby="licensing-title">
           <div className={styles.licensingHeading}>
             <h2 id="licensing-title" className={styles.sectionTitle}>Technology<br />licensing</h2>
